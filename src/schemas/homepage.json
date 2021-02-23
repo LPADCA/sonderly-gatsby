@@ -1,7 +1,7 @@
 {
   "Main": {},
   "Hero": {
-    "slide": {
+    "hero_slide": {
       "type": "Group",
       "config": {
         "fields": {
@@ -45,7 +45,7 @@
     }
   },
   "Stats": {
-    "element": {
+    "stats_element": {
       "type": "Group",
       "config": {
         "fields": {
@@ -63,6 +63,74 @@
           }
         },
         "label": "Stats block"
+      }
+    }
+  },
+  "WhatWeDo": {
+    "wwd_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": null,
+          "height": null
+        },
+        "thumbnails": [],
+        "label": "Side graphics"
+      }
+    },
+    "wwd_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Title"
+      }
+    },
+    "wwd_text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "allowTargetBlank": true,
+        "label": "Text"
+      }
+    },
+    "wwd_pros": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "value": {
+            "type": "Text",
+            "config": {
+              "label": "Text line"
+            }
+          }
+        },
+        "label": "Pros (list element)"
+      }
+    },
+    "wwd_primary_button_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Primary Button Link"
+      }
+    },
+    "wwd_primary_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Primary Button Text"
+      }
+    },
+    "wwd_secondary_button_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Secondary Button Link"
+      }
+    },
+    "wwd_secondary_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Secondary Button Text"
       }
     }
   }
