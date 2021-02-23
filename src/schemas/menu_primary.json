@@ -1,0 +1,88 @@
+{
+  "Main" : {
+    "skip" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Skip",
+        "placeholder" : "Top (primary) menu"
+      }
+    },
+    "test_link" : {
+      "type" : "Link",
+      "config" : {
+        "allowTargetBlank" : true,
+        "label" : "test_link"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "menu_item" : [ ],
+          "dump" : [ ]
+        },
+        "choices" : {
+          "menu_item" : {
+            "type" : "Slice",
+            "fieldset" : "Menu Item",
+            "description" : "Menu element and/or submenus",
+            "icon" : "beenhere",
+            "display" : "list",
+            "non-repeat" : {
+              "text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Text",
+                  "placeholder" : "Top menu item - Text"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Link",
+                  "placeholder" : "Top menu item - Link"
+                }
+              }
+            },
+            "repeat" : {
+              "submenu_item_text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Submenu item - Text",
+                  "placeholder" : "Submenu item - Text"
+                }
+              },
+              "submenu_item_link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Submenu item - Link",
+                  "placeholder" : "Submenu item - Link"
+                }
+              }
+            }
+          },
+          "dump" : {
+            "type" : "Slice",
+            "fieldset" : "Dump",
+            "description" : "Just an unneccesary slide for a test",
+            "icon" : "add_alert",
+            "display" : "list",
+            "non-repeat" : {
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "link"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  }
+}

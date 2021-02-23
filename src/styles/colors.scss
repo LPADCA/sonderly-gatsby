@@ -1,0 +1,43 @@
+$color1: #077762;
+$color2: #20a77a;
+$color3: #30B290;
+$color4: #66dddd;
+$color5: #E6EBEC;
+$color6: #35CE8D;
+$color7: #86cdb5;
+
+$text-color: #333;
+$text-color-invert: white;
+$button-green: $color2;
+$hover-green: $color6;
+$background-tint: $color5;
+$border-green: $color7;
+
+$default-transition: all 0.3s ease-out;
+
+$mobile-edge: 500px;
+$desktop-edge: 1000px;
+
+@media (max-width: $mobile-edge) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: ($mobile-edge + 1px)) {
+    .hide-off-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: $desktop-edge+1px) {
+    .hide-on-desktop {
+        display: none !important;
+    }
+}
+
+@media (max-width: ($desktop-edge)) {
+    .hide-off-desktop {
+        display: none !important;
+    }
+}

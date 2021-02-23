@@ -1,0 +1,69 @@
+{
+  "Main": {},
+  "Hero": {
+    "slide": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          },
+          "title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1",
+              "label": "Title"
+            }
+          },
+          "description": {
+            "type": "Text",
+            "config": {
+              "label": "Description"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Button Link"
+            }
+          },
+          "button_text": {
+            "type": "Text",
+            "config": {
+              "label": "Button text"
+            }
+          }
+        },
+        "label": "Slide"
+      }
+    }
+  },
+  "Stats": {
+    "element": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "number": {
+            "type": "Text",
+            "config": {
+              "label": "Number"
+            }
+          },
+          "description": {
+            "type": "Text",
+            "config": {
+              "label": "Text below"
+            }
+          }
+        },
+        "label": "Stats block"
+      }
+    }
+  }
+}

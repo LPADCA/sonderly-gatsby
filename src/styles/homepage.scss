@@ -1,0 +1,22 @@
+@import 'colors.scss';
+
+.stats {
+    background: linear-gradient(99deg, #077762 0%, #20A77A 31%, #30B290 55%, #66DDDD 100%) 0% 0% no-repeat padding-box;
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+        padding: 60px 0;
+        h2 {
+            font-size: 40px;
+            line-height: 1;
+            color: white;
+            margin: 0;
+        }
+        h5 {
+            font-size: 20px;
+            color: white;
+            margin: 0;
+        }
+    }
+}

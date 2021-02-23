@@ -1,0 +1,101 @@
+@import 'colors.scss';
+
+#footer {
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 16px;
+    background-color: $background-tint;
+    position: relative;
+    &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 8px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: transparent linear-gradient(92deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
+    }
+
+    .table {
+        display: grid;
+        grid-template-columns: 30% auto;
+        grid-gap: 10px;
+        .copyright {
+            font-size: 14px;
+            font-weight: 700;
+        }
+        a {
+            font-size: 14px;
+            font-weight: 700;
+            color: $text-color;
+        }
+        a:hover {
+            color: $hover-green;
+        }
+    }
+    .table:first-child {
+        .cell.left {
+            p.phonemail {
+                a {
+                    font-size: 16px;
+                    font-weight: 400;
+                    text-decoration: none;
+                }
+            }
+            img.logo {
+                width: 100%;
+                max-height: 43px;
+                object-fit: contain;
+                object-position: left center;
+            }
+        }
+        .cell.right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            ul {
+                display: flex;
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 45px;
+                    height: 45px;
+                    background-color: white;
+                    border-radius: 500px;
+                    margin: 0 12px;
+                    box-shadow: 7px 7px 10px rgba(0,0,0,0.1);
+                    a {
+                        font-size: 18px;
+                        color: $text-color;
+                        padding: 10px;
+                        line-height: 0.8;
+                    }
+                    a:hover {
+                        color: $hover-green;
+                    }
+                }
+                li:last-child { 
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    .table:last-child {
+        .cell.right {
+            ul {
+                text-align: right;
+                li {
+                    display: inline-block;
+                    margin: 0 10px;
+                }
+                li:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+}
+
