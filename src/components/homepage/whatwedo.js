@@ -15,7 +15,7 @@ const WhatWeDo = ({data}) => {
                             <div className="content">
                                 <div>
                                     <h2>{data.wwd_title.text}</h2>
-                                    <p
+                                    <div
                                         dangerouslySetInnerHTML={{
                                             __html: data.wwd_text.html
                                             }}
@@ -35,6 +35,8 @@ const WhatWeDo = ({data}) => {
                             </div>
                         </div>
                     </div>
+                <div id="bg-el3"/>
+                <div id="bg-el4"/>
                 </div>
             </>
         )
