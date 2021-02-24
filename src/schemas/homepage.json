@@ -133,5 +133,152 @@
         "label": "Secondary Button Text"
       }
     }
+  },
+  "CoursesPreview": {
+    "cp_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Title"
+      }
+    },
+    "cp_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "allowTargetBlank": true,
+        "label": "Description"
+      }
+    },
+    "cp_card": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "cp_card_image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          },
+          "cp_card_title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading3",
+              "label": "Title"
+            }
+          },
+          "cp_card_description": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "allowTargetBlank": true,
+              "label": "Description"
+            }
+          },
+          "cp_card_button_link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Button Link"
+            }
+          },
+          "cp_card_button_text": {
+            "type": "Text",
+            "config": {
+              "label": "Button Text"
+            }
+          }
+        },
+        "label": "Card"
+      }
+    }
+  },
+  "WhoWeServe": {
+    "wws_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Title"
+      }
+    },
+    "wws_client_type": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "wws_type_image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          },
+          "wws_type_title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading3",
+              "label": "Title"
+            }
+          }
+        },
+        "label": "Client Type"
+      }
+    }
+  },
+  "Testimonials": {
+    "tmn_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Title"
+      }
+    },
+    "tmn_cards": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "tmn_card_author_icon": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Testimonial Author Icon"
+            }
+          },
+          "tmn_card_text": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "allowTargetBlank": true,
+              "label": "Testimonial"
+            }
+          },
+          "tnm_card_author_name": {
+            "type": "Text",
+            "config": {
+              "label": "Testimonial Author Name"
+            }
+          },
+          "tmn_card_author_position": {
+            "type": "Text",
+            "config": {
+              "label": "Tesimonial Author Position"
+            }
+          }
+        },
+        "label": "Testimonial Cards"
+      }
+    }
+  },
+  "SEO": {
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Keywords",
+        "placeholder": "(list, separated with commas)"
+      }
+    }
   }
 }

@@ -122,3 +122,51 @@
         background-position: center center;
     }
 }
+
+.coursesPreview {
+    .localHeader {
+        h2, p, div {
+            text-align: center;
+        }
+    }
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        .card {
+            .icon {
+                display: block;
+                max-height: 50px;
+                transition: $default-transition;
+                color: $hover-green;
+                fill: $hover-green;
+            }
+            h3 {
+                margin-top:0;
+            }
+            margin: 0 20px;
+            padding: 20px;
+            background-color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: 3px solid $hover-green;
+            box-shadow: 7px 7px 30px rgba(32,167,122,0.2);
+            transition: $default-transition;
+            .animation-spacer {
+                height: 50px;
+                max-height:0;
+                transition: $default-transition;
+            }
+        }
+        .card:hover {
+            background-color: $button-green;
+            color: white;
+            .icon {
+                max-height: 0;
+            }
+            .animation-spacer {
+                max-height:50px;
+            }
+        }
+    }
+}

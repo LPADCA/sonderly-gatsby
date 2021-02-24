@@ -4,17 +4,19 @@ import Layout from "@components/common/layout.js"
 
 import Hero from "@components/homepage/hero"
 import Stats from "@components/homepage/stats"
-import WhatWeDo from "../components/homepage/whatwedo"
+import WhatWeDo from "@components/homepage/whatWeDo"
+import CoursesPreview from "@components/homepage/coursesPreview"
 
-import '@styles/homepage.scss'
+import "@styles/homepage.scss"
 
 const Homepage = ({ data }) => {
     //console.log(data)
     return (
         <Layout>
-            <Hero slides={data.prismicHomepage.data.hero_slide}/>
-            <Stats blocks={data.prismicHomepage.data.stats_element}/>
-            <WhatWeDo data={data.prismicHomepage.data}/>
+            <Hero slides={data.prismicHomepage.data.hero_slide} />
+            <Stats blocks={data.prismicHomepage.data.stats_element} />
+            <WhatWeDo data={data.prismicHomepage.data} />
+            <CoursesPreview data={data.prismicHomepage.data} />
         </Layout>
     )
 }
@@ -77,6 +79,33 @@ export const homepageQuery = graphql`
                 }
                 wwd_pros {
                     value
+                }
+                cp_title {
+                    text
+                }
+                cp_description {
+                    html
+                }
+                cp_card {
+                    cp_card_button_link {
+                        uid
+                        url
+                        type
+                        target
+                        link_type
+                    }
+                    cp_card_button_text
+                    cp_card_description {
+                        html
+                    }
+                    cp_card_title {
+                        text
+                    }
+                    cp_card_image {
+                        fluid(maxWidth: 1000, maxHeight: 800) {
+                            ...GatsbyPrismicImageFluid
+                        }
+                    }
                 }
             }
         }
