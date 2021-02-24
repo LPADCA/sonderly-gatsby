@@ -35,8 +35,8 @@ const WhatWeDo = ({data}) => {
                             </div>
                         </div>
                     </div>
-                <div id="bg-el3"/>
-                <div id="bg-el4"/>
+                <div className="bgel3"/>
+                <div className="bgel4"/>
                 </div>
             </>
         )

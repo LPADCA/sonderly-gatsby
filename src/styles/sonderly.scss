@@ -49,3 +49,11 @@ a {
     }
 }
 
+.divider-dots {
+    display: block;
+    width: 156px;
+    height: 40px;
+    margin: 40px auto;
+    background-image: url("/images/dots.png");
+    background-size: 100% 100%;
+}

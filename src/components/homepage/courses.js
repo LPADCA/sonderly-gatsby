@@ -39,6 +39,8 @@ const CoursesPreview = ({data}) => {
                             )}
                         </div>
                     </div>
+                    <div class="bgel1"/>
+                    <div class="divider-dots"/>
                 </div>
             </>
         )

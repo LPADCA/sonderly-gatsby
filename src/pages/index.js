@@ -6,6 +6,7 @@ import Hero from "@components/homepage/hero"
 import Stats from "@components/homepage/stats"
 import WhatWeDo from "@components/homepage/whatwedo"
 import CoursesPreview from "@components/homepage/courses"
+import WhoWeServe from "@components/homepage/whoweserve"
 
 import "@styles/homepage.scss"
 
@@ -17,6 +18,7 @@ const Homepage = ({ data }) => {
             <Stats blocks={data.prismicHomepage.data.stats_element} />
             <WhatWeDo data={data.prismicHomepage.data} />
             <CoursesPreview data={data.prismicHomepage.data} />
+            <WhoWeServe data={data.prismicHomepage.data} />
         </Layout>
     )
 }
@@ -106,6 +108,19 @@ export const homepageQuery = graphql`
                             ...GatsbyPrismicImageFluid
                         }
                     }
+                }
+                wws_client_type {
+                    wws_type_image {
+                        fixed(width: 500) {
+                            ...GatsbyPrismicImageFixed
+                        }
+                    }
+                    wws_type_title {
+                        text
+                    }
+                }
+                wws_title {
+                    text
                 }
             }
         }
