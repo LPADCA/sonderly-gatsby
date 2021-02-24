@@ -4,8 +4,8 @@ import Layout from "@components/common/layout.js"
 
 import Hero from "@components/homepage/hero"
 import Stats from "@components/homepage/stats"
-import WhatWeDo from "@components/homepage/whatWeDo"
-import CoursesPreview from "@components/homepage/coursesPreview"
+import WhatWeDo from "@components/homepage/whatwedo"
+import CoursesPreview from "@components/homepage/coursespreview"
 
 import "@styles/homepage.scss"
 
