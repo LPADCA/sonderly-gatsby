@@ -202,18 +202,6 @@
         top: 50%;
         background: linear-gradient(99deg, #077762 0%, #20A77A 31%, #30B290 55%, #66DDDD 100%) 0% 0% no-repeat padding-box;
     }
-    h2 {
-        text-align: center;
-        &:after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 4px;
-            border-radius:100px;
-            margin: 10px auto;
-            background-color: $button-green;
-        }
-    }
     .grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -262,6 +250,77 @@
         left: -80px;
         bottom: -80px;
         background-image: url("/images/hero-elements/1.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.testimonials {
+    position: relative;
+    padding-bottom: 50px;
+    overflow: hidden;
+    .card {
+        &>div {
+            margin: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3)
+        }
+        .divider {
+            display: block;
+            height: 3px;
+            background-color: $hover-green;
+            border-radius: 5px;
+        }
+        .author {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 80px auto;
+            gap: 15px;
+            .image {
+                img {
+                    max-width: 100%;
+                    border-radius: 100px;
+                    object-fit: cover;
+
+                }
+            }
+            .text {
+                p {
+                    margin: 0;
+                    padding: 0;
+                    &.name {
+                        font-weight: 800;
+                    }
+                    &.position {
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+    .slick-prev:before, .slick-next:before {
+        color: black;
+        opacity: .5;
+    }
+    .slick-next:before {
+        content: url("/images/arrow-right.svg")
+    }
+    .slick-prev:before {
+        content: url("/images/arrow-left.svg")
+    }
+    .bgel4 {
+        display: block;
+        width: 240px;
+        height: 240px;
+        position: absolute;
+        z-index: -2;
+        opacity: 0.9;
+        right: -30px;
+        bottom: -50px;
+        background-image: url("/images/hero-elements/4.svg");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;

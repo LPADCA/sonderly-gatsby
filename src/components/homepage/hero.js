@@ -6,7 +6,7 @@ import '@styles/hero.scss'
 
 const Hero = ({slides}) => {
 
-    console.log(slides)
+    //console.log(slides)
     return (
         <>
             <div className="homepage-hero">

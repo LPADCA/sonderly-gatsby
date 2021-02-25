@@ -10,7 +10,7 @@ const NavbarLinks = null
 
 const Navigation = ({menu}) => {
     const [navbarOpen, setNavbarOpen] = useState(false)
-    console.log(menu)
+    //console.log(menu)
 
 }
 

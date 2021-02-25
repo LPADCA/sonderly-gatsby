@@ -21,8 +21,10 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
+    "react-slick": "^0.28.0",
     "react-visibility-sensor": "^5.1.1",
-    "sass": "^1.32.7"
+    "sass": "^1.32.7",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

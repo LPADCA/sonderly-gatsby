@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 //import { Link } from 
 
 const WhatWeDo = ({data}) => {
-    console.log(data)
+    //console.log(data)
     return (
             <>
                 <div className="whatwedo">

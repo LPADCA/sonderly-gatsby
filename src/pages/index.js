@@ -7,6 +7,9 @@ import Stats from "@components/homepage/stats"
 import WhatWeDo from "@components/homepage/whatwedo"
 import CoursesPreview from "@components/homepage/courses"
 import WhoWeServe from "@components/homepage/whoweserve"
+import Testimonials from "@components/homepage/testimonials"
+
+
 
 import "@styles/homepage.scss"
 
@@ -19,6 +22,7 @@ const Homepage = ({ data }) => {
             <WhatWeDo data={data.prismicHomepage.data} />
             <CoursesPreview data={data.prismicHomepage.data} />
             <WhoWeServe data={data.prismicHomepage.data} />
+            <Testimonials data={data.prismicHomepage.data} />
         </Layout>
     )
 }
@@ -121,6 +125,21 @@ export const homepageQuery = graphql`
                 }
                 wws_title {
                     text
+                }
+                tmn_title {
+                    text
+                }
+                tmn_cards {
+                    tmn_card_author_position
+                    tnm_card_author_name
+                    tmn_card_text {
+                        html    
+                    }
+                    tmn_card_author_icon {
+                        fixed(width: 120) {
+                            ...GatsbyPrismicImageFixed
+                        }
+                    }
                 }
             }
         }

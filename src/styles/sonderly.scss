@@ -57,3 +57,18 @@ a {
     background-image: url("/images/dots.png");
     background-size: 100% 100%;
 }
+
+h2.typical {
+    margin-top: 80px;
+    text-align: center;
+    margin-bottom: 30px;
+    &:after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        border-radius:100px;
+        margin: 10px auto;
+        background-color: $button-green;
+    }
+}

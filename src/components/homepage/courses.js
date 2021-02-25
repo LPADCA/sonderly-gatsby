@@ -5,7 +5,7 @@ import { BiBookOpen } from "react-icons/bi"
 
 
 const CoursesPreview = ({data}) => {
-    console.log(data)
+    //console.log(data)
     return (
             <>
                 <div className="coursesPreview">
@@ -39,8 +39,8 @@ const CoursesPreview = ({data}) => {
                             )}
                         </div>
                     </div>
-                    <div class="bgel1"/>
-                    <div class="divider-dots"/>
+                    <div className="bgel1"/>
+                    <div className="divider-dots"/>
                 </div>
             </>
         )

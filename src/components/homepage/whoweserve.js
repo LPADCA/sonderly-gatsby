@@ -3,16 +3,16 @@ import { Helmet } from "react-helmet";
 //import { Link } from 
 
 const WhoWeServe = ({data}) => {
-    console.log(data)
+    //console.log(data)
     return (
             <>
                 <div className="whoweserve">
                     <div className="container">
-                        <h2>{data.wws_title.text}</h2>
+                        <h2 className="typical">{data.wws_title.text}</h2>
                         <div className="grid">
                             {data.wws_client_type.map((item,i)=>(
                                 <div key={`key-${i}`}>
-                                    <div class="circle"
+                                    <div className="circle"
                                         style={{
                                             backgroundImage: `url(${item.wws_type_image.fixed.src})`
                                         }}>
