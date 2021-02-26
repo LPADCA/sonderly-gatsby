@@ -1,4 +1,4 @@
-@import 'colors.scss';
+@import 'settings.scss';
 
 .header {
     background: rgb(255,255,255);
@@ -14,7 +14,7 @@
         display: grid;
         height: 90px;
         grid-template-columns: minmax(10px, max-content) auto 40px 120px 32px;
-        grid-gap: 10px;
+        gap: 10px;
         justify-items: center;
         align-items: center;
         .logo {

@@ -11,14 +11,14 @@ const WhoWeServe = ({data}) => {
                         <h2 className="typical">{data.wws_title.text}</h2>
                         <div className="grid">
                             {data.wws_client_type.map((item,i)=>(
-                                <div key={`key-${i}`}>
-                                    <div className="circle"
+                                <div className="circle" key={`key-${i}`}>
+                                    <div className="image"
                                         style={{
-                                            backgroundImage: `url(${item.wws_type_image.fixed.src})`
+                                            backgroundImage: `url(${item.wws_type_image.fixed.src})`,
                                         }}>
-                                        <div>
-                                            <h3>{item.wws_type_title.text}</h3>
-                                        </div>
+                                    </div>
+                                    <div className="text">
+                                        <h3>{item.wws_type_title.text}</h3>
                                     </div>
                                 </div>
                             )

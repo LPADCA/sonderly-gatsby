@@ -2,10 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet";
 import { CgArrowRight } from "react-icons/cg"
 
-import '@styles/hero.scss'
-
 const Hero = ({slides}) => {
-
     //console.log(slides)
     return (
         <>
@@ -18,11 +15,13 @@ const Hero = ({slides}) => {
                         <div className="wrapper">
                             <h1>{slides[0].title.text}</h1>
                             <p>{slides[0].description}</p>
-                            <a href={slides[0].link.url} target={slides[0].link.target} className="button">{slides[0].button_text}</a>
+                            <div className="button-wrapper">
+                                <a href={slides[0].link.url} target={slides[0].link.target} className="button">{slides[0].button_text}</a>
+                                <div className="learn-more">
+                                    <a href="/"><CgArrowRight size="20"/>&nbsp;Learn more</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="learn-more">
-                        <a href="/"><CgArrowRight size="20"/>&nbsp;Learn more</a>
                     </div>
                 </div>
                 <div id="bg-el1"/>

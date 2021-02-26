@@ -1,4 +1,4 @@
-@import 'colors.scss';
+@import 'settings.scss';
 
 #footer {
     width: 100%;
@@ -20,7 +20,7 @@
     .table {
         display: grid;
         grid-template-columns: 30% auto;
-        grid-gap: 10px;
+        gap: 10px;
         .copyright {
             font-size: 14px;
             font-weight: 700;
@@ -99,3 +99,19 @@
 
 }
 
+@media (max-width: $mobile-edge) {
+    #footer {
+        .table {
+            grid-template-columns: 1fr;
+            .copyright {
+                text-align: center;
+            }
+            ul {
+                width: 100% !important;
+                text-align: center !important;
+                padding-left: 0 !important;
+                justify-content: center !important;
+            }
+        }
+    }
+}

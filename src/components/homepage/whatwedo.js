@@ -30,6 +30,9 @@ const WhatWeDo = ({data}) => {
                                     </ul>}
                                     <a className="button" href={data.wwd_primary_button_link.url} target={data.wwd_primary_button_link.target}>
                                         {data.wwd_primary_button_text}
+                                    </a>&nbsp;
+                                    <a className="button lite" href={data.wwd_primary_button_link.url} target={data.wwd_primary_button_link.target}>
+                                        Learn more
                                     </a>
                                 </div>
                             </div>

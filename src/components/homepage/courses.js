@@ -11,7 +11,7 @@ const CoursesPreview = ({data}) => {
                 <div className="coursesPreview">
                     <div className="container">
                         <div className="localHeader">
-                            <h2>{data.cp_title.text}</h2>
+                            <h2 className="typical">{data.cp_title.text}</h2>
                             <div
                                 dangerouslySetInnerHTML={{
                                     __html: data.cp_description.html
