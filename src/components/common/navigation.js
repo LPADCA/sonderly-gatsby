@@ -16,8 +16,7 @@ const Logo = ({}) => {
                 />
                 <img
                     className="logo hide-on-desktop"
-                    src="/images/logo-header-mobile.png"
-                    srcSet="/images/logo-header-mobile-2x.png 2x"
+                    src="/images/logomark.svg"
                     alt="Sonderly logo"
                 />
             </Link>
@@ -25,6 +24,16 @@ const Logo = ({}) => {
     )
 }
 
+const Hamburger = ({}) => {
+    return (
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    )
+}
 
 
 const Navbar = ({ menu }) => {
@@ -129,6 +138,7 @@ const Navigation = ({}) => {
                             <Search />
                             <Login />
                             <Lang />
+                            <Hamburger />
                         </div>
                         <div className="mobile"></div>
                     </div>
