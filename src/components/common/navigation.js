@@ -24,13 +24,45 @@ const Logo = ({}) => {
     )
 }
 
-const Hamburger = ({}) => {
+const MobileMenu = ({menu}) => {
+    return (
+        <div id="mobileMenu">
+            <ul className="l1">
+                {menu.map((item, i) => (
+                    <li key={`l1${i}`} className={item.items[0] && item.items[0].submenu_item_text && 'hasChildren'}>
+                        <Link to={item.primary.link.url}>
+                            {item.primary.text}
+                        </Link>
+                        {item.items.length>0 && item.items[0].submenu_item_text && (
+                            <ul className="l2">
+                                {item.items.map((subitem, j) => (
+                                    <li key={`l2${j}`}>
+                                        <Link
+                                            to={item.items[0].submenu_item_link.url}
+                                        >
+                                            {subitem.submenu_item_text}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+
+const Hamburger = ({menu}) => {
     return (
         <div id="menuToggle">
             <input type="checkbox" />
             <span></span>
             <span></span>
             <span></span>
+
+            <MobileMenu menu={menu}/>
         </div>
     )
 }
@@ -138,7 +170,7 @@ const Navigation = ({}) => {
                             <Search />
                             <Login />
                             <Lang />
-                            <Hamburger />
+                            <Hamburger menu={data.prismicMenuPrimary.data.body}/>
                         </div>
                         <div className="mobile"></div>
                     </div>
