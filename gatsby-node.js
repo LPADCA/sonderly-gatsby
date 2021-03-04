@@ -11,6 +11,14 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 }
 
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNode, createNodeField } = actions
+  //console.log("===============NODE===============");
+  //console.log(node);
+  // Transform the new node here and create a new node or
+  // create a new node field.
+}
+
 const wrapper = promise =>
   promise.then(result => {
     if (result.errors) {

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { Helmet } from "react-helmet";
 import { CgArrowRight } from "react-icons/cg"
 
@@ -18,7 +19,7 @@ const Hero = ({slides}) => {
                             <div className="button-wrapper">
                                 <a href={slides[0].link.url} target={slides[0].link.target} className="button">{slides[0].button_text}</a>
                                 <div className="learn-more">
-                                    <a href="/"><CgArrowRight size="20"/>&nbsp;Learn more</a>
+                                    <Link to="/"><CgArrowRight size="20"/>&nbsp;Learn more</Link>
                                 </div>
                             </div>
                         </div>

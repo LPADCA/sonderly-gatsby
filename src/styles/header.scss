@@ -121,8 +121,8 @@
     position: fixed;
     left: 0;
     top: 0;
-    background: white;
-    width: calc(100vw - 80px);
+    background: $hover-green;
+    width: calc(100vw - 90px);
     max-width: 0;
     transition: max-width 0.5s ease-out;
     overflow: hidden;
@@ -133,6 +133,31 @@
     & ul {
         margin: 0;
         padding: 0;
+        &.l1 {
+            width: calc(100vw - 140px);
+            margin: 20px;
+            margin-bottom: 50px;
+            &>li {
+                border-top: 1px solid #72ddaf;
+                padding: 10px 0;
+                text-transform: uppercase;
+                &>a {
+                    color: white;
+                    font-weight: 800;
+                }
+            }
+        }
+        &.l2 {
+            padding: 15px 0 15px 15px;
+            &>li {
+                padding: 10px 0;
+                //border-top: 1px solid #eee;
+                &>a {
+                    color: $text-color;
+                    font-size: 16px;
+                }
+            }
+        }
     }
     & li {
         list-style: none;
@@ -142,30 +167,6 @@
         font-size: 20px;
         font-weight: 600;
         color: $button-green;
-    }
-    &>ul.l1 {
-        min-width: calc(100vw - 120px);
-        margin: 20px;
-        margin-bottom: 50px;
-    }
-    & ul.l1>li {
-        border-top: 1px solid gray;
-        padding: 10px 0;
-        text-transform: uppercase;
-    }
-    & ul.l1>li>a {
-        color: $button-green;
-    }
-    & ul.l2 {
-        padding: 15px 0 15px 15px;
-    }
-    & ul.l2>li {
-        padding: 10px 0;
-        border-top: 1px solid lightgray;
-    }
-    & ul.l2>li>a {
-        color: $text-color;
-        font-size: 18px;
     }
 }
 

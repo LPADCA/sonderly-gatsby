@@ -5,7 +5,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import "@styles/sonderly.scss"
 import "@styles/header.scss"
 
-import Navigation from "./navigation";
+import Header from "./header";
 import Footer from "./footer";
 
 
@@ -24,7 +24,7 @@ const Layout = ({ location, children }) => {
             <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=vindicia-public"></script>
         </Helmet>
 
-        <Navigation/>
+        <Header/>
         <main>
             {children}
         </main>
