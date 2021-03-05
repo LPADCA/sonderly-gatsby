@@ -1,0 +1,94 @@
+@import 'settings.scss';
+
+.corporate-services-hero {
+    width: 100%;
+    background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
+    color: white;
+    padding: 100px 0; 
+    h1 {
+        color: white;
+        text-align: center;
+    }
+    p {
+        text-align: center;
+        max-width: 550px;
+        margin: 0 auto;
+    }
+}
+
+.corporate-services-hero-tabs {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    &>div {
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 20px;
+        padding: 30px;
+        &>.tab-header {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 60px auto;
+            align-items: center;
+            img {
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+        p {
+            margin: 3px 0;
+        }
+    }
+    transform: translateY(-80px);
+}
+
+.trainings {
+    &>ul {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(3,1fr);
+        &>li {
+            padding: 10px;
+            padding-left: 40px;
+            display: block;
+            border-radius: 10px;
+            transition: $default-transition;
+            position: relative;
+            &:before {
+                content: "";
+                display: block;
+                width: 15px;
+                height: 15px;
+                box-shadow: 0px 3px 6px #43434355;
+                border-radius: 32px;
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: white;
+            }
+            &.active {
+                color: $button-green;
+                &:hover {
+                    color: $button-green;
+                    background-color:white;
+                }
+                &:before {
+                    background-color: $button-green;
+                }
+            }
+            &:hover {
+                background-color: $hover-green;
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+    .preview {
+        display: none;
+        &.selected {
+            display: grid;
+        }
+    }
+}
