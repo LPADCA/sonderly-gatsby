@@ -1,5 +1,9 @@
 @import 'settings.scss';
 
+
+.corporate-services-hero-wrapper {
+    background: transparent;    
+}
 .corporate-services-hero {
     width: 100%;
     background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
@@ -21,11 +25,12 @@
     gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     &>div {
-
         background: #FFFFFF 0% 0% no-repeat padding-box;
         box-shadow: 0px 3px 6px #00000029;
         border-radius: 20px;
         padding: 30px;
+        padding-bottom: 80px;
+        position: relative;
         &>.tab-header {
             display: grid;
             gap: 20px;
@@ -39,15 +44,36 @@
         p {
             margin: 3px 0;
         }
+        a.button {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+        }
     }
     transform: translateY(-80px);
 }
 
+@media (max-width: $mobile-edge) {
+    .corporate-services-hero-wrapper {
+        background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
+        .corporate-services-hero {
+            background: transparent;
+        }
+        .corporate-services-hero-tabs {
+            grid-template-columns: 1fr;
+            grid-auto-rows: 1fr;
+        }
+    }
+}
+
+
 .trainings {
+    padding-bottom: 30px;
     &>ul {
         display: grid;
         gap: 15px;
         grid-template-columns: repeat(3,1fr);
+        padding-left: 0;
         &>li {
             padding: 10px;
             padding-left: 40px;
@@ -87,8 +113,39 @@
     }
     .preview {
         display: none;
+        background-color: white;
+        box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        grid-template-columns: minmax(30%, 200px) auto;
+        &>.image>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        &>.content {
+            padding: 20px;
+        }
         &.selected {
             display: grid;
         }
     }
 }
+
+@media (max-width: $mobile-edge) {
+    .trainings {
+        &>ul {
+            grid-template-columns: 1fr;
+        }
+        .preview {
+            grid-template-columns: 1fr;
+            grid-template-rows: 350px auto;
+            &>.image>img {
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 20px;
+            }
+        }
+    }
+}
+

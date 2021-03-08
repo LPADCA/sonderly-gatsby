@@ -1,0 +1,113 @@
+{
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title"
+        }
+      },
+      "subheading" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "allowTargetBlank" : true,
+          "label" : "Subheading"
+        }
+      }
+    },
+    "Hero choices" : {
+      "hero_boxes" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "hero_boxes_icon" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Hero Box Icon"
+              }
+            },
+            "hero_boxes_title" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "heading3",
+                "label" : "Title"
+              }
+            },
+            "hero_boxes_description" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "allowTargetBlank" : true,
+                "label" : "Description"
+              }
+            },
+            "hero_boxes_button_text" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Button Text"
+              }
+            },
+            "hero_boxes_button_link" : {
+              "type" : "Link",
+              "config" : {
+                "allowTargetBlank" : true,
+                "label" : "Button"
+              }
+            }
+          },
+          "label" : "Boxes in Hero"
+        }
+      }
+    },
+    "Trainings" : {
+      "trainings_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Title"
+        }
+      },
+      "trainings_list" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "traninings_list_image" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Image"
+              }
+            },
+            "trainings_list_title" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "heading3",
+                "label" : "Title"
+              }
+            },
+            "tranings_list_richtext" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "allowTargetBlank" : true,
+                "label" : "Text area"
+              }
+            }
+          },
+          "label" : "Trainings"
+        }
+      }
+    },
+    "SEO" : {
+      "keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords"
+        }
+      }
+    }
+  }

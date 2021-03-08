@@ -20,6 +20,7 @@ module.exports = {
           page: require("./src/schemas/page.json"),
           menu_primary: require("./src/schemas/menu_primary.json"),
           homepage: require("./src/schemas/homepage.json"),
+          services_corporate: require("./src/schemas/services_corporate.json"),
           // Your custom types mapped to schemas
         },
         imageImgixParams: {

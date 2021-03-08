@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import Scroll from 'react-scroll'
 
@@ -11,22 +11,22 @@ var tabs = [0,1,2];
 
 class ServicesCorporate extends React.Component {
     constructor(props) {
-        
         super(props);
-        this.data = props.data;
         this.changeSlide = this.changeSlide.bind(this);
+        this.data = props.data.prismicServicesCorporate.data;
         this.state = {
             activeSlide: 0
         }
     }
 
+
     changeSlide(id) {
-        console.log(id)
+        //console.log(id)
         this.setState(
             {
                 activeSlide: id
             })
-        console.log(this.state.activeSlide)
+        //console.log(this.state.activeSlide)
         scroller.scrollTo('preview-wrapper', {
             duration: 500,
             delay: 50,
@@ -40,33 +40,32 @@ class ServicesCorporate extends React.Component {
             <Layout>
                 {/* Hero */}
                 <div className="spacer-top"/>
-                <div className="corporate-services-hero">
-                    <div className="container">
-                        <h1>Corporate Services</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis urna id volutpat lacus laoreet. Mauris vitae ultricies leo</p>
-                    </div>
-                </div>
-                {/* Two tabs */}
-                <div className="container">
-                    <div className="corporate-services-hero-tabs">
-                        <div className="tab1">
-                            <div className="tab-header">
-                                <div><img src="/deleteme/placeholder.png" width="60" height="60" alt="placeholder"/></div>
-                                <div><h3>Corporate Group Purchase</h3></div>
-                            </div>
-                            <p><strong>Where:</strong> Corporate group purchase for online courses </p>
-                            <p><strong>Minimum registrations:</strong> 10 participants per course</p>
-                            <a className="button" href="/">Sign Up Now</a>
+                <div className="corporate-services-hero-wrapper">
+                    <div className="corporate-services-hero">
+                        <div className="container">
+                            <h1>{this.data.title.text}</h1>
+                            <div dangerouslySetInnerHTML={{ __html: this.data.subheading.html }}/>
                         </div>
-                        <div className="tab2">
-                            <div className="tab-header">
-                                <div><img src="/deleteme/placeholder.png" width="60" height="60" alt="placeholder"/></div>
-                                <div><h3>Corporate Group Purchase</h3></div>
-                            </div>
-                            <p>You can book a training event at your location to benefit from a workshop style with active participation. Please see below for available trainings​​.</p>
-                            <p><strong>Where:</strong> Corporate group purchase for online courses </p>
-                            <p><strong>Minimum registrations:</strong> 10 participants per course</p>
-                            <a className="button" href="/">Sign Up Now</a>
+                    </div>
+                    {/* Two tabs */}
+                    <div className="container">
+                        <div className="corporate-services-hero-tabs">
+                            {this.data.hero_boxes.map((box, i) => (
+                                <div key={i} className={`tab${i}`}>
+                                    <div className="tab-header">
+                                        <div><img src={box.hero_boxes_icon.fixed.src} srcSet={box.hero_boxes_icon.fixed.srcSet} width="60" height="60" alt={box.hero_boxes_icon.alt}/></div>
+                                        <div><h3>{box.hero_boxes_title.text}</h3></div>
+                                    </div>
+                                    <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }}/>
+                                    {box.hero_boxes_button_link.type === 'Document' ?
+                                    <Link className="button" to={box.hero_boxes_button_link.url} target={box.hero_boxes_button_link.target}>
+                                        {box.hero_boxes_button_text}
+                                    </Link>:
+                                    <a className="button" href={box.hero_boxes_button_link.url} target={box.hero_boxes_button_link.target}>
+                                        {box.hero_boxes_button_text}
+                                    </a>}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -74,26 +73,20 @@ class ServicesCorporate extends React.Component {
                 <div className="trainings container">
                     <h2 className="centered underline">Available Custom Training</h2>
                     <ul>
-                        {tabs.map((item, i) => (
-                            <li key={item} className={item === this.state.activeSlide ? 'active' : ''} onClick={() => this.changeSlide(item)}>Autism in the Community: Effective Support and Response Strategies</li>
+                        {this.data.trainings_list.map((item, i) => (
+                            <li key={i} className={i === this.state.activeSlide ? 'active' : ''} onClick={() => this.changeSlide(i)}>{item.trainings_list_title.text}</li>
                         ))}
                         </ul>
                     <div className="preview-wrapper">
                         <Element name="preview-wrapper"/>
-                        {tabs.map((item, i) => (
-                        <div key={`${item}`} className={`preview ${item === this.state.activeSlide ? 'selected' : ''}`}>
+                        {this.data.trainings_list.map((item, i) => (
+                        <div key={`page-${i}`} className={`preview ${i === this.state.activeSlide ? 'selected' : ''}`}>
                             <div className="image">
-                                <img src="/deleteme/img1.png" width="100%" alt="Img alt"/>
+                                <img src={item.traninings_list_image.fixed.src} srcSet={item.traninings_list_image.fixed.srcSet} width="60" height="60" alt={item.traninings_list_image.alt}/>
                             </div>
                             <div className="content">
-                                <h3>{item} Autism in the Community: Effective Support and Response Strategies</h3>
-                                <p>Type: Webinar or In-Class Hours: 3 hours This is an introductory level course</p>
-                                <p>Individuals with Autism Spectrum Disorder (ASD) may respond to situations in the community differently due to their unique communication, sensory and learning abilities. Sometimes these responses can lead to challenging behaviour. This training focuses on teaching support strategies to effectively respond and promote inclusion in the community.</p>
-                                <p>Learning Objectives:</p>
-                                <p>Learn the diagnostic characteristics and unique learning profiles of individuals with ASD Learn essential behaviour support strategies to effectively respond to various situations in the community Discuss proactive environmental changes and communication approaches which promote inclusion</p>
-                                <p>This training supports staff in the following roles:</p>
-                                <p>First responders such as Police officers, Security personnel, Paramedics, etc. Community and customer service such as Librarian, Customer Service Rep, Public Transportation staff Attractions, Hospitality and Tourism</p>
-                                <p>Training examples and discussions/activities can be adapted to meet individual group needs.</p>
+                                <h3>{item.trainings_list_title.text}</h3>
+                                <div dangerouslySetInnerHTML={{ __html: item.tranings_list_richtext.html }}/>
                             </div>
                         </div>
                         ))}
@@ -108,13 +101,55 @@ export default ServicesCorporate
 
 export const servicesCorporateQuery = graphql` 
     query ServicesCorporate {
-        prismicHomepage {
-            data {
-                hero_slide {
-                    button_text
-                    description
+        prismicServicesCorporate {
+          data {
+            keywords
+            hero_boxes {
+              hero_boxes_button_link {
+                url
+                uid
+                type
+                target
+                link_type
+              }
+              hero_boxes_button_text
+              hero_boxes_description {
+                html
+              }
+              hero_boxes_icon {
+                fixed(width: 60, height: 60) {
+                    ...GatsbyPrismicImageFixed
                 }
+                alt
+              }
+              hero_boxes_title {
+                text
+              }
             }
+            subheading {
+              html
+            }
+            title {
+              text
+            }
+            trainings_list {
+              trainings_list_title {
+                text
+              }
+              tranings_list_richtext {
+                html
+              }
+              traninings_list_image {
+                fixed(width: 500) {
+                    ...GatsbyPrismicImageFixed
+                }
+                alt
+              }
+            }
+            trainings_title {
+              text
+            }
+          }
         }
-    }
+      }
 `
