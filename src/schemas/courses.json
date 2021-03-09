@@ -1,0 +1,77 @@
+{
+    "Main" : {
+      "course_name" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Course Name"
+        }
+      },
+      "summary" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "allowTargetBlank" : true,
+          "label" : "Summary"
+        }
+      },
+      "age" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "All ages", "Children", "Adolescents", "Adults" ],
+          "default_value" : "All ages",
+          "label" : "Age"
+        }
+      },
+      "french" : {
+        "type" : "Boolean",
+        "config" : {
+          "placeholder_false" : "no",
+          "placeholder_true" : "yes",
+          "default_value" : false,
+          "label" : "Available in French"
+        }
+      },
+      "moe_funded" : {
+        "type" : "Boolean",
+        "config" : {
+          "placeholder_false" : "no",
+          "placeholder_true" : "yes",
+          "default_value" : false,
+          "label" : "MOE Funded"
+        }
+      },
+      "with_video" : {
+        "type" : "Boolean",
+        "config" : {
+          "placeholder_false" : "no",
+          "placeholder_true" : "yes",
+          "default_value" : false,
+          "label" : "Video Available"
+        }
+      },
+      "level" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Introductory Autism", "Electives Autism", "Mental Health and Autism", "Introductory ABA", "Intermediate ABA", "Advanced ABA" ],
+          "default_value" : "Introductory Autism",
+          "label" : "Education Level"
+        }
+      },
+      "link" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "Link to Platform"
+        }
+      }
+    },
+    "SEO" : {
+      "keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords"
+        }
+      }
+    }
+  }

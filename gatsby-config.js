@@ -21,6 +21,8 @@ module.exports = {
           menu_primary: require("./src/schemas/menu_primary.json"),
           homepage: require("./src/schemas/homepage.json"),
           services_corporate: require("./src/schemas/services_corporate.json"),
+          courses: require("./src/schemas/courses.json"),
+          course_map: require("./src/schemas/course_map.json"),
           // Your custom types mapped to schemas
         },
         imageImgixParams: {

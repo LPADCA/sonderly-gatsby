@@ -1,0 +1,50 @@
+@import '@styles/settings.scss'; 
+
+.courses {
+    display: grid;
+    grid-template-columns: minmax(min-content, 200px) auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 3px 6px #0000001A;
+    .filters {
+        background: $color6;
+        padding: 20px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        h5 {
+            color: #434343;
+            font-size: 14px;
+        }
+        h4, label {
+            color: white;
+        }
+        label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        h5, p {
+            margin: 2px;
+        }
+        h4, h5 {
+            margin-top: 16px;
+        }
+        .levels {
+            font-size: 13px;
+            opacity: .4;
+            &.current {
+                opacity: 1;
+            }
+        }
+        .legend {
+            background-color: white;
+            padding: 10px;
+            font-size: 13px;
+            border-radius: 7px;
+        }
+    }
+    .content {
+        padding: 20px;
+    }
+}

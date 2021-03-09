@@ -11,8 +11,6 @@ import Testimonials from "@components/homepage/testimonials"
 
 
 
-import "@styles/homepage.scss"
-
 const notFound404 = ({ data }) => {
     //console.log(data)
     return (

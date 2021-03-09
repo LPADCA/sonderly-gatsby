@@ -1,0 +1,10 @@
+@import 'settings.scss';
+
+.hero-default {
+    background: $default-gradient;
+    padding: 100px 0 40px 0;
+    h1, p {
+        text-align: center;
+        color: white;
+    }
+}

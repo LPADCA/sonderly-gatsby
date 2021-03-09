@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import Scroll from 'react-scroll'
 
-import "@styles/corporate.scss"
+import "@styles/pages/services/corporate.scss"
 
 var Element  = Scroll.Element;
 var scroller = Scroll.scroller;

@@ -1,0 +1,35 @@
+{
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title"
+        }
+      },
+      "subheading" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "allowTargetBlank" : true,
+          "label" : "Subheading"
+        }
+      },
+      "image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Map illustration"
+        }
+      }
+    },
+    "SEO" : {
+      "keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords"
+        }
+      }
+    }
+  }

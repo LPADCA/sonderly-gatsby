@@ -11,7 +11,7 @@ import Testimonials from "@components/homepage/testimonials"
 
 
 
-import "@styles/homepage.scss"
+import "@styles/pages/homepage.scss"
 
 const Homepage = ({ data }) => {
     //console.log(data)
