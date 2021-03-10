@@ -144,9 +144,11 @@ class CourseMap extends React.Component {
                         French: {this.state.french ? 'yes' : 'no'}<br/>
                         MOE Funded: {this.state.funded ? 'yes' : 'no'}<br/>
                         Min. level: {Levels[this.state.level]}<br/>
+                        <hr/>
                         {this.coursesList.map((course, i) => (
-                            course.data.french === this.state.french && 
-                            course.data.moe_funded === this.state.funded && 
+                            (!this.state.french ? true : (this.state.french*course.data.french) ) && 
+                            (!this.state.funded ? true : (this.state.funded*course.data.moe_funded) ) &&
+                            (this.state.level <= Levels.indexOf(course.data.level)) && 
                             course.data.age.localeCompare(Ages[this.state.age]) === 0 ? 
                                 <div key={i} style={{border: '1px solid black'}}>
                                     <h3>{course.data.course_name.text}</h3>
