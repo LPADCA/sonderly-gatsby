@@ -2,17 +2,48 @@
 
 .courses {
     display: grid;
-    grid-template-columns: minmax(min-content, 200px) auto;
+    grid-template-columns: minmax(min-content, 240px) auto;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0px 3px 6px #0000001A;
     .filters {
+        position: relative;
         background: $color6;
         padding: 20px;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
+        .counterPopup {
+            opacity: 0.001;
+            transition: $default-transition;
+            pointer-events: none;
+            display: none;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: $button-green;
+            border-radius: 7px;
+            padding: 15px;
+            max-width: 60px;
+            &.visible {
+                cursor: pointer;
+                opacity: 1;
+                pointer-events: auto;
+            }
+            h3 {
+                text-align: center;
+                font-size: 32px;
+                margin: 0;
+                color: white;
+            }
+            p {
+                text-align: center;
+                color: white;
+                font-weight: 700;
+                line-height: 1.1;
+            }
+        }
         h5 {
             color: #434343;
             font-size: 14px;
@@ -38,13 +69,250 @@
             }
         }
         .legend {
+            margin-top: 20px;
             background-color: white;
             padding: 10px;
             font-size: 13px;
             border-radius: 7px;
+            display: grid;
+            grid-template-columns: min-content auto;
+            gap: 5px;
+            &>div {
+                font-size: 13px;
+                line-height: 1;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-direction: column;
+                font-weight: 600;
+                color: $text-color;
+            }
+            .icon {
+                width: 26px;
+                height: 26px;
+                background-color: $color8;
+                border-radius: 100px;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &.icon1 {
+                    background-color: $color8;
+                }
+                &.icon2 {
+                    background-color: $color6;
+                }
+                &.icon3 {
+                    background-color: $color4;
+                }
+                svg {
+                    color: white;
+                    fill: white;
+                }
+            }
         }
     }
     .content {
-        padding: 20px;
+        .image>img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center center;
+            border-top-right-radius: 10px;
+        }
+        .padded {
+            padding: 20px;
+        }
+        .courseblocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .courseblock {
+            position: relative;
+            box-shadow: 0px 3px 6px #00000029;
+            border-radius: 10px;
+            padding: 15px;
+            padding-bottom: 75px;
+            max-width: 300px;
+            transition: $default-transition;
+            h3 {
+                margin-top: 0;
+                transition: $default-transition;
+            }
+            a.button {
+                position: absolute;
+                right: 15px;
+                bottom: 15px;
+                &:hover {
+                    background: white;
+                    color: $text-color;
+                }
+            }
+            .status {
+                display: grid;
+                grid-template-columns: repeat(4, min-content);
+                gap: 3px;
+                position: relative;
+                .icon {
+                    width: 26px;
+                    height: 26px;
+                    background-color: $color8;
+                    border-radius: 100px;
+                    color: white;
+                    font-size: 12px;
+                    font-weight: 700;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: $default-transition;
+                    &.icon1 {
+                        background-color: $color8;
+                    }
+                    &.icon2 {
+                        background-color: $color6;
+                    }
+                    &.icon3 {
+                        background-color: $color4;
+                    }
+                    svg {
+                        color: white;
+                        fill: white;
+                        transition: $default-transition;
+                    }
+                }
+                .level {
+                    display: inline-block;
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: white;
+                    background-color: $color7;
+                    padding: 5px 12px;
+                    border-radius: 20px;
+                    white-space: nowrap;
+                    transition: $default-transition;
+                }
+            }
+            &:hover {
+                background-color: $hover-green;
+                h3 {
+                    color: white;
+                }
+                .status {
+                    .icon {
+                        background-color: white;
+                        color: $text-color;
+                        svg {
+                            fill: $text-color;
+                            color: $text-color;
+                        }
+                    }
+                }
+                .level {
+                    background-color: white;
+                    color: $text-color;
+                }
+            }
+        }
+    }
+    .circle1 {
+        display: block;
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        z-index: -2;
+        opacity: 1;
+        right: 70px;
+        bottom: -90px;
+        background-image: url("/images/hero-elements/3.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .circle2 {
+        display: block;
+        width: 160px;
+        height: 160px;
+        position: absolute;
+        z-index: -2;
+        opacity: 0.7;
+        left: -70px;
+        top: 20px;
+        background-image: url("/images/hero-elements/1.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
 }
+
+@media (min-width: ($between-edge + 1px)) and (max-width: $desktop-edge) {
+    .courses {
+        .content {
+            .courseblocks {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}  
+
+@media (min-width: ($mobile-edge + 1px)) and (max-width: $between-edge) {
+    .courses {
+        .content {
+            .courseblocks {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}  
+
+@media (max-width: ($mobile-edge)) {
+    .courses {
+        grid-template-columns: 1fr;
+        box-shadow: none;
+        .filters {
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 10px;
+            .counterPopup {
+                display: block;
+            }
+        }
+        .content {
+            .padded {
+                padding: 20px 0;
+            }
+            border-top-right-radius: 0;
+            .image>img {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                max-height: 100px;
+            }
+            .courseblocks {
+                
+                grid-template-columns: 1fr;
+                .courseblock {
+                    background-color: $hover-green;
+                    h3 {
+                        color: white;
+                    }
+                    .status {
+                        .icon {
+                            background-color: white;
+                            color: $text-color;
+                            svg {
+                                fill: $text-color;
+                                color: $text-color;
+                            }
+                        }
+                    }
+                    .level {
+                        background-color: white;
+                        color: $text-color;
+                    }
+                }
+            }
+        }
+    }
+}  
