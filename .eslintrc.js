@@ -1,45 +1,27 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
+    env: {
+        browser: true,
+        es6: true,
+        node: true,
     },
-    "extends": [
+    extends: [
+        "plugin:react/recommended",
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:prettier/recommended",
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
         },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+        ecmaVersion: 11,
+        sourceType: "module",
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
-        "brace-style": [2, { allowSingleLine: false }],
-        "react/react-in-jsx-scope": "off"
-    }
+    plugins: ["react", "prettier"],
+    rules: {
+        semi: "off",
+        "react/prop-types": "off",
+        "react/jsx-no-target-blank": "off",
+        "react/jsx-no-comment-textnodes": "off",
+        "react/react-in-jsx-scope": "off",
+    },
 }
