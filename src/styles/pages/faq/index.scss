@@ -1,0 +1,84 @@
+@import '@styles/settings.scss';
+
+.faq-header {
+    margin-top: $header-height;
+    background: $default-gradient;
+    padding: 50px 0;
+    text-align: center;
+    color: $text-color-invert;
+
+    & > * {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    & > h2 {
+        max-width: 640px;
+    }
+
+    & > p {
+        max-width: 550px;
+    }
+}
+
+.faq-list {
+    margin-top: 65px;
+    margin-bottom: 150px;
+
+    &-buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+    }
+}
+
+.faq-item {
+    border-top: 1px solid $border-gray;
+    border-bottom: 1px solid $border-gray;
+    padding: 20px 0;
+    transition: all 0.3s;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+
+    p {
+        margin: 0;
+    }
+
+    &-title {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    .faq-item-body {
+        height: auto;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    .faq-button {
+        width: 100%;
+        padding: 5px;
+        margin: -5px;
+    }
+
+    .faq-arrow {
+        transition: transform 0.3s;
+        width: 26px;
+        height: 26px;
+        padding: 6px;
+        border-radius: 26px;
+        background-color: $button-green;
+        fill: $text-color-invert;
+
+        &-up {
+            transform: rotate(270deg);
+        }
+        &-down {
+            transform: rotate(90deg);
+        }
+    }
+}

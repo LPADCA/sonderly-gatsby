@@ -27,57 +27,102 @@ const Logo = ({}) => {
 
 class Hamburger extends React.Component {
     constructor(props) {
-        super(props);
-        this.menu = props.menu;
+        super(props)
+        this.menu = props.menu
         this.state = {
-            checked: false
+            checked: false,
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this)
     }
 
     handleClick() {
         this.setState({
-          checked: !this.state.checked
-        });
+            checked: !this.state.checked,
+        })
     }
 
     render() {
         return (
             <div id="menuToggle">
-                <input type="checkbox" 
+                <input
+                    type="checkbox"
                     checked={this.state.checked}
-                    onChange={()=>this.setState({checked:!this.state.checked})}
+                    onChange={() =>
+                        this.setState({ checked: !this.state.checked })
+                    }
                     onClick={this.handleClick}
-                    />
+                />
                 <span></span>
                 <span></span>
                 <span></span>
                 <div id="mobileMenu">
                     <ul className="l1">
                         {this.menu.map((item, i) => (
-                            <li key={`l1${i}`} className={item.items[0] && item.items[0].submenu_item_text && 'hasChildren'}>
-                                {item.primary.link.type === 'Document' ?
-                                    <Link to={item.primary.link.url} onClick={this.handleClick}>
+                            <li
+                                key={`l1${i}`}
+                                className={
+                                    item.items[0] &&
+                                    item.items[0].submenu_item_text &&
+                                    "hasChildren"
+                                }
+                            >
+                                {item.primary.link.type === "Document" ? (
+                                    <Link
+                                        to={item.primary.link.url}
+                                        onClick={this.handleClick}
+                                    >
                                         {item.primary.text}
-                                    </Link>:
-                                    <a href={item.primary.link.url} onClick={this.handleClick}>
+                                    </Link>
+                                ) : (
+                                    <a
+                                        href={item.primary.link.url}
+                                        onClick={this.handleClick}
+                                    >
                                         {item.primary.text}
-                                    </a>}
-                                {item.items.length>0 && item.items[0].submenu_item_text && (
-                                    <ul className="l2">
-                                        {item.items.map((subitem, j) => (
-                                            <li key={`l2${j}`}>
-                                                {item.items[0].submenu_item_link.type === 'Document' ?
-                                                    <Link onClick={this.handleClick} to={item.items[0].submenu_item_link.url}>
-                                                        {subitem.submenu_item_text}
-                                                    </Link> :
-                                                    <a href={item.items[0].submenu_item_link.url} onClick={this.handleClick}>
-                                                        {subitem.submenu_item_text}
-                                                    </a>}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    </a>
                                 )}
+                                {item.items.length > 0 &&
+                                    item.items[0].submenu_item_text && (
+                                        <ul className="l2">
+                                            {item.items.map((subitem, j) => (
+                                                <li key={`l2${j}`}>
+                                                    {item.items[0]
+                                                        .submenu_item_link
+                                                        .type === "Document" ? (
+                                                        <Link
+                                                            onClick={
+                                                                this.handleClick
+                                                            }
+                                                            to={
+                                                                item.items[0]
+                                                                    .submenu_item_link
+                                                                    .url
+                                                            }
+                                                        >
+                                                            {
+                                                                subitem.submenu_item_text
+                                                            }
+                                                        </Link>
+                                                    ) : (
+                                                        <a
+                                                            href={
+                                                                item.items[0]
+                                                                    .submenu_item_link
+                                                                    .url
+                                                            }
+                                                            onClick={
+                                                                this.handleClick
+                                                            }
+                                                        >
+                                                            {
+                                                                subitem.submenu_item_text
+                                                            }
+                                                        </a>
+                                                    )}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                             </li>
                         ))}
                     </ul>
@@ -87,36 +132,60 @@ class Hamburger extends React.Component {
     }
 }
 
-
 const Navbar = ({ menu }) => {
     //console.log(menu)
     return (
         <div>
             <ul id="primaryMenu" className="l1">
                 {menu.map((item, i) => (
-                    <li key={`l1${i}`} className={item.items[0] && item.items[0].submenu_item_text && 'hasChildren'}>
-                        {item.primary.link.type === 'Document' ?
+                    <li
+                        key={`l1${i}`}
+                        className={
+                            item.items[0] &&
+                            item.items[0].submenu_item_text &&
+                            "hasChildren"
+                        }
+                    >
+                        {item.primary.link.type === "Document" ? (
                             <Link to={item.primary.link.url}>
                                 {item.primary.text}
-                            </Link>:
+                            </Link>
+                        ) : (
                             <a href={item.primary.link.url}>
                                 {item.primary.text}
-                            </a>}
-                        {item.items.length>0 && item.items[0].submenu_item_text && (
-                            <ul className="l2">
-                                {item.items.map((subitem, j) => (
-                                    <li key={`l2${j}`}>
-                                        {item.items[0].submenu_item_link.type === 'Document' ?
-                                            <Link to={item.items[0].submenu_item_link.url}>
-                                                {subitem.submenu_item_text}
-                                            </Link> :
-                                            <a href={item.items[0].submenu_item_link.url}>
-                                                {subitem.submenu_item_text}
-                                            </a>}
-                                    </li>
-                                ))}
-                            </ul>
+                            </a>
                         )}
+                        {item.items.length > 0 &&
+                            item.items[0].submenu_item_text && (
+                                <ul className="l2">
+                                    {item.items.map((subitem, j) => (
+                                        <li key={`l2${j}`}>
+                                            {item.items[0].submenu_item_link
+                                                .type === "Document" ? (
+                                                <Link
+                                                    to={
+                                                        item.items[0]
+                                                            .submenu_item_link
+                                                            .url
+                                                    }
+                                                >
+                                                    {subitem.submenu_item_text}
+                                                </Link>
+                                            ) : (
+                                                <a
+                                                    href={
+                                                        item.items[0]
+                                                            .submenu_item_link
+                                                            .url
+                                                    }
+                                                >
+                                                    {subitem.submenu_item_text}
+                                                </a>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                     </li>
                 ))}
             </ul>
@@ -124,13 +193,13 @@ const Navbar = ({ menu }) => {
     )
 }
 
-const SearchIcon = ({data}) => {
+const SearchIcon = ({ data }) => {
     return (
         <div>
             <Link className="search" to="/">
-                <RiSearchLine size="24"/>
+                <RiSearchLine size="24" />
             </Link>
-            {/*<Search searchIndex={data.index} />*/}    
+            {/*<Search searchIndex={data.index} />*/}
         </div>
     )
 }
@@ -138,7 +207,9 @@ const SearchIcon = ({data}) => {
 const Login = ({}) => {
     return (
         <>
-            <Link className="button" to="/">Log in</Link>
+            <Link className="button" to="/">
+                Log in
+            </Link>
         </>
     )
 }
@@ -146,7 +217,7 @@ const Lang = ({}) => {
     return (
         <>
             <Link to="/fr/" className="lang">
-                <img src="/images/french.svg" width="22" height="22"/>
+                <img src="/images/french.svg" width="22" height="22" />
             </Link>
         </>
     )
@@ -198,11 +269,13 @@ const Header = ({}) => {
                         <div className="desktop">
                             <Logo />
                             <Navbar menu={data.prismicMenuPrimary.data.body} />
-                            <SearchIcon data={data.siteSearchIndex}/>
-                            
+                            <SearchIcon data={data.siteSearchIndex} />
+
                             <Login />
                             <Lang />
-                            <Hamburger menu={data.prismicMenuPrimary.data.body}/>
+                            <Hamburger
+                                menu={data.prismicMenuPrimary.data.body}
+                            />
                         </div>
                         <div className="mobile"></div>
                     </div>

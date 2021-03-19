@@ -1,12 +1,10 @@
 import React from "react"
-import { graphql } from "gatsby";
+import { graphql } from "gatsby"
 
-const BlogPage = ({data}) => {
-	// console.log(data)
+const BlogPage = ({ data }) => {
+    // console.log(data)
 
-	return (
-            <p>Page</p>
-        )
+    return <p>Page</p>
 }
 
-export default BlogPage;
+export default BlogPage

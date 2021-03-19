@@ -9,8 +9,6 @@ import CoursesPreview from "@components/homepage/courses"
 import WhoWeServe from "@components/homepage/whoweserve"
 import Testimonials from "@components/homepage/testimonials"
 
-
-
 import "@styles/pages/homepage.scss"
 
 const Homepage = ({ data }) => {
