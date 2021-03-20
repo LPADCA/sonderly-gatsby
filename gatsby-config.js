@@ -23,6 +23,7 @@ module.exports = {
                     services_corporate: require("./src/schemas/services_corporate.json"),
                     courses: require("./src/schemas/courses.json"),
                     course_map: require("./src/schemas/course_map.json"),
+                    faq_page: require("./src/schemas/faq_page.json"),
                     // Your custom types mapped to schemas
                 },
                 imageImgixParams: {

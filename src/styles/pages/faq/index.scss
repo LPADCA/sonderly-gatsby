@@ -1,5 +1,7 @@
 @import '@styles/settings.scss';
 
+$transition-speed: 0.5s;
+
 .faq-header {
     margin-top: $header-height;
     background: $default-gradient;
@@ -16,7 +18,7 @@
         max-width: 640px;
     }
 
-    & > p {
+    &-description {
         max-width: 550px;
     }
 }
@@ -33,13 +35,13 @@
 }
 
 .faq-item {
-    border-top: 1px solid $border-gray;
     border-bottom: 1px solid $border-gray;
     padding: 20px 0;
-    transition: all 0.3s;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
+    transition: all $transition-speed;
+
+    &:first-child {
+        border-top: 1px solid $border-gray;
+    }
 
     p {
         margin: 0;
@@ -56,7 +58,7 @@
     .faq-item-body {
         height: auto;
         display: block;
-        transition: all 0.3s ease;
+        transition: all $transition-speed ease;
     }
 
     .faq-button {
@@ -66,7 +68,7 @@
     }
 
     .faq-arrow {
-        transition: transform 0.3s;
+        transition: transform $transition-speed;
         width: 26px;
         height: 26px;
         padding: 6px;
@@ -80,5 +82,29 @@
         &-down {
             transform: rotate(90deg);
         }
+    }
+}
+
+.faq-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-bg-decoration {
+    position: absolute;
+    transition: transform $transition-speed;
+
+    &:first-child {
+        top: 0;
+        left: 0;
+        transform: translate(-40%, -60%);
+
+    }
+
+    &:last-child {
+        bottom: 0;
+        right: 0;
+        transform: translate(40%, 60%);
+
     }
 }
