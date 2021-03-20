@@ -122,7 +122,7 @@
     left: 0;
     top: 0;
     background: $hover-green;
-    width: calc(100vw - $header-height);
+    width: calc(100vw - #{$header-height});
     max-width: 0;
     transition: max-width 0.5s ease-out;
     overflow: hidden;
