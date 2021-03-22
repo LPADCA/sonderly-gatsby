@@ -13,6 +13,18 @@ const linkResolver = (doc) => {
         return `/blog/${doc.uid}`
     }
 
+    if (doc.type === "funded_training") {
+        return `/services/funded-training`
+    }
+
+    if (doc.type === "services_corporate") {
+        return `/services/corporate`
+    }
+
+    if (doc.type === "course_map") {
+        return `/services/courses`
+    }
+
     if (doc.type === "faq_page") {
         return `/faq`
     }

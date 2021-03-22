@@ -55,6 +55,12 @@
 }
 
 #primaryMenu {
+    margin: 0;
+    
+    .l1-link {
+        display: inline-block;
+    }
+
     li {
         a {
             color: $text-color;

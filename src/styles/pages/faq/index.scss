@@ -1,6 +1,6 @@
 @import '@styles/settings.scss';
 
-$transition-speed: 0.5s;
+$transition-speed: 0.4s;
 
 .faq-header {
     margin-top: $header-height;
@@ -53,12 +53,20 @@ $transition-speed: 0.5s;
         justify-content: space-between;
         align-items: center;
         font-size: 16px;
+
+        @media (max-width: $between-edge) {
+            flex-direction: column;
+
+            svg {
+                margin-top: 10px;
+            }
+        }
     }
 
     .faq-item-body {
-        height: auto;
-        display: block;
+        margin-top: 25px;
         transition: all $transition-speed ease;
+        max-width: 900px;
     }
 
     .faq-button {

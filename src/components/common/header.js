@@ -15,13 +15,25 @@ const Logo = ({}) => {
                     srcSet="/images/logo-header-2x.png 2x"
                     alt="Sonderly logo"
                 />
-                <img
-                    className="logo hide-on-desktop"
-                    src="/images/logomark.svg"
-                    alt="Sonderly logo"
-                />
+                <img className="logo hide-on-desktop" src="/images/logomark.svg" alt="Sonderly logo" />
             </Link>
         </div>
+    )
+}
+
+const PrismicLink = ({ link, text, ...props }) => {
+    if (link.type === "Document") {
+        return (
+            <Link to={link.url} {...props}>
+                {text}
+            </Link>
+        )
+    }
+
+    return (
+        <a href={link.url} {...props}>
+            {text}
+        </a>
     )
 }
 
@@ -47,9 +59,7 @@ class Hamburger extends React.Component {
                 <input
                     type="checkbox"
                     checked={this.state.checked}
-                    onChange={() =>
-                        this.setState({ checked: !this.state.checked })
-                    }
+                    onChange={() => this.setState({ checked: !this.state.checked })}
                     onClick={this.handleClick}
                 />
                 <span></span>
@@ -60,69 +70,26 @@ class Hamburger extends React.Component {
                         {this.menu.map((item, i) => (
                             <li
                                 key={`l1${i}`}
-                                className={
-                                    item.items[0] &&
-                                    item.items[0].submenu_item_text &&
-                                    "hasChildren"
-                                }
+                                className={item.items[0] && item.items[0].submenu_item_text && "hasChildren"}
                             >
-                                {item.primary.link.type === "Document" ? (
-                                    <Link
-                                        to={item.primary.link.url}
-                                        onClick={this.handleClick}
-                                    >
-                                        {item.primary.text}
-                                    </Link>
-                                ) : (
-                                    <a
-                                        href={item.primary.link.url}
-                                        onClick={this.handleClick}
-                                    >
-                                        {item.primary.text}
-                                    </a>
+                                <PrismicLink
+                                    link={item.primary.link}
+                                    text={item.primary.text}
+                                    onClick={this.handleClick}
+                                />
+                                {item.items.length > 0 && item.items[0].submenu_item_text && (
+                                    <ul className="l2">
+                                        {item.items.map((subitem, j) => (
+                                            <li key={`l2${j}`}>
+                                                <PrismicLink
+                                                    link={subitem.submenu_item_link}
+                                                    text={subitem.submenu_item_text}
+                                                    onClick={this.handleClick}
+                                                />
+                                            </li>
+                                        ))}
+                                    </ul>
                                 )}
-                                {item.items.length > 0 &&
-                                    item.items[0].submenu_item_text && (
-                                        <ul className="l2">
-                                            {item.items.map((subitem, j) => (
-                                                <li key={`l2${j}`}>
-                                                    {item.items[0]
-                                                        .submenu_item_link
-                                                        .type === "Document" ? (
-                                                        <Link
-                                                            onClick={
-                                                                this.handleClick
-                                                            }
-                                                            to={
-                                                                item.items[0]
-                                                                    .submenu_item_link
-                                                                    .url
-                                                            }
-                                                        >
-                                                            {
-                                                                subitem.submenu_item_text
-                                                            }
-                                                        </Link>
-                                                    ) : (
-                                                        <a
-                                                            href={
-                                                                item.items[0]
-                                                                    .submenu_item_link
-                                                                    .url
-                                                            }
-                                                            onClick={
-                                                                this.handleClick
-                                                            }
-                                                        >
-                                                            {
-                                                                subitem.submenu_item_text
-                                                            }
-                                                        </a>
-                                                    )}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
                             </li>
                         ))}
                     </ul>
@@ -138,54 +105,28 @@ const Navbar = ({ menu }) => {
         <div>
             <ul id="primaryMenu" className="l1">
                 {menu.map((item, i) => (
-                    <li
-                        key={`l1${i}`}
-                        className={
-                            item.items[0] &&
-                            item.items[0].submenu_item_text &&
-                            "hasChildren"
-                        }
-                    >
+                    <li key={`l1${i}`} className={item.items[0] && item.items[0].submenu_item_text && "hasChildren"}>
                         {item.primary.link.type === "Document" ? (
-                            <Link to={item.primary.link.url}>
+                            <Link className="l1-link" to={item.primary.link.url}>
                                 {item.primary.text}
                             </Link>
                         ) : (
-                            <a href={item.primary.link.url}>
+                            <a className="l1-link" href={item.primary.link.url}>
                                 {item.primary.text}
                             </a>
                         )}
-                        {item.items.length > 0 &&
-                            item.items[0].submenu_item_text && (
-                                <ul className="l2">
-                                    {item.items.map((subitem, j) => (
-                                        <li key={`l2${j}`}>
-                                            {item.items[0].submenu_item_link
-                                                .type === "Document" ? (
-                                                <Link
-                                                    to={
-                                                        item.items[0]
-                                                            .submenu_item_link
-                                                            .url
-                                                    }
-                                                >
-                                                    {subitem.submenu_item_text}
-                                                </Link>
-                                            ) : (
-                                                <a
-                                                    href={
-                                                        item.items[0]
-                                                            .submenu_item_link
-                                                            .url
-                                                    }
-                                                >
-                                                    {subitem.submenu_item_text}
-                                                </a>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
+                        {item.items.length > 0 && item.items[0].submenu_item_text && (
+                            <ul className="l2">
+                                {item.items.map((subitem, j) => (
+                                    <li key={`l2${j}`}>
+                                        <PrismicLink
+                                            link={subitem.submenu_item_link}
+                                            text={subitem.submenu_item_text}
+                                        />
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </li>
                 ))}
             </ul>
@@ -273,9 +214,7 @@ const Header = ({}) => {
 
                             <Login />
                             <Lang />
-                            <Hamburger
-                                menu={data.prismicMenuPrimary.data.body}
-                            />
+                            <Hamburger menu={data.prismicMenuPrimary.data.body} />
                         </div>
                         <div className="mobile"></div>
                     </div>

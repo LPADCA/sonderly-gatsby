@@ -25,21 +25,12 @@ const FAQPage = ({ data }) => {
         <Layout>
             <div className="faq-header">
                 <h1>{title}</h1>
-                <div
-                    className="faq-header-description"
-                    dangerouslySetInnerHTML={{ __html: description.html }}
-                />
+                <div className="faq-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />
             </div>
             <section className="faq-content">
-                <BgBig
-                    className="faq-bg-decoration"
-                    style={getStyle(0, isAllOpen)}
-                />
+                <BgBig className="faq-bg-decoration" style={getStyle(0, isAllOpen)} />
                 <FaqList list={faq_list} onStateChange={setAllOpen} />
-                <BgBig
-                    className="faq-bg-decoration"
-                    style={getStyle(1, isAllOpen)}
-                />
+                <BgBig className="faq-bg-decoration" style={getStyle(1, isAllOpen)} />
             </section>
         </Layout>
     )
