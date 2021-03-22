@@ -1,0 +1,76 @@
+import Layout from "@components/common/layout.js"
+import { withPreview } from "gatsby-source-prismic"
+import { graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import { ReactComponent as BgBig } from "../../assets/decorations/bg-big.svg"
+import { ReactComponent as BgMedium } from "../../assets/decorations/bg-medium.svg"
+import { ReactComponent as BgSmall } from "../../assets/decorations/bg-small.svg"
+
+import "../../styles/pages/services/funded-training.scss"
+
+const FundedTrainingPage = ({ data }) => {
+    const { page_title, page_description, criterias, criteria_notes } = data.prismicFundedTraining.data
+
+    return (
+        <Layout className="funded-training-page">
+            <BgBig className="bg-1" />
+            <BgSmall className="bg-2" />
+            <BgSmall className="bg-3" />
+            <BgMedium className="bg-4" />
+            <BgSmall className="bg-5" />
+            <BgMedium className="bg-6" />
+            <section className="container two-column">
+                <StaticImage
+                    objectFit="contain"
+                    layout="fullWidth"
+                    alt="Women reading a book and holding a cup"
+                    src="../../assets/images/funded-training/header.png"
+                />
+                <div className="hero-description">
+                    <h1>{page_title.text}</h1>
+                    <div dangerouslySetInnerHTML={{ __html: page_description.html }}></div>
+                </div>
+            </section>
+            <section className="criterias container card-grid">
+                {criterias.map(({ criteria_title, criteria_description }, i) => {
+                    return (
+                        <div key={criteria_title} className="card">
+                            <div className="ribbon">Criteria {i + 1}</div>
+                            <h2 className="">{criteria_title}</h2>
+                            <div dangerouslySetInnerHTML={{ __html: criteria_description.html }}></div>
+                        </div>
+                    )
+                })}
+            </section>
+            <section className="criteria-note container">
+                <div className="criteria-note-content" dangerouslySetInnerHTML={{ __html: criteria_notes.html }} />
+            </section>
+        </Layout>
+    )
+}
+
+export const query = graphql`
+    query FundedTrainingPageQuery {
+        prismicFundedTraining {
+            data {
+                criteria_notes {
+                    html
+                }
+                criterias {
+                    criteria_title
+                    criteria_description {
+                        html
+                    }
+                }
+                page_description {
+                    html
+                }
+                page_title {
+                    text
+                }
+            }
+        }
+    }
+`
+
+export default withPreview(FundedTrainingPage)

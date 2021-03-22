@@ -10,3 +10,29 @@
         margin: 0 auto;
     }
 }
+
+.two-column {
+    display: flex;
+
+    & > * {
+        flex: 1 0 50%;
+    }
+
+    @media (max-width: $between-edge) {
+        flex-direction: column;
+    }
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 65px 35px;
+}
+
+.card {
+    position: relative;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    padding: 30px 35px;
+}

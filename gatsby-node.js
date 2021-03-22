@@ -1,4 +1,5 @@
 const path = require("path")
+
 exports.onCreateWebpackConfig = ({ actions }) => {
     actions.setWebpackConfig({
         resolve: {
@@ -57,6 +58,5 @@ exports.createPages = async ({ graphql, actions }) => {
                 uid: `${edge.node.uid}`,
             },
         })
-        console.log(`/page/${edge.node.uid}`)
     })
 }

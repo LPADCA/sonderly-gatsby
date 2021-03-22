@@ -1,0 +1,81 @@
+@import '../../settings.scss';
+
+
+.funded-training-page {
+    position: relative;
+    padding-top: 125px;
+
+    .hero-description {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .criterias {
+        margin-top: 125px;
+    }
+
+    .ribbon {
+        text-transform: uppercase;
+        font-weight: bold;
+        position: absolute;
+        top: -20px;
+        color: $text-color-invert;
+        font-size: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 55px;
+        background-image: url("../../../assets/icons/ribbon.svg");
+        background-repeat: no-repeat;
+    }
+
+    .criteria-note {
+        margin-top: 75px;
+        margin-bottom: 180px;
+
+        &-content {
+            margin-left: 40px;
+            max-width: 850px;
+        }
+    }
+
+    .bg-1 {
+        position: absolute;
+        top: 0;
+        left: -173px;
+    }
+
+    .bg-2 {
+        position: absolute;
+        top: 690px;
+        left: 282px;
+    }
+    
+    .bg-3 {
+        position: absolute;
+        top: 707px;
+        left: 64px;
+    }
+
+    .bg-4 {
+        position: absolute;
+        top: 690px;
+        right: -130px;
+    }
+
+    .bg-5 {
+        position: absolute;
+        top: 1520px;
+        right: 50px;
+    }
+    
+    .bg-6 {
+        position: absolute;
+        top: 1661px;
+        left: -146px;
+    }
+}

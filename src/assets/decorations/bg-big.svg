@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="248" height="248" viewBox="0 0 248 248">
-  <g id="Group_228" data-name="Group 228" transform="translate(-104 -611)" opacity="0.594">
-    <g id="Ellipse_58" data-name="Ellipse 58" transform="translate(104 611)" fill="none" stroke="#6dd" stroke-width="2" stroke-dasharray="15">
-      <circle cx="124" cy="124" r="124" stroke="none"/>
-      <circle cx="124" cy="124" r="123" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="278" height="278" viewBox="0 0 278 278">
+  <g id="Group_79" data-name="Group 79" transform="translate(-48 -703)" opacity="0.388">
+    <g id="Ellipse_58" data-name="Ellipse 58" transform="translate(48 703)" fill="none" stroke="#35ce8d" stroke-width="2" stroke-dasharray="15" opacity="0.451">
+      <circle cx="139" cy="139" r="139" stroke="none"/>
+      <circle cx="139" cy="139" r="138" fill="none"/>
     </g>
-    <g id="Ellipse_60" data-name="Ellipse 60" transform="translate(141 648)" fill="none" stroke="#6dd" stroke-width="2" stroke-dasharray="15">
-      <circle cx="87" cy="87" r="87" stroke="none"/>
-      <circle cx="87" cy="87" r="86" fill="none"/>
+    <g id="Ellipse_60" data-name="Ellipse 60" transform="translate(74 729)" fill="none" stroke="#35ce8d" stroke-width="2" stroke-dasharray="15" opacity="0.451">
+      <circle cx="113" cy="113" r="113" stroke="none"/>
+      <circle cx="113" cy="113" r="112" fill="none"/>
     </g>
-    <g id="Ellipse_59" data-name="Ellipse 59" transform="translate(122 629)" fill="none" stroke="#6dd" stroke-width="3">
-      <circle cx="106" cy="106" r="106" stroke="none"/>
-      <circle cx="106" cy="106" r="104.5" fill="none"/>
+    <g id="Ellipse_59" data-name="Ellipse 59" transform="translate(59 714)" fill="none" stroke="#35ce8d" stroke-width="3">
+      <circle cx="128" cy="128" r="128" stroke="none"/>
+      <circle cx="128" cy="128" r="126.5" fill="none"/>
     </g>
   </g>
 </svg>

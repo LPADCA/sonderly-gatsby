@@ -27,7 +27,7 @@ const Homepage = ({ data }) => {
 
 export default Homepage
 
-export const homepageQuery = graphql` 
+export const homepageQuery = graphql`
     query Homepage {
         prismicHomepage {
             data {
@@ -44,10 +44,10 @@ export const homepageQuery = graphql`
                     }
                     image {
                         fluid(maxWidth: 1000, maxHeight: 800) {
-                          ...GatsbyPrismicImageFluid
+                            ...GatsbyPrismicImageFluid
                         }
                         alt
-                      }
+                    }
                 }
                 stats_element {
                     number
@@ -77,7 +77,7 @@ export const homepageQuery = graphql`
                 wwd_secondary_button_text
                 wwd_image {
                     fluid(maxWidth: 1000, maxHeight: 800) {
-                      ...GatsbyPrismicImageFluid
+                        ...GatsbyPrismicImageFluid
                     }
                     alt
                 }
@@ -131,7 +131,7 @@ export const homepageQuery = graphql`
                     tmn_card_author_position
                     tnm_card_author_name
                     tmn_card_text {
-                        html    
+                        html
                     }
                     tmn_card_author_icon {
                         fixed(width: 120) {

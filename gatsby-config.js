@@ -7,15 +7,25 @@ const linkResolver = require("./src/utils/linkResolver")
 
 module.exports = {
     plugins: [
-        `gatsby-plugin-sass`,
+        "gatsby-plugin-image",
+        "gatsby-transformer-sharp",
+        {
+            resolve: "gatsby-plugin-sharp",
+            options: {
+                defaults: {
+                    quality: 100,
+                    backgroundColor: "transparent"
+                },
+            },
+        },
+        "gatsby-plugin-sass",
         {
             resolve: `gatsby-source-prismic`,
             options: {
                 repositoryName: `sonderly`,
                 accessToken: `MC5ZQ1FqMXhJQUFDSUFSOU5C.XO-_vSpY77-977-9IWfvv70wUzHvv71AP1tbDQ3vv73vv73vv73vv71BKk4LNz9g77-9ag`,
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-                linkResolver: ({ node, key, value }) => (doc) =>
-                    linkResolver(doc),
+                linkResolver: ({ node, key, value }) => (doc) => linkResolver(doc),
                 schemas: {
                     page: require("./src/schemas/page.json"),
                     menu_primary: require("./src/schemas/menu_primary.json"),
@@ -24,6 +34,7 @@ module.exports = {
                     courses: require("./src/schemas/courses.json"),
                     course_map: require("./src/schemas/course_map.json"),
                     faq_page: require("./src/schemas/faq_page.json"),
+                    funded_training: require("./src/schemas/funded_training_page.json"),
                     // Your custom types mapped to schemas
                 },
                 imageImgixParams: {
