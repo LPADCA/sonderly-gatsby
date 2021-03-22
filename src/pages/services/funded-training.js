@@ -25,6 +25,8 @@ const FundedTrainingPage = ({ data }) => {
                     layout="fullWidth"
                     alt="Women reading a book and holding a cup"
                     src="../../assets/images/funded-training/header.png"
+                    backgroundColor="white"
+                    placeholder="none"
                 />
                 <div className="hero-description">
                     <h1>{page_title.text}</h1>
