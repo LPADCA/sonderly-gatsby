@@ -4,12 +4,17 @@
 .funded-training-page {
     position: relative;
     padding-top: 125px;
+    overflow: hidden;
+    
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
 
     .hero-description {
         padding: 0 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
     }
 
@@ -20,7 +25,6 @@
     .ribbon {
         text-transform: uppercase;
         font-weight: bold;
-        position: absolute;
         top: -20px;
         color: $text-color-invert;
         font-size: 22px;
@@ -31,6 +35,15 @@
         height: 55px;
         background-image: url("../../../assets/icons/ribbon.svg");
         background-repeat: no-repeat;
+    }
+
+
+    .card {
+        position: relative;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 20px;
+        padding: 30px 35px;
     }
 
     .criteria-note {
@@ -44,37 +57,31 @@
     }
 
     .bg-1 {
-        position: absolute;
         top: 0;
         left: -173px;
     }
 
     .bg-2 {
-        position: absolute;
         top: 690px;
         left: 282px;
     }
     
     .bg-3 {
-        position: absolute;
         top: 707px;
         left: 64px;
     }
 
     .bg-4 {
-        position: absolute;
         top: 690px;
         right: -130px;
     }
 
     .bg-5 {
-        position: absolute;
         top: 1520px;
         right: 50px;
     }
     
     .bg-6 {
-        position: absolute;
         top: 1661px;
         left: -146px;
     }

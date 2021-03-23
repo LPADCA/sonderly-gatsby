@@ -44,7 +44,7 @@ export const homepageQuery = graphql`
                     }
                     image {
                         fluid(maxWidth: 1000, maxHeight: 800) {
-                            ...GatsbyPrismicImageFluid
+                            ...GatsbyPrismicImageFluid_noBase64
                         }
                         alt
                     }

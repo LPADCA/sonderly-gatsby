@@ -20,14 +20,16 @@ const FundedTrainingPage = ({ data }) => {
             <BgSmall className="bg-5" />
             <BgMedium className="bg-6" />
             <section className="container two-column">
-                <StaticImage
-                    objectFit="contain"
-                    layout="fullWidth"
-                    alt="Women reading a book and holding a cup"
-                    src="../../assets/images/funded-training/header.png"
-                    backgroundColor="white"
-                    placeholder="none"
-                />
+                <div>
+                    <StaticImage
+                        objectFit="contain"
+                        layout="fullWidth"
+                        alt="Women reading a book and holding a cup"
+                        src="../../assets/images/funded-training/header.png"
+                        backgroundColor="white"
+                        placeholder="none"
+                    />
+                </div>
                 <div className="hero-description">
                     <h1>{page_title.text}</h1>
                     <div dangerouslySetInnerHTML={{ __html: page_description.html }}></div>

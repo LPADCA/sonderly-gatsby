@@ -35,6 +35,7 @@ module.exports = {
                     course_map: require("./src/schemas/course_map.json"),
                     faq_page: require("./src/schemas/faq_page.json"),
                     funded_training: require("./src/schemas/funded_training_page.json"),
+                    about_page: require("./src/schemas/about_page.json"),
                     // Your custom types mapped to schemas
                 },
                 imageImgixParams: {

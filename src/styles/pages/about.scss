@@ -1,0 +1,113 @@
+@import "../settings.scss";
+
+.about-page {
+    position: relative;
+    padding-top: 125px;
+    overflow: hidden;
+
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .bg-1 {
+        top: 110px;
+        right: 10px;
+    }
+
+    .bg-2 {
+        top: 480px;
+        left: -119px;
+    }
+
+    .bg-3 {
+        top: 878px;
+        right: -25px;
+    }
+
+    .bg-4 {
+        top: 1359px;;
+        right: -125px;
+    }
+
+    .bg-5 {
+        top: 1652px;
+        left: 83px;
+    }
+
+    .hero-description {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card-grid {
+        grid-template-rows: 1fr auto;
+    }
+
+
+    .management-team {
+        margin-top: 170px;
+
+        h2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &::after {
+                margin-top: 10px;
+                content: "";
+                display: block;
+                width: 60px;
+                height: 5px;
+                background-color: #20A77A;
+                border-radius: 10px;
+            }
+        }
+
+        .management-cards {
+            margin-top: 50px;
+            columns: 2 auto;
+            column-gap: 30px;
+            min-height: 1000px;
+
+
+            @media (max-width: $between-edge) {
+                columns: 1;
+            }
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 0;
+        }
+
+        .management-photo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .management-content {
+            padding: 25px 20px;
+        }
+
+        .management-description {
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+    }
+
+    .card {
+        break-inside: avoid;
+        transform: translateZ(0); // hack, shadow crops because of columns prop
+        margin-bottom: 30px;
+        position: relative;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+    }
+ 
+}

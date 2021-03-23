@@ -25,6 +25,10 @@ const linkResolver = (doc) => {
         return `/services/courses`
     }
 
+    if (doc.type === "about_page") {
+        return `/about`
+    }
+
     if (doc.type === "faq_page") {
         return `/faq`
     }

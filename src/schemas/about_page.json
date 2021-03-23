@@ -1,0 +1,76 @@
+{
+    "Main": {
+      "page_title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading1",
+          "label": "Page Title"
+        }
+      },
+      "page_description": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "label": "Page Description"
+        }
+      },
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "constraint": {
+            "width": 540,
+            "height": 540
+          },
+          "thumbnails": [],
+          "label": "Hero Image"
+        }
+      }
+    },
+    "Content": {
+      "management_team": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "management_photo": {
+              "type": "Image",
+              "config": {
+                "constraint": {
+                  "width": null,
+                  "height": 167
+                },
+                "thumbnails": [],
+                "label": "management_photo"
+              }
+            },
+            "management_name": {
+              "type": "Text",
+              "config": {
+                "label": "Management Team"
+              }
+            },
+            "management_description": {
+              "type": "StructuredText",
+              "config": {
+                "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "label": "Management Description"
+              }
+            },
+            "photo_bg_color": {
+              "type": "Text",
+              "config": {
+                "label": "Photo background color"
+              }
+            }
+          },
+          "label": "Management team"
+        }
+      },
+      "criteria_notes": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "label": "Criteria Notes"
+        }
+      }
+    }
+  }
