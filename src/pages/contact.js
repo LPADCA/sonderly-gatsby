@@ -30,15 +30,19 @@ const ContactPage = ({ data }) => {
     const onSubmit = (e) => {
         e.preventDefault()
         console.log("e", e)
-        const form = e.target.form
+        const form = e.target
         const formData = new FormData(form)
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
+        const object = {}
+        formData.forEach((value, key) => {
+            object[key] = value
         })
-            .then(() => console.log("Form successfully submitted"))
-            .catch((error) => alert(error))
+        fetch("https://submit-form.com/BazGy6gL", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify(object),
+        })
+        // .then(() => console.log("Form successfully submitted"))
+        // .catch((error) => alert(error))
     }
     return (
         <Layout className="contact-page">
@@ -73,18 +77,18 @@ const ContactPage = ({ data }) => {
                                 />
                             </div>
                             <h2>Send us a quick note</h2>
-                            <form className="contact-form" method="POST" data-netlify="true" onSubmit={onSubmit}>
+                            <form className="contact-form" method="POST" onSubmit={onSubmit}>
                                 <div>
                                     <label htmlFor="name">Name:</label>
-                                    <input id="name"></input>
+                                    <input id="name" name="name"></input>
                                 </div>
                                 <div>
                                     <label htmlFor="email">Email:</label>
-                                    <input id="email"></input>
+                                    <input id="email" name="email"></input>
                                 </div>
                                 <div>
                                     <label htmlFor="message">Message:</label>
-                                    <input id="message"></input>
+                                    <input id="message" name="message"></input>
                                 </div>
                                 <button className="button">Send message</button>
                             </form>
