@@ -1,0 +1,103 @@
+@import "../settings.scss";
+
+.contact-page {
+    padding-top: 125px;
+    position: relative;
+
+    & > .container {
+        margin-bottom: 100px;
+    }
+
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .bg-1 {
+        top: -30px;
+        left: -84px;
+    }
+
+    .bg-2 {
+        top: 561px;
+        right: -50px;
+    }
+
+    .hero-image {
+        padding: 0 40px;
+        margin-bottom: 50px;
+    }
+
+    .form-card {
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 20px;
+        margin-left: 40px;
+        padding: 25px 35px;
+
+        h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: $between-edge) {
+            margin-left: 0;
+        }
+    }
+
+    address {
+        font-style: normal;
+
+        p {
+            margin: 0;
+        }
+
+        .address-block {
+            margin-bottom: 8px;
+
+           &.phone {
+               float: left;
+               margin-right: 20px;
+
+                @media (max-width: $mobile-edge) {
+                    float: none;
+                }
+           }
+        }
+
+        .address-label {
+            font-size: 13px;
+        }
+
+        .address-value {
+            font-size: 15px;
+            color: #757575;
+        }
+    }
+
+    .contact-form {
+        label {
+            margin-top: 8px;
+            display: block;
+            font-size: 14px;
+        }
+
+        input {
+            border: none;
+            border-bottom: 1px solid $border-gray;
+            width: 100%;
+            font-size: 15px;
+            height: 30px;
+        }
+
+        .button {
+            margin-top: 30px;
+            width: 100%;
+        }
+    }
+}

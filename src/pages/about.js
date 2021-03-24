@@ -66,7 +66,7 @@ const AboutPage = ({ data }) => {
 }
 
 export const query = graphql`
-    query MyQuery {
+    query AboutQuery {
         prismicAboutPage {
             data {
                 hero_image {

@@ -33,6 +33,10 @@ const linkResolver = (doc) => {
         return `/faq`
     }
 
+    if (doc.type === "contact_page") {
+        return `/contact`
+    }
+
     // Backup for all other types
     //console.log("unknown type resolved")
     return "/"

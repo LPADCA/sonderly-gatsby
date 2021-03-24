@@ -1,9 +1,8 @@
 // Navbar.js
 
-import React, { useState } from "react"
+import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { RiSearchLine } from "react-icons/ri"
-import Search from "./search"
 
 const Logo = ({}) => {
     return (
@@ -14,6 +13,8 @@ const Logo = ({}) => {
                     src="/images/logo-header.png"
                     srcSet="/images/logo-header-2x.png 2x"
                     alt="Sonderly logo"
+                    width="198.5"
+                    height="60"
                 />
                 <img className="logo hide-on-desktop" src="/images/logomark.svg" alt="Sonderly logo" />
             </Link>

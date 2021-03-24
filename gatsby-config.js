@@ -31,6 +31,7 @@ module.exports = {
                     menu_primary: require("./src/schemas/menu_primary.json"),
                     homepage: require("./src/schemas/homepage.json"),
                     services_corporate: require("./src/schemas/services_corporate.json"),
+                    contact_page: require("./src/schemas/contact_page.json"),
                     courses: require("./src/schemas/courses.json"),
                     course_map: require("./src/schemas/course_map.json"),
                     faq_page: require("./src/schemas/faq_page.json"),
