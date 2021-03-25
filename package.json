@@ -14,7 +14,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.4.2",
     "@svgr/webpack": "^5.5.0",
     "gatsby": "^3.1.1",
     "gatsby-plugin-image": "^1.1.1",

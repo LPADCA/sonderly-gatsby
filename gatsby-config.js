@@ -25,7 +25,8 @@ module.exports = {
                 repositoryName: `sonderly`,
                 accessToken: `MC5ZQ1FqMXhJQUFDSUFSOU5C.XO-_vSpY77-977-9IWfvv70wUzHvv71AP1tbDQ3vv73vv73vv73vv71BKk4LNz9g77-9ag`,
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-                linkResolver: ({ node, key, value }) => (doc) => linkResolver(doc),
+                linkResolver: () => (doc) => linkResolver(doc),
+                lang: process.env.LOCALE ? process.env.LOCALE : "en-us",
                 schemas: {
                     page: require("./src/schemas/page.json"),
                     menu_primary: require("./src/schemas/menu_primary.json"),
@@ -55,34 +56,6 @@ module.exports = {
                     removeViewBox: false,
                 },
             },
-        },
-        {
-            resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-            options: {
-                // Fields to index
-                fields: [`title`, `tags`],
-                // How to resolve each field`s value for a supported node type
-                resolvers: {
-                    PrismicPage: {
-                        title: (node) => node.data.title.text,
-                        tags: (node) => node.tags,
-                        path: (node) => node.url,
-                    },
-                    //PrismicHomepage: {
-                    //  title: "Homepage",
-                    //  tags: node => node.tags,
-                    //  path: node => node.url,
-                    //},
-                    // For any node of type MarkdownRemark, list how to resolve the fields` values
-                    //MarkdownRemark: {
-                    //  title: node => node.frontmatter.title,
-                    //  tags: node => node.frontmatter.tags,
-                    //  path: node => node.frontmatter.path,
-                    //},
-                },
-                // Optional filter to limit indexed nodes
-                //filter: (node, getNode) => node.frontmatter.tags !== "exempt",
-            },
-        },
+        }
     ],
 }

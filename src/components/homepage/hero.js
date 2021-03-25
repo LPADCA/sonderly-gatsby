@@ -1,11 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
-import { CgArrowRight } from "react-icons/cg"
+// import { Link } from "gatsby"
+// import { CgArrowRight } from "react-icons/cg"
 import { getImageProps } from "@utils/getImageProps"
 
 const Hero = ({ slides }) => {
-    //console.log(slides)
-
     return (
         <>
             <div className="homepage-hero">
@@ -21,12 +19,12 @@ const Hero = ({ slides }) => {
                                 <a href={slides[0].link.url} target={slides[0].link.target} className="button">
                                     {slides[0].button_text}
                                 </a>
-                                <div className="learn-more">
+                                {/* <div className="learn-more">
                                     <Link to="/">
                                         <CgArrowRight size="20" />
                                         &nbsp;Learn more
                                     </Link>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
