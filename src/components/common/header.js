@@ -134,25 +134,21 @@ const Navbar = ({ menu }) => {
     )
 }
 
-const Login = ({}) => {
+const Login = () => {
     return (
-        <>
-            <Link className="button" to="/">
-                Log in
-            </Link>
-        </>
+        <Link className="button" to="/">
+            Log in
+        </Link>
     )
 }
-const Lang = ({}) => {
+const Lang = () => {
     return (
-        <>
-            <Link to="/fr/" className="lang">
-                <img src="/images/french.svg" width="22" height="22" />
-            </Link>
-        </>
+        <a href={process.env.GATSBY_LOCALE_LINK} className="lang">
+            <img src="/images/french.svg" width="22" height="22" />
+        </a>
     )
 }
-const Header = ({}) => {
+const Header = () => {
     return (
         <StaticQuery
             query={graphql`
