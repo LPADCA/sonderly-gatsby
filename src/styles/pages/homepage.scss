@@ -55,6 +55,9 @@
                     display: flex;
                     align-items: center;
                     svg {
+                        margin-right: 15px;
+                        width: 40px;
+                        height: 40px;
                         color: $text-color;
                         padding: 6px;
                         background-color: white;
@@ -368,7 +371,7 @@
                 font-weight: 700;
             }
             h3 {
-                margin-top:0;
+                margin-top: 20px;
             }
             margin: 0 20px;
             padding: 20px;
@@ -376,7 +379,7 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
             border-bottom: 3px solid $hover-green;
-            box-shadow: 7px 7px 30px rgba(32,167,122,0.2);
+            box-shadow: -10px 0px 30px #35CE8D2B;
             transition: $default-transition;
             .animation-spacer {
                 height: 50px;
@@ -439,6 +442,7 @@
     overflow: hidden;
     position: relative;
     padding-bottom: 30px;
+    
     &:after {
         position: absolute;
         z-index: -3;
@@ -454,9 +458,15 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
+
         .circle {
             position: relative;
             width: 100%;
+
+            &:hover .image::after {
+                opacity: 0.92;
+            }
+
             &>.image {
                 display: block;
                 width: 100%;
@@ -465,11 +475,17 @@
                 border-radius: 100%;
                 border: 4px solid white;
                 box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                
                 &:after {
                     content: "";
+                    background: transparent linear-gradient(133deg, #077762 0%, #20A77A 31%, #30B290 55%, #66DDDD 100%) 0% 0% no-repeat padding-box;
                     display: block;
                     padding-bottom: 100%;
+                    border-radius: 100%;
+                    opacity: 0;
+                    transition: opacity 0.3s ease-out;
                 }
+
             }
             &>.text {
                 position: absolute;
@@ -554,13 +570,14 @@
     position: relative;
     padding-bottom: 50px;
     overflow: hidden;
+
     .card {
         &>div {
-            margin: 10px;
+            margin: 40px;
             padding: 15px;
             border-radius: 10px;
             background: white;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.12)
+            box-shadow: 8px 16px 32px #0000001A;
         }
         .divider {
             display: block;

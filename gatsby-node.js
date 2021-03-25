@@ -8,6 +8,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
                 "@components": path.resolve(__dirname, "src/components"),
                 "@static": path.resolve(__dirname, "static"),
                 "@styles": path.resolve(__dirname, "src/styles"),
+                "@utils": path.resolve(__dirname, "src/utils"),
             },
         },
     })

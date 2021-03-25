@@ -19,7 +19,7 @@
         display: grid;
         height: $header-height;
         margin-right: -15px;
-        grid-template-columns: minmax(10px, max-content) auto 40px 120px 32px 0;
+        grid-template-columns: minmax(10px, max-content) auto 120px 32px 0;
         gap: 10px;
         justify-items: center;
         align-items: center;
@@ -56,6 +56,7 @@
 
 #primaryMenu {
     margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
     
     .l1-link {
         display: inline-block;
@@ -65,7 +66,6 @@
         a {
             color: $text-color;
             transition: 0.3s color ease-out;
-            font-weight: 600;
         }
         &:hover {
             > a {

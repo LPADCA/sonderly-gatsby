@@ -1,18 +1,16 @@
 import React from "react"
 import { Link } from "gatsby"
 import { CgArrowRight } from "react-icons/cg"
+import { getImageProps } from "@utils/getImageProps"
 
 const Hero = ({ slides }) => {
     //console.log(slides)
+
     return (
         <>
             <div className="homepage-hero">
                 <div className="illustration">
-                    <img
-                        src={slides[0].image.fluid.src}
-                        srcSet={slides[0].image.fluid.srcSet}
-                        alt={slides[0].image.alt}
-                    />
+                    <img {...getImageProps(slides[0].image)} />
                 </div>
                 <div className="container">
                     <div className="content">

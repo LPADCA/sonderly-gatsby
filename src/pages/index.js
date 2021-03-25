@@ -12,7 +12,6 @@ import Testimonials from "@components/homepage/testimonials"
 import "@styles/pages/homepage.scss"
 
 const Homepage = ({ data }) => {
-    //console.log(data)
     return (
         <Layout>
             <Hero slides={data.prismicHomepage.data.hero_slide} />

@@ -1,21 +1,11 @@
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
-import { useState } from "react"
-import AnimateHeight from "react-animate-height"
-import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
 import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
+import { getImageProps } from "@utils/getImageProps"
 
 import "@styles/pages/contact.scss"
-
-const getImageProps = ({ fluid, dimensions }) => {
-    const { aspectRatio, ...props } = fluid
-    return {
-        ...props,
-        ...dimensions,
-    }
-}
 
 const ContactPage = ({ data }) => {
     const {
@@ -29,7 +19,6 @@ const ContactPage = ({ data }) => {
     } = data.prismicContactPage.data
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log("e", e)
         const form = e.target
         const formData = new FormData(form)
         const object = {}

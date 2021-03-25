@@ -2,9 +2,8 @@
 
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
-import { RiSearchLine } from "react-icons/ri"
 
-const Logo = ({}) => {
+const Logo = () => {
     return (
         <div>
             <Link to="/">
@@ -135,17 +134,6 @@ const Navbar = ({ menu }) => {
     )
 }
 
-const SearchIcon = ({ data }) => {
-    return (
-        <div>
-            <Link className="search" to="/">
-                <RiSearchLine size="24" />
-            </Link>
-            {/*<Search searchIndex={data.index} />*/}
-        </div>
-    )
-}
-
 const Login = ({}) => {
     return (
         <>
@@ -200,9 +188,6 @@ const Header = ({}) => {
                             }
                         }
                     }
-                    siteSearchIndex {
-                        index
-                    }
                 }
             `}
             render={(data) => (
@@ -211,8 +196,6 @@ const Header = ({}) => {
                         <div className="desktop">
                             <Logo />
                             <Navbar menu={data.prismicMenuPrimary.data.body} />
-                            <SearchIcon data={data.siteSearchIndex} />
-
                             <Login />
                             <Lang />
                             <Hamburger menu={data.prismicMenuPrimary.data.body} />
