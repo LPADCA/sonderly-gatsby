@@ -3,6 +3,7 @@
 .contact-page {
     padding-top: 125px;
     position: relative;
+    overflow: hidden;
 
     & > .container {
         margin-bottom: 100px;
@@ -19,7 +20,7 @@
     }
 
     .bg-2 {
-        top: 561px;
+        top: 800px;
         right: -50px;
     }
 

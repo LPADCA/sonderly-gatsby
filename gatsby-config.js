@@ -38,6 +38,7 @@ module.exports = {
                     faq_page: require("./src/schemas/faq_page.json"),
                     funded_training: require("./src/schemas/funded_training_page.json"),
                     about_page: require("./src/schemas/about_page.json"),
+                    404: require("./src/schemas/404.json"),
                     // Your custom types mapped to schemas
                 },
                 imageImgixParams: {

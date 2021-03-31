@@ -1,0 +1,41 @@
+@import "../settings.scss";
+
+.not-found-page {
+    position: relative;
+    overflow-x: hidden;
+    
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .bg-1 {
+        top: -30px;
+        left: -84px;
+    }
+
+    .bg-2 {
+        top: 600px;
+        right: -75px;
+    }
+
+    .not-found-container {
+        margin-top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-image {
+        font-size: 300px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero-description {
+        margin-top: 50px;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+}
