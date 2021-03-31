@@ -99,7 +99,7 @@ const Navbar = ({ menu }) => {
                                     {item.items.map((subitem, j) => {
                                         return (
                                             <li key={`l2${j}`}>
-                                                <CommonLink type={subitem.type} to={subitem.submenu_item_link}>
+                                                <CommonLink type={subitem.type} to={subitem.submenu_item_link.url}>
                                                     {subitem.submenu_item_text}
                                                 </CommonLink>
                                             </li>
@@ -116,10 +116,8 @@ const Navbar = ({ menu }) => {
 }
 
 const Lang = () => {
-    const { GATSBY_LOCALE, GATSBY_LOCALE_LINK } = process.env
     const locale = process.env.GATSBY_LOCALE
     const url = process.env.GATSBY_LOCALE_LINK
-    console.log("GATSBY_LOCALE", locale, locale == null || locale === "en-us")
     const flag = locale == null || locale === "en-us" ? "/images/french.svg" : "/images/english.svg"
     return (
         <a href={url} className="lang">
