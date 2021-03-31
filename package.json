@@ -1,8 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "sonderly-lading-page",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",

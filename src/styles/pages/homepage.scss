@@ -589,11 +589,12 @@
         .author {
             margin-top: 15px;
             display: grid;
-            grid-template-columns: 80px auto;
+            grid-template-columns: 50px auto;
             gap: 15px;
             .image {
                 img {
-                    max-width: 100%;
+                    width: 45px;
+                    height: 45px;
                     border-radius: 100px;
                     object-fit: cover;
 

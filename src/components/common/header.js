@@ -2,6 +2,7 @@
 
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
+import CommonLink from "@components/common-link"
 
 const Logo = () => {
     return (
@@ -18,22 +19,6 @@ const Logo = () => {
                 <img className="logo hide-on-desktop" src="/images/logomark.svg" alt="Sonderly logo" />
             </Link>
         </div>
-    )
-}
-
-const PrismicLink = ({ link, text, ...props }) => {
-    if (link.type === "Document") {
-        return (
-            <Link to={link.url} {...props}>
-                {text}
-            </Link>
-        )
-    }
-
-    return (
-        <a href={link.url} {...props}>
-            {text}
-        </a>
     )
 }
 
@@ -72,20 +57,16 @@ class Hamburger extends React.Component {
                                 key={`l1${i}`}
                                 className={item.items[0] && item.items[0].submenu_item_text && "hasChildren"}
                             >
-                                <PrismicLink
-                                    link={item.primary.link}
-                                    text={item.primary.text}
-                                    onClick={this.handleClick}
-                                />
+                                <CommonLink to={item.primary.link} onClick={this.handleClick}>
+                                    {item.primary.text}
+                                </CommonLink>
                                 {item.items.length > 0 && item.items[0].submenu_item_text && (
                                     <ul className="l2">
                                         {item.items.map((subitem, j) => (
                                             <li key={`l2${j}`}>
-                                                <PrismicLink
-                                                    link={subitem.submenu_item_link}
-                                                    text={subitem.submenu_item_text}
-                                                    onClick={this.handleClick}
-                                                />
+                                                <CommonLink to={subitem.submenu_item_link} onClick={this.handleClick}>
+                                                    {subitem.submenu_item_text}
+                                                </CommonLink>
                                             </li>
                                         ))}
                                     </ul>
@@ -100,51 +81,47 @@ class Hamburger extends React.Component {
 }
 
 const Navbar = ({ menu }) => {
-    //console.log(menu)
     return (
         <div>
             <ul id="primaryMenu" className="l1">
-                {menu.map((item, i) => (
-                    <li key={`l1${i}`} className={item.items[0] && item.items[0].submenu_item_text && "hasChildren"}>
-                        {item.primary.link.type === "Document" ? (
-                            <Link className="l1-link" to={item.primary.link.url}>
-                                {item.primary.text}
-                            </Link>
-                        ) : (
-                            <a className="l1-link" href={item.primary.link.url}>
-                                {item.primary.text}
-                            </a>
-                        )}
-                        {item.items.length > 0 && item.items[0].submenu_item_text && (
-                            <ul className="l2">
-                                {item.items.map((subitem, j) => (
-                                    <li key={`l2${j}`}>
-                                        <PrismicLink
-                                            link={subitem.submenu_item_link}
-                                            text={subitem.submenu_item_text}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </li>
-                ))}
+                {menu.map((item, i) => {
+                    const { text, link } = item.primary
+                    const { url, type } = link
+
+                    const hasChildren = item.items[0] && item.items[0].submenu_item_text
+                    return (
+                        <li key={`l1${i}`} className={hasChildren && "hasChildren"}>
+                            <CommonLink type={type} to={url} className="l1-link">
+                                {text}
+                            </CommonLink>
+                            {item.items.length > 0 && item.items[0].submenu_item_text && (
+                                <ul className="l2">
+                                    {item.items.map((subitem, j) => {
+                                        return (
+                                            <li key={`l2${j}`}>
+                                                <CommonLink type={subitem.type} to={subitem.submenu_item_link}>
+                                                    {subitem.submenu_item_text}
+                                                </CommonLink>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            )}
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     )
 }
 
-const Login = () => {
-    return (
-        <Link className="button" to="/">
-            Log in
-        </Link>
-    )
-}
 const Lang = () => {
+    const { GATSBY_LOCALE, GATSBY_LOCALE_LINK } = process.env
+    console.log('GATSBY_LOCALE', GATSBY_LOCALE, GATSBY_LOCALE == null || GATSBY_LOCALE === "en-us")
+    const flag = GATSBY_LOCALE == null || GATSBY_LOCALE === "en-us" ? "/images/french.svg" : "/images/english.svg"
     return (
-        <a href={process.env.GATSBY_LOCALE_LINK} className="lang">
-            <img src="/images/french.svg" width="22" height="22" />
+        <a href={GATSBY_LOCALE_LINK} className="lang">
+            <img src={flag} width="22" height="22" />
         </a>
     )
 }
@@ -192,7 +169,9 @@ const Header = () => {
                         <div className="desktop">
                             <Logo />
                             <Navbar menu={data.prismicMenuPrimary.data.body} />
-                            <Login />
+                            <a href="https://sonderly.csod.com/client/sonderly/default.aspx" className="button">
+                                Login
+                            </a>
                             <Lang />
                             <Hamburger menu={data.prismicMenuPrimary.data.body} />
                         </div>

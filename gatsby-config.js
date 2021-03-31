@@ -26,7 +26,7 @@ module.exports = {
                 accessToken: `MC5ZQ1FqMXhJQUFDSUFSOU5C.XO-_vSpY77-977-9IWfvv70wUzHvv71AP1tbDQ3vv73vv73vv73vv71BKk4LNz9g77-9ag`,
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
                 linkResolver: () => (doc) => linkResolver(doc),
-                lang: process.env.LOCALE ? process.env.LOCALE : "en-us",
+                lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
                 schemas: {
                     page: require("./src/schemas/page.json"),
                     menu_primary: require("./src/schemas/menu_primary.json"),

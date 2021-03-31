@@ -61,16 +61,14 @@ const TestimonialsSlider = ({ data }) => {
 
 const Testimonials = ({ data }) => {
     return (
-        <>
-            <div className="testimonials">
-                <div className="container">
-                    <h2 className="typical">{data.tmn_title.text}</h2>
-                    <TestimonialsSlider data={data} />
-                </div>
-                <div className="divider-dots" />
-                <div className="bgel4" />
+        <div className="testimonials">
+            <div className="container">
+                <h2 className="typical">{data.tmn_title.text}</h2>
+                <TestimonialsSlider data={data} />
             </div>
-        </>
+            <div className="divider-dots" />
+            <div className="bgel4" />
+        </div>
     )
 }
 export default Testimonials
