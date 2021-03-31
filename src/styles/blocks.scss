@@ -2,7 +2,10 @@
 
 .hero-default {
     background: $default-gradient;
-    padding: 100px 0 40px 0;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     h1, p {
         text-align: center;

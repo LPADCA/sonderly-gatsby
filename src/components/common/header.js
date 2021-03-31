@@ -131,6 +131,10 @@ const Header = ({ location }) => {
         query Header {
             prismicMenuPrimary {
                 data {
+                    login_text
+                    login_link {
+                        url
+                    }
                     body {
                         ... on PrismicMenuPrimaryBodyMenuItem {
                             id
@@ -162,14 +166,15 @@ const Header = ({ location }) => {
             }
         }
     `)
+    const { login_text, login_link } = data.prismicMenuPrimary.data
     return (
         <div className="header">
             <div className="container">
                 <div className="desktop">
                     <Logo />
                     <Navbar menu={data.prismicMenuPrimary.data.body} />
-                    <a href="https://sonderly.csod.com/client/sonderly/default.aspx" className="button">
-                        Login
+                    <a href={login_link.url} className="button">
+                        {login_text}
                     </a>
                     <Lang currentUrl={location.pathname} />
                     <Hamburger menu={data.prismicMenuPrimary.data.body} />
