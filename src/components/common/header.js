@@ -117,10 +117,12 @@ const Navbar = ({ menu }) => {
 
 const Lang = () => {
     const { GATSBY_LOCALE, GATSBY_LOCALE_LINK } = process.env
-    console.log('GATSBY_LOCALE', GATSBY_LOCALE, GATSBY_LOCALE == null || GATSBY_LOCALE === "en-us")
-    const flag = GATSBY_LOCALE == null || GATSBY_LOCALE === "en-us" ? "/images/french.svg" : "/images/english.svg"
+    const locale = process.env.GATSBY_LOCALE
+    const url = process.env.GATSBY_LOCALE_LINK
+    console.log("GATSBY_LOCALE", locale, locale == null || locale === "en-us")
+    const flag = locale == null || locale === "en-us" ? "/images/french.svg" : "/images/english.svg"
     return (
-        <a href={GATSBY_LOCALE_LINK} className="lang">
+        <a href={url} className="lang">
             <img src={flag} width="22" height="22" />
         </a>
     )
