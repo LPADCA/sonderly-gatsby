@@ -8,11 +8,11 @@ import { ReactComponent as BgSmall } from "../../assets/decorations/bg-small.svg
 
 import "../../styles/pages/services/funded-training.scss"
 
-const FundedTrainingPage = ({ data }) => {
+const FundedTrainingPage = ({ data, location }) => {
     const { page_title, page_description, criterias, criteria_notes } = data.prismicFundedTraining.data
 
     return (
-        <Layout className="funded-training-page">
+        <Layout location={location} className="funded-training-page">
             <BgBig className="bg-1" />
             <BgSmall className="bg-2" />
             <BgSmall className="bg-3" />

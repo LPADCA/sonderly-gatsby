@@ -35,10 +35,10 @@ const ManagementItem = ({ management_photo, management_name, management_descript
     )
 }
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data, location }) => {
     const { page_title, hero_image, page_description, management_team } = data.prismicAboutPage.data
     return (
-        <Layout className="about-page">
+        <Layout location={location} className="about-page">
             <BgSmall className="bg-1" />
             <BgMedium className="bg-2" />
             <BgSmall className="bg-3" />

@@ -7,7 +7,7 @@ import { getImageProps } from "@utils/getImageProps"
 
 import "@styles/pages/contact.scss"
 
-const ContactPage = ({ data }) => {
+const ContactPage = ({ data, location }) => {
     const {
         hero_image,
         page_title,
@@ -17,6 +17,7 @@ const ContactPage = ({ data }) => {
         phone,
         north_america_phone,
     } = data.prismicContactPage.data
+
     const onSubmit = (e) => {
         e.preventDefault()
         const form = e.target
@@ -34,7 +35,7 @@ const ContactPage = ({ data }) => {
         // .catch((error) => alert(error))
     }
     return (
-        <Layout className="contact-page">
+        <Layout location={location} className="contact-page">
             <BgMedium className="bg-1" />
             <BgSmall className="bg-2" />
             <section className="container two-column">

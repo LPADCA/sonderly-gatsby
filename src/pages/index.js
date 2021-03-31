@@ -11,9 +11,9 @@ import Testimonials from "@components/homepage/testimonials"
 
 import "@styles/pages/homepage.scss"
 
-const Homepage = ({ data }) => {
+const Homepage = ({ data, location }) => {
     return (
-        <Layout>
+        <Layout location={location}>
             <Hero slides={data.prismicHomepage.data.hero_slide} />
             <Stats blocks={data.prismicHomepage.data.stats_element} />
             <WhatWeDo data={data.prismicHomepage.data} />

@@ -1,7 +1,7 @@
 // Navbar.js
 
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import CommonLink from "@components/common-link"
 
 const Logo = () => {
@@ -115,9 +115,10 @@ const Navbar = ({ menu }) => {
     )
 }
 
-const Lang = () => {
+const Lang = ({ currentUrl }) => {
     const locale = process.env.GATSBY_LOCALE
-    const url = process.env.GATSBY_LOCALE_LINK
+    const locale_host = process.env.GATSBY_LOCALE_LINK || ""
+    const url = `${locale_host}${currentUrl}`
     const flag = locale == null || locale === "en-us" ? "/images/french.svg" : "/images/english.svg"
     return (
         <a href={url} className="lang">
@@ -125,61 +126,57 @@ const Lang = () => {
         </a>
     )
 }
-const Header = () => {
-    return (
-        <StaticQuery
-            query={graphql`
-                query Header {
-                    prismicMenuPrimary {
-                        data {
-                            body {
-                                ... on PrismicMenuPrimaryBodyMenuItem {
-                                    id
-                                    items {
-                                        submenu_item_text
-                                        submenu_item_link {
-                                            url
-                                            uid
-                                            type
-                                            link_type
-                                            lang
-                                            target
-                                        }
-                                    }
-                                    primary {
-                                        text
-                                        link {
-                                            url
-                                            uid
-                                            type
-                                            target
-                                            link_type
-                                            lang
-                                        }
-                                    }
+const Header = ({ location }) => {
+    const data = useStaticQuery(graphql`
+        query Header {
+            prismicMenuPrimary {
+                data {
+                    body {
+                        ... on PrismicMenuPrimaryBodyMenuItem {
+                            id
+                            items {
+                                submenu_item_text
+                                submenu_item_link {
+                                    url
+                                    uid
+                                    type
+                                    link_type
+                                    lang
+                                    target
+                                }
+                            }
+                            primary {
+                                text
+                                link {
+                                    url
+                                    uid
+                                    type
+                                    target
+                                    link_type
+                                    lang
                                 }
                             }
                         }
                     }
                 }
-            `}
-            render={(data) => (
-                <div className="header">
-                    <div className="container">
-                        <div className="desktop">
-                            <Logo />
-                            <Navbar menu={data.prismicMenuPrimary.data.body} />
-                            <a href="https://sonderly.csod.com/client/sonderly/default.aspx" className="button">
-                                Login
-                            </a>
-                            <Lang />
-                            <Hamburger menu={data.prismicMenuPrimary.data.body} />
-                        </div>
-                        <div className="mobile"></div>
-                    </div>
+            }
+        }
+    `)
+    return (
+        <div className="header">
+            <div className="container">
+                <div className="desktop">
+                    <Logo />
+                    <Navbar menu={data.prismicMenuPrimary.data.body} />
+                    <a href="https://sonderly.csod.com/client/sonderly/default.aspx" className="button">
+                        Login
+                    </a>
+                    <Lang currentUrl={location.pathname} />
+                    <Hamburger menu={data.prismicMenuPrimary.data.body} />
                 </div>
-            )}
-        />
+                <div className="mobile"></div>
+            </div>
+        </div>
     )
 }
 

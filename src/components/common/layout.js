@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { Link, useStaticQuery, graphql } from "gatsby"
 import "@styles/sonderly.scss"
 import "@styles/header.scss"
 
@@ -29,7 +28,7 @@ const Layout = ({ location, children, ...props }) => {
                 ></script>
             </Helmet>
 
-            <Header />
+            <Header location={location} />
             <main {...props}>{children}</main>
             <Footer />
         </>

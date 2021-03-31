@@ -18,11 +18,11 @@ const BG_OPEN_STATE = [
 
 const getStyle = (n, isOpen) => (isOpen ? BG_OPEN_STATE[n] : undefined)
 
-const FAQPage = ({ data }) => {
+const FAQPage = ({ data, location }) => {
     const [isAllOpen, setAllOpen] = useState(false)
     const { faq_list, title, description } = data.prismicFaqPage.data
     return (
-        <Layout>
+        <Layout location={location}>
             <div className="faq-header">
                 <h1>{title}</h1>
                 <div className="faq-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />

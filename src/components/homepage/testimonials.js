@@ -39,18 +39,10 @@ const TestimonialsSlider = ({ data }) => {
                             }}
                         />
                         <div className="divider" />
+
                         <div className="author">
-                            <div className="image">
-                                <img
-                                    src={card.tmn_card_author_icon.fixed.src}
-                                    srcSet={card.tmn_card_author_icon.fixed.srcSet}
-                                    alt={card.tmn_card_author_icon.alt}
-                                />
-                            </div>
-                            <div className="text">
-                                <p className="name">{card.tnm_card_author_name}</p>
-                                <p className="position">{card.tmn_card_author_position}</p>
-                            </div>
+                            <p className="name">{card.tnm_card_author_name}</p>
+                            <p className="position">{card.tmn_card_author_position}</p>
                         </div>
                     </div>
                 </div>
