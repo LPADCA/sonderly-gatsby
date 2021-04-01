@@ -44,28 +44,59 @@
                 line-height: 1.1;
             }
         }
+
+        .age {
+            position: relative;
+
+            .tooltip {
+                font-size: 13px;
+                position: absolute;
+                right: -10px;
+                width: 130px;
+                bottom: 0;
+                opacity: 0;
+                transition: all 0.3s;
+            }
+
+            &:hover .tooltip {
+                opacity: 1;
+            }
+        }
+
         h5 {
             color: #434343;
-            font-size: 14px;
         }
         h4, label {
             color: white;
         }
         label {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
+            margin-left: 10px;
         }
         h5, p {
-            margin: 2px;
+            margin-top: 5px;
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+
+        p:first-child {
+            margin-top: 10px;
         }
         h4, h5 {
             margin-top: 16px;
         }
+
+        .slider {
+            margin: 10px 5px;
+        }
         .levels {
-            font-size: 13px;
-            opacity: .4;
+            margin-top: 5px;
+            font-size: 14px;
+            color: white;
+            font-weight: bold;
             &.current {
-                opacity: 1;
+                color: $text-color;
             }
         }
         .legend {
@@ -128,15 +159,19 @@
         .courseblocks {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 30px;
         }
         .courseblock {
             position: relative;
             box-shadow: 0px 3px 6px #00000029;
             border-radius: 10px;
-            padding: 15px;
-            padding-bottom: 75px;
+            padding: 26px 22px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: $default-transition;
+            color: $text-color;
             h3 {
                 margin-top: 0;
                 transition: $default-transition;
@@ -156,8 +191,8 @@
                 gap: 3px;
                 position: relative;
                 .icon {
-                    width: 26px;
-                    height: 26px;
+                    width: 29px;
+                    height: 29px;
                     background-color: $color8;
                     border-radius: 100px;
                     color: white;
@@ -184,10 +219,10 @@
                 }
                 .level {
                     display: inline-block;
-                    font-size: 13px;
+                    font-size: 14px;
                     font-weight: 700;
                     color: white;
-                    background-color: $color7;
+                    background-color: #434343;
                     padding: 5px 12px;
                     border-radius: 20px;
                     white-space: nowrap;

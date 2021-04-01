@@ -126,7 +126,6 @@ class CourseMap extends React.Component {
     render() {
         return (
             <Layout location={this.props.location}>
-                {/* Hero */}
                 <div className="spacer-top" />
                 <Hero title={this.pageContent.title.text} subheading={this.pageContent.subheading} />
 
@@ -144,8 +143,11 @@ class CourseMap extends React.Component {
                                     <h3>{this.state.filtered}</h3>
                                     <p>course(s) found</p>
                                 </div>
-                                <h5>
+                                <h5 className="age">
                                     Age <RiInformationLine />
+                                    <div className="tooltip">
+                                        The age range of the audience, you would like the course to focus on
+                                    </div>
                                 </h5>
                                 <p>
                                     <input
@@ -215,7 +217,14 @@ class CourseMap extends React.Component {
                                     <label htmlFor="funded">Yes</label>
                                 </p>
                                 <h5>Minimum level of education</h5>
-                                <Slider min={1} max={6} defaultValue={1} handle={handle} onChange={this.updateLevel} />
+                                <Slider
+                                    min={1}
+                                    max={6}
+                                    className="slider"
+                                    defaultValue={1}
+                                    handle={handle}
+                                    onChange={this.updateLevel}
+                                />
                                 {Levels.map((level, i) => (
                                     <div
                                         key={i}
@@ -257,7 +266,7 @@ class CourseMap extends React.Component {
                                             this.getCourses(i).length > 0 &&
                                             this.state.level <= i &&
                                             this.getCourses(i).map((course, i) => (
-                                                <div key={i} className="courseblock">
+                                                <a key={i} href={course.link.url} className="courseblock">
                                                     <h3>{course.course_name.text}</h3>
                                                     <div className="status">
                                                         {course.with_video && (
@@ -271,9 +280,11 @@ class CourseMap extends React.Component {
                                                                 <RiStarFill />
                                                             </div>
                                                         )}
-                                                        <div className="level">L{Levels.indexOf(course.level) + 1}</div>
+                                                        <div className="level">
+                                                            Level {Levels.indexOf(course.level) + 1}
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             ))
                                     )}
                                 </div>

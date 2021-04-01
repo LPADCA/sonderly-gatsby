@@ -31,5 +31,83 @@
           "label" : "Keywords"
         }
       }
+    },
+    "Filters" : {
+      "filters_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Filters label"
+        }
+      },
+      "age_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Age label"
+        }
+      },
+      "ages" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "filter_age" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "filter age"
+              }
+            }
+          },
+          "label" : "Ages"
+        }
+      },
+      "levels_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Levels label"
+        }
+      },
+      "levels" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "filter_level" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Filter Level"
+              }
+            }
+          },
+          "label" : "Levels"
+        }
+      },
+      "availiable_in_french_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Availiable in French label"
+        }
+      },
+      "moe_funded_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "MOE Funded label"
+        }
+      },
+      "yes" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "YES"
+        }
+      },
+      "level" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Level"
+        }
+      },
+      "video_recordings" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Video Recordings"
+        }
+      }
     }
   }

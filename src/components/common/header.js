@@ -106,7 +106,10 @@ const Navbar = ({ menu }) => {
                                     {item.items.map((subitem, j) => {
                                         return (
                                             <li key={`l2${j}`}>
-                                                <CommonLink type={subitem.link_type} to={subitem.submenu_item_link.url}>
+                                                <CommonLink
+                                                    type={subitem.submenu_item_link.link_type}
+                                                    to={subitem.submenu_item_link.url}
+                                                >
                                                     {subitem.submenu_item_text}
                                                 </CommonLink>
                                             </li>

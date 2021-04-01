@@ -27,6 +27,12 @@
       }
     },
     "Content": {
+      "section_name": {
+        "type": "Text",
+        "config": {
+          "label": "Section Name"
+        }
+      },
       "management_team": {
         "type": "Group",
         "config": {
@@ -58,7 +64,8 @@
             "photo_bg_color": {
               "type": "Text",
               "config": {
-                "label": "Photo background color"
+                "label": "Photo background color",
+                "placeholder": "css color format, e.g. #000000"
               }
             }
           },
