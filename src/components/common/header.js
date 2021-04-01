@@ -52,27 +52,34 @@ class Hamburger extends React.Component {
                 <span></span>
                 <div id="mobileMenu">
                     <ul className="l1">
-                        {this.menu.map((item, i) => (
-                            <li
-                                key={`l1${i}`}
-                                className={item.items[0] && item.items[0].submenu_item_text && "hasChildren"}
-                            >
-                                <CommonLink to={item.primary.link} onClick={this.handleClick}>
-                                    {item.primary.text}
-                                </CommonLink>
-                                {item.items.length > 0 && item.items[0].submenu_item_text && (
-                                    <ul className="l2">
-                                        {item.items.map((subitem, j) => (
-                                            <li key={`l2${j}`}>
-                                                <CommonLink to={subitem.submenu_item_link} onClick={this.handleClick}>
-                                                    {subitem.submenu_item_text}
-                                                </CommonLink>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </li>
-                        ))}
+                        {this.menu.map((item, i) => {
+                            const link = item.primary.link
+                            return (
+                                <li
+                                    key={`l1${i}`}
+                                    className={item.items[0] && item.items[0].submenu_item_text && "hasChildren"}
+                                >
+                                    <CommonLink type={link.link_type} to={link.url} onClick={this.handleClick}>
+                                        {item.primary.text}
+                                    </CommonLink>
+                                    {item.items.length > 0 && item.items[0].submenu_item_text && (
+                                        <ul className="l2">
+                                            {item.items.map((subitem, j) => (
+                                                <li key={`l2${j}`}>
+                                                    <CommonLink
+                                                        type={subitem.submenu_item_link.link_type}
+                                                        to={subitem.submenu_item_link.url}
+                                                        onClick={this.handleClick}
+                                                    >
+                                                        {subitem.submenu_item_text}
+                                                    </CommonLink>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>
@@ -86,12 +93,12 @@ const Navbar = ({ menu }) => {
             <ul id="primaryMenu" className="l1">
                 {menu.map((item, i) => {
                     const { text, link } = item.primary
-                    const { url, type } = link
+                    const { url, link_type } = link
 
                     const hasChildren = item.items[0] && item.items[0].submenu_item_text
                     return (
                         <li key={`l1${i}`} className={hasChildren && "hasChildren"}>
-                            <CommonLink type={type} to={url} className="l1-link">
+                            <CommonLink type={link_type} to={url} className="l1-link">
                                 {text}
                             </CommonLink>
                             {item.items.length > 0 && item.items[0].submenu_item_text && (
@@ -99,7 +106,7 @@ const Navbar = ({ menu }) => {
                                     {item.items.map((subitem, j) => {
                                         return (
                                             <li key={`l2${j}`}>
-                                                <CommonLink type={subitem.type} to={subitem.submenu_item_link.url}>
+                                                <CommonLink type={subitem.link_type} to={subitem.submenu_item_link.url}>
                                                     {subitem.submenu_item_text}
                                                 </CommonLink>
                                             </li>
@@ -169,7 +176,7 @@ const Header = ({ location }) => {
     const { login_text, login_link } = data.prismicMenuPrimary.data
     return (
         <div className="header">
-            <div className="container">
+            <div className="header-container">
                 <div className="desktop">
                     <Logo />
                     <Navbar menu={data.prismicMenuPrimary.data.body} />

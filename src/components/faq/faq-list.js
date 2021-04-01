@@ -22,7 +22,7 @@ const FaqList = ({ list, onStateChange }) => {
                 {list.map((i) => (
                     <FaqItem
                         isOpen={isAllOpen}
-                        key={i.title}
+                        key={i.faq_title}
                         title={i.faq_title}
                         description={i.faq_description.html}
                     />
