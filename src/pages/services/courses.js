@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout"
 import Hero from "@components/blocks/hero"
 import { FaFilter } from "react-icons/fa"
-import { RiInformationLine, RiStarFill } from "react-icons/ri"
+import { RiContactsBookLine, RiInformationLine, RiStarFill } from "react-icons/ri"
 import { FaVideo } from "react-icons/fa"
 import Slider, { SliderTooltip } from "rc-slider"
 import "rc-slider/assets/index.css"
@@ -11,18 +11,7 @@ import Scroll from "react-scroll"
 
 import "@styles/pages/services/courses.scss"
 
-const Ages = ["All ages", "Children", "Adolescents", "Adults"]
-const Levels = [
-    "Introductory Autism",
-    "Electives Autism",
-    "Mental Health and Autism",
-    "Introductory ABA",
-    "Intermediate ABA",
-    "Advanced ABA",
-]
-
 var Element = Scroll.Element
-var scroller = Scroll.scroller
 
 const { Handle } = Slider
 
@@ -35,296 +24,183 @@ const handle = (props) => {
     )
 }
 
-const ScrollToList = () => {
-    scroller.scrollTo("courseblocks-anchor", {
-        duration: 800,
-        delay: 50,
-        smooth: true,
-        offset: -80, // Scrolls to element + 50 pixels down the page
+const CourseMap = ({ data, location }) => {
+    const coursesList = data.allPrismicCourses.nodes
+    const pageContent = data.prismicCourseMap.data
+    const {
+        age_label,
+        age_tooltip,
+        availiable_in_french_label,
+        filters_label,
+        levels_label,
+        moe_funded_label,
+        video_recordings,
+        yes,
+        level,
+        not_found,
+    } = pageContent
+    const levels = pageContent.levels.map((l) => l.filter_level)
+    const ages = pageContent.ages.map((l) => l.filter_age)
+
+    const [state, setState] = useState({
+        age: 0,
+        french: false,
+        funded: false,
+        level: 0,
+        filtered: 0,
     })
-}
 
-class CourseMap extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            age: 0,
-            french: false,
-            funded: false,
-            level: 0,
-            filtered: 0,
-        }
-        this.updateAge = this.updateAge.bind(this)
-        this.updateFrench = this.updateFrench.bind(this)
-        this.updateFunded = this.updateFunded.bind(this)
-        this.updateLevel = this.updateLevel.bind(this)
-        this.getCourses = this.getCourses.bind(this)
-        this.countCourses = this.countCourses.bind(this)
-        this.popupScrollTag = this.popupScrollTag.bind(this)
-        this.coursesList = props.data.allPrismicCourses.nodes
-        this.pageContent = props.data.prismicCourseMap.data
-        //console.log(props.data)
-    }
-
-    getCourses(level) {
-        var response = []
-        this.coursesList.map(
-            (course, i) =>
-                (!this.state.french ? true : this.state.french * course.data.french) &&
-                (!this.state.funded ? true : this.state.funded * course.data.moe_funded) &&
-                level === Levels.indexOf(course.data.level) &&
-                course.data.age.localeCompare(Ages[this.state.age]) === 0 &&
-                response.push(course.data)
-        )
-        //console.log(response);
-        return response
-    }
-
-    countCourses() {
-        var count = 0
-        for (var i = this.state.level; i < 6; i++) {
-            count += this.getCourses(i).length
-            //console.log("lvl:"+i+" total:"+count+" age:"+this.state.age+" fr:"+(this.state.french?"+":"-")+" fnd:"+(this.state.funded?"+":"-"))
-        }
-        return count
-    }
-
-    popupScrollTag() {
-        var count = this.countCourses()
-        this.setState({
-            filtered: count,
+    const courses = coursesList
+        .filter(({ data: course }) => {
+            if (state.french && !course.french) return false
+            if (state.funded && !course.moe_funded) return false
+            if (state.level > levels.indexOf(course.level)) return false
+            if (course.age.localeCompare(ages[state.age], undefined, { sensetivity: "base" }) !== 0) return false
+            return true
         })
-    }
+        .map((c) => c.data)
+        .sort((a, b) => levels.indexOf(a.level) - levels.indexOf(b.level))
 
-    /* this.setState is async */
-    updateLevel(level) {
-        this.setState({ level: level - 1 }, () => {
-            this.popupScrollTag()
-        })
-    }
+    const updateLevel = (level) => setState({ ...state, level: level - 1 })
+    const updateAge = (newAge) => setState({ ...state, age: newAge })
+    const updateFrench = () => setState({ ...state, french: !state.french })
+    const updateFunded = () => setState({ ...state, funded: !state.funded })
 
-    updateAge(newAge) {
-        if (this.state.age !== newAge) {
-            this.setState({ age: newAge }, () => {
-                this.popupScrollTag()
-            })
-        }
-    }
-    updateFrench() {
-        let newState = !this.state.french
-        this.setState({ french: newState }, () => {
-            this.popupScrollTag()
-        })
-    }
-    updateFunded() {
-        let newState = !this.state.funded
-        this.setState({ funded: newState }, () => {
-            this.popupScrollTag()
-        })
-    }
+    return (
+        <Layout location={location}>
+            <div className="spacer-top" />
+            <Hero title={pageContent.title.text} subheading={pageContent.subheading} />
 
-    render() {
-        return (
-            <Layout location={this.props.location}>
-                <div className="spacer-top" />
-                <Hero title={this.pageContent.title.text} subheading={this.pageContent.subheading} />
-
-                <div className="container">
-                    <div className="courses">
-                        <div className="filters">
-                            <form>
-                                <h4>
-                                    <FaFilter /> Filters
-                                </h4>
-                                <div
-                                    className={`counterPopup ${this.state.filtered > 0 ? "visible" : ""}`}
-                                    onClick={ScrollToList}
-                                >
-                                    <h3>{this.state.filtered}</h3>
-                                    <p>course(s) found</p>
-                                </div>
-                                <h5 className="age">
-                                    Age <RiInformationLine />
-                                    <div className="tooltip">
-                                        The age range of the audience, you would like the course to focus on
-                                    </div>
-                                </h5>
-                                <p>
-                                    <input
-                                        type="radio"
-                                        id="age0"
-                                        name="age"
-                                        value="age0"
-                                        onClick={() => this.updateAge(0)}
-                                        defaultChecked
-                                    />
-                                    <label htmlFor="age0">Universal</label>
-                                </p>
-                                <p>
-                                    <input
-                                        type="radio"
-                                        id="age1"
-                                        name="age"
-                                        onClick={() => this.updateAge(1)}
-                                        value="age1"
-                                    />
-                                    <label htmlFor="age1">Children</label>
-                                </p>
-                                <p>
-                                    <input
-                                        type="radio"
-                                        id="age2"
-                                        name="age"
-                                        onClick={() => this.updateAge(2)}
-                                        value="age2"
-                                    />
-                                    <label htmlFor="age2">Adolescents</label>
-                                </p>
-                                <p>
-                                    <input
-                                        type="radio"
-                                        id="age3"
-                                        name="age"
-                                        onClick={() => this.updateAge(3)}
-                                        value="age3"
-                                    />
-                                    <label htmlFor="age3">Adults</label>
-                                </p>
-                                <h5>Avaliable in French</h5>
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        id="language"
-                                        name="language"
-                                        value="language"
-                                        onChange={() => this.setState({ french: !this.state.french })}
-                                        onClick={() => this.updateFrench()}
-                                        checked={this.state.french}
-                                    />
-                                    <label htmlFor="language">Yes</label>
-                                </p>
-                                <h5>MOE Funded</h5>
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        id="funded"
-                                        name="funded"
-                                        value="funded"
-                                        onChange={() => this.setState({ funded: !this.state.funded })}
-                                        onClick={() => this.updateFunded()}
-                                        checked={this.state.funded}
-                                    />
-                                    <label htmlFor="funded">Yes</label>
-                                </p>
-                                <h5>Minimum level of education</h5>
-                                <Slider
-                                    min={1}
-                                    max={6}
-                                    className="slider"
-                                    defaultValue={1}
-                                    handle={handle}
-                                    onChange={this.updateLevel}
+            <div className="container">
+                <div className="courses">
+                    <div className="filters">
+                        <form>
+                            <h4>
+                                <FaFilter /> {filters_label}
+                            </h4>
+                            <h5 className="filter-label age">
+                                {age_label} <RiInformationLine />
+                                <div className="tooltip" dangerouslySetInnerHTML={{ __html: age_tooltip.html }} />
+                            </h5>
+                            {ages.map((age, index) => {
+                                return (
+                                    <p key={age}>
+                                        <input
+                                            type="radio"
+                                            id={`age-${index}`}
+                                            name="age"
+                                            onChange={() => updateAge(index)}
+                                            defaultChecked={index === 0}
+                                        />
+                                        <label htmlFor={`age-${index}`}>{age}</label>
+                                    </p>
+                                )
+                            })}
+                            <h5 className="filter-label">{availiable_in_french_label}</h5>
+                            <p className="filter-label">
+                                <input
+                                    type="checkbox"
+                                    id="language"
+                                    name="language"
+                                    onChange={() => updateFrench()}
+                                    checked={state.french}
                                 />
-                                {Levels.map((level, i) => (
-                                    <div
-                                        key={i}
-                                        className={`levels ${this.state.level === i ? "current" : ""}`}
-                                        id={`lvl${i}`}
-                                    >
-                                        {i + 1} - {level}
-                                    </div>
-                                ))}
-
-                                <div className="legend">
-                                    <div className="icon icon1">
-                                        <FaVideo />
-                                    </div>
-                                    <div>With Video</div>
-                                    <div className="icon icon2">FR</div> <div>Available in French</div>
-                                    <div className="icon icon3">
-                                        <RiStarFill />
-                                    </div>{" "}
-                                    <div>MOE-funded Courses</div>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="content">
-                            <div className="image">
-                                <img
-                                    src={this.pageContent.image.fluid.src}
-                                    srcSet={this.pageContent.image.fluid.srcSet}
-                                    width="100%"
-                                    height="200"
-                                    alt={this.pageContent.image.alt}
+                                <label htmlFor="language" className="capitalize">
+                                    {yes}
+                                </label>
+                            </p>
+                            <h5 className="filter-label">{moe_funded_label}</h5>
+                            <p className="filter-label">
+                                <input
+                                    type="checkbox"
+                                    id="funded"
+                                    name="funded"
+                                    onChange={() => updateFunded()}
+                                    checked={state.funded}
                                 />
-                            </div>
-                            <div className="padded">
-                                <Element name="courseblocks-anchor" />
-                                <div className="courseblocks">
-                                    {Levels.map(
-                                        (level, i) =>
-                                            this.getCourses(i).length > 0 &&
-                                            this.state.level <= i &&
-                                            this.getCourses(i).map((course, i) => (
-                                                <a key={i} href={course.link.url} className="courseblock">
-                                                    <h3>{course.course_name.text}</h3>
-                                                    <div className="status">
-                                                        {course.with_video && (
-                                                            <div className="icon icon1">
-                                                                <FaVideo />
-                                                            </div>
-                                                        )}
-                                                        {course.french && <div className="icon icon2">FR</div>}
-                                                        {course.moe_funded && (
-                                                            <div className="icon icon3">
-                                                                <RiStarFill />
-                                                            </div>
-                                                        )}
-                                                        <div className="level">
-                                                            Level {Levels.indexOf(course.level) + 1}
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            ))
-                                    )}
+                                <label htmlFor="funded" className="capitalize">
+                                    {yes}
+                                </label>
+                            </p>
+                            <h5 className="filter-label">{levels_label}</h5>
+                            <Slider
+                                min={1}
+                                max={6}
+                                className="slider"
+                                defaultValue={1}
+                                handle={handle}
+                                onChange={updateLevel}
+                            />
+                            {levels.map((level, i) => (
+                                <div key={i} className={`levels ${state.level === i ? "current" : ""}`} id={`lvl${i}`}>
+                                    {i + 1} - {level}
                                 </div>
+                            ))}
+
+                            <div className="legend">
+                                <div className="icon icon1">
+                                    <FaVideo />
+                                </div>
+                                <div>{video_recordings}</div>
+                                <div className="icon icon2">FR</div> <div>{availiable_in_french_label}</div>
+                                <div className="icon icon3">
+                                    <RiStarFill />
+                                </div>{" "}
+                                <div>{moe_funded_label}</div>
                             </div>
-                        </div>
-                        <div className="circle1" />
-                        <div className="circle2" />
+                        </form>
                     </div>
+                    <div className="content">
+                        <div className="image">
+                            <img
+                                src={pageContent.image.fluid.src}
+                                srcSet={pageContent.image.fluid.srcSet}
+                                width="100%"
+                                height="200"
+                                alt={pageContent.image.alt}
+                            />
+                        </div>
+                        <div className="padded">
+                            <Element name="courseblocks-anchor" />
+                                {courses.length === 0 && (
+                                    <div className="no-courses" dangerouslySetInnerHTML={{ __html: not_found.html }} />
+                                )}
+                            <div className="courseblocks">
+                                {courses.map((course, i) => {
+                                    return (
+                                        <a key={i} href={course.link.url} className="courseblock">
+                                            <h3>{course.course_name.text}</h3>
+                                            <div className="status">
+                                                {course.with_video && (
+                                                    <div className="icon icon1">
+                                                        <FaVideo />
+                                                    </div>
+                                                )}
+                                                {course.french && <div className="icon icon2">FR</div>}
+                                                {course.moe_funded && (
+                                                    <div className="icon icon3">
+                                                        <RiStarFill />
+                                                    </div>
+                                                )}
+                                                <div className="level">
+                                                    {level} {levels.indexOf(course.level) + 1}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="circle1" />
+                    <div className="circle2" />
                 </div>
-            </Layout>
-        )
-    }
+            </div>
+        </Layout>
+    )
 }
 
 export default CourseMap
-
-/*
-    {this.coursesList.map((course, i) => (
-        (!this.state.french ? true : (this.state.french*course.data.french) ) && 
-        (!this.state.funded ? true : (this.state.funded*course.data.moe_funded) ) &&
-        (this.state.level <= Levels.indexOf(course.data.level)) && 
-        course.data.age.localeCompare(Ages[this.state.age]) === 0 ? 
-            <div key={i} className="courseblock">
-                <h3>{course.data.course_name.text}</h3>
-                <div className="status">
-                    {course.data.with_video && 
-                        <div className="icon icon1"><FaVideo/></div>
-                    }
-                    {course.data.french && 
-                        <div className="icon icon2">FR</div>
-                    }
-                    {course.data.moe_funded && 
-                        <div className="icon icon3"><RiStarFill/></div>
-                    }
-                    <div className="level">Level {(Levels.indexOf(course.data.level)+1)}</div>
-                </div>
-            </div> 
-        : null
-    ))}
-*/
 
 export const courseMapQuery = graphql`
     query CourseMap {
@@ -342,7 +218,26 @@ export const courseMapQuery = graphql`
                     }
                     alt
                 }
-                keywords
+                ages {
+                    filter_age
+                }
+                age_tooltip {
+                    html
+                }
+                levels {
+                    filter_level
+                }
+                age_label
+                availiable_in_french_label
+                filters_label
+                levels_label
+                level
+                moe_funded_label
+                yes
+                video_recordings
+                not_found {
+                    html
+                }
             }
         }
         allPrismicCourses {

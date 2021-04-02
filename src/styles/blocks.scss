@@ -40,3 +40,7 @@
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 65px 35px;
 }
+
+.capitalize {
+    text-transform: capitalize;
+}
