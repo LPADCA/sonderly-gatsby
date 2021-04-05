@@ -35,7 +35,7 @@ const ContactPage = ({ data, location }) => {
         // .catch((error) => alert(error))
     }
     return (
-        <Layout location={location} className="contact-page">
+        <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <BgMedium className="bg-1" />
             <BgSmall className="bg-2" />
             <section className="container two-column">
@@ -94,6 +94,9 @@ export const query = graphql`
     query ContactQuery {
         prismicContactPage {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 page_title {
                     text
                 }

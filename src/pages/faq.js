@@ -22,7 +22,7 @@ const FAQPage = ({ data, location }) => {
     const [isAllOpen, setAllOpen] = useState(false)
     const { faq_list, title, description } = data.prismicFaqPage.data
     return (
-        <Layout location={location}>
+        <Layout location={location} {...Layout.pickSeoProps(data.prismicFaqPage.data)}>
             <div className="faq-header">
                 <h1>{title}</h1>
                 <div className="faq-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />
@@ -42,6 +42,9 @@ export const faqDetailQuery = graphql`
     query FaqQuery {
         prismicFaqPage {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 title
                 description {
                     html

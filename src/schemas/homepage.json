@@ -1,284 +1,280 @@
 {
-  "Main": {},
-  "Hero": {
-    "hero_slide": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "image": {
+    "Main": {},
+    "Hero": {
+        "hero_slide": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "image": {
+                        "type": "Image",
+                        "config": {
+                            "constraint": {},
+                            "thumbnails": [],
+                            "label": "Image"
+                        }
+                    },
+                    "title": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "heading1",
+                            "label": "Title"
+                        }
+                    },
+                    "description": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Description"
+                        }
+                    },
+                    "link": {
+                        "type": "Link",
+                        "config": {
+                            "allowTargetBlank": true,
+                            "label": "Button Link"
+                        }
+                    },
+                    "button_text": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Button text"
+                        }
+                    }
+                },
+                "label": "Slide"
+            }
+        }
+    },
+    "Stats": {
+        "stats_element": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "number": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Number"
+                        }
+                    },
+                    "description": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Text below"
+                        }
+                    }
+                },
+                "label": "Stats block"
+            }
+        }
+    },
+    "WhatWeDo": {
+        "wwd_image": {
             "type": "Image",
             "config": {
-              "constraint": {},
-              "thumbnails": [],
-              "label": "Image"
+                "constraint": {
+                    "width": null,
+                    "height": null
+                },
+                "thumbnails": [],
+                "label": "Side graphics"
             }
-          },
-          "title": {
+        },
+        "wwd_title": {
             "type": "StructuredText",
             "config": {
-              "single": "heading1",
-              "label": "Title"
+                "single": "heading2",
+                "label": "Title"
             }
-          },
-          "description": {
-            "type": "Text",
+        },
+        "wwd_text": {
+            "type": "StructuredText",
             "config": {
-              "label": "Description"
+                "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "allowTargetBlank": true,
+                "label": "Text"
             }
-          },
-          "link": {
+        },
+        "wwd_pros": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "value": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Text line"
+                        }
+                    }
+                },
+                "label": "Pros (list element)"
+            }
+        },
+        "wwd_primary_button_link": {
             "type": "Link",
             "config": {
-              "allowTargetBlank": true,
-              "label": "Button Link"
+                "allowTargetBlank": true,
+                "label": "Primary Button Link"
             }
-          },
-          "button_text": {
+        },
+        "wwd_primary_button_text": {
             "type": "Text",
             "config": {
-              "label": "Button text"
+                "label": "Primary Button Text"
             }
-          }
         },
-        "label": "Slide"
-      }
-    }
-  },
-  "Stats": {
-    "stats_element": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "number": {
-            "type": "Text",
-            "config": {
-              "label": "Number"
-            }
-          },
-          "description": {
-            "type": "Text",
-            "config": {
-              "label": "Text below"
-            }
-          }
-        },
-        "label": "Stats block"
-      }
-    }
-  },
-  "WhatWeDo": {
-    "wwd_image": {
-      "type": "Image",
-      "config": {
-        "constraint": {
-          "width": null,
-          "height": null
-        },
-        "thumbnails": [],
-        "label": "Side graphics"
-      }
-    },
-    "wwd_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Title"
-      }
-    },
-    "wwd_text": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-        "allowTargetBlank": true,
-        "label": "Text"
-      }
-    },
-    "wwd_pros": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "value": {
-            "type": "Text",
-            "config": {
-              "label": "Text line"
-            }
-          }
-        },
-        "label": "Pros (list element)"
-      }
-    },
-    "wwd_primary_button_link": {
-      "type": "Link",
-      "config": {
-        "allowTargetBlank": true,
-        "label": "Primary Button Link"
-      }
-    },
-    "wwd_primary_button_text": {
-      "type": "Text",
-      "config": {
-        "label": "Primary Button Text"
-      }
-    },
-    "wwd_secondary_button_link": {
-      "type": "Link",
-      "config": {
-        "allowTargetBlank": true,
-        "label": "Secondary Button Link"
-      }
-    },
-    "wwd_secondary_button_text": {
-      "type": "Text",
-      "config": {
-        "label": "Secondary Button Text"
-      }
-    }
-  },
-  "CoursesPreview": {
-    "cp_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Title"
-      }
-    },
-    "cp_description": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-        "allowTargetBlank": true,
-        "label": "Description"
-      }
-    },
-    "cp_card": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "cp_card_image": {
-            "type": "Image",
-            "config": {
-              "constraint": {},
-              "thumbnails": [],
-              "label": "Image"
-            }
-          },
-          "cp_card_title": {
-            "type": "StructuredText",
-            "config": {
-              "single": "heading3",
-              "label": "Title"
-            }
-          },
-          "cp_card_description": {
-            "type": "StructuredText",
-            "config": {
-              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-              "allowTargetBlank": true,
-              "label": "Description"
-            }
-          },
-          "cp_card_button_link": {
+        "wwd_secondary_button_link": {
             "type": "Link",
             "config": {
-              "allowTargetBlank": true,
-              "label": "Button Link"
+                "allowTargetBlank": true,
+                "label": "Secondary Button Link"
             }
-          },
-          "cp_card_button_text": {
+        },
+        "wwd_secondary_button_text": {
             "type": "Text",
             "config": {
-              "label": "Button Text"
+                "label": "Secondary Button Text"
             }
-          }
-        },
-        "label": "Card"
-      }
-    }
-  },
-  "WhoWeServe": {
-    "wws_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Title"
-      }
+        }
     },
-    "wws_client_type": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "wws_type_image": {
-            "type": "Image",
-            "config": {
-              "constraint": {},
-              "thumbnails": [],
-              "label": "Image"
-            }
-          },
-          "wws_type_title": {
+    "CoursesPreview": {
+        "cp_title": {
             "type": "StructuredText",
             "config": {
-              "single": "heading3",
-              "label": "Title"
+                "single": "heading2",
+                "label": "Title"
             }
-          }
         },
-        "label": "Client Type"
-      }
-    }
-  },
-  "Testimonials": {
-    "tmn_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Title"
-      }
-    },
-    "tmn_cards": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "tmn_card_author_icon": {
-            "type": "Image",
-            "config": {
-              "constraint": {},
-              "thumbnails": [],
-              "label": "Testimonial Author Icon"
-            }
-          },
-          "tmn_card_text": {
+        "cp_description": {
             "type": "StructuredText",
             "config": {
-              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-              "allowTargetBlank": true,
-              "label": "Testimonial"
+                "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "allowTargetBlank": true,
+                "label": "Description"
             }
-          },
-          "tnm_card_author_name": {
-            "type": "Text",
-            "config": {
-              "label": "Testimonial Author Name"
-            }
-          },
-          "tmn_card_author_position": {
-            "type": "Text",
-            "config": {
-              "label": "Tesimonial Author Position"
-            }
-          }
         },
-        "label": "Testimonial Cards"
-      }
+        "cp_card": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "cp_card_title": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "heading3",
+                            "label": "Title"
+                        }
+                    },
+                    "cp_card_description": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                            "allowTargetBlank": true,
+                            "label": "Description"
+                        }
+                    },
+                    "cp_card_button_link": {
+                        "type": "Link",
+                        "config": {
+                            "allowTargetBlank": true,
+                            "label": "Button Link"
+                        }
+                    },
+                    "cp_card_button_text": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Button Text"
+                        }
+                    }
+                },
+                "label": "Card"
+            }
+        }
+    },
+    "WhoWeServe": {
+        "wws_title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading2",
+                "label": "Title"
+            }
+        },
+        "wws_client_type": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "wws_type_image": {
+                        "type": "Image",
+                        "config": {
+                            "constraint": {},
+                            "thumbnails": [],
+                            "label": "Image"
+                        }
+                    },
+                    "wws_type_title": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "heading3",
+                            "label": "Title"
+                        }
+                    }
+                },
+                "label": "Client Type"
+            }
+        }
+    },
+    "Testimonials": {
+        "tmn_title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading2",
+                "label": "Title"
+            }
+        },
+        "tmn_cards": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "tmn_card_text": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                            "allowTargetBlank": true,
+                            "label": "Testimonial"
+                        }
+                    },
+                    "tnm_card_author_name": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Testimonial Author Name"
+                        }
+                    },
+                    "tmn_card_author_position": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Tesimonial Author Position"
+                        }
+                    }
+                },
+                "label": "Testimonial Cards"
+            }
+        }
+    },
+    "SEO": {
+        "seo_title": {
+            "type": "Text",
+            "config": {
+                "label": "Title (maximum 70 characters)"
+            }
+        },
+        "seo_description": {
+            "type": "Text",
+            "config": {
+                "label": "Description (50–160 characters)"
+            }
+        },
+        "seo_keywords": {
+            "type": "Text",
+            "config": {
+                "label": "Keywords",
+                "placeholder": "(list, separated with commas)"
+            }
+        }
     }
-  },
-  "SEO": {
-    "seo_keywords": {
-      "type": "Text",
-      "config": {
-        "label": "Keywords",
-        "placeholder": "(list, separated with commas)"
-      }
-    }
-  }
 }

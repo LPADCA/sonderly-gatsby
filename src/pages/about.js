@@ -38,7 +38,7 @@ const ManagementItem = ({ management_photo, management_name, management_descript
 const AboutPage = ({ data, location }) => {
     const { page_title, hero_image, page_description, management_team } = data.prismicAboutPage.data
     return (
-        <Layout location={location} className="about-page">
+        <Layout location={location} className="about-page" {...Layout.pickSeoProps(data.prismicAboutPage.data)}>
             <BgSmall className="bg-1" />
             <BgMedium className="bg-2" />
             <BgSmall className="bg-3" />
@@ -69,6 +69,9 @@ export const query = graphql`
     query AboutQuery {
         prismicAboutPage {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 hero_image {
                     fluid(maxWidth: 550, maxHeight: 550) {
                         ...GatsbyPrismicImageFluid_noBase64

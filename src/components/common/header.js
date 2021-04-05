@@ -131,7 +131,7 @@ const Lang = ({ currentUrl }) => {
     const url = `${locale_host}${currentUrl}`
     const flag = locale == null || locale === "en-us" ? "/images/french.svg" : "/images/english.svg"
     return (
-        <a href={url} className="lang">
+        <a href={url} className="lang" title="switch language">
             <img src={flag} width="22" height="22" />
         </a>
     )

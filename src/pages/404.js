@@ -7,11 +7,10 @@ import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import "@styles/pages/404.scss"
 
 const notFound404 = ({ location, data }) => {
-    console.log("data", data)
     const { hero_image, hero_description } = data.prismic404.data
     const img = getImageProps(hero_image)
     return (
-        <Layout className="not-found-page" location={location}>
+        <Layout className="not-found-page" location={location} {...Layout.pickSeoProps(data.prismic404.data)}>
             <BgBig className="bg-1" />
             <BgMedium className="bg-2 " />
             <div className="not-found-container">
@@ -30,6 +29,9 @@ export const query = graphql`
     query NotFound {
         prismic404 {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 hero_description {
                     html
                 }

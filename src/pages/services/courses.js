@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "@components/common/layout"
 import Hero from "@components/blocks/hero"
 import { FaFilter } from "react-icons/fa"
-import { RiContactsBookLine, RiInformationLine, RiStarFill } from "react-icons/ri"
+import { RiInformationLine, RiStarFill } from "react-icons/ri"
 import { FaVideo } from "react-icons/fa"
 import Slider, { SliderTooltip } from "rc-slider"
 import "rc-slider/assets/index.css"
@@ -67,7 +67,7 @@ const CourseMap = ({ data, location }) => {
     const updateFunded = () => setState({ ...state, funded: !state.funded })
 
     return (
-        <Layout location={location}>
+        <Layout location={location} {...Layout.pickSeoProps(pageContent)}>
             <div className="spacer-top" />
             <Hero title={pageContent.title.text} subheading={pageContent.subheading} />
 
@@ -162,9 +162,9 @@ const CourseMap = ({ data, location }) => {
                         </div>
                         <div className="padded">
                             <Element name="courseblocks-anchor" />
-                                {courses.length === 0 && (
-                                    <div className="no-courses" dangerouslySetInnerHTML={{ __html: not_found.html }} />
-                                )}
+                            {courses.length === 0 && (
+                                <div className="no-courses" dangerouslySetInnerHTML={{ __html: not_found.html }} />
+                            )}
                             <div className="courseblocks">
                                 {courses.map((course, i) => {
                                     return (
@@ -206,6 +206,9 @@ export const courseMapQuery = graphql`
     query CourseMap {
         prismicCourseMap {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 title {
                     text
                 }

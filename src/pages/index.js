@@ -13,7 +13,7 @@ import "@styles/pages/homepage.scss"
 
 const Homepage = ({ data, location }) => {
     return (
-        <Layout location={location}>
+        <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
             <Hero slides={data.prismicHomepage.data.hero_slide} />
             <Stats blocks={data.prismicHomepage.data.stats_element} />
             <WhatWeDo data={data.prismicHomepage.data} />
@@ -30,6 +30,9 @@ export const homepageQuery = graphql`
     query Homepage {
         prismicHomepage {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 hero_slide {
                     button_text
                     description
@@ -104,11 +107,6 @@ export const homepageQuery = graphql`
                     cp_card_title {
                         text
                     }
-                    cp_card_image {
-                        fluid(maxWidth: 1000, maxHeight: 800) {
-                            ...GatsbyPrismicImageFluid
-                        }
-                    }
                 }
                 wws_client_type {
                     wws_type_image {
@@ -131,11 +129,6 @@ export const homepageQuery = graphql`
                     tnm_card_author_name
                     tmn_card_text {
                         html
-                    }
-                    tmn_card_author_icon {
-                        fixed(width: 120) {
-                            ...GatsbyPrismicImageFixed
-                        }
                     }
                 }
             }

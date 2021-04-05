@@ -24,7 +24,7 @@ const CoursesPreview = ({ data }) => {
                                     __html: card.cp_card_description.html,
                                 }}
                             />
-                            {card.cp_card_button_link && (
+                            {card.cp_card_button_link && card.cp_card_button_link.url && (
                                 <a href={card.cp_card_button_link.url} target={card.cp_card_button_link.target}>
                                     {card.cp_card_button_text}
                                 </a>

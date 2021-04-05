@@ -12,7 +12,11 @@ const FundedTrainingPage = ({ data, location }) => {
     const { page_title, page_description, criterias, criteria_notes } = data.prismicFundedTraining.data
 
     return (
-        <Layout location={location} className="funded-training-page">
+        <Layout
+            location={location}
+            className="funded-training-page"
+            {...Layout.pickSeoProps(data.prismicFundedTraining.data)}
+        >
             <BgBig className="bg-1" />
             <BgSmall className="bg-2" />
             <BgSmall className="bg-3" />
@@ -57,6 +61,9 @@ export const query = graphql`
     query FundedTrainingPageQuery {
         prismicFundedTraining {
             data {
+                seo_title
+                seo_keywords
+                seo_description
                 criteria_notes {
                     html
                 }
