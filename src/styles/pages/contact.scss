@@ -82,6 +82,8 @@
     }
 
     .contact-form {
+        min-height: 240px;
+        height: 1px;
         label {
             margin-top: 8px;
             display: block;
@@ -101,4 +103,23 @@
             width: 100%;
         }
     }
+    
+    .success-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-direction: column;
+
+        .icon {
+            height: 100px;
+            width: 100px;
+            fill: $color2;
+        }
+        
+        .text {
+            margin-top: 20px;
+        }
+    }
+    
 }

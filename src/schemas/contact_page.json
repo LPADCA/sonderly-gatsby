@@ -26,11 +26,23 @@
       }
     },
     "Contacts" : {
+      "address_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Contact address label"
+        }
+      },
       "contact_address" : {
         "type" : "Text",
         "config" : {
           "label" : "Contact Address",
           "placeholder" : "112 Merton Street, Toronto, Ontario, Canada M4S 2Z8"
+        }
+      },
+      "email_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Email Label"
         }
       },
       "email" : {
@@ -40,6 +52,12 @@
           "placeholder" : "contactus@sonderly.io"
         }
       },
+      "phone_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Phone label"
+        }
+      },
       "phone" : {
         "type" : "Text",
         "config" : {
@@ -47,15 +65,57 @@
           "placeholder" : "416-640-9459"
         }
       },
+      "other_phone_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Other Phone Label"
+        }
+      },
       "north_america_phone" : {
         "type" : "Text",
         "config" : {
-          "label" : "North America Phone",
+          "label" : "Other Phone",
           "placeholder" : "1-888-905-0655"
+        }
+      },
+      "form_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Form title"
+        }
+      },
+      "form_name_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Form name label"
+        }
+      },
+      "form_email_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Form email label"
+        }
+      },
+      "form_message_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Form message label"
+        }
+      },
+      "form_submit" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Form Submit"
+        }
+      },
+      "success_message" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Success Message"
         }
       }
     },
-      "SEO" : {
+    "SEO" : {
       "seo_title" : {
         "type" : "Text",
         "config" : {

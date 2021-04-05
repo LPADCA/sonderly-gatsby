@@ -75,9 +75,14 @@ button {
     transition: $default-transition;
     text-decoration: none;
     font-weight: 600;
-    &:hover {
+
+    &:hover:not(:disabled) {
         background-color: $hover-green;
         color: white;
+    }
+
+    &:disabled {
+        background-color: $color7;
     }
 }
 

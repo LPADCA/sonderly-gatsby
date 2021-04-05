@@ -6,6 +6,11 @@ require("dotenv").config({
 const linkResolver = require("./src/utils/linkResolver")
 
 module.exports = {
+    siteMetadata: {
+        title: "Sonderly",
+        description:
+            "An educational and training platform for professionals and educators seeking to learn more about autism and mental health.",
+    },
     plugins: [
         "gatsby-plugin-image",
         "gatsby-transformer-sharp",
@@ -14,7 +19,7 @@ module.exports = {
             options: {
                 defaults: {
                     quality: 100,
-                    backgroundColor: "transparent"
+                    backgroundColor: "transparent",
                 },
             },
         },
@@ -57,6 +62,6 @@ module.exports = {
                     removeViewBox: false,
                 },
             },
-        }
+        },
     ],
 }

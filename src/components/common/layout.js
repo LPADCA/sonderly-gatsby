@@ -1,6 +1,6 @@
-import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 import "@styles/sonderly.scss"
 import "@styles/header.scss"
 
@@ -8,7 +8,20 @@ import Header from "./header"
 import Footer from "./footer"
 
 const Layout = ({ location, children, seo_title, seo_description, seo_keywords, ...props }) => {
-    const title = seo_title || "Sonderly"
+    const { site } = useStaticQuery(graphql`
+        query SeoQuery {
+            site {
+                siteMetadata {
+                    description
+                    title
+                }
+            }
+        }
+    `)
+
+    const title = seo_title || site.siteMetadata.title
+    const description = seo_description || site.siteMetadata.description
+    const keywords = seo_keywords || ""
     return (
         <>
             <Helmet
@@ -23,11 +36,11 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                 <meta httpEquiv="pragma" content="no-cache" />
 
                 <title>{title}</title>
-                <meta name="description" content={seo_description} />
-                <meta name="keywords" content={seo_keywords} />
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
                 <meta property="og:image" content="/images/og.jpg" />
                 <meta property="og:title" content={title} />
-                <meta property="og:description" content={seo_description} />
+                <meta property="og:description" content={description} />
                 <meta property="og:locale" content={process.env.GATSBY_LOCALE} />
                 <link
                     href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,600i,700,700i&display=swap"

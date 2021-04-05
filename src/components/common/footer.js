@@ -35,17 +35,17 @@ const Footer = () => {
                         <div className="cell right">
                             <ul>
                                 <li>
-                                    <a href="https://www.facebook.com/sonderly.io/" title="facebook" target="_blank">
+                                    <a href="https://www.facebook.com/sonderly.io/" title="Facebook" target="_blank">
                                         <FiFacebook />
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/sonderlyio" title="twitter" target="_blank">
+                                    <a href="https://twitter.com/sonderlyio" title="Twitter" target="_blank">
                                         <FiTwitter />
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/sonderly.io/" title="instagram" target="_blank">
+                                    <a href="https://www.instagram.com/sonderly.io/" title="Instagram" target="_blank">
                                         <FiInstagram />
                                     </a>
                                 </li>
