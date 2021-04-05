@@ -26,7 +26,7 @@
         display: grid;
         height: $header-height;
         margin-right: -15px;
-        grid-template-columns: minmax(10px, max-content) auto 120px 32px 0;
+        grid-template-columns: minmax(10px, max-content) auto minmax(120px, max-content) 32px 0;
         gap: 10px;
         justify-items: center;
         align-items: center;
@@ -187,7 +187,7 @@
 @media (max-width: $desktop-edge) {
     .header {
         .desktop {
-            grid-template-columns: minmax(10px, max-content) auto 90px 30px 50px;
+            grid-template-columns: minmax(10px, max-content) auto minmax(120px, max-content) 32px 50px;
             .logo {
                 min-width: 40px;
             }
