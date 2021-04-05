@@ -10,7 +10,7 @@ const linkResolver = (doc) => {
     // URL for a page type
     if (doc.type === "page") {
         //console.log(`/blog/${doc.uid}`)
-        return `/blog/${doc.uid}`
+        return `/${doc.uid}`
     }
 
     if (doc.type === "funded_training") {

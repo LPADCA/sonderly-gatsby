@@ -1,10 +1,31 @@
-import React from "react"
-import { Link } from "gatsby"
+import CommonLink from "@components/common-link"
+import { useStaticQuery, graphql } from "gatsby"
 import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi"
 
 import "@styles/footer.scss"
 
 const Footer = () => {
+    const data = useStaticQuery(graphql`
+        query FooterQuery {
+            prismicMenuPrimary {
+                data {
+                    footer_links {
+                        footer_link {
+                            target
+                            url
+                            link_type
+                        }
+                        footer_link_label
+                    }
+                    footer_contacts {
+                        html
+                    }
+                }
+            }
+        }
+    `)
+
+    const { footer_links, footer_contacts } = data.prismicMenuPrimary.data
     const year = new Date().getFullYear()
     return (
         <>
@@ -18,19 +39,7 @@ const Footer = () => {
                                 srcSet="/images/logo-footer@2x.png 2x"
                                 alt="Sonderly logo (footer)"
                             />
-
-                            <p className="phonemail">
-                                <a href="mailto:contactus@sonderly.io">contactus@sonderly.io</a>
-                                <br />
-                                +1 (416) 640 9459
-                            </p>
-                            <p className="address">
-                                112 Merton Street
-                                <br />
-                                Toronto, Ontario, M4S-2Z8
-                                <br />
-                                <a href="#">View on map</a>
-                            </p>
+                            <div dangerouslySetInnerHTML={{ __html: footer_contacts.html }}></div>
                         </div>
                         <div className="cell right">
                             <ul>
@@ -67,18 +76,15 @@ const Footer = () => {
                         </div>
                         <div className="cell right">
                             <ul>
-                                <li>
-                                    <Link to="/">Privacy Policy</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Refund Policy</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Terms of Use</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Course Info Sheet</Link>
-                                </li>
+                                {footer_links.map((i) => {
+                                    return (
+                                        <li key={i.footer_link.url}>
+                                            <CommonLink type={i.footer_link.link_type} to={i.footer_link.url}>
+                                                {i.footer_link_label}
+                                            </CommonLink>
+                                        </li>
+                                    )
+                                })}
                             </ul>
                         </div>
                     </div>

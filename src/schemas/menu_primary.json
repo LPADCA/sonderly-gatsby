@@ -8,13 +8,6 @@
           "placeholder" : "Top (primary) menu"
         }
       },
-      "test_link" : {
-        "type" : "Link",
-        "config" : {
-          "allowTargetBlank" : true,
-          "label" : "test_link"
-        }
-      },
       "login_link" : {
         "type" : "Link",
         "config" : {
@@ -78,6 +71,36 @@
               }
             }
           }
+        }
+      }
+    },
+    "Footer" : {
+      "footer_contacts" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "label" : "Footer contacts"
+        }
+      },
+      "footer_links" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "footer_link_label" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Footer link label"
+              }
+            },
+            "footer_link" : {
+              "type" : "Link",
+              "config" : {
+                "label" : "Footer link",
+                "allowTargetBlank" : true
+              }
+            }
+          },
+          "label" : "Footer links"
         }
       }
     }

@@ -1,0 +1,22 @@
+@import "../settings.scss";
+
+.custom-page {
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 100px;
+    
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .bg-1 {
+        top: -30px;
+        left: -84px;
+    }
+
+    .bg-2 {
+        top: 600px;
+        right: -75px;
+    }
+}

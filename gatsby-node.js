@@ -14,14 +14,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     })
 }
 
-exports.onCreateNode = ({ node, actions }) => {
-    const { createNode, createNodeField } = actions
-    //console.log("===============NODE===============");
-    //console.log(node);
-    // Transform the new node here and create a new node or
-    // create a new node field.
-}
-
 const wrapper = (promise) =>
     promise.then((result) => {
         if (result.errors) {
@@ -33,7 +25,7 @@ const wrapper = (promise) =>
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
 
-    const blogResult = await wrapper(
+    const customPagesResult = await wrapper(
         graphql(`
             {
                 allPrismicPage {
@@ -47,13 +39,12 @@ exports.createPages = async ({ graphql, actions }) => {
         `)
     )
 
-    const blogList = blogResult.data.allPrismicPage.edges
+    const blogList = customPagesResult.data.allPrismicPage.edges
 
     blogList.forEach((edge) => {
         createPage({
             type: "page",
-            match: `/blog/:uid`,
-            path: `/blog/${edge.node.uid}`,
+            path: `/${edge.node.uid}`,
             component: path.resolve("src/templates/page.js"),
             context: {
                 uid: `${edge.node.uid}`,
