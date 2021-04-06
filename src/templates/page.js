@@ -22,8 +22,8 @@ const Page = ({ location, data }) => {
 export default Page
 
 export const query = graphql`
-    query PageQuery {
-        prismicPage {
+    query PageQuery($uid: String) {
+        prismicPage(uid: { eq: $uid }) {
             data {
                 title {
                     html

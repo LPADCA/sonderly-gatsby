@@ -39,9 +39,9 @@ exports.createPages = async ({ graphql, actions }) => {
         `)
     )
 
-    const blogList = customPagesResult.data.allPrismicPage.edges
+    const customPagesList = customPagesResult.data.allPrismicPage.edges
 
-    blogList.forEach((edge) => {
+    customPagesList.forEach((edge) => {
         createPage({
             type: "page",
             path: `/${edge.node.uid}`,
