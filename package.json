@@ -15,7 +15,9 @@
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
     "gatsby": "^3.1.1",
+    "gatsby-plugin-google-gtag": "^3.2.0",
     "gatsby-plugin-image": "^1.1.1",
+    "gatsby-plugin-manifest": "^3.2.0",
     "gatsby-plugin-sass": "^3.2.0",
     "gatsby-plugin-sharp": "^3.1.1",
     "gatsby-plugin-svgr": "^3.0.0-beta.0",

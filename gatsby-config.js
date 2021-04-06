@@ -3,8 +3,9 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 */
+require("dotenv").config()
 const linkResolver = require("./src/utils/linkResolver")
-
+console.log(" process.env.", process.env.PRISMIC_TOKEN)
 module.exports = {
     siteMetadata: {
         title: "Sonderly",
@@ -28,7 +29,7 @@ module.exports = {
             resolve: `gatsby-source-prismic`,
             options: {
                 repositoryName: `sonderly`,
-                accessToken: `MC5ZQ1FqMXhJQUFDSUFSOU5C.XO-_vSpY77-977-9IWfvv70wUzHvv71AP1tbDQ3vv73vv73vv73vv71BKk4LNz9g77-9ag`,
+                accessToken: process.env.PRISMIC_TOKEN,
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
                 linkResolver: () => (doc) => linkResolver(doc),
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
@@ -55,12 +56,30 @@ module.exports = {
             },
         },
         {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                // You can add multiple tracking ids and a pageview event will be fired for all of them.
+                trackingIds: [process.env.GOOGLE_ID],
+            },
+        },
+        {
             resolve: "gatsby-plugin-svgr",
             options: {
                 svgo: true,
                 svgoConfig: {
                     removeViewBox: false,
                 },
+            },
+        },
+        {
+            resolve: "gatsby-plugin-manifest",
+            options: {
+                name: "Sonderly",
+                short_name: "Sonderly",
+                start_url: "/",
+                background_color: "$color1",
+                display: "minimal-ui",
+                icon: "src/assets/icons/logo.png",
             },
         },
     ],
