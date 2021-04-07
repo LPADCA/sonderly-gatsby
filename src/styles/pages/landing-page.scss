@@ -1,0 +1,79 @@
+@import "../settings.scss";
+
+.landing-page {
+    position: relative;
+    overflow-x: hidden;
+
+    .landing-header {
+        margin-top: $header-height;
+        background: $default-gradient;
+        padding: 50px 0;
+        text-align: center;
+        color: $text-color-invert;
+
+        & > * {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        & > h2 {
+            max-width: 640px;
+        }
+
+        &-description {
+            max-width: 850px;
+        }
+    }
+    
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .bg-1 {
+        top: 250px;
+        left: -84px;
+    }
+
+    .bg-2 {
+        top: 600px;
+        right: -75px;
+    }
+
+    .bg-3 {
+        top: 1507px;
+        left: 64px;
+    }
+
+    .card-grid {
+        grid-template-rows: 1fr auto;
+        gap: 35px;
+    }
+
+    .landing-content {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .card {
+        break-inside: avoid;
+        transform: translateZ(0); // hack, shadow crops because of columns prop
+        position: relative;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 20px;
+        overflow: hidden;
+
+        &-image {
+            width: 100%;
+            height: 300px;
+
+            object-fit: cover;
+        }
+
+        &-content {
+            padding: 0 30px 20px;
+        }
+    }
+    
+
+}

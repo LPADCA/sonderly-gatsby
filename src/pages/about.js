@@ -16,7 +16,7 @@ const ManagementItem = ({ management_photo, management_name, management_descript
         <div key={management_name} className="card">
             <div>
                 <div className="management-photo" style={{ backgroundColor: photo_bg_color }}>
-                    <img {...management_photo.fixed} {...management_photo.dimensions} />
+                    <img {...management_photo.fixed} {...management_photo.dimensions} alt={management_photo.alt} />
                 </div>
                 <div className="management-content">
                     <h3>{management_name}</h3>
@@ -46,7 +46,7 @@ const AboutPage = ({ data, location }) => {
             <BgSmall className="bg-5" />
             <section className="container two-column">
                 <div>
-                    <img {...hero_image.fluid} {...hero_image.dimensions} />
+                    <img {...hero_image.fluid} {...hero_image.dimensions} alt={hero_image.alt} />
                 </div>
                 <div className="hero-description">
                     <h1>{page_title.text}</h1>
@@ -76,6 +76,7 @@ export const query = graphql`
                     fluid(maxWidth: 550, maxHeight: 550) {
                         ...GatsbyPrismicImageFluid_noBase64
                     }
+                    alt
                     dimensions {
                         height
                         width
@@ -95,6 +96,7 @@ export const query = graphql`
                             height
                             width
                         }
+                        alt
                     }
                 }
                 page_description {

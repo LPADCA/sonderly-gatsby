@@ -5,7 +5,7 @@ require("dotenv").config({
 */
 require("dotenv").config()
 const linkResolver = require("./src/utils/linkResolver")
-console.log(" process.env.", process.env.PRISMIC_TOKEN)
+
 module.exports = {
     siteMetadata: {
         title: "Sonderly",
@@ -44,6 +44,7 @@ module.exports = {
                     faq_page: require("./src/schemas/faq_page.json"),
                     funded_training: require("./src/schemas/funded_training_page.json"),
                     about_page: require("./src/schemas/about_page.json"),
+                    landing_page: require("./src/schemas/landing_page.json"),
                     404: require("./src/schemas/404.json"),
                     // Your custom types mapped to schemas
                 },

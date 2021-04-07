@@ -28,13 +28,15 @@ const WhatWeDo = ({ data }) => {
                                     ))}
                                 </ul>
                             )}
-                            <a
-                                className="button"
-                                href={data.wwd_primary_button_link.url}
-                                target={data.wwd_primary_button_link.target}
-                            >
-                                {data.wwd_primary_button_text}
-                            </a>
+                            {data.wwd_primary_button_text && (
+                                <a
+                                    className="button"
+                                    href={data.wwd_primary_button_link.url}
+                                    target={data.wwd_primary_button_link.target}
+                                >
+                                    {data.wwd_primary_button_text}
+                                </a>
+                            )}
                             &nbsp;
                             {data.wwd_secondary_button_text && (
                                 <a
