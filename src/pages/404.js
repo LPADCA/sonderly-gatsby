@@ -8,7 +8,7 @@ import "@styles/pages/404.scss"
 
 const notFound404 = ({ location, data }) => {
     useEffect(() => {
-        if (document.referrer.indexOf(process.env.GATSBY_LOCALE) !== -1) {
+        if (document.referrer.indexOf(process.env.GATSBY_LOCALE_LINK) !== -1) {
             navigate("/")
         }
     }, [])
