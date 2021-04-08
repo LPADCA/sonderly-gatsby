@@ -7,7 +7,7 @@ import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
 import "@styles/pages/landing-page.scss"
 
-const CourseCard = ({ course_title, course_description, course_image }) => {
+const CourseCard = ({ course_title, course_description, course_image, course_link_text, course_link }) => {
     const img = getImageProps(course_image)
     return (
         <div className="card">
@@ -15,6 +15,11 @@ const CourseCard = ({ course_title, course_description, course_image }) => {
             <div className="card-content">
                 <div dangerouslySetInnerHTML={{ __html: course_title.html }}></div>
                 <div dangerouslySetInnerHTML={{ __html: course_description.html }}></div>
+                {course_link_text && (
+                    <a className="button" href={course_link.url} target={course_link.target}>
+                        {course_link_text}
+                    </a>
+                )}
             </div>
         </div>
     )
@@ -33,8 +38,8 @@ const LandingPage = ({ location, data }) => {
             </div>
             <div>
                 <div className="landing-content container card-grid">
-                    {courses.map((course) => {
-                        return <CourseCard key={course.course_title} {...course} />
+                    {courses.map((course, i) => {
+                        return <CourseCard key={i} {...course} />
                     })}
                 </div>
             </div>
@@ -65,6 +70,11 @@ export const query = graphql`
                             width
                         }
                     }
+                    course_link {
+                        target
+                        url
+                    }
+                    course_link_text
                 }
                 description {
                     html

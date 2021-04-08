@@ -1,6 +1,6 @@
 // Navbar.js
 
-import React from "react"
+import React, { useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import CommonLink from "@components/common-link"
 
