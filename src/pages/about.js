@@ -9,7 +9,7 @@ import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
 
 import "@styles/pages/about.scss"
 
-const ManagementItem = ({ management_photo, management_name, management_description, photo_bg_color }) => {
+const ManagementItem = ({ management_photo, management_name, management_description, photo_bg_color, button_text }) => {
     const [isOpen, setOpen] = useState(false)
     const onClick = () => setOpen(!isOpen)
     return (
@@ -27,7 +27,7 @@ const ManagementItem = ({ management_photo, management_name, management_descript
                         ></div>
                     </AnimateHeight>
                     <button className="button" onClick={onClick}>
-                        read more
+                        {button_text}
                     </button>
                 </div>
             </div>
@@ -36,7 +36,14 @@ const ManagementItem = ({ management_photo, management_name, management_descript
 }
 
 const AboutPage = ({ data, location }) => {
-    const { page_title, hero_image, page_description, management_team } = data.prismicAboutPage.data
+    const {
+        page_title,
+        hero_image,
+        page_description,
+        management_team,
+        button_text,
+        section_name,
+    } = data.prismicAboutPage.data
     return (
         <Layout location={location} className="about-page" {...Layout.pickSeoProps(data.prismicAboutPage.data)}>
             <BgSmall className="bg-1" />
@@ -54,10 +61,10 @@ const AboutPage = ({ data, location }) => {
                 </div>
             </section>
             <section className="container management-team">
-                <h2>Management Team</h2>
+                <h2>{section_name}</h2>
                 <div className="management-cards">
                     {management_team.map((item) => (
-                        <ManagementItem key={item.management_name} {...item} />
+                        <ManagementItem key={item.management_name} {...item} button_text={button_text} />
                     ))}
                 </div>
             </section>
@@ -72,6 +79,8 @@ export const query = graphql`
                 seo_title
                 seo_keywords
                 seo_description
+                section_name
+                button_text
                 hero_image {
                     fluid(maxWidth: 550, maxHeight: 550) {
                         ...GatsbyPrismicImageFluid_noBase64

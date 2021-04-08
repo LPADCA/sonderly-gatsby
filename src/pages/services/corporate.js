@@ -1,13 +1,9 @@
 import { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
-import Scroll from "react-scroll"
 import CommonLink from "@components/common-link"
 
 import "@styles/pages/services/corporate.scss"
-
-const Element = Scroll.Element
-const scroller = Scroll.scroller
 
 const ServicesCorporate = ({ data, location }) => {
     const [activeSlide, setActiveSlide] = useState(0)
@@ -15,12 +11,6 @@ const ServicesCorporate = ({ data, location }) => {
 
     const changeSlide = (id) => {
         setActiveSlide(id)
-        scroller.scrollTo("preview-wrapper", {
-            duration: 500,
-            delay: 50,
-            smooth: true,
-            offset: -80, // Scrolls to element + 50 pixels down the page
-        })
     }
 
     return (
@@ -70,7 +60,6 @@ const ServicesCorporate = ({ data, location }) => {
             </div>
             <div className="trainings container">
                 <h2 className="centered underline">{pageData.trainings_title.text}</h2>
-                <Element name="preview-wrapper" />
                 <ul>
                     {pageData.trainings_list.map((item, i) => (
                         <li key={i} className={i === activeSlide ? "active" : ""} onClick={() => changeSlide(i)}>

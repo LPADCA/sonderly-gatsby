@@ -33,6 +33,12 @@
           "label": "Section Name"
         }
       },
+      "button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Button text"
+        }
+      },
       "management_team": {
         "type": "Group",
         "config": {
