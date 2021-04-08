@@ -29,12 +29,12 @@ const LandingPage = ({ location, data }) => {
     const { title, description, courses } = data.prismicLandingPage.data
     return (
         <Layout className="landing-page" location={location} {...Layout.pickSeoProps(data.prismicLandingPage.data)}>
-            <BgBig className="bg-1" />
             <BgMedium className="bg-2" />
             <BgSmall className="bg-3" />
             <div className="landing-header">
                 <div className="landing-header-title" dangerouslySetInnerHTML={{ __html: title.html }} />
                 <div className="landing-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />
+                <BgBig className="bg-1" />
             </div>
             <div>
                 <div className="landing-content container card-grid">

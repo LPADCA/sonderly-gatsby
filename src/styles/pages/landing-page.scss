@@ -7,9 +7,10 @@
     .landing-header {
         margin-top: $header-height;
         background: $default-gradient;
-        padding: 50px 0;
+        padding: 50px 20px;
         text-align: center;
         color: $text-color-invert;
+        position: relative;
 
         & > * {
             margin-left: auto;
@@ -25,13 +26,13 @@
         }
     }
     
-    & > svg {
+    & svg {
         position: absolute;
         z-index: -1;
     }
 
     .bg-1 {
-        top: 250px;
+        bottom: -125px;
         left: -84px;
     }
 

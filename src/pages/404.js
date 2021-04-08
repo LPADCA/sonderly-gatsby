@@ -1,12 +1,17 @@
-import React from "react"
+import { useEffect } from "react"
 import Layout from "@components/common/layout.js"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { getImageProps } from "@utils/getImageProps"
 import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
 import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import "@styles/pages/404.scss"
 
 const notFound404 = ({ location, data }) => {
+    useEffect(() => {
+        if (document.referrer.indexOf(process.env.GATSBY_LOCALE) !== -1) {
+            navigate("/")
+        }
+    }, [])
     const { hero_image, hero_description } = data.prismic404.data
     const img = getImageProps(hero_image)
     return (

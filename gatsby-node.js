@@ -63,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
     if (prismicLandingPage) {
         createPage({
             type: "page",
-            path: `/landing-page`,
+            path: `/get-certification`,
             component: path.resolve("src/templates/landing-page.js"),
         })
     }
