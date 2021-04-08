@@ -27,6 +27,7 @@
     .hero-image {
         padding: 0 40px;
         margin-bottom: 50px;
+        justify-content: flex-start;
     }
 
     .form-card {
@@ -83,19 +84,21 @@
 
     .contact-form {
         min-height: 240px;
-        height: 1px;
+
         label {
             margin-top: 8px;
             display: block;
             font-size: 14px;
         }
 
-        input {
+        input, textarea {
             border: none;
             border-bottom: 1px solid $border-gray;
             width: 100%;
             font-size: 15px;
-            height: 30px;
+            min-height: 30px;
+            resize: none;
+            padding: 5px;
         }
 
         .button {
@@ -109,6 +112,7 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        min-height: inherit;
         flex-direction: column;
 
         .icon {

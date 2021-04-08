@@ -9,25 +9,45 @@ import { FaCheckCircle } from "react-icons/fa"
 
 import "@styles/pages/contact.scss"
 
-const FormContent = ({ form_email_label, form_message_label, form_name_label, form_submit, disabled }) => (
-    <>
-        <div>
-            <label htmlFor="name">{form_name_label}</label>
-            <input id="name" name="name"></input>
-        </div>
-        <div>
-            <label htmlFor="email">{form_email_label}</label>
-            <input id="email" name="email"></input>
-        </div>
-        <div>
-            <label htmlFor="message">{form_message_label}</label>
-            <input id="message" name="message"></input>
-        </div>
-        <button className="button" disabled={disabled}>
-            {form_submit}
-        </button>
-    </>
-)
+const FormContent = ({
+    form_email_label,
+    form_message_label,
+    form_name_label,
+    form_submit,
+    disabled,
+    emailField,
+    setEmail,
+    nameField,
+    setName,
+    messageField,
+    setMessage,
+}) => {
+    return (
+        <>
+            <div>
+                <label htmlFor="name">{form_name_label}</label>
+                <input id="name" name="name" value={nameField} onChange={(e) => setName(e.target.value)}></input>
+            </div>
+            <div>
+                <label htmlFor="email">{form_email_label}</label>
+                <input id="email" name="email" value={emailField} onChange={(e) => setEmail(e.target.value)}></input>
+            </div>
+            <div>
+                <label htmlFor="message">{form_message_label}</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    value={messageField}
+                    onChange={(e) => setMessage(e.target.value)}
+                    rows={messageField.split("\n").length}
+                ></textarea>
+            </div>
+            <button className="button" disabled={disabled}>
+                {form_submit}
+            </button>
+        </>
+    )
+}
 
 const FormSuccess = ({ children }) => {
     return (
@@ -40,6 +60,9 @@ const FormSuccess = ({ children }) => {
 
 const ContactPage = ({ data, location }) => {
     const [isSubmited, setSubmit] = useState(false)
+    const [nameField, setName] = useState("")
+    const [emailField, setEmail] = useState("")
+    const [messageField, setMessage] = useState("")
     const [inProcess, setProcess] = useState(false)
     const {
         hero_image,
@@ -61,15 +84,17 @@ const ContactPage = ({ data, location }) => {
         success_message,
     } = data.prismicContactPage.data
 
+    const enabled = nameField.length > 0 && emailField.includes("@") && messageField.length > 0 && !inProcess
+
     const onSubmit = (e) => {
         e.preventDefault()
         setProcess(true)
-        const form = e.target
-        const formData = new FormData(form)
-        const object = {}
-        formData.forEach((value, key) => {
-            object[key] = value
-        })
+
+        const object = {
+            name: nameField,
+            email: emailField,
+            message: messageField,
+        }
         fetch("https://submit-form.com/BazGy6gL", {
             method: "POST",
             headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -117,20 +142,26 @@ const ContactPage = ({ data, location }) => {
                                 />
                             </div>
                             <h2>{form_title}</h2>
-                            <form className="contact-form" method="POST" onSubmit={onSubmit}>
-                                {isSubmited ? (
-                                    <FormSuccess>{success_message}</FormSuccess>
-                                ) : (
-                                    <FormContent
-                                        form_email_label={form_email_label}
-                                        form_message_label={form_message_label}
-                                        form_name_label={form_name_label}
-                                        form_submit={form_submit}
-                                        disabled={inProcess}
-                                    />
-                                )}
-                            </form>
                         </address>
+                        <form className="contact-form" method="POST" onSubmit={onSubmit}>
+                            {isSubmited ? (
+                                <FormSuccess>{success_message}</FormSuccess>
+                            ) : (
+                                <FormContent
+                                    form_email_label={form_email_label}
+                                    form_message_label={form_message_label}
+                                    form_name_label={form_name_label}
+                                    form_submit={form_submit}
+                                    emailField={emailField}
+                                    nameField={nameField}
+                                    messageField={messageField}
+                                    setEmail={setEmail}
+                                    setMessage={setMessage}
+                                    setName={setName}
+                                    disabled={!enabled}
+                                />
+                            )}
+                        </form>
                     </div>
                 </div>
             </section>
