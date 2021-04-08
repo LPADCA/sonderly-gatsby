@@ -35,11 +35,19 @@ exports.createPages = async ({ graphql, actions }) => {
                         }
                     }
                 }
+                prismicLandingPage {
+                    lang
+                }
+                prismicFundedTraining {
+                    lang
+                }
             }
         `)
     )
 
     const customPagesList = customPagesResult.data.allPrismicPage.edges
+    const prismicLandingPage = customPagesResult.data.prismicLandingPage
+    const prismicFundedTraining = customPagesResult.data.prismicFundedTraining
 
     customPagesList.forEach((edge) => {
         createPage({
@@ -51,4 +59,19 @@ exports.createPages = async ({ graphql, actions }) => {
             },
         })
     })
+
+    if (prismicLandingPage) {
+        createPage({
+            type: "page",
+            path: `/landing-page`,
+            component: path.resolve("src/templates/landing-page.js"),
+        })
+    }
+    if (prismicFundedTraining) {
+        createPage({
+            type: "page",
+            path: `/services/funded-training`,
+            component: path.resolve("src/templates/services/funded-training.js"),
+        })
+    }
 }
