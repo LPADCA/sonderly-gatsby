@@ -1,138 +1,150 @@
 {
-    "Main" : {
-      "page_title" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-          "label" : "Page title"
+    "Main": {
+      "page_title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+          "label": "Page title"
         }
       },
-      "page_description" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "label" : "Page description"
+      "page_description": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "label": "Page description"
         }
       },
-      "hero_image" : {
-        "type" : "Image",
-        "config" : {
-          "constraint" : {
-            "width" : 550
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "constraint": {
+            "width": 550
           },
-          "thumbnails" : [ ],
-          "label" : "Hero Image"
+          "thumbnails": [],
+          "label": "Hero Image"
         }
       }
     },
-    "Contacts" : {
-      "address_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Contact address label"
+    "Contacts": {
+      "address_title": {
+        "type": "Text",
+        "config": {
+          "label": "Address title"
         }
       },
-      "contact_address" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Contact Address",
-          "placeholder" : "112 Merton Street, Toronto, Ontario, Canada M4S 2Z8"
+      "address_label": {
+        "type": "Text",
+        "config": {
+          "label": "Contact address label"
         }
       },
-      "email_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Email Label"
+      "contact_address": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Address",
+          "placeholder": "112 Merton Street, Toronto, Ontario, Canada M4S 2Z8"
         }
       },
-      "email" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Email",
-          "placeholder" : "contactus@sonderly.io"
+      "email_label": {
+        "type": "Text",
+        "config": {
+          "label": "Email Label"
         }
       },
-      "phone_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Phone label"
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "Email",
+          "placeholder": "contactus@sonderly.io"
         }
       },
-      "phone" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Phone",
-          "placeholder" : "416-640-9459"
+      "phone_label": {
+        "type": "Text",
+        "config": {
+          "label": "Phone label"
         }
       },
-      "other_phone_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Other Phone Label"
+      "phone": {
+        "type": "Text",
+        "config": {
+          "label": "Phone",
+          "placeholder": "416-640-9459"
         }
       },
-      "north_america_phone" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Other Phone",
-          "placeholder" : "1-888-905-0655"
+      "other_phone_label": {
+        "type": "Text",
+        "config": {
+          "label": "Other Phone Label"
         }
       },
-      "form_title" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Form title"
+      "north_america_phone": {
+        "type": "Text",
+        "config": {
+          "label": "Other Phone",
+          "placeholder": "1-888-905-0655"
         }
       },
-      "form_name_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Form name label"
+      "form_title": {
+        "type": "Text",
+        "config": {
+          "label": "Form title"
         }
       },
-      "form_email_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Form email label"
+      "form_name_label": {
+        "type": "Text",
+        "config": {
+          "label": "Form name label"
         }
       },
-      "form_message_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Form message label"
+      "form_email_label": {
+        "type": "Text",
+        "config": {
+          "label": "Form email label"
         }
       },
-      "form_submit" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Form Submit"
+      "form_subject": {
+        "type": "Text",
+        "config": {
+          "label": "Form Subject"
         }
       },
-      "success_message" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Success Message"
+      "form_message_label": {
+        "type": "Text",
+        "config": {
+          "label": "Form message label"
+        }
+      },
+      "form_submit": {
+        "type": "Text",
+        "config": {
+          "label": "Form Submit"
+        }
+      },
+      "success_message": {
+        "type": "Text",
+        "config": {
+          "label": "Success Message"
         }
       }
     },
-    "SEO" : {
-      "seo_title" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Title (maximum 70 characters)"
+    "SEO": {
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "Title (maximum 70 characters)"
         }
       },
-      "seo_description" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Description (50–160 characters)"
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "Description (50–160 characters)"
         }
       },
-      "seo_keywords" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Keywords",
-          "placeholder" : "(list, separated with commas)"
+      "seo_keywords": {
+        "type": "Text",
+        "config": {
+          "label": "Keywords",
+          "placeholder": "(list, separated with commas)"
         }
       }
     }

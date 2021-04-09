@@ -66,6 +66,7 @@ export const query = graphql`
                         width
                         height
                     }
+                    alt
                 }
                 criteria_notes {
                     html

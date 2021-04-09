@@ -6,29 +6,33 @@ import AnimateHeight from "react-animate-height"
 import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
 import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
+import { getImageProps } from "@utils/getImageProps"
 
 import "@styles/pages/about.scss"
 
 const ManagementItem = ({ management_photo, management_name, management_description, photo_bg_color, button_text }) => {
     const [isOpen, setOpen] = useState(false)
     const onClick = () => setOpen(!isOpen)
+    const heroImg = getImageProps(management_photo)
     return (
-        <div key={management_name} className="card">
-            <div>
-                <div className="management-photo" style={{ backgroundColor: photo_bg_color }}>
-                    <img {...management_photo.fixed} {...management_photo.dimensions} alt={management_photo.alt} />
-                </div>
-                <div className="management-content">
-                    <h3>{management_name}</h3>
-                    <AnimateHeight duration={500} height={isOpen ? "auto" : 150}>
-                        <div
-                            className="management-description"
-                            dangerouslySetInnerHTML={{ __html: management_description.html }}
-                        ></div>
-                    </AnimateHeight>
-                    <button className="button" onClick={onClick}>
-                        {button_text}
-                    </button>
+        <div className="card-container">
+            <div key={management_name} className="card">
+                <div>
+                    <div className="management-photo" style={{ backgroundColor: photo_bg_color }}>
+                        <img {...heroImg} />
+                    </div>
+                    <div className="management-content">
+                        <h3>{management_name}</h3>
+                        <AnimateHeight duration={500} height={isOpen ? "auto" : 150}>
+                            <div
+                                className="management-description"
+                                dangerouslySetInnerHTML={{ __html: management_description.html }}
+                            ></div>
+                        </AnimateHeight>
+                        <button className="button" onClick={onClick}>
+                            {button_text}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +57,7 @@ const AboutPage = ({ data, location }) => {
             <BgSmall className="bg-5" />
             <section className="container two-column">
                 <div>
-                    <img {...hero_image.fluid} {...hero_image.dimensions} alt={hero_image.alt} />
+                    <img {...getImageProps(hero_image)} />
                 </div>
                 <div className="hero-description">
                     <h1>{page_title.text}</h1>

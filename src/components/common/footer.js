@@ -1,5 +1,5 @@
 import CommonLink from "@components/common-link"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi"
 
 import "@styles/footer.scss"
@@ -33,12 +33,14 @@ const Footer = () => {
                 <div className="container">
                     <div className="table">
                         <div className="cell left">
-                            <img
-                                className="logo"
-                                src="/images/logo-footer.png"
-                                srcSet="/images/logo-footer@2x.png 2x"
-                                alt="Sonderly logo (footer)"
-                            />
+                            <Link to="/">
+                                <img
+                                    className="logo"
+                                    src="/images/logo-footer.png"
+                                    srcSet="/images/logo-footer@2x.png 2x"
+                                    alt="Sonderly logo (footer)"
+                                />
+                            </Link>
                             <div dangerouslySetInnerHTML={{ __html: footer_contacts.html }}></div>
                         </div>
                         <div className="cell right">

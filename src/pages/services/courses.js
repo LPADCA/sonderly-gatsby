@@ -125,7 +125,7 @@ const CourseMap = ({ data, location }) => {
                             <h5 className="filter-label">{levels_label}</h5>
                             <Slider
                                 min={1}
-                                max={6}
+                                max={levels.length}
                                 className="slider"
                                 defaultValue={1}
                                 handle={handle}

@@ -6,6 +6,7 @@ import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
 import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
 import { getImageProps } from "@utils/getImageProps"
 import { FaCheckCircle } from "react-icons/fa"
+import { useFormspark } from "@formspark/use-formspark"
 
 import "@styles/pages/contact.scss"
 
@@ -13,6 +14,7 @@ const FormContent = ({
     form_email_label,
     form_message_label,
     form_name_label,
+    form_subject,
     form_submit,
     disabled,
     emailField,
@@ -21,28 +23,56 @@ const FormContent = ({
     setName,
     messageField,
     setMessage,
+    subjectField,
+    setSubject,
+    onBlur,
 }) => {
     return (
         <>
             <div>
                 <label htmlFor="name">{form_name_label}</label>
-                <input id="name" name="name" value={nameField} onChange={(e) => setName(e.target.value)}></input>
+                <input
+                    id="name"
+                    name="name"
+                    value={nameField}
+                    required
+                    onChange={(e) => setName(e.target.value)}
+                    onBlur={onBlur}
+                ></input>
             </div>
             <div>
                 <label htmlFor="email">{form_email_label}</label>
-                <input id="email" name="email" value={emailField} onChange={(e) => setEmail(e.target.value)}></input>
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={emailField}
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                ></input>
+            </div>
+            <div>
+                <label htmlFor="subject">{form_subject}</label>
+                <input
+                    id="subject"
+                    name="subject"
+                    required
+                    value={subjectField}
+                    onChange={(e) => setSubject(e.target.value)}
+                ></input>
             </div>
             <div>
                 <label htmlFor="message">{form_message_label}</label>
                 <textarea
                     id="message"
                     name="message"
+                    required
                     value={messageField}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={messageField.split("\n").length}
                 ></textarea>
             </div>
-            <button className="button" disabled={disabled}>
+            <button className="button"  type="submit" disabled={disabled}>
                 {form_submit}
             </button>
         </>
@@ -59,15 +89,19 @@ const FormSuccess = ({ children }) => {
 }
 
 const ContactPage = ({ data, location }) => {
-    const [isSubmited, setSubmit] = useState(false)
+    const [submit, submitting] = useFormspark({
+        formId: "BazGy6gL",
+    })
     const [nameField, setName] = useState("")
     const [emailField, setEmail] = useState("")
+    const [subjectField, setSubject] = useState("")
     const [messageField, setMessage] = useState("")
-    const [inProcess, setProcess] = useState(false)
+    const [isSubmited, setSubmit] = useState(false)
     const {
         hero_image,
         page_title,
         page_description,
+        address_title,
         contact_address,
         email,
         phone,
@@ -80,34 +114,28 @@ const ContactPage = ({ data, location }) => {
         form_email_label,
         form_message_label,
         form_name_label,
+        form_subject,
         form_submit,
         success_message,
     } = data.prismicContactPage.data
 
-    const enabled = nameField.length > 0 && emailField.includes("@") && messageField.length > 0 && !inProcess
-
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        setProcess(true)
-
-        const object = {
-            name: nameField,
-            email: emailField,
-            message: messageField,
+        try {
+            const obj = {
+                name: nameField,
+                email: emailField,
+                "_email.from": emailField,
+                "_email.subject": subjectField,
+                subject: subjectField,
+                message: messageField,
+            }
+            await submit(obj)
+        } catch (err) {
+            alert(err.message)
+            return
         }
-        fetch("https://submit-form.com/BazGy6gL", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify(object),
-        })
-            .then(() => {
-                setSubmit(true)
-                setProcess(false)
-            })
-            .catch((error) => {
-                setProcess(false)
-                alert(error.message)
-            })
+        setSubmit(true)
     }
     return (
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
@@ -121,6 +149,29 @@ const ContactPage = ({ data, location }) => {
                     <div className="form-card">
                         <h1 dangerouslySetInnerHTML={{ __html: page_title.text }} />
                         <div dangerouslySetInnerHTML={{ __html: page_description.html }} />
+                        <h2>{form_title}</h2>
+                        <form className="contact-form" id="contact-form" method="POST" onSubmit={onSubmit}>
+                            {isSubmited ? (
+                                <FormSuccess>{success_message}</FormSuccess>
+                            ) : (
+                                <FormContent
+                                    form_email_label={form_email_label}
+                                    form_message_label={form_message_label}
+                                    form_name_label={form_name_label}
+                                    form_subject={form_subject}
+                                    form_submit={form_submit}
+                                    emailField={emailField}
+                                    nameField={nameField}
+                                    messageField={messageField}
+                                    setEmail={setEmail}
+                                    setMessage={setMessage}
+                                    setName={setName}
+                                    setSubject={setSubject}
+                                    disabled={submitting}
+                                />
+                            )}
+                        </form>
+                        <h2>{address_title}</h2>
                         <address>
                             <div className="address-block address">
                                 <span className="address-label">{address_label}</span>
@@ -141,27 +192,7 @@ const ContactPage = ({ data, location }) => {
                                     dangerouslySetInnerHTML={{ __html: north_america_phone }}
                                 />
                             </div>
-                            <h2>{form_title}</h2>
                         </address>
-                        <form className="contact-form" method="POST" onSubmit={onSubmit}>
-                            {isSubmited ? (
-                                <FormSuccess>{success_message}</FormSuccess>
-                            ) : (
-                                <FormContent
-                                    form_email_label={form_email_label}
-                                    form_message_label={form_message_label}
-                                    form_name_label={form_name_label}
-                                    form_submit={form_submit}
-                                    emailField={emailField}
-                                    nameField={nameField}
-                                    messageField={messageField}
-                                    setEmail={setEmail}
-                                    setMessage={setMessage}
-                                    setName={setName}
-                                    disabled={!enabled}
-                                />
-                            )}
-                        </form>
                     </div>
                 </div>
             </section>
@@ -182,6 +213,7 @@ export const query = graphql`
                 page_description {
                     html
                 }
+                address_title
                 contact_address
                 email
                 phone
@@ -195,6 +227,7 @@ export const query = graphql`
                         width
                         height
                     }
+                    alt
                 }
                 email_label
                 form_email_label
@@ -202,6 +235,7 @@ export const query = graphql`
                 form_name_label
                 form_title
                 form_submit
+                form_subject
                 address_label
                 phone_label
                 other_phone_label

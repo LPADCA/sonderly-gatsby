@@ -18,6 +18,7 @@
             transform: translate(60px, -60px);
             box-shadow: -30px 30px 40px #68ca9258;
         }
+
         &:after {
             content: "";
             display: block;
@@ -48,9 +49,23 @@
             min-height: 640px;
             grid-template-columns: 60% auto;
             align-items: center;
+
             & > div {
-                max-width: 450px;
+                max-width: 560px;
             }
+
+            h1 {
+                font-size: 34px;
+
+                @media (max-width: $between-edge) {
+                    font-size: 28px;
+                    max-width: 500px;
+
+                }
+            }
+
+
+            
             .learn-more {
                 display: block;
                 margin-top: 50px;
@@ -131,6 +146,11 @@
             width: 520px;
             height: 520px;
         }
+
+        h1 {
+            font-size: 28px;
+        }
+
         .content {
             .wrapper {
                 padding-top: 0;
@@ -175,7 +195,7 @@
             align-items: flex-end !important;
             min-height: 780px !important;
             h1 {
-                font-size: 32px;
+                font-size: 24px;
             }
             .learn-more {
                 display: block !important;

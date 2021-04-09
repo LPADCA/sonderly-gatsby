@@ -31,8 +31,8 @@
     }
 
     .bg-5 {
-        top: 1652px;
-        left: 83px;
+        top: 1552px;
+        left: 23px;
     }
 
     .hero-description {
@@ -48,7 +48,8 @@
 
 
     .management-team {
-        margin-top: 170px;
+        margin-top: 100px;
+        position: relative;
 
         h2 {
             display: flex;
@@ -67,14 +68,12 @@
         }
 
         .management-cards {
-            margin-top: 50px;
-            columns: 2 auto;
-            column-gap: 30px;
-            min-height: 1000px;
-
+            margin: 35px -15px -15px;
+            display: flex;
+            min-height: 600px;
 
             @media (max-width: $between-edge) {
-                columns: 1;
+                flex-direction: column;
             }
         }
 
@@ -90,6 +89,7 @@
 
         .management-content {
             padding: 25px 20px;
+            background-color: white;
         }
 
         .management-description {
@@ -99,13 +99,14 @@
     }
 
     .card {
-        break-inside: avoid;
-        transform: translateZ(0); // hack, shadow crops because of columns prop
-        margin-bottom: 30px;
-        position: relative;
         box-shadow: 0px 3px 6px #00000029;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
+        overflow: hidden;
     }
- 
+
+    .card-container {
+        flex: 1 1 50%;
+        padding: 15px;
+    }
 }
