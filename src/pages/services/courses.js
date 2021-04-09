@@ -183,7 +183,7 @@ const CourseMap = ({ data, location }) => {
                                                     </div>
                                                 )}
                                                 <div className="level">
-                                                    {level} {levels.indexOf(course.level)}
+                                                    {level} {levels.indexOf(course.level) + 1}
                                                 </div>
                                             </div>
                                         </a>

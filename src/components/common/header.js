@@ -1,6 +1,6 @@
 // Navbar.js
 
-import React, { useEffect } from "react"
+import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import CommonLink from "@components/common-link"
 
@@ -98,9 +98,13 @@ const Navbar = ({ menu }) => {
                     const hasChildren = item.items[0] && item.items[0].submenu_item_text
                     return (
                         <li key={`l1${i}`} className={hasChildren && "hasChildren"}>
-                            <CommonLink type={link_type} to={url} className="l1-link">
-                                {text}
-                            </CommonLink>
+                            {url ? (
+                                <CommonLink type={link_type} to={url} className="header-link l1-link">
+                                    {text}
+                                </CommonLink>
+                            ) : (
+                                <span className="header-link l1-link">{text}</span>
+                            )}
                             {item.items.length > 0 && item.items[0].submenu_item_text && (
                                 <ul className="l2">
                                     {item.items.map((subitem, j) => {
@@ -109,6 +113,7 @@ const Navbar = ({ menu }) => {
                                                 <CommonLink
                                                     type={subitem.submenu_item_link.link_type}
                                                     to={subitem.submenu_item_link.url}
+                                                    className="header-link"
                                                 >
                                                     {subitem.submenu_item_text}
                                                 </CommonLink>
@@ -182,7 +187,7 @@ const Header = ({ location }) => {
             <div className="header-container">
                 <div className="desktop">
                     <Logo />
-                    <Navbar menu={data.prismicMenuPrimary.data.body} />
+                    <Navbar currentUrl={location.pathname} menu={data.prismicMenuPrimary.data.body} />
                     <a href={login_link.url} className="button">
                         {login_text}
                     </a>

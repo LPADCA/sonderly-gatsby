@@ -83,7 +83,8 @@
     & > li {
         display: inline-block;
         position: relative;
-        a {
+        
+        .header-link {
             padding: 8px 15px;
             text-decoration: none;
         }
