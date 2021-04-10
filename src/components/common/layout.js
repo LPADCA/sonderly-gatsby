@@ -47,11 +47,6 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                     rel="stylesheet"
                 />
                 <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" />
-                <script
-                    async
-                    defer
-                    src="https://static.cdn.prismic.io/prismic.js?new=true&repo=vindicia-public"
-                ></script>
             </Helmet>
 
             <Header location={location} />
