@@ -43,7 +43,7 @@ const CourseMap = ({ data, location }) => {
     const ages = pageContent.ages.map((l) => l.filter_age)
 
     const [state, setState] = useState({
-        age: 0,
+        age: null,
         french: false,
         funded: false,
         level: 0,
@@ -55,7 +55,12 @@ const CourseMap = ({ data, location }) => {
             if (state.french && !course.french) return false
             if (state.funded && !course.moe_funded) return false
             if (state.level > levels.indexOf(course.level)) return false
-            if (course.age.localeCompare(ages[state.age], undefined, { sensetivity: "base" }) !== 0) return false
+            if (
+                state.age != null &&
+                course.age.localeCompare(ages[state.age], undefined, { sensetivity: "base" }) !== 0
+            ) {
+                return false
+            }
             return true
         })
         .map((c) => c.data)
@@ -63,6 +68,7 @@ const CourseMap = ({ data, location }) => {
 
     const updateLevel = (level) => setState({ ...state, level: level - 1 })
     const updateAge = (newAge) => setState({ ...state, age: newAge })
+    const resetAge = () => setState({ ...state, age: null })
     const updateFrench = () => setState({ ...state, french: !state.french })
     const updateFunded = () => setState({ ...state, funded: !state.funded })
 
@@ -89,8 +95,8 @@ const CourseMap = ({ data, location }) => {
                                             type="radio"
                                             id={`age-${index}`}
                                             name="age"
+                                            checked={index === state.age}
                                             onChange={() => updateAge(index)}
-                                            defaultChecked={index === 0}
                                         />
                                         <label htmlFor={`age-${index}`}>{age}</label>
                                     </p>
