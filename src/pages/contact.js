@@ -39,8 +39,8 @@ const FormContent = ({
                 subject: subjectField,
                 message: messageField,
             }
-            recaptchaRef.current.execute()
-            await submit(obj)
+            console.log('captcha result', recaptchaRef.current.execute())
+            // await submit(obj)
         } catch (err) {
             alert(err.message)
             return
