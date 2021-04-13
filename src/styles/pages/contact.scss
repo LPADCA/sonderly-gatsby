@@ -82,8 +82,14 @@
         }
     }
 
+    
+
     .contact-form {
-        min-height: 240px;
+        height: 100%;
+        
+        &-container {
+            min-height: 240px;
+        }
 
         label {
             margin-top: 8px;

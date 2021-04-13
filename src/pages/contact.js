@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, createRef } from "react"
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
@@ -7,6 +7,7 @@ import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
 import { getImageProps } from "@utils/getImageProps"
 import { FaCheckCircle } from "react-icons/fa"
 import { useFormspark } from "@formspark/use-formspark"
+import ReCAPTCHA from "react-google-recaptcha"
 
 import "@styles/pages/contact.scss"
 
@@ -16,19 +17,39 @@ const FormContent = ({
     form_name_label,
     form_subject,
     form_submit,
-    disabled,
-    emailField,
-    setEmail,
-    nameField,
-    setName,
-    messageField,
-    setMessage,
-    subjectField,
-    setSubject,
+    setSubmit,
     onBlur,
 }) => {
+    const recaptchaRef = createRef()
+
+    const [nameField, setName] = useState("")
+    const [emailField, setEmail] = useState("")
+    const [subjectField, setSubject] = useState("")
+    const [messageField, setMessage] = useState("")
+    const [submit, submitting] = useFormspark({
+        formId: "BazGy6gL",
+    })
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const obj = {
+                name: nameField,
+                email: emailField,
+                "_email.from": emailField,
+                "_email.subject": subjectField,
+                subject: subjectField,
+                message: messageField,
+            }
+            await recaptchaRef.current.executeAsync()
+            await submit(obj)
+        } catch (err) {
+            alert(err.message)
+            return
+        }
+        setSubmit(true)
+    }
     return (
-        <>
+        <form className="contact-form" id="contact-form" method="POST" onSubmit={onSubmit}>
             <div>
                 <label htmlFor="name">{form_name_label}</label>
                 <input
@@ -72,10 +93,11 @@ const FormContent = ({
                     rows={messageField.split("\n").length}
                 ></textarea>
             </div>
-            <button className="button"  type="submit" disabled={disabled}>
+            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
+            <button className="button" type="submit" disabled={submitting}>
                 {form_submit}
             </button>
-        </>
+        </form>
     )
 }
 
@@ -89,13 +111,6 @@ const FormSuccess = ({ children }) => {
 }
 
 const ContactPage = ({ data, location }) => {
-    const [submit, submitting] = useFormspark({
-        formId: "BazGy6gL",
-    })
-    const [nameField, setName] = useState("")
-    const [emailField, setEmail] = useState("")
-    const [subjectField, setSubject] = useState("")
-    const [messageField, setMessage] = useState("")
     const [isSubmited, setSubmit] = useState(false)
     const {
         hero_image,
@@ -119,24 +134,6 @@ const ContactPage = ({ data, location }) => {
         success_message,
     } = data.prismicContactPage.data
 
-    const onSubmit = async (e) => {
-        e.preventDefault()
-        try {
-            const obj = {
-                name: nameField,
-                email: emailField,
-                "_email.from": emailField,
-                "_email.subject": subjectField,
-                subject: subjectField,
-                message: messageField,
-            }
-            await submit(obj)
-        } catch (err) {
-            alert(err.message)
-            return
-        }
-        setSubmit(true)
-    }
     return (
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <BgMedium className="bg-1" />
@@ -150,7 +147,7 @@ const ContactPage = ({ data, location }) => {
                         <h1 dangerouslySetInnerHTML={{ __html: page_title.text }} />
                         <div dangerouslySetInnerHTML={{ __html: page_description.html }} />
                         <h2>{form_title}</h2>
-                        <form className="contact-form" id="contact-form" method="POST" onSubmit={onSubmit}>
+                        <div className="contact-form-container">
                             {isSubmited ? (
                                 <FormSuccess>{success_message}</FormSuccess>
                             ) : (
@@ -160,17 +157,11 @@ const ContactPage = ({ data, location }) => {
                                     form_name_label={form_name_label}
                                     form_subject={form_subject}
                                     form_submit={form_submit}
-                                    emailField={emailField}
-                                    nameField={nameField}
-                                    messageField={messageField}
-                                    setEmail={setEmail}
-                                    setMessage={setMessage}
-                                    setName={setName}
-                                    setSubject={setSubject}
-                                    disabled={submitting}
+                                    setSubmit={setSubmit}
                                 />
                             )}
-                        </form>
+                        </div>
+
                         <h2>{address_title}</h2>
                         <address>
                             <div className="address-block address">

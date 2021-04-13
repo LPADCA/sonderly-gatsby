@@ -4,11 +4,7 @@ module.exports = {
         es6: true,
         node: true,
     },
-    extends: [
-        "plugin:react/recommended",
-        "eslint:recommended",
-        "plugin:prettier/recommended",
-    ],
+    extends: ["plugin:react/recommended", "eslint:recommended", "plugin:prettier/recommended"],
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
