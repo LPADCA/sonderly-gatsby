@@ -39,13 +39,14 @@ const FormContent = ({
                 subject: subjectField,
                 message: messageField,
             }
-            console.log('captcha result', recaptchaRef.current.execute())
+            const token = await recaptchaRef.current.executeAsync()
+            console.log("captcha result", token)
             // await submit(obj)
+            setSubmit(true)
         } catch (err) {
             alert(err.message)
             return
         }
-        setSubmit(true)
     }
     return (
         <form className="contact-form" id="contact-form" method="POST" onSubmit={onSubmit}>
@@ -137,7 +138,13 @@ const ContactPage = ({ data, location }) => {
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <BgMedium className="bg-1" />
             <BgSmall className="bg-2" />
-            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
+            <ReCAPTCHA
+                ref={recaptchaRef}
+                size="invisible"
+                onErrored={(e) => console.log("onErrored", e)}
+                onChange={(e) => console.log("onChanged", e)}
+                sitekey={process.env.GATSBY_RECAPTCHA_KEY}
+            />
             <section className="container two-column">
                 <div className="hero-image">
                     <img {...getImageProps(hero_image)} />
