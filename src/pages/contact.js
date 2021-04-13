@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
@@ -39,7 +39,7 @@ const FormContent = ({
                 subject: subjectField,
                 message: messageField,
             }
-            await recaptchaRef.current.executeAsync()
+            recaptchaRef.current.execute()
             await submit(obj)
         } catch (err) {
             alert(err.message)
@@ -111,6 +111,9 @@ const FormSuccess = ({ children }) => {
 const ContactPage = ({ data, location }) => {
     const [isSubmited, setSubmit] = useState(false)
     const recaptchaRef = useRef()
+    useEffect(() => {
+        console.log('recaptchaRef.current.style', recaptchaRef.current)
+    }, [recaptchaRef.current])
 
     const {
         hero_image,

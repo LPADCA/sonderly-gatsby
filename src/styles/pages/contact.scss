@@ -5,6 +5,10 @@
     position: relative;
     overflow: hidden;
 
+    .grecaptcha-badge {
+        z-index: 1;
+    }
+
     & > .container {
         margin-bottom: 100px;
     }
@@ -86,7 +90,7 @@
 
     .contact-form {
         height: 100%;
-        
+
         &-container {
             min-height: 240px;
         }
