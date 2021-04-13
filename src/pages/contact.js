@@ -1,4 +1,4 @@
-import { useState, createRef } from "react"
+import { useState, useRef } from "react"
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
@@ -19,9 +19,8 @@ const FormContent = ({
     form_submit,
     setSubmit,
     onBlur,
+    recaptchaRef,
 }) => {
-    const recaptchaRef = createRef()
-
     const [nameField, setName] = useState("")
     const [emailField, setEmail] = useState("")
     const [subjectField, setSubject] = useState("")
@@ -93,7 +92,6 @@ const FormContent = ({
                     rows={messageField.split("\n").length}
                 ></textarea>
             </div>
-            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
             <button className="button" type="submit" disabled={submitting}>
                 {form_submit}
             </button>
@@ -112,6 +110,8 @@ const FormSuccess = ({ children }) => {
 
 const ContactPage = ({ data, location }) => {
     const [isSubmited, setSubmit] = useState(false)
+    const recaptchaRef = useRef()
+
     const {
         hero_image,
         page_title,
@@ -138,6 +138,7 @@ const ContactPage = ({ data, location }) => {
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <BgMedium className="bg-1" />
             <BgSmall className="bg-2" />
+            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
             <section className="container two-column">
                 <div className="hero-image">
                     <img {...getImageProps(hero_image)} />
@@ -157,6 +158,7 @@ const ContactPage = ({ data, location }) => {
                                     form_name_label={form_name_label}
                                     form_subject={form_subject}
                                     form_submit={form_submit}
+                                    recaptchaRef={recaptchaRef}
                                     setSubmit={setSubmit}
                                 />
                             )}
