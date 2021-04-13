@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
@@ -39,9 +39,8 @@ const FormContent = ({
                 subject: subjectField,
                 message: messageField,
             }
-            const token = await recaptchaRef.current.executeAsync()
-            console.log("captcha result", token)
-            // await submit(obj)
+            await recaptchaRef.current.executeAsync()
+            await submit(obj)
             setSubmit(true)
         } catch (err) {
             alert(err.message)
@@ -141,8 +140,6 @@ const ContactPage = ({ data, location }) => {
             <ReCAPTCHA
                 ref={recaptchaRef}
                 size="invisible"
-                onErrored={(e) => console.log("onErrored", e)}
-                onChange={(e) => console.log("onChanged", e)}
                 sitekey={process.env.GATSBY_RECAPTCHA_KEY}
             />
             <section className="container two-column">
@@ -169,7 +166,6 @@ const ContactPage = ({ data, location }) => {
                                 />
                             )}
                         </div>
-
                         <h2>{address_title}</h2>
                         <address>
                             <div className="address-block address">
