@@ -137,11 +137,7 @@ const ContactPage = ({ data, location }) => {
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <BgMedium className="bg-1" />
             <BgSmall className="bg-2" />
-            <ReCAPTCHA
-                ref={recaptchaRef}
-                size="invisible"
-                sitekey={process.env.GATSBY_RECAPTCHA_KEY}
-            />
+            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
             <section className="container two-column">
                 <div className="hero-image">
                     <img {...getImageProps(hero_image)} />
