@@ -27,7 +27,7 @@ const FormContent = ({
     const [subjectField, setSubject] = useState("")
     const [messageField, setMessage] = useState("")
     const [submit, submitting] = useFormspark({
-        formId: "BazGy6gL",
+        formId: process.env.GATSBY_FORM_ID,
     })
     const onSubmit = async (e) => {
         e.preventDefault()
