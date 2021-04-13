@@ -111,10 +111,6 @@ const FormSuccess = ({ children }) => {
 const ContactPage = ({ data, location }) => {
     const [isSubmited, setSubmit] = useState(false)
     const recaptchaRef = useRef()
-    useEffect(() => {
-        console.log('recaptchaRef.current.style', recaptchaRef.current)
-    }, [recaptchaRef.current])
-
     const {
         hero_image,
         page_title,
