@@ -85,6 +85,16 @@
                 color: $text-color;
             }
         }
+
+        .info-sheet {
+            font-size: 14px;
+            color: $text-color;
+            text-decoration: underline;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
         .legend {
             margin-top: 20px;
             background-color: white;

@@ -38,6 +38,8 @@ const CourseMap = ({ data, location }) => {
         yes,
         level,
         not_found,
+        info_sheet_label,
+        info_sheet_link,
     } = pageContent
     const levels = pageContent.levels.map((l) => l.filter_level)
     const ages = pageContent.ages.map((l) => l.filter_age)
@@ -68,7 +70,6 @@ const CourseMap = ({ data, location }) => {
 
     const updateLevel = (level) => setState({ ...state, level: level - 1 })
     const updateAge = (newAge) => setState({ ...state, age: newAge })
-    const resetAge = () => setState({ ...state, age: null })
     const updateFrench = () => setState({ ...state, french: !state.french })
     const updateFunded = () => setState({ ...state, funded: !state.funded })
 
@@ -142,7 +143,11 @@ const CourseMap = ({ data, location }) => {
                                     {i + 1} - {level}
                                 </div>
                             ))}
-
+                            <div>
+                                <a className="info-sheet" href={info_sheet_link.url} target={info_sheet_link.target}>
+                                    {info_sheet_label}
+                                </a>
+                            </div>
                             <div className="legend">
                                 <div className="icon icon1">
                                     <FaVideo />
@@ -217,6 +222,11 @@ export const courseMapQuery = graphql`
                 seo_description
                 title {
                     text
+                }
+                info_sheet_label
+                info_sheet_link {
+                    url
+                    target
                 }
                 subheading {
                     html

@@ -64,6 +64,12 @@ module.exports = {
             },
         },
         {
+            resolve: `gatsby-plugin-facebook-pixel`,
+            options: {
+                pixelId: process.env.FACEBOOK_PIXEL_ID,
+            },
+        },
+        {
             resolve: "gatsby-plugin-svgr",
             options: {
                 svgo: true,
