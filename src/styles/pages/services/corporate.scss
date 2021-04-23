@@ -1,14 +1,14 @@
-@import '@styles/settings.scss';
-
+@import "@styles/settings.scss";
 
 .corporate-services-hero-wrapper {
-    background: transparent;    
+    background: transparent;
 }
 .corporate-services-hero {
     width: 100%;
-    background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat
+        padding-box;
     color: white;
-    padding: 100px 0; 
+    padding: 100px 0;
     h1 {
         color: white;
         text-align: center;
@@ -24,14 +24,14 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(2, 1fr);
-    &>div {
-        background: #FFFFFF 0% 0% no-repeat padding-box;
+    & > div {
+        background: #ffffff 0% 0% no-repeat padding-box;
         box-shadow: 0px 3px 6px #00000029;
         border-radius: 20px;
         padding: 30px;
         padding-bottom: 80px;
         position: relative;
-        &>.tab-header {
+        & > .tab-header {
             display: grid;
             gap: 20px;
             grid-template-columns: 60px auto;
@@ -55,7 +55,8 @@
 
 @media (max-width: $mobile-edge) {
     .corporate-services-hero-wrapper {
-        background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
+        background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0%
+            no-repeat padding-box;
         .corporate-services-hero {
             background: transparent;
         }
@@ -66,18 +67,31 @@
     }
 }
 
-
 .trainings {
     padding-bottom: 30px;
-    &>ul {
+
+    .course-link {
+        color: $text-color;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+
+    & > ul {
         display: grid;
         gap: 15px;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
         padding-left: 0;
-        &>li {
+        align-items: center;
+
+        li {
+            display: block;
+        }
+
+        .course-link {
+            display: block;
             padding: 10px;
             padding-left: 40px;
-            display: block;
             border-radius: 10px;
             transition: $default-transition;
             position: relative;
@@ -94,20 +108,22 @@
                 transform: translateY(-50%);
                 background-color: white;
             }
+            &:not(.active):hover {
+                background-color: $hover-green;
+                cursor: pointer;
+
+                color: white;
+
+                &:before {
+                    background-color: white;
+                }
+            }
             &.active {
                 color: $button-green;
-                &:hover {
-                    color: $button-green;
-                    background-color:white;
-                }
+
                 &:before {
                     background-color: $button-green;
                 }
-            }
-            &:hover {
-                background-color: $hover-green;
-                color: white;
-                cursor: pointer;
             }
         }
     }
@@ -117,14 +133,14 @@
         box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
         grid-template-columns: minmax(30%, 200px) auto;
-        &>.image>img {
+        & > .image > img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
         }
-        &>.content {
+        & > .content {
             padding: 20px;
         }
         &.selected {
@@ -135,17 +151,16 @@
 
 @media (max-width: $mobile-edge) {
     .trainings {
-        &>ul {
+        & > ul {
             grid-template-columns: 1fr;
         }
         .preview {
             grid-template-columns: 1fr;
             grid-template-rows: 350px auto;
-            &>.image>img {
+            & > .image > img {
                 border-bottom-left-radius: 0;
                 border-top-right-radius: 20px;
             }
         }
     }
 }
-

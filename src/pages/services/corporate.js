@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import CommonLink from "@components/common-link"
@@ -6,12 +6,21 @@ import CommonLink from "@components/common-link"
 import "@styles/pages/services/corporate.scss"
 
 const ServicesCorporate = ({ data, location }) => {
-    const [activeSlide, setActiveSlide] = useState(0)
+    let hash = location.hash !== "" && location.hash.replace("#", "")
+    const [activeSlide, setActiveSlide] = useState(hash ? +hash : 0)
     const pageData = data.prismicServicesCorporate.data
 
-    const changeSlide = (id) => {
-        setActiveSlide(id)
-    }
+    useEffect(() => {
+        function onHashChange() {
+            hash = window.location.hash !== "" && window.location.hash.replace("#", "")
+            document.getElementById("preview").scrollIntoView({ block: "center", behavior: "smooth" })
+        }
+        window.addEventListener("hashchange", onHashChange)
+
+        return () => window.removeEventListener("hashchange", onHashChange)
+    }, [])
+
+    const changeSlide = (id) => setActiveSlide(id)
 
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
@@ -62,12 +71,18 @@ const ServicesCorporate = ({ data, location }) => {
                 <h2 className="centered underline">{pageData.trainings_title.text}</h2>
                 <ul>
                     {pageData.trainings_list.map((item, i) => (
-                        <li key={i} className={i === activeSlide ? "active" : ""} onClick={() => changeSlide(i)}>
-                            {item.trainings_list_title.text}
+                        <li key={i}>
+                            <a
+                                href={`#${i}`}
+                                onClick={() => changeSlide(i)}
+                                className={`course-link ${i === activeSlide ? "active" : ""}`}
+                            >
+                                {item.trainings_list_title.text}
+                            </a>
                         </li>
                     ))}
                 </ul>
-                <div className="preview-wrapper">
+                <div id="preview" className="preview-wrapper">
                     {pageData.trainings_list.map((item, i) => (
                         <div key={`page-${i}`} className={`preview ${i === activeSlide ? "selected" : ""}`}>
                             <div className="image">
