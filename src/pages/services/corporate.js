@@ -5,22 +5,38 @@ import CommonLink from "@components/common-link"
 
 import "@styles/pages/services/corporate.scss"
 
+const Switches = ({ activeSlide, trainings_list }) => {
+    return (
+        <ul>
+            {trainings_list.map((item, i) => (
+                <li key={item.trainings_list_title.text}>
+                    <a href={`#${i}`} className={`course-link ${i === activeSlide ? "active" : ""}`}>
+                        {item.trainings_list_title.text}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    )
+}
+
 const ServicesCorporate = ({ data, location }) => {
-    let hash = location.hash !== "" && location.hash.replace("#", "")
-    const [activeSlide, setActiveSlide] = useState(hash ? +hash : 0)
+    const [activeSlide, setActiveSlide] = useState(0)
+
     const pageData = data.prismicServicesCorporate.data
 
     useEffect(() => {
+        const hash = location.hash !== "" && location.hash.replace("#", "")
+        if (hash) onHashChange()
+
         function onHashChange() {
-            hash = window.location.hash !== "" && window.location.hash.replace("#", "")
+            const hash = window.location.hash !== "" && window.location.hash.replace("#", "")
+            setActiveSlide(hash ? +hash : 0)
             document.getElementById("preview").scrollIntoView({ block: "center", behavior: "smooth" })
         }
         window.addEventListener("hashchange", onHashChange)
 
         return () => window.removeEventListener("hashchange", onHashChange)
     }, [])
-
-    const changeSlide = (id) => setActiveSlide(id)
 
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
@@ -69,22 +85,13 @@ const ServicesCorporate = ({ data, location }) => {
             </div>
             <div className="trainings container">
                 <h2 className="centered underline">{pageData.trainings_title.text}</h2>
-                <ul>
-                    {pageData.trainings_list.map((item, i) => (
-                        <li key={i}>
-                            <a
-                                href={`#${i}`}
-                                onClick={() => changeSlide(i)}
-                                className={`course-link ${i === activeSlide ? "active" : ""}`}
-                            >
-                                {item.trainings_list_title.text}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <Switches activeSlide={activeSlide} trainings_list={pageData.trainings_list} />
                 <div id="preview" className="preview-wrapper">
                     {pageData.trainings_list.map((item, i) => (
-                        <div key={`page-${i}`} className={`preview ${i === activeSlide ? "selected" : ""}`}>
+                        <div
+                            key={item.trainings_list_title.text}
+                            className={`preview ${i === activeSlide ? "selected" : ""}`}
+                        >
                             <div className="image">
                                 <img
                                     src={item.traninings_list_image.fixed.src}
