@@ -8,6 +8,7 @@ const linkResolver = require("./src/utils/linkResolver")
 
 module.exports = {
     siteMetadata: {
+        siteUrl: process.env.SITE_URL || "https://sonderly.io/",
         title: "Sonderly",
         description:
             "An educational and training platform for professionals and educators seeking to learn more about autism and mental health.",
@@ -15,6 +16,8 @@ module.exports = {
     plugins: [
         "gatsby-plugin-image",
         "gatsby-transformer-sharp",
+        "gatsby-plugin-sitemap",
+        "gatsby-plugin-robots-txt",
         {
             resolve: "gatsby-plugin-sharp",
             options: {

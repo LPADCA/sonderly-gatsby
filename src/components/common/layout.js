@@ -18,7 +18,6 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
             }
         }
     `)
-
     const title = seo_title || site.siteMetadata.title
     const description = seo_description || site.siteMetadata.description
     const keywords = seo_keywords || ""
@@ -34,7 +33,6 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                 <meta httpEquiv="cache-control" content="no-cache" />
                 <meta httpEquiv="expires" content="0" />
                 <meta httpEquiv="pragma" content="no-cache" />
-
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keywords} />
@@ -42,6 +40,8 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:locale" content={process.env.GATSBY_LOCALE} />
+                <link rel="alternate" href={`https://sonderly.io${location.pathname}`} hrefLang="en" />
+                <link rel="alternate" href={`https://fr.sonderly.io${location.pathname}`} hrefLang="fr" />
                 <link
                     href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,600i,700,700i&display=swap"
                     rel="stylesheet"

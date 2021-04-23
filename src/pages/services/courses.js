@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout"
 import Hero from "@components/blocks/hero"
@@ -75,6 +76,30 @@ const CourseMap = ({ data, location }) => {
 
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageContent)}>
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "ItemList",
+                            itemListElement: coursesList.map(({ data: c }, i) => ({
+                                "@type": "ListItem",
+                                position: i,
+                                item: {
+                                    name: c.course_name.text,
+                                    description: c.summary.text,
+                                    provider: {
+                                        "@type": "Organization",
+                                        name: "Sonderly",
+                                    },
+                                },
+                            })),
+                        },
+                        null,
+                        4
+                    )}
+                </script>
+            </Helmet>
             <div className="spacer-top" />
             <Hero title={pageContent.title.text} subheading={pageContent.subheading} />
 
@@ -279,6 +304,7 @@ export const courseMapQuery = graphql`
                     moe_funded
                     summary {
                         html
+                        text
                     }
                     with_video
                 }
