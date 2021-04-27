@@ -12,6 +12,13 @@ const organizationJsonLD = JSON.stringify({
     "@type": "Organization",
     url: "https://sonderly.io/",
     logo: "https://sonderly.io/images/logo-header-2x.png",
+    name: "Sonderly",
+    sameAs: [
+        "https://www.facebook.com/sonderly.io/",
+        "https://twitter.com/sonderlyio",
+        "https://www.instagram.com/sonderly.io/",
+        "https://www.linkedin.com/showcase/sonderly/",
+    ],
 })
 
 const Layout = ({ location, children, seo_title, seo_description, seo_keywords, ...props }) => {
