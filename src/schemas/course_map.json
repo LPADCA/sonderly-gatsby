@@ -1,151 +1,152 @@
 {
-    "Main": {
-      "title": {
-        "type": "StructuredText",
-        "config": {
-          "single": "heading1",
-          "label": "Title"
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title"
         }
       },
-      "subheading": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "allowTargetBlank": true,
-          "label": "Subheading"
+      "subheading" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "Subheading"
         }
       },
-      "image": {
-        "type": "Image",
-        "config": {
-          "constraint": {},
-          "thumbnails": [],
-          "label": "Map illustration"
+      "image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Map illustration"
         }
       }
     },
-    "Filters": {
-      "filters_label": {
-        "type": "Text",
-        "config": {
-          "label": "Filters label"
+    "Filters" : {
+      "filters_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Filters label"
         }
       },
-      "age_label": {
-        "type": "Text",
-        "config": {
-          "label": "Age label"
+      "age_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Age label"
         }
       },
-      "age_tooltip": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "label": "Age tooltip"
+      "age_tooltip" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "label" : "Age tooltip"
         }
       },
-      "ages": {
-        "type": "Group",
-        "config": {
-          "fields": {
-            "filter_age": {
-              "type": "Text",
-              "config": {
-                "label": "filter age"
+      "ages" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "filter_age" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "filter age"
               }
             }
           },
-          "label": "Ages"
+          "label" : "Ages"
         }
       },
-      "levels_label": {
-        "type": "Text",
-        "config": {
-          "label": "Levels label"
+      "levels_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Levels label"
         }
       },
-      "levels": {
-        "type": "Group",
-        "config": {
-          "fields": {
-            "filter_level": {
-              "type": "Text",
-              "config": {
-                "label": "Filter Level"
+      "levels" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "filter_level" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Filter Level"
               }
             }
           },
-          "label": "Levels"
+          "label" : "Levels"
         }
       },
-      "availiable_in_french_label": {
-        "type": "Text",
-        "config": {
-          "label": "Availiable in French label"
+      "availiable_in_french_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Other language label"
         }
       },
-      "moe_funded_label": {
-        "type": "Text",
-        "config": {
-          "label": "MOE Funded label"
+      "other_locale_text" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Other locale text",
+          "placeholder" : "EN or FR"
         }
       },
-      "yes": {
-        "type": "Text",
-        "config": {
-          "label": "YES"
+      "yes" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "YES"
         }
       },
-      "level": {
-        "type": "Text",
-        "config": {
-          "label": "Level"
+      "level" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Level"
         }
       },
-      "video_recordings": {
-        "type": "Text",
-        "config": {
-          "label": "Video Recordings"
+      "video_recordings" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Video Recordings"
         }
       },
-      "not_found": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "label": "Not found"
+      "not_found" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "label" : "Not found"
         }
       },
-      "info_sheet_label": {
-        "type": "Text",
-        "config": {
-          "label": "Info sheet label"
+      "info_sheet_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Info sheet label"
         }
       },
-      "info_sheet_link": {
-        "type": "Link",
-        "config": {
-          "label": "Info sheet link"
+      "info_sheet_link" : {
+        "type" : "Link",
+        "config" : {
+          "label" : "Info sheet link"
         }
       }
     },
-    "SEO": {
-      "seo_title": {
-        "type": "Text",
-        "config": {
-          "label": "Title (maximum 70 characters)"
+    "SEO" : {
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Title (maximum 70 characters)"
         }
       },
-      "seo_description": {
-        "type": "Text",
-        "config": {
-          "label": "Description (50–160 characters)"
+      "seo_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Description (50–160 characters)"
         }
       },
-      "seo_keywords": {
-        "type": "Text",
-        "config": {
-          "label": "Keywords",
-          "placeholder": "(list, separated with commas)"
+      "seo_keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords",
+          "placeholder" : "(list, separated with commas)"
         }
       }
     }

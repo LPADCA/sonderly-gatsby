@@ -228,6 +228,7 @@
                     border-radius: 20px;
                     white-space: nowrap;
                     transition: $default-transition;
+                    text-transform: capitalize;
                 }
             }
             &:hover {

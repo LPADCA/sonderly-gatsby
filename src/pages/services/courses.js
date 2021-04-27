@@ -32,9 +32,9 @@ const CourseMap = ({ data, location }) => {
         age_label,
         age_tooltip,
         availiable_in_french_label,
+        other_locale_text,
         filters_label,
         levels_label,
-        moe_funded_label,
         video_recordings,
         yes,
         level,
@@ -56,7 +56,6 @@ const CourseMap = ({ data, location }) => {
     const courses = coursesList
         .filter(({ data: course }) => {
             if (state.french && !course.french) return false
-            if (state.funded && !course.moe_funded) return false
             if (state.level > levels.indexOf(course.level)) return false
             if (
                 state.age != null &&
@@ -72,7 +71,6 @@ const CourseMap = ({ data, location }) => {
     const updateLevel = (level) => setState({ ...state, level: level - 1 })
     const updateAge = (newAge) => setState({ ...state, age: newAge })
     const updateFrench = () => setState({ ...state, french: !state.french })
-    const updateFunded = () => setState({ ...state, funded: !state.funded })
 
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageContent)}>
@@ -141,19 +139,6 @@ const CourseMap = ({ data, location }) => {
                                     {yes}
                                 </label>
                             </p>
-                            <h5 className="filter-label">{moe_funded_label}</h5>
-                            <p className="filter-label">
-                                <input
-                                    type="checkbox"
-                                    id="funded"
-                                    name="funded"
-                                    onChange={() => updateFunded()}
-                                    checked={state.funded}
-                                />
-                                <label htmlFor="funded" className="capitalize">
-                                    {yes}
-                                </label>
-                            </p>
                             <h5 className="filter-label">{levels_label}</h5>
                             <Slider
                                 min={1}
@@ -174,15 +159,20 @@ const CourseMap = ({ data, location }) => {
                                 </a>
                             </div>
                             <div className="legend">
-                                <div className="icon icon1">
-                                    <FaVideo />
-                                </div>
-                                <div>{video_recordings}</div>
-                                <div className="icon icon2">FR</div> <div>{availiable_in_french_label}</div>
-                                <div className="icon icon3">
-                                    <RiStarFill />
-                                </div>{" "}
-                                <div>{moe_funded_label}</div>
+                                {video_recordings && (
+                                    <>
+                                        <div className="icon icon1">
+                                            <FaVideo />
+                                        </div>
+                                        <div>{video_recordings}</div>
+                                    </>
+                                )}
+                                {availiable_in_french_label && (
+                                    <>
+                                        <div className="icon icon2">{other_locale_text}</div>
+                                        <div>{availiable_in_french_label}</div>
+                                    </>
+                                )}
                             </div>
                         </form>
                     </div>
@@ -212,12 +202,7 @@ const CourseMap = ({ data, location }) => {
                                                         <FaVideo />
                                                     </div>
                                                 )}
-                                                {course.french && <div className="icon icon2">FR</div>}
-                                                {course.moe_funded && (
-                                                    <div className="icon icon3">
-                                                        <RiStarFill />
-                                                    </div>
-                                                )}
+                                                {course.french && <div className="icon icon2">{other_locale_text}</div>}
                                                 <div className="level">
                                                     {level} {levels.indexOf(course.level) + 1}
                                                 </div>
@@ -273,10 +258,10 @@ export const courseMapQuery = graphql`
                 }
                 age_label
                 availiable_in_french_label
+                other_locale_text
                 filters_label
                 levels_label
                 level
-                moe_funded_label
                 yes
                 video_recordings
                 not_found {
@@ -301,7 +286,6 @@ export const courseMapQuery = graphql`
                         uid
                         url
                     }
-                    moe_funded
                     summary {
                         html
                         text

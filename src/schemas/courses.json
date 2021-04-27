@@ -30,15 +30,6 @@
           "label" : "Available in French"
         }
       },
-      "moe_funded" : {
-        "type" : "Boolean",
-        "config" : {
-          "placeholder_false" : "no",
-          "placeholder_true" : "yes",
-          "default_value" : false,
-          "label" : "MOE Funded"
-        }
-      },
       "with_video" : {
         "type" : "Boolean",
         "config" : {
