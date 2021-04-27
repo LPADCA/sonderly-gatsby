@@ -7,6 +7,13 @@ import "@styles/header.scss"
 import Header from "./header"
 import Footer from "./footer"
 
+const organizationJsonLD = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    url: "https://sonderly.io/",
+    logo: "https://sonderly.io/images/logo-header-2x.png",
+})
+
 const Layout = ({ location, children, seo_title, seo_description, seo_keywords, ...props }) => {
     const { site } = useStaticQuery(graphql`
         query SeoQuery {
@@ -46,9 +53,9 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                     href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,600i,700,700i&display=swap"
                     rel="stylesheet"
                 />
-                <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" />\
+                <script type="application/ld+json">{organizationJsonLD}</script>
             </Helmet>
-
             <Header location={location} />
             <main {...props}>{children}</main>
             <Footer />

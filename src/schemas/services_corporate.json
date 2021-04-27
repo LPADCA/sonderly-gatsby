@@ -10,7 +10,7 @@
       "subheading" : {
         "type" : "StructuredText",
         "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
           "allowTargetBlank" : true,
           "label" : "Subheading"
         }
@@ -39,7 +39,7 @@
             "hero_boxes_description" : {
               "type" : "StructuredText",
               "config" : {
-                "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                 "allowTargetBlank" : true,
                 "label" : "Description"
               }
@@ -64,7 +64,7 @@
       "hero_note" : {
         "type" : "StructuredText",
         "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
           "label" : "Hero Note"
         }
       }
@@ -99,9 +99,17 @@
             "tranings_list_richtext" : {
               "type" : "StructuredText",
               "config" : {
-                "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                 "allowTargetBlank" : true,
                 "label" : "Text area"
+              }
+            },
+            "course" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "courses" ],
+                "label" : "course"
               }
             }
           },

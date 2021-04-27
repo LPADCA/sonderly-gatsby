@@ -5,24 +5,36 @@ import CommonLink from "@components/common-link"
 
 import "@styles/pages/services/corporate.scss"
 
+function makeUid(title) {
+    return title
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9-_]/g, "-")
+        .toLowerCase()
+}
+
 const Switches = ({ activeSlide, trainings_list }) => {
     return (
         <ul>
-            {trainings_list.map((item, i) => (
-                <li key={item.trainings_list_title.text}>
-                    <a href={`#${i}`} className={`course-link ${i === activeSlide ? "active" : ""}`}>
-                        {item.trainings_list_title.text}
-                    </a>
-                </li>
-            ))}
+            {trainings_list.map((item) => {
+                const hash = item.course.uid || makeUid(item.trainings_list_title.text)
+                return (
+                    <li key={hash}>
+                        <a href={`#${hash}`} className={`course-link ${hash == activeSlide ? "active" : ""}`}>
+                            {item.trainings_list_title.text}
+                        </a>
+                    </li>
+                )
+            })}
         </ul>
     )
 }
 
 const ServicesCorporate = ({ data, location }) => {
-    const [activeSlide, setActiveSlide] = useState(0)
-
     const pageData = data.prismicServicesCorporate.data
+    const firstTraining = pageData.trainings_list[0]
+    const firstSlide = firstTraining.course.uid || makeUid(firstTraining.trainings_list_title.text)
+    const [activeSlide, setActiveSlide] = useState(firstSlide)
 
     useEffect(() => {
         const hash = location.hash !== "" && location.hash.replace("#", "")
@@ -30,7 +42,7 @@ const ServicesCorporate = ({ data, location }) => {
 
         function onHashChange() {
             const hash = window.location.hash !== "" && window.location.hash.replace("#", "")
-            setActiveSlide(hash ? +hash : 0)
+            setActiveSlide(hash ? hash : firstSlide)
             document.getElementById("preview").scrollIntoView({ block: "center", behavior: "smooth" })
         }
         window.addEventListener("hashchange", onHashChange)
@@ -87,26 +99,29 @@ const ServicesCorporate = ({ data, location }) => {
                 <h2 className="centered underline">{pageData.trainings_title.text}</h2>
                 <Switches activeSlide={activeSlide} trainings_list={pageData.trainings_list} />
                 <div id="preview" className="preview-wrapper">
-                    {pageData.trainings_list.map((item, i) => (
-                        <div
-                            key={item.trainings_list_title.text}
-                            className={`preview ${i === activeSlide ? "selected" : ""}`}
-                        >
-                            <div className="image">
-                                <img
-                                    src={item.traninings_list_image.fixed.src}
-                                    srcSet={item.traninings_list_image.fixed.srcSet}
-                                    width="60"
-                                    height="60"
-                                    alt={item.traninings_list_image.alt}
-                                />
+                    {pageData.trainings_list.map((item) => {
+                        const hash = item.course.uid || makeUid(item.trainings_list_title.text)
+                        return (
+                            <div
+                                key={item.trainings_list_title.text}
+                                className={`preview ${hash == activeSlide ? "selected" : ""}`}
+                            >
+                                <div className="image">
+                                    <img
+                                        src={item.traninings_list_image.fixed.src}
+                                        srcSet={item.traninings_list_image.fixed.srcSet}
+                                        width="60"
+                                        height="60"
+                                        alt={item.traninings_list_image.alt}
+                                    />
+                                </div>
+                                <div className="content">
+                                    <h3>{item.trainings_list_title.text}</h3>
+                                    <div dangerouslySetInnerHTML={{ __html: item.tranings_list_richtext.html }} />
+                                </div>
                             </div>
-                            <div className="content">
-                                <h3>{item.trainings_list_title.text}</h3>
-                                <div dangerouslySetInnerHTML={{ __html: item.tranings_list_richtext.html }} />
-                            </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
             </div>
         </Layout>
@@ -165,6 +180,9 @@ export const servicesCorporateQuery = graphql`
                             ...GatsbyPrismicImageFixed
                         }
                         alt
+                    }
+                    course {
+                        uid
                     }
                 }
                 trainings_title {
