@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
-
+import { JsonLD, organizationJsonLD } from "@components/json-ld"
 import Hero from "@components/homepage/hero"
 import Stats from "@components/homepage/stats"
 import WhatWeDo from "@components/homepage/whatwedo"
@@ -14,6 +14,7 @@ import "@styles/pages/homepage.scss"
 const Homepage = ({ data, location }) => {
     return (
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
+            <JsonLD>{organizationJsonLD}</JsonLD>
             <Hero slides={data.prismicHomepage.data.hero_slide} />
             <Stats blocks={data.prismicHomepage.data.stats_element} />
             <WhatWeDo data={data.prismicHomepage.data} />

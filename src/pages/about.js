@@ -7,6 +7,7 @@ import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
 import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
 import { getImageProps } from "@utils/getImageProps"
+import { JsonLD, organizationJsonLD } from "@components/json-ld"
 
 import "@styles/pages/about.scss"
 
@@ -50,6 +51,7 @@ const AboutPage = ({ data, location }) => {
     } = data.prismicAboutPage.data
     return (
         <Layout location={location} className="about-page" {...Layout.pickSeoProps(data.prismicAboutPage.data)}>
+            <JsonLD>{organizationJsonLD}</JsonLD>
             <BgSmall className="bg-1" />
             <BgMedium className="bg-2" />
             <BgSmall className="bg-3" />

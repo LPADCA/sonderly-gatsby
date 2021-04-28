@@ -4,7 +4,8 @@ import { graphql } from "gatsby"
 import FaqList from "@components/faq/faq-list"
 import { ReactComponent as BgBig } from "@assets/decorations/bg-big.svg"
 import { useState } from "react"
-import { Helmet } from "react-helmet"
+import { JsonLD, faqJsonLD } from "@components/json-ld"
+
 
 import "@styles/pages/faq/index.scss"
 
@@ -25,28 +26,7 @@ const FAQPage = ({ data, location }) => {
 
     return (
         <Layout location={location} {...Layout.pickSeoProps(data.prismicFaqPage.data)}>
-            <Helmet>
-                <script type="application/ld+json">
-                    {JSON.stringify(
-                        {
-                            "@context": "https://schema.org",
-                            "@type": "FAQPage",
-                            mainEntity: faq_list.map(({ faq_title, faq_description }) => ({
-                                "@type": "Question",
-
-                                name: faq_title,
-                                acceptedAnswer: {
-                                    "@type": "Answer",
-                                    text: faq_description.text,
-                                },
-                            })),
-                        },
-                        null,
-                        4
-                    )}
-                </script>
-            </Helmet>
-
+            <JsonLD>{faqJsonLD(faq_list)}</JsonLD>
             <div className="faq-header">
                 <h1>{title}</h1>
                 <div className="faq-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />
