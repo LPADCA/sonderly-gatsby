@@ -9,7 +9,7 @@ import Footer from "./footer"
 
 const organizationJsonLD = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "EducationalOrganization",
     url: "https://sonderly.io/",
     logo: "https://sonderly.io/images/logo-header-2x.png",
     name: "Sonderly",
@@ -19,6 +19,15 @@ const organizationJsonLD = JSON.stringify({
         "https://www.instagram.com/sonderly.io/",
         "https://www.linkedin.com/showcase/sonderly/",
     ],
+    address: {
+        "@type": "PostalAddress",
+        addressLocality: "Toronto",
+        addressRegion: "ON",
+        postalCode: "M4S 2Z8",
+        streetAddress: "112 Merton St",
+    },
+    description:
+        "An educational and training platform for professionals and educators seeking to learn more about autism and mental health.",
 })
 
 const Layout = ({ location, children, seo_title, seo_description, seo_keywords, ...props }) => {

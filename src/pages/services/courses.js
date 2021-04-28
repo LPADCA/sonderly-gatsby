@@ -87,10 +87,6 @@ const CourseMap = ({ data, location }) => {
                                     name: c.course_name.text,
                                     description: c.summary.text,
                                     url: c.link.url,
-                                    provider: {
-                                        "@type": "Organization",
-                                        name: "Sonderly",
-                                    },
                                 },
                             })),
                         },
