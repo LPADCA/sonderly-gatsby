@@ -16,7 +16,13 @@ const Logo = () => {
                     width="198.5"
                     height="60"
                 />
-                <img className="logo hide-on-desktop" src="/images/logomark.svg" width="40" height="56" alt="Sonderly logo" />
+                <img
+                    className="logo hide-on-desktop"
+                    src="/images/logomark.svg"
+                    width="40"
+                    height="56"
+                    alt="Sonderly logo"
+                />
             </Link>
         </div>
     )

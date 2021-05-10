@@ -39,6 +39,8 @@ const Footer = () => {
                                     src="/images/logo-footer.png"
                                     srcSet="/images/logo-footer@2x.png 2x"
                                     alt="Sonderly logo (footer)"
+                                    width="206"
+                                    height="40"
                                 />
                             </Link>
                             <div dangerouslySetInnerHTML={{ __html: footer_contacts.html }}></div>
