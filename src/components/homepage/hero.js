@@ -1,4 +1,3 @@
-import React from "react"
 // import { Link } from "gatsby"
 // import { CgArrowRight } from "react-icons/cg"
 import { getImageProps } from "@utils/getImageProps"
@@ -29,7 +28,6 @@ const Hero = ({ slides }) => {
                         </div>
                     </div>
                 </div>
-                <div id="bg-el1" />
                 <div id="bg-el3" />
                 <div id="bg-el4" />
             </div>

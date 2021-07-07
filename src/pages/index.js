@@ -8,6 +8,7 @@ import WhatWeDo from "@components/homepage/whatwedo"
 import CoursesPreview from "@components/homepage/courses"
 import WhoWeServe from "@components/homepage/whoweserve"
 import Testimonials from "@components/homepage/testimonials"
+import FeaturedCourses from "@components/homepage/featured_courses"
 
 import "@styles/pages/homepage.scss"
 
@@ -16,6 +17,9 @@ const Homepage = ({ data, location }) => {
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
             <Hero slides={data.prismicHomepage.data.hero_slide} />
+            {data.prismicHomepage.data.featured_courses.length > 0 && (
+                <FeaturedCourses {...data.prismicHomepage.data} />
+            )}
             <Stats blocks={data.prismicHomepage.data.stats_element} />
             <WhatWeDo data={data.prismicHomepage.data} />
             <CoursesPreview data={data.prismicHomepage.data} />
@@ -50,6 +54,28 @@ export const homepageQuery = graphql`
                             ...GatsbyPrismicImageFluid_noBase64
                         }
                         alt
+                    }
+                }
+                featured_title {
+                    html
+                }
+                featured_description {
+                    html
+                }
+                featured_courses {
+                    course_link_text
+                    course_link_url
+                    course_description {
+                        html
+                    }
+                    course_icon {
+                        alt
+                        fluid(maxHeight: 30) {
+                            ...GatsbyPrismicImageFluid_noBase64
+                        }
+                    }
+                    course_title {
+                        html
                     }
                 }
                 stats_element {

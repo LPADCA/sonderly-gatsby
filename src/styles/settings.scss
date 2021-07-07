@@ -19,9 +19,9 @@ $default-transition: all 0.3s ease-out;
 $default-gradient: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat padding-box;
 
 
-$mobile-edge: 500px;
-$between-edge: 750px;
-$desktop-edge: 1000px;
+$mobile-edge: 576px;
+$between-edge: 768px;
+$desktop-edge: 992px;
 
 $header-height: 90px;
 
