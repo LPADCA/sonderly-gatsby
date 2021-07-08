@@ -102,7 +102,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <p className="copyright">&copy; Sonderly.io All Rights Reserved.</p>
+                <p className="copyright">&copy; {year} Sonderly.io All Rights Reserved.</p>
             </div>
         </div>
     )
