@@ -102,9 +102,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <p className="copyright">
-                    &copy; {year} <span dangerouslySetInnerHTML={{ __html: copyright.html }}></span>
-                </p>
+                <p className="copyright">&copy; Sonderly.io All Rights Reserved.</p>
             </div>
         </div>
     )
