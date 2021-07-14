@@ -8,6 +8,28 @@ export default function HTML(props) {
                 <meta charSet="utf-8" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <script
+                    type="text/javascript"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                        !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(
+                            Array.prototype.slice.call(arguments))};var
+                            n=window.pintrk;n.queue=[],n.version="3.0";var
+                            t=document.createElement("script");t.async=!0,t.src=e;var
+                            r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+                          pintrk('load', '2612968015949');
+                          pintrk('page');`,
+                    }}
+                />
+                <noscript>
+                    <img
+                        height="1"
+                        width="1"
+                        style={{ display: "none" }}
+                        alt=""
+                        src="https://ct.pinterest.com/v3/?tid=2612968015949&event=init&noscript=1"
+                    />
+                </noscript>
                 {props.headComponents}
             </head>
             <body {...props.bodyAttributes}>
