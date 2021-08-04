@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "@components/common/layout"
 import Hero from "@components/blocks/hero"
 import { FaFilter } from "react-icons/fa"
-import { RiInformationLine, RiStarFill } from "react-icons/ri"
+import { RiInformationLine } from "react-icons/ri"
 import { FaVideo } from "react-icons/fa"
 import Slider, { SliderTooltip } from "rc-slider"
 import "rc-slider/assets/index.css"
@@ -280,7 +280,6 @@ export const courseMapQuery = graphql`
                         link_type
                         target
                         type
-                        uid
                         url
                     }
                     summary {

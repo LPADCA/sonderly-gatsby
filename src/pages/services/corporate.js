@@ -17,7 +17,7 @@ const Switches = ({ activeSlide, trainings_list }) => {
     return (
         <ul>
             {trainings_list.map((item) => {
-                const hash = item.course.uid || makeUid(item.trainings_list_title.text)
+                const hash = makeUid(item.trainings_list_title.text)
                 return (
                     <li key={hash}>
                         <a href={`#${hash}`} className={`course-link ${hash == activeSlide ? "active" : ""}`}>
@@ -33,7 +33,7 @@ const Switches = ({ activeSlide, trainings_list }) => {
 const ServicesCorporate = ({ data, location }) => {
     const pageData = data.prismicServicesCorporate.data
     const firstTraining = pageData.trainings_list[0]
-    const firstSlide = firstTraining.course.uid || makeUid(firstTraining.trainings_list_title.text)
+    const firstSlide = makeUid(firstTraining.trainings_list_title.text)
     const [activeSlide, setActiveSlide] = useState(firstSlide)
 
     useEffect(() => {
@@ -66,13 +66,15 @@ const ServicesCorporate = ({ data, location }) => {
                             <div key={i} className={`tab${i}`}>
                                 <div className="tab-header">
                                     <div>
-                                        <img
-                                            src={box.hero_boxes_icon.fixed.src}
-                                            srcSet={box.hero_boxes_icon.fixed.srcSet}
-                                            width="60"
-                                            height="60"
-                                            alt={box.hero_boxes_icon.alt}
-                                        />
+                                        {box.hero_boxes_icon && (
+                                            <img
+                                                src={box.hero_boxes_icon.fixed.src}
+                                                srcSet={box.hero_boxes_icon.fixed.srcSet}
+                                                width="60"
+                                                height="60"
+                                                alt={box.hero_boxes_icon.alt}
+                                            />
+                                        )}
                                     </div>
                                     <div>
                                         <h3>{box.hero_boxes_title.text}</h3>
@@ -100,7 +102,7 @@ const ServicesCorporate = ({ data, location }) => {
                 <Switches activeSlide={activeSlide} trainings_list={pageData.trainings_list} />
                 <div id="preview" className="preview-wrapper">
                     {pageData.trainings_list.map((item) => {
-                        const hash = item.course.uid || makeUid(item.trainings_list_title.text)
+                        const hash = makeUid(item.trainings_list_title.text)
                         return (
                             <div
                                 key={item.trainings_list_title.text}
@@ -180,9 +182,6 @@ export const servicesCorporateQuery = graphql`
                             ...GatsbyPrismicImageFixed
                         }
                         alt
-                    }
-                    course {
-                        uid
                     }
                 }
                 trainings_title {
