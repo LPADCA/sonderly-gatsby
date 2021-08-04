@@ -31,14 +31,15 @@
         padding: 30px;
         padding-bottom: 80px;
         position: relative;
+
         & > .tab-header {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: 60px auto;
+            display: flex;
+
             align-items: center;
             img {
                 object-fit: contain;
                 object-position: center;
+                margin-right: 20px;
             }
         }
         p {

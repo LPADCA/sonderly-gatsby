@@ -62,11 +62,11 @@ const ServicesCorporate = ({ data, location }) => {
                 </div>
                 <div className="container">
                     <div className="corporate-services-hero-tabs">
-                        {pageData.hero_boxes.map((box, i) => (
-                            <div key={i} className={`tab${i}`}>
-                                <div className="tab-header">
-                                    <div>
-                                        {box.hero_boxes_icon && (
+                        {pageData.hero_boxes.map((box, i) => {
+                            return (
+                                <div key={i} className={`tab${i}`}>
+                                    <div className="tab-header">
+                                        {box.hero_boxes_icon.fixed && (
                                             <img
                                                 src={box.hero_boxes_icon.fixed.src}
                                                 srcSet={box.hero_boxes_icon.fixed.srcSet}
@@ -75,24 +75,24 @@ const ServicesCorporate = ({ data, location }) => {
                                                 alt={box.hero_boxes_icon.alt}
                                             />
                                         )}
+                                        <div>
+                                            <h3>{box.hero_boxes_title.text}</h3>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3>{box.hero_boxes_title.text}</h3>
-                                    </div>
+                                    <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }} />
+                                    {box.hero_boxes_button_link && box.hero_boxes_button_link.url && (
+                                        <CommonLink
+                                            className="button"
+                                            type={box.hero_boxes_button_link.type}
+                                            to={box.hero_boxes_button_link.url}
+                                            target={box.hero_boxes_button_link.target}
+                                        >
+                                            {box.hero_boxes_button_text}
+                                        </CommonLink>
+                                    )}
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }} />
-                                {box.hero_boxes_button_link && box.hero_boxes_button_link.url && (
-                                    <CommonLink
-                                        className="button"
-                                        type={box.hero_boxes_button_link.type}
-                                        to={box.hero_boxes_button_link.url}
-                                        target={box.hero_boxes_button_link.target}
-                                    >
-                                        {box.hero_boxes_button_text}
-                                    </CommonLink>
-                                )}
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: pageData.hero_note.html }} />
                 </div>
