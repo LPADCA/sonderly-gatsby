@@ -14,7 +14,7 @@ const FeaturedCourses = ({ featured_title, featured_description, featured_course
             <div className="featured-courses">
                 {featured_courses.map((c) => (
                     <div key={c.course_title.html} className="featured-course">
-                        {c.course_icon && <img className="featured-course-icon" {...getImageProps(c.course_icon)} />}
+                        <img className="featured-course-icon" {...getImageProps(c.course_icon)} />
                         <div dangerouslySetInnerHTML={{ __html: c.course_title.html }} />
                         <div dangerouslySetInnerHTML={{ __html: c.course_description.html }} />
                         <a className="featured-link" onClick={onClick} href={c.course_link_url}>
