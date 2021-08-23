@@ -56,6 +56,7 @@ export const homepageQuery = graphql`
                         alt
                     }
                 }
+                featured_anchor
                 featured_title {
                     html
                 }

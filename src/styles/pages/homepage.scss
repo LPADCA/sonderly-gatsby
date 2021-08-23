@@ -254,7 +254,6 @@
 }
 
 .featured {
-
     &::after {
         content: " ";
         margin: 60px auto;
@@ -267,13 +266,19 @@
 
     &.container {
         max-width: $desktop-edge;
-        padding-top: 0;
+        margin-top: -30px;
+        padding-top: 100px!important;
         padding-bottom: 0;
     }
 
     &-title {
         text-align: center;
         position: relative;
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
 
         &::after {
             position: relative;
@@ -295,11 +300,11 @@
     }
 
     &-courses {
-        font-family: 'Helvetica', sans-serif;
         margin-top: 40px;
         display: grid;
         gap: 60px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: center;
 
         @media (min-width: $mobile-edge) {
             flex-direction: row;
@@ -307,23 +312,56 @@
     }
 
     &-course {
-        background-color: #35CE8D;
-        padding: 20px;
-        border-radius: 8px;
-        color: white;
-
+        border-radius: 25px;
+        box-shadow: 0px 3px 6px #00000029;
+        overflow: hidden;
+        
         h3 {
             color: #3E3E3E;
+
+            &:empty {
+                margin: 0;
+            }
         }
     }
 
-    &-course-icon {
-        height: 30px;
+    p {
+        margin-top: 0;
     }
 
-    .featured-link {
-        color: white;
-        font-weight: bold;
+    p + p {
+        margin-top: 1em;
+    }
+
+    p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    &-course-icon {
+        max-height: 30px;
+    }
+
+
+    .featured-header {
+        background-blend-mode: luminosity;
+        min-height: 170px;
+        background-image: url("../../assets/images/featured-courses.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #35CE8D;
+    }
+
+    .featured-content {
+        padding: 20px 30px;
+
+        .button-wrapper {
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .button {
+            margin: 0 auto;
+        }
     }
 }
 
