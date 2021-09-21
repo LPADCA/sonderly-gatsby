@@ -41,6 +41,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 prismicFundedTraining {
                     lang
                 }
+                prismicMythLandingPage {
+                    lang
+                }
             }
         `)
     )
@@ -48,6 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const customPagesList = customPagesResult.data.allPrismicPage.edges
     const prismicLandingPage = customPagesResult.data.prismicLandingPage
     const prismicFundedTraining = customPagesResult.data.prismicFundedTraining
+    const prismicMythLandingPage = customPagesResult.data.prismicMythLandingPage
 
     customPagesList.forEach((edge) => {
         createPage({
@@ -65,6 +69,13 @@ exports.createPages = async ({ graphql, actions }) => {
             type: "page",
             path: `/get-certification`,
             component: path.resolve("src/templates/landing-page.js"),
+        })
+    }
+    if (prismicMythLandingPage) {
+        createPage({
+            type: "page",
+            path: `/aba-myths-dispelled`,
+            component: path.resolve("src/templates/myth-landing-page.js"),
         })
     }
     if (prismicFundedTraining) {

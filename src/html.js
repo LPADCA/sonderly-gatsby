@@ -7,6 +7,7 @@ export default function HTML(props) {
             <head>
                 <meta charSet="utf-8" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+                <meta name="p:domain_verify" content="dbfada72c0fade268cfd3f725f79afdb" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <script
                     type="text/javascript"
