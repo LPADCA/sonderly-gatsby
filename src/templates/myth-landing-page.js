@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import useCurrentWidth from "../utils/getWindowWidth"
 import { FiArrowLeft } from "react-icons/fi"
 import Flippy, { FrontSide, BackSide } from "react-flippy"
-const isBrowser = typeof window !== "undefined"
 
 import "@styles/pages/myth-landing-page.scss"
 const Spacer = ({ size }) => <div style={{ marginBottom: `${size}px` }}></div>
@@ -158,7 +157,7 @@ const MythCard = ({ alignment, ...card }) => {
 }
 
 const MythLandingPage = ({ location, data }) => {
-    const width = isBrowser ? useCurrentWidth() : "100%"
+    const width = useCurrentWidth()
     const { landing_page_title, myth_card } = data.prismicMythLandingPage.data
     const cardsToRender = []
     const cardsArray = Array.from({ length: myth_card.length }, (v, index) => {
@@ -181,13 +180,14 @@ const MythLandingPage = ({ location, data }) => {
             rowCounter += 1
         }
     }
+    if (!width) return null
 
     return (
         <Layout className="myth-landing-page" location={location} {...Layout.pickSeoProps(seoProps)}>
             <section className="myth-landing-header-wrapper">
                 <h1 className="landing-header-title">{landing_page_title.text}</h1>
             </section>
-            {width > 1200 ? (
+            {width && width > 1200 ? (
                 <section className="card-container">
                     {cardsToRender.map((row, rowIndex) => (
                         <div

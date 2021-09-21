@@ -6,7 +6,7 @@ function useCurrentWidth() {
     if (isBrowser) {
         const getWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
         // save current window width in the state object
-        const initialState = window && window.innerWidth ? getWidth() : "100%"
+        const initialState = window && window.innerWidth ? getWidth() : null
         let [width, setWidth] = useState(initialState)
 
         // in this case useEffect will execute only once because
