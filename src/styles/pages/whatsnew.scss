@@ -1,3 +1,5 @@
+@import "../settings.scss";
+
 .whats-new-wrapper {
   --brand-color: #20A77A;
 }
@@ -32,6 +34,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  min-width: 326px;
   max-width: 326px;
   min-height: 251px;
   padding: 24px;
@@ -57,3 +60,12 @@
   height: 100%;
   margin: 48px auto 0 auto
 }
+
+ @media (max-width: $mobile-edge) {
+      .box-wrapper {
+        justify-content: flex-starts;
+      }
+      .box {
+        min-width: 326px;
+      }
+  }

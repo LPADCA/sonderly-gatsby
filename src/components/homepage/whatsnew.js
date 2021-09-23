@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import "@styles/pages/myth-landing-page.scss"
 
 import "@styles/pages/whatsnew.scss"
 

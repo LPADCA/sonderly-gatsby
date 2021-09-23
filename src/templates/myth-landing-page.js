@@ -4,14 +4,16 @@ import { graphql } from "gatsby"
 import useCurrentWidth from "../utils/getWindowWidth"
 import { FiArrowLeft } from "react-icons/fi"
 import Flippy, { FrontSide, BackSide } from "react-flippy"
+import CommonLink from "@components/common-link"
 
 import "@styles/pages/myth-landing-page.scss"
+
 const Spacer = ({ size }) => <div style={{ marginBottom: `${size}px` }}></div>
 
-const CTAButton = ({ url }) => (
-    <a className="myth-cta" href={url} role="button">
-        Click To Learn More
-    </a>
+const CTAButton = ({ link, title }) => (
+    <CommonLink to={link.url} type={link.link_type} className="myth-cta" role="button">
+        {title}
+    </CommonLink>
 )
 
 const MobileMythCard = ({ ...card }) => {
@@ -164,7 +166,7 @@ const MythCard = ({ alignment, ...card }) => {
 
 const MythLandingPage = ({ location, data }) => {
     const width = useCurrentWidth()
-    const { landing_page_title, myth_card } = data.prismicMythLandingPage.data
+    const { landing_page_title, myth_card, cta_link, cta_button_title } = data.prismicMythLandingPage.data
     const cardsToRender = []
     const cardsArray = Array.from({ length: myth_card.length }, (v, index) => {
         return myth_card[index]
@@ -230,7 +232,7 @@ const MythLandingPage = ({ location, data }) => {
                     ))}
                 </section>
             )}
-            <CTAButton />
+            <CTAButton link={cta_link} title={cta_button_title.text} />
         </Layout>
     )
 }
@@ -263,6 +265,14 @@ export const query = graphql`
                     back_card_fact_copy {
                         text
                     }
+                }
+                cta_link {
+                    url
+                    type
+                    link_type
+                }
+                cta_button_title {
+                    text
                 }
                 seo_title {
                     text
