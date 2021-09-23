@@ -8,6 +8,12 @@ import Flippy, { FrontSide, BackSide } from "react-flippy"
 import "@styles/pages/myth-landing-page.scss"
 const Spacer = ({ size }) => <div style={{ marginBottom: `${size}px` }}></div>
 
+const CTAButton = ({ url }) => (
+    <a className="myth-cta" href={url} role="button">
+        Click To Learn More
+    </a>
+)
+
 const MobileMythCard = ({ ...card }) => {
     const [textHeight, setTextHeight] = useState(null)
     const [flipped, setFlipped] = useState(false)
@@ -224,6 +230,7 @@ const MythLandingPage = ({ location, data }) => {
                     ))}
                 </section>
             )}
+            <CTAButton />
         </Layout>
     )
 }
