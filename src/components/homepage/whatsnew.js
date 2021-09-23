@@ -30,6 +30,7 @@ const WhatsNew = ({ sectionTitle, boxes }) => {
                     <Box key={index} {...box} />
                 ))}
             </div>
+            <img className="section-divider" src="/images/whatsnew-section-divider.svg" alt="section-divider" />
         </section>
     )
 }
