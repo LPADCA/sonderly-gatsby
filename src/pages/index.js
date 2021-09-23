@@ -9,6 +9,7 @@ import CoursesPreview from "@components/homepage/courses"
 import WhoWeServe from "@components/homepage/whoweserve"
 import Testimonials from "@components/homepage/testimonials"
 import FeaturedCourses from "@components/homepage/featured_courses"
+import WhatsNew from "@components/homepage/whatsnew"
 
 import "@styles/pages/homepage.scss"
 
@@ -17,6 +18,12 @@ const Homepage = ({ data, location }) => {
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
             <Hero slides={data.prismicHomepage.data.hero_slide} />
+            {data.prismicHomepage.data.whats_new_box.length && (
+                <WhatsNew
+                    sectionTitle={data.prismicHomepage.data.whats_new_section_title}
+                    boxes={data.prismicHomepage.data.whats_new_box}
+                />
+            )}
             {data.prismicHomepage.data.featured_courses.length > 0 && (
                 <FeaturedCourses {...data.prismicHomepage.data} />
             )}
@@ -157,6 +164,23 @@ export const homepageQuery = graphql`
                     tnm_card_author_name
                     tmn_card_text {
                         html
+                    }
+                }
+                whats_new_section_title {
+                    text
+                }
+                whats_new_box {
+                    whats_new_box_content {
+                        text
+                    }
+                    whats_new_box_button {
+                        text
+                    }
+                    whats_new_box_link {
+                        url
+                        type
+                        target
+                        link_type
                     }
                 }
             }
