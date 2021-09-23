@@ -49,6 +49,7 @@ module.exports = {
                     funded_training: require("./src/schemas/funded_training_page.json"),
                     about_page: require("./src/schemas/about_page.json"),
                     landing_page: require("./src/schemas/landing_page.json"),
+                    myth_landing_page: require("./src/schemas/myth_landing_page.json"),
                     404: require("./src/schemas/404.json"),
                     // Your custom types mapped to schemas
                 },
@@ -64,7 +65,6 @@ module.exports = {
             resolve: "gatsby-plugin-google-tagmanager",
             options: {
                 id: process.env.GOOGLE_ID,
-
             },
         },
         {

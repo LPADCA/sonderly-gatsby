@@ -1,6 +1,7 @@
 import CommonLink from "@components/common-link"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi"
+import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiYoutube } from "react-icons/fi"
+import { FaPinterestP } from "react-icons/fa"
 import SubscribeForm from "../blocks/subscribe-form"
 
 import "@styles/footer.scss"
@@ -78,6 +79,20 @@ const Footer = () => {
                             <li>
                                 <a href="https://www.linkedin.com/showcase/sonderly/" title="LinkedIn" target="_blank">
                                     <FiLinkedin />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://youtube.com/channel/UCdL4jIHNUJopMZCWQqAkX1A"
+                                    title="youtube"
+                                    target="_blank"
+                                >
+                                    <FiYoutube />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://pin.it/2hdWmNY" title="pinterest" target="_blank">
+                                    <FaPinterestP />
                                 </a>
                             </li>
                         </ul>

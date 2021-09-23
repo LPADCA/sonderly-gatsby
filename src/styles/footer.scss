@@ -67,6 +67,7 @@
         font-weight: 700;
         width: 100%;
         text-align: center;
+        margin-top: 12px;
     }
 
     .cell {
@@ -83,6 +84,9 @@
     .socials {
         display: flex;
         padding: 0;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
         li {
             display: flex;
             align-items: center;
@@ -91,7 +95,6 @@
             height: 45px;
             background-color: white;
             border-radius: 500px;
-            margin: 0 12px;
             box-shadow: 7px 7px 10px rgba(0,0,0,0.1);
             a {
                 font-size: 18px;
