@@ -17,6 +17,10 @@ const linkResolver = (doc) => {
         return `/services/funded-training`
     }
 
+    if (doc.type === "professional_training") {
+        return `/services/professional-training`
+    }
+
     if (doc.type === "services_corporate") {
         return `/services/corporate`
     }
