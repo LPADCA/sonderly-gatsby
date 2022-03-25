@@ -18,7 +18,7 @@ const Homepage = ({ data, location }) => {
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
             <Hero slides={data.prismicHomepage.data.hero_slide} />
-            {data.prismicHomepage.data.whats_new_box.length && (
+            {data.prismicHomepage.data.whats_new_box.length > 0 && (
                 <WhatsNew
                     sectionTitle={data.prismicHomepage.data.whats_new_section_title}
                     boxes={data.prismicHomepage.data.whats_new_box}

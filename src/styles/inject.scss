@@ -23,6 +23,9 @@
                 }
                 button {
                     cursor: pointer !important;
+                    font-size: 16px;
+                    color: #333;
+                    font-family: "Nunito", Helvetica, Arial, sans-serif;
                 }
             }
         }
@@ -37,9 +40,13 @@
                 padding-top: 450px !important;
                 .wrapper {
                     padding-top: 50px !important;
+                    padding-bottom: 0 !important;
                 }
             }
         }
+    }
+    #featured.container {
+        padding-top: 30px !important;
     }
 }
 
