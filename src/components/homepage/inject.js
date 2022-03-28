@@ -30,7 +30,10 @@ const Hero = ({ slides }) => {
                             </button>
                             <section {...getCollapseProps()}>
                                 <p>
-                                    Globally, stress levels are on the rise so perhaps this year for Autism Awareness Month, we look within the community to draw inspiration on how to manage sensory overload, ground ourselves and create inner peace across our neurodiverse community. This April, let’s learn from the Autism community. Let’s learn to exhale.
+                                    Globally, stress levels are on the rise so perhaps this year for Autism Awareness Month, we look within the community to draw inspiration on how to manage sensory overload, ground ourselves and create inner peace across our neurodiverse community. 
+                                </p>
+                                <p>
+                                    This April, let’s learn from the Autism community. Let’s learn to exhale.
                                 </p>
                             </section>
 
