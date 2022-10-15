@@ -2,13 +2,6 @@
 
 .header {
     background: rgb(255, 255, 255);
-    background: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 34%,
-        rgba(255, 255, 255, 1) 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
     position: fixed;
     left: 0;
     top: 0;
@@ -45,14 +38,15 @@
             }
         }
     }
-    .lang {
-        img {
-            transition: $default-transition;
-        }
-        &:hover {
-            img {
-                border-radius: 20px;
-                box-shadow: 0 0 5px $hover-green;
+    .language-switcher {
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        a.lang {
+            color: $border-gray;
+            padding: 0 6px;
+            &:hover, &:active {
+                color: black;
             }
         }
     }
@@ -71,6 +65,7 @@
 
     li {
         a {
+            cursor: pointer;
             color: $text-color;
             transition: 0.3s color ease-out;
         }
@@ -81,6 +76,7 @@
         }
     }
     & > li {
+        cursor: pointer;
         display: inline-block;
         position: relative;
         
@@ -102,33 +98,54 @@
     }
     & > li.hasChildren {
         position: relative;
-        ul.l2 {
+        transition: color 0.5s ease-out;
+        &:after {
+            content: "";
             position: absolute;
+            right: 1px;
+            top: calc(50% - 3px);
+            width: 8px;
+            height: 8px;
+            background-image: url("data:image/svg+xml,%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 8 8' style='enable-background:new 0 0 8 8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%2353BD8A;%7D%0A%3C/style%3E%3Cpolygon class='st0' points='4.1,6.4 0.2,2.6 0.9,1.9 4.1,5.1 7.1,2.1 7.8,2.7 '/%3E%3C/svg%3E");
+            filter: brightness(-100%);
+            transition: filter 0.5s ease-out, transform 0.5s ease-out;
+        }
+        &:hover {
+            color: $color2;
+            &:after {
+                filter: brightness(100%);
+            }
+        &.open:after {
+            transform: rotateX(180deg);
+        }
+        }
+        .ul-wrapper {
+            position: absolute;
+            overflow: hidden;
             z-index: 999;
             left: 15px;
             top: 100%;
-            padding: 15px;
-            border: 1px solid $border-green;
-            border-radius: 10px;
+            border-radius: 6px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
             background-color: white;
             line-height: 1.6;
-            opacity: 0;
-            transition: 0.6s opacity ease-out;
+            transition: 0.5s max-height ease-out, 0.5s max-width ease-out;
             pointer-events: none;
-            & > li {
-
-                list-style: none;
-                & > a {
-                    white-space: nowrap;
-                    line-height: 2;
+            & > ul {
+                padding: 15px;
+                width: min-content;
+                & li {
+                    list-style: none;
+                    & > a {
+                        white-space: nowrap;
+                        line-height: 2;
+                    }
                 }
             }
         }
     }
-    & > li.hasChildren:hover > ul.l2,
-    & > li.hasChildren:active > ul.l2 {
+    & > li.hasChildren.open > .ul-wrapper {
         display: block;
-        opacity: 1;
         pointer-events: all;
     }
 }

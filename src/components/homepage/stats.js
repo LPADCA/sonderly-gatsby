@@ -1,17 +1,7 @@
-import { useState } from "react"
-import VizSensor from "react-visibility-sensor"
-
 const Stats = ({ blocks }) => {
-    const [isVisible, setVisible] = useState(false)
     return (
-        <VizSensor onChange={(isVisible) => setVisible(isVisible)}>
             <div
-                className="stats"
-                style={{
-                    opacity: isVisible ? 1 : 0.25,
-                    transition: "opacity 500ms linear",
-                }}
-            >
+                className="stats" style={{backgroundImage: "url('images/counter_bg.jpg')"}}>
                 <div className="container">
                     <div className="grid">
                         {blocks.map((item, i) => (
@@ -23,7 +13,6 @@ const Stats = ({ blocks }) => {
                     </div>
                 </div>
             </div>
-        </VizSensor>
     )
 }
 export default Stats

@@ -33,7 +33,25 @@ h4,
 h5,
 h6 {
     font-family: "Nunito", "Helvetica Round", "Varela Round", Helvetica, Arial, sans-serif;
-    letter-spacing: 0.4px;
+}
+
+.newtitle {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: -1px;
+    &.inverted {
+        color: white;
+    }
+    &:after {
+        content: ".";
+        color: $color6;
+    }
+    &.explicit:after {
+        content: "!";
+    }
 }
 
 li {
@@ -76,19 +94,23 @@ button {
 
 .button {
     display: inline-block;
-    padding: 14px 56px;
+    padding: 14px 28px;
     margin: 5px 0;
     border-radius: 50px;
-    border: none;
+    box-shadow: 0px 0px 0px 1px $button-green;
     background-color: $button-green;
     color: $text-color-invert;
     transition: $default-transition;
     text-decoration: none;
     font-weight: 600;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 
     &:hover:not(:disabled) {
-        background-color: $hover-green;
-        color: white;
+        background-color: transparent;
+        box-shadow: 0px 0px 0px 2px $button-green;
+        color: $button-green;
     }
 
     &:disabled {
@@ -104,6 +126,29 @@ button {
         border-color: $hover-green;
         background-color: $hover-green;
         color: white;
+    }
+}
+
+.button.black {
+    border: 2px solid black;
+    color: white;
+    background: black;
+    box-shadow: none;
+    &:hover, &:active {
+        box-shadow: none;
+        color: black;
+    }
+}
+
+.button.black.inverted {
+    border: 2px solid black;
+    color: black;
+    background: transparent;
+    box-shadow: none;
+    &:hover, &:active {
+        box-shadow: none;
+        color: white;
+        background: black;
     }
 }
 
@@ -149,7 +194,7 @@ h2.typical {
     }
 }
 
-@media (min-width: $desktop-edge+1px) {
+@media (min-width: ($desktop-edge + 1px)) {
     .hide-on-desktop {
         display: none !important;
     }
@@ -188,6 +233,139 @@ h2.underline {
     &.centered {
         &:after {
             margin: 10px auto 0 auto;
+        }
+    }
+}
+
+.testimonials {
+    background-size: cover;
+    .slick-track {
+        display: flex !important;
+    }
+    .slick-slide{
+        height: inherit !important;
+        > div {
+            height: 100%;
+        }
+    }
+    .card-wrapper {
+        height: 100%;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+    .card {
+        height: 100%;
+        background-color: white;
+        padding: 20px;
+        padding-bottom: 75px;
+        position: relative;
+        border-radius: 16px;
+        box-shadow: 0px 5px 24px rgba(53, 206, 141, 0);
+        transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+        .content {
+            p {
+                margin-top: 0;
+            }
+            font-weight: 700;
+        }
+        .author {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            .name {
+                font-weight: 700;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .position {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+        &:hover {
+            transform: translateY(-15px);
+            box-shadow: 0px 5px 24px rgba(53, 206, 141, 1);
+        }
+    }
+}
+
+.letstalk {
+    .form-wrapper {
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid black;
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            .illustration {
+                min-height: 160px;
+                background-image: url('/images/letstalk-icon.png');
+                background-size: contain;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            label, input[type=text], input[type=email], input[type=phone], textarea {
+                display: block;
+                width: 100%;
+            }
+            label {
+                margin-top: 5px;
+                font-size: 12px;
+            }
+            .input-wrapper {
+                position: relative;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    left: 3px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 28px;
+                    height: 28px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-color: red;
+                    opacity: 0.5;
+                }
+            }
+            .input-wrapper.name:after {
+                background-image: url('/images/icon-person.png');
+            }
+            .input-wrapper.email:after {
+                background-image: url('/images/icon-email.png');
+            }
+            .input-wrapper.phone:after {
+                background-image: url('/images/icon-phone.png');
+            }
+
+            input[type=text], input[type=email], input[type=phone] {
+                height: 35px;
+                padding-left: 40px;
+            }
+            textarea {
+                height: 148px;
+            }
+        }
+        .submit-button {
+            padding-top: 10px;
+            text-align: right;
+        }
+        .grid-success {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            gap: 20px;
+            .illustration {
+                min-height: 160px;
+                background-image: url('/images/letstalk-icon.png');
+                background-size: contain;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            .content {
+                text-align: center;
+            }
         }
     }
 }

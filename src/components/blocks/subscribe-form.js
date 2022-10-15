@@ -19,7 +19,7 @@ const SubscribeForm = ({ subscription_button }) => {
                         <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
                     </div>
                     <div style={{ position: "absolute", left: "-5000px" }} aria-hidden="true">
-                        <input type="text" name="b_449c6d27168b4aa6dcea47338_0e9a6199da" tabIndex="-1" value="" />
+                        <input type="text" name="b_449c6d27168b4aa6dcea47338_0e9a6199da" tabIndex="-1" defaultValue="" />
                     </div>
                     <div className="clear">
                         <input

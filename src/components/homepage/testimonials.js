@@ -4,6 +4,7 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+
 const settings = {
     dots: false,
     arrows: true,
@@ -31,15 +32,13 @@ const TestimonialsSlider = ({ data }) => {
     return (
         <Slider {...settings}>
             {data.tmn_cards.map((card, i) => (
-                <div key={`key-${i}`} className="card">
-                    <div>
-                        <div
+                <div key={`key-${i}`} className="card-wrapper">
+                    <div className="card">
+                        <div className="content"
                             dangerouslySetInnerHTML={{
                                 __html: card.tmn_card_text.html,
                             }}
                         />
-                        <div className="divider" />
-
                         <div className="author">
                             <p className="name">{card.tnm_card_author_name}</p>
                             <p className="position">{card.tmn_card_author_position}</p>
@@ -53,13 +52,11 @@ const TestimonialsSlider = ({ data }) => {
 
 const Testimonials = ({ data }) => {
     return (
-        <div className="testimonials">
+        <div className="testimonials" style={{backgroundImage: "url('images/testimonials_bg.jpg')"}}>
             <div className="container">
-                <h2 className="typical">{data.tmn_title.text}</h2>
+                <h2 className="newtitle inverted">{data.tmn_title.text}</h2>
                 <TestimonialsSlider data={data} />
             </div>
-            <div className="divider-dots" />
-            <div className="bgel4" />
         </div>
     )
 }

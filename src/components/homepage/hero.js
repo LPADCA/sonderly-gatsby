@@ -1,9 +1,25 @@
 // import { Link } from "gatsby"
 // import { CgArrowRight } from "react-icons/cg"
-import { getImageProps } from "@utils/getImageProps"
+// import { getImageProps } from "@utils/getImageProps"
 
 const Hero = ({ slides }) => {
     return (
+        <>
+            <div className="homepage-hero" style={{backgroundImage: "url("+slides[0].background.url+")"}}>
+                <div className="container">
+                    <div dangerouslySetInnerHTML={{__html:slides[0].title.html}}/>  
+                    <div dangerouslySetInnerHTML={{__html:slides[0].description.html}}/>  
+                    <div className="button-wrapper">
+                        <a href={slides[0].link.url} target={slides[0].link.target} className="button black">
+                            {slides[0].button_text}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </>
+
+    ) 
+    /*       
         <>
             <div className="homepage-hero">
                 <div className="illustration">
@@ -18,12 +34,6 @@ const Hero = ({ slides }) => {
                                 <a href={slides[0].link.url} target={slides[0].link.target} className="button">
                                     {slides[0].button_text}
                                 </a>
-                                {/* <div className="learn-more">
-                                    <Link to="/">
-                                        <CgArrowRight size="20" />
-                                        &nbsp;Learn more
-                                    </Link>
-                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -33,6 +43,7 @@ const Hero = ({ slides }) => {
             </div>
         </>
     )
+    */
 }
 
 export default Hero

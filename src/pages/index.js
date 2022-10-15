@@ -10,14 +10,27 @@ import WhoWeServe from "@components/homepage/whoweserve"
 import Testimonials from "@components/homepage/testimonials"
 import FeaturedCourses from "@components/homepage/featured_courses"
 import WhatsNew from "@components/homepage/whatsnew"
+import LetsTalk from "@components/common/letstalk"
 
 import "@styles/pages/homepage.scss"
 
 const Homepage = ({ data, location }) => {
+    //console.log(data)
     return (
-        <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
+        <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage2022.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
-            <Hero slides={data.prismicHomepage.data.hero_slide} />
+            <Hero slides={data.prismicHomepage2022.data.hero_slide} />
+            <WhatWeDo data={data.prismicHomepage2022.data} />
+            <Stats blocks={data.prismicHomepage2022.data.stats_element} />
+            <CoursesPreview data={data.prismicHomepage2022.data} />
+            <WhoWeServe data={data.prismicHomepage2022.data} />
+            <Testimonials data={data.prismicHomepage2022.data} />
+            <LetsTalk data={data.prismicHomepage2022.data} />            
+        </Layout>
+    )
+}
+
+/*
             {data.prismicHomepage.data.whats_new_box.length > 0 && (
                 <WhatsNew
                     sectionTitle={data.prismicHomepage.data.whats_new_section_title}
@@ -27,17 +40,124 @@ const Homepage = ({ data, location }) => {
             {data.prismicHomepage.data.featured_courses.length > 0 && (
                 <FeaturedCourses {...data.prismicHomepage.data} />
             )}
-            <Stats blocks={data.prismicHomepage.data.stats_element} />
             <WhatWeDo data={data.prismicHomepage.data} />
-            <CoursesPreview data={data.prismicHomepage.data} />
-            <WhoWeServe data={data.prismicHomepage.data} />
-            <Testimonials data={data.prismicHomepage.data} />
-        </Layout>
-    )
-}
+*/
+
+
 
 export default Homepage
 
+export const homepageQuery = graphql`
+    query Homepage {
+        prismicHomepage2022 {
+            data {
+                seo_title
+                seo_keywords
+                seo_description
+                hero_slide {
+                    button_text
+                    background {
+                        alt
+                        url(imgixParams: {maxWidth: 1400})
+                      }
+                    description {
+                      html
+                    }
+                    link {
+                      link_type
+                      url
+                      target
+                    }
+                    title {
+                        html
+                        raw
+                        text
+                    }
+                }
+                wwd_title {
+                    text
+                }
+                wwd_text {
+                    html
+                }
+                wwd_primary_button_link {
+                    lang
+                    link_type
+                    target
+                    type
+                    url
+                }
+                wwd_primary_button_text
+                wwd_secondary_button_link {
+                    lang
+                    link_type
+                    target
+                    type
+                    url
+                }
+                wwd_secondary_button_text
+                wwd_pros {
+                    value
+                }
+                stats_element {
+                    number
+                    description
+                }
+                cp_title {
+                    text
+                }
+                cp_description {
+                    html
+                }
+                cp_card {
+                    cp_card_button_link {
+                        uid
+                        url
+                        type
+                        target
+                        link_type
+                    }
+                    cp_card_image {
+                        fixed {
+                            src
+                            srcSet
+                        }
+                    }
+                    cp_card_button_text
+                    cp_card_description {
+                        html
+                    }
+                    cp_card_title {
+                        text
+                    }
+                }
+                wws_client_type {
+                    wws_type_title {
+                        text
+                    }
+                wws_type_description
+                }
+                    wws_title {
+                    text
+                }
+                wws_background_image {
+                    url(imgixParams: {maxWidth: 1400})
+                }
+                tmn_title {
+                    text
+                }
+                tmn_cards {
+                    tmn_card_author_position
+                    tnm_card_author_name
+                    tmn_card_text {
+                        html
+                    }
+                }
+            }
+        }
+    }
+`
+/*
 export const homepageQuery = graphql`
     query Homepage {
         prismicHomepage {
@@ -86,10 +206,6 @@ export const homepageQuery = graphql`
                         html
                     }
                 }
-                stats_element {
-                    number
-                    description
-                }
                 wwd_title {
                     text
                 }
@@ -121,32 +237,10 @@ export const homepageQuery = graphql`
                 wwd_pros {
                     value
                 }
-                cp_title {
-                    text
-                }
-                cp_description {
-                    html
-                }
-                cp_card {
-                    cp_card_button_link {
-                        uid
-                        url
-                        type
-                        target
-                        link_type
-                    }
-                    cp_card_button_text
-                    cp_card_description {
-                        html
-                    }
-                    cp_card_title {
-                        text
-                    }
-                }
                 wws_client_type {
                     wws_type_image {
-                        fixed(width: 500) {
-                            ...GatsbyPrismicImageFixed
+                        fluid(maxWidth: 1000, maxHeight: 800) {
+                            ...GatsbyPrismicImageFluid
                         }
                     }
                     wws_type_title {
@@ -187,3 +281,4 @@ export const homepageQuery = graphql`
         }
     }
 `
+*/

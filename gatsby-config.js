@@ -5,7 +5,6 @@ require("dotenv").config({
 */
 require("dotenv").config()
 const linkResolver = require("./src/utils/linkResolver")
-
 module.exports = {
     siteMetadata: {
         siteUrl: process.env.SITE_URL || "https://sonderly.io/",
@@ -33,14 +32,14 @@ module.exports = {
             resolve: `gatsby-source-prismic`,
             options: {
                 repositoryName: `sonderly`,
-                accessToken: process.env.PRISMIC_TOKEN,
+                accessToken: `MC5ZQ1FqMXhJQUFDSUFSOU5C.XO-_vSpY77-977-9IWfvv70wUzHvv71AP1tbDQ3vv73vv73vv73vv71BKk4LNz9g77-9ag`,
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
                 linkResolver: () => (doc) => linkResolver(doc),
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
                 schemas: {
                     page: require("./src/schemas/page.json"),
                     menu_primary: require("./src/schemas/menu_primary.json"),
-                    homepage: require("./src/schemas/homepage.json"),
+                    homepage2022: require("./src/schemas/homepage2022.json"),
                     services_corporate: require("./src/schemas/services_corporate.json"),
                     contact_page: require("./src/schemas/contact_page.json"),
                     courses: require("./src/schemas/courses.json"),
@@ -89,7 +88,7 @@ module.exports = {
                 name: "Sonderly",
                 short_name: "Sonderly",
                 start_url: "/",
-                background_color: "$color1",
+                background_color: "white",
                 display: "minimal-ui",
                 icon: "src/assets/icons/logo.png",
             },

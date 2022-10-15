@@ -93,58 +93,91 @@ class Hamburger extends React.Component {
     }
 }
 
-const Navbar = ({ menu }) => {
-    return (
-        <div>
-            <ul id="primaryMenu" className="l1">
-                {menu.map((item, i) => {
-                    const { text, link } = item.primary
-                    const { url, link_type } = link
+class Navbar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.menu = props.menu
+        this.handleClick = this.handleClick.bind(this)
+    }
 
-                    const hasChildren = item.items[0] && item.items[0].submenu_item_text
-                    return (
-                        <li key={`l1${i}`} className={hasChildren && "hasChildren"}>
-                            {url ? (
-                                <CommonLink type={link_type} to={url} className="header-link l1-link">
-                                    {text}
-                                </CommonLink>
-                            ) : (
-                                <span className="header-link l1-link">{text}</span>
-                            )}
-                            {item.items.length > 0 && item.items[0].submenu_item_text && (
-                                <ul className="l2">
-                                    {item.items.map((subitem, j) => {
-                                        return (
-                                            <li key={`l2${j}`}>
-                                                <CommonLink
-                                                    type={subitem.submenu_item_link.link_type}
-                                                    to={subitem.submenu_item_link.url}
-                                                    className="header-link"
-                                                >
-                                                    {subitem.submenu_item_text}
-                                                </CommonLink>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            )}
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-    )
+    handleClick(event) {
+        const el = event.currentTarget 
+        const wrapper = el.getElementsByClassName('ul-wrapper')[0]
+        const ul = wrapper.getElementsByTagName('ul')[0]
+        const isOpen = el.classList.contains('open')
+        console.log(ul.getBoundingClientRect())
+        if (isOpen) {
+            el.classList.remove('open');
+            wrapper.style.maxHeight = '0px' 
+            wrapper.style.maxWidth = '0px'
+        }
+        else {
+            el.classList.add('open');
+            wrapper.style.maxHeight = ul.offsetHeight + 'px'
+            wrapper.style.maxWidth = ul.offsetWidth + 'px'
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <ul id="primaryMenu" className="l1">
+                    {this.menu.map((item, i) => {
+                        const { text, link } = item.primary
+                        const { url, link_type } = link
+
+                        const hasChildren = item.items[0] && item.items[0].submenu_item_text
+                        return (
+                            <li key={`l1${i}`} className={hasChildren && "hasChildren"} onClick={hasChildren && this.handleClick}>
+                                {url ? (
+                                    <CommonLink type={link_type} to={url} className="header-link l1-link">
+                                        {text}
+                                    </CommonLink>
+                                ) : (
+                                    <span className="header-link l1-link">{text}</span>
+                                )}
+                                {item.items.length > 0 && item.items[0].submenu_item_text && (
+                                    <div className='ul-wrapper' style={{maxHeight:0, maxWidth:0}}>
+                                        <ul className="l2">
+                                            {item.items.map((subitem, j) => {
+                                                return (
+                                                    <li key={`l2${j}`}>
+                                                        <CommonLink
+                                                            type={subitem.submenu_item_link.link_type}
+                                                            to={subitem.submenu_item_link.url}
+                                                            className="header-link"
+                                                        >
+                                                            {subitem.submenu_item_text}
+                                                        </CommonLink>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                )}
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        )
+    }
 }
 
 const Lang = ({ currentUrl }) => {
     const locale = process.env.GATSBY_LOCALE
     const locale_host = process.env.GATSBY_LOCALE_LINK || ""
     const url = `${locale_host}${currentUrl}`
-    const flag = locale == null || locale === "en-us" ? "/images/french.svg" : "/images/english.svg"
+    //const flag =  ? "/images/french.svg" : "/images/english.svg"
     return (
-        <a href={url} className="lang" title="switch language">
-            <img src={flag} width="22" height="22" />
-        </a>
+        locale == null || locale === "en-us" ?
+        <p className="language-switcher">
+            EN <a href={url} className="lang" title="switch language">FR</a>
+        </p>
+        :
+        <p className="language-switcher">
+            <a href={url} className="lang" title="switch language">EN</a> FR
+        </p>
     )
 }
 const Header = ({ location }) => {
