@@ -3,11 +3,12 @@
 .homepage-hero {
     min-height: 400px;
     h1 {
-        font-size: 119px;
+        font-size: 110px;
         text-transform: uppercase;
         font-style: italic;
         font-weight: 900;
         line-height: 1;
+        letter-spacing: -2px;
         margin-top: 200px;
         margin-bottom: 0;
         color: $title-color;
@@ -23,6 +24,39 @@
     }
 }
 
+@media screen and (max-width: $desktop-edge) {
+    .homepage-hero {
+        h1 {
+            margin-top: 300px;
+            font-size: 90px;
+        }
+        h2 {
+            font-size: 28px;
+        }
+    }
+}
+
+@media screen and (max-width: $between-edge) {
+    .homepage-hero {
+        h1 {
+            font-size: 72px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-edge) {
+    .homepage-hero {
+        h1 {
+            font-size: 38px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+    }
+}
 
 .whatwedo {
     .grid {
@@ -45,7 +79,11 @@
             padding-left: 0;
             li {
                 padding-left: 40px;
-                line-height: 50px;
+                line-height: 1;
+                margin: 32px 0;
+                font-weight: 700;
+                font-size: 15px;
+                font-style: italic;
                 position: relative;
                 &:before {
                     position: absolute;
@@ -56,7 +94,7 @@
                     width: 35px;
                     height: 35px;
                     transform: scale(0.6) rotate(0);
-                    transition: transform 1.2s ease-out, transform-origin 1.2s ease-out, filter 1.2s ease-out;
+                    transition: transform 1s ease-out, filter 1s ease-out;
                     background-image: url('/images/asterisk.svg');
                     background-repeat: no-repeat;
                     background-position: center center;
@@ -70,6 +108,18 @@
                         -webkit-filter: brightness(100%);
                         }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-edge) {
+    .whatwedo {
+        .grid {
+            grid-template-columns: 1fr;
+            h2 {
+                font-size: 24px;
+                margin-bottom: 0;
             }
         }
     }
@@ -89,7 +139,7 @@
                 color: $color9;
                 font-size: 40px;
                 font-weight: 800;
-                letter-spacing: 5px;
+                letter-spacing: -2px;
                 margin-top: 30px;
                 margin-bottom: 0;
             }
@@ -103,6 +153,17 @@
         }
     }
 }
+
+@media screen and (max-width: $mobile-edge) {
+    .stats {
+        .container {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
 
 .courses-preview {
     .container {
@@ -203,6 +264,22 @@
                 font-size: 26px;
                 font-weight: 900;
                 font-style: italic;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-edge) {
+    .whoweserve {
+        .background {
+            .container {
+                .grid {
+                    grid-template-columns: 1fr;
+                    h3 {
+                        padding-left: 0;
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }

@@ -3,7 +3,7 @@ import React from "react"
 
 const WhatWeDo = ({ data }) => {
     return (
-        <div className="whatwedo">
+        <div className="whatwedo section">
             <div className="container">
                 <div className="grid">
                     <div id="wwd-left">

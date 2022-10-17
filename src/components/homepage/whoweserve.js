@@ -3,7 +3,7 @@ import React from "react"
 
 const WhoWeServe = ({ data }) => {
     return (
-        <div className="whoweserve">
+        <div className="whoweserve section">
             <h2 className="newtitle">{data.wws_title.text}</h2>
             <div className="background" style={{backgroundImage: "url("+data.wws_background_image.url+")"}}>
                 <div className="container">
