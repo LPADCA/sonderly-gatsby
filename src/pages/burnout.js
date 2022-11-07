@@ -13,12 +13,14 @@ const Burnout = ({ data, location }) => {
                     <img src="/burnout/grid4.jpg"/>
                     <img src="/burnout/grid5.jpg"/>
                 </div>
-                <div className="title">
-                    <h1>The image is artifical. <br/>The stress is real.</h1>
+                <div class="title-wrapper">
+                    <div className="title">
+                        <h1>The image is artifical. The stress is real.</h1>
+                    </div>
                 </div>
             </div>
             <div className="section container burnout-courses">
-                <h3>We provide courses to help you understand mental health.</h3>
+                <h2>We provide courses to help you understand mental health.</h2>
                 <p>
                     Sonderly seeks to democratize the knowledge and skills that have typically been accessible only to trained professionals. To do this, we identify and develop training materials to ensure that professionals continue to receive the most relevant and effective training available.
                 </p>
@@ -58,7 +60,9 @@ const Burnout = ({ data, location }) => {
             <div className="burnout-posters container">
                 <div className="row row1">
                     <div className="illustration">
-                        <img src="/burnout/poster1.png"/>
+                        <a href="https://www.instagram.com/p/Cj3PLRNtKrF/" target="_blank">
+                            <img src="/burnout/poster1.png"/>
+                        </a>
                     </div>
                     <div className="content">
                         <h3>Who was your favourite teacher growing up?</h3>
@@ -75,7 +79,9 @@ const Burnout = ({ data, location }) => {
                 </div>
                 <div className="row row2">
                     <div className="illustration">
-                        <img src="/burnout/poster2.png"/>
+                        <a href="https://www.instagram.com/p/CjyFlFoNIwD/" target="_blank">
+                            <img src="/burnout/poster2.png"/>
+                        </a>
                     </div>
                     <div className="content">
                         <h3>Do #SundayScaries have you feeling anxious and overwhelmed?</h3>

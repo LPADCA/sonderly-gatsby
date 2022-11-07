@@ -18,28 +18,37 @@
             min-height: 250px;
         }
     }
-    .title {
+    .title-wrapper {
         position: absolute;
-        right: 50px;
+        display: block;
         bottom: 50px;
-        background: white;
-        display: inline-block;
-        h1 {
-            color: black;
-            text-transform: uppercase;
-            margin: 5px 10px 5px 10px;
-            text-align: right;
-            line-height: 1.1;
-            font-weight: 800;
+        width: 100%;
+        text-align: center;
+        .title {
+            display: inline-block;
+            margin: 0 auto;
+            background: white;
+            h1 {
+                color: black;
+                text-transform: uppercase;
+                margin: 5px 10px 5px 10px;
+                text-align: center;
+                line-height: 1.1;
+                font-weight: 800;
+            }
         }
     }
 }
 
 .burnout-courses {
     text-align: center;
+    &>h2 {
+        margin-top: 50px;
+    }
     &>p {
-        max-width: 700px;
+        max-width: 650px;
         margin: 0 auto;
+        margin-bottom: 50px;
     }
     .grid {
         text-align: left;
@@ -75,13 +84,14 @@
                 }
                 &>a {
                     color: black;
-                    font-weight: 600;
+                    font-weight: 700;
+                    font-size: 18px;
                     transition: margin 0.5s ease-out, color 0.5s ease-out;
                     &:after {
                         content: " >";
                     }
                     &:hover {
-                        color: #20a77a;
+                        color: #35ce8d;
                         margin-left: 10px;
                     }
                 }
@@ -166,9 +176,15 @@
                 border-radius: 50%;
                 margin-right: 5px;
             }
+            .text {
+                transition: color 0.2s ease-out;
+            }
         }
         &:hover {
             box-shadow: 0px 0px 15px rgba(0,0,0,0);
+            .text {
+                color: #35ce8d;
+            }
         }
     }
 }
@@ -205,8 +221,7 @@
                 min-height: 180px;
             }
         }
-        .title {
-            right: 0;
+        .title-wrapper {
             bottom: 160px;
             h1 {
                 font-size: 20px;
