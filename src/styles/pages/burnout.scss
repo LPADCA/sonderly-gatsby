@@ -1,0 +1,245 @@
+@import "../settings.scss";
+
+.burnout-header {
+    position: relative;
+    .grid {
+        display: grid;
+        margin-top: 90px;
+        width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
+        img:first-child {
+            grid-row: 1/span 2;
+        }
+        img {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+        }
+    }
+    .title {
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+        background: white;
+        display: inline-block;
+        h1 {
+            color: black;
+            text-transform: uppercase;
+            margin: 5px 10px 5px 10px;
+            text-align: right;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+    }
+}
+
+.burnout-courses {
+    text-align: center;
+    &>p {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .grid {
+        text-align: left;
+        margin-top: 20px;
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        .block {
+            overflow: hidden;
+            background: white;
+            min-height: 100px;
+            min-width: 100px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            .illustration {
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    min-height: 300px;
+
+                }
+            }
+            .content {
+                padding: 20px;
+                h4 {
+                    margin: 0;
+                }
+                &>p {
+                    margin-bottom: 10px;
+                }
+                &>a {
+                    color: black;
+                    font-weight: 600;
+                    transition: margin 0.5s ease-out, color 0.5s ease-out;
+                    &:after {
+                        content: " >";
+                    }
+                    &:hover {
+                        color: #20a77a;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+        .block1 {
+            grid-row: 1 / span 2;
+            grid-template-columns: 1fr;
+        }
+
+        .block2 {
+            grid-column: 2/span 2;
+            grid-auto-flow: column;
+            .illustration {
+                grid-column: 2;
+            }
+            .content {
+                grid-column: 1;
+            }
+        }
+        .block3 {
+            grid-column: 2/span 2;
+        }
+    }
+}
+.burnout-posters {
+    margin-top: 50px;
+    .row {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        .illustration {
+            text-align: right;
+            img {
+                max-width: 100%;
+                max-height: 450px;
+            }
+        }
+        .content {
+            padding: 40px;
+            h3 {
+                font-size: 24px;
+                line-height: 1.1;
+                font-weight: 600;
+            }
+        }
+    }
+    .row2 {
+        grid-auto-flow: column;
+        .illustration {
+            grid-column: 2;
+            text-align: left;
+        }
+        .content {
+            grid-column: 1;
+        }
+    }
+}
+.burnout-follow {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    &>a {
+        display: inline-block;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: white;
+        color: #000;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        font-weight: 600;
+        transition: box-shadow 0.2s ease-out;
+        .grid {
+            display: grid;
+            grid-template-columns: 50px auto;
+            gap: 10px;
+            align-items: center;
+            .icon {
+                padding: 12px 12px 7px 12px;
+                box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+                border-radius: 50%;
+                margin-right: 5px;
+            }
+        }
+        &:hover {
+            box-shadow: 0px 0px 15px rgba(0,0,0,0);
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .burnout-courses {
+        .grid {
+            grid-template-columns: 1fr;
+            .block1 {
+                grid-row: initial;
+                grid-template-columns: 1fr 1fr;
+            }
+            .block2 {
+                grid-column: initial;
+            }
+            .block3 {
+                grid-column: initial;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 18px 15px;
+    }
+    .burnout-header {
+        .grid {
+            grid-template-columns: 1fr 1fr;
+            img:first-child {
+                grid-row: 1/span 2;
+            }
+            img {
+                min-height: 180px;
+            }
+        }
+        .title {
+            right: 0;
+            bottom: 160px;
+            h1 {
+                font-size: 20px;
+            }
+        }
+    }
+    .burnout-courses {
+        .grid {
+            .block1, .block2, .block3 {
+                grid-template-columns: 1fr;
+            }
+            .block2 {
+                .illustration {
+                    grid-column: 1;
+                }
+            }
+        }
+    }
+    .burnout-posters {
+        .row {
+            grid-template-columns: 1fr;
+            .content {
+                padding: 15px;
+                h3 {
+                    margin-top: 0;
+                }
+            }
+        }
+        .row2 {
+            grid-auto-flow: row;
+            .illustration {
+                grid-column: 1;
+            }
+        }
+    }
+}
