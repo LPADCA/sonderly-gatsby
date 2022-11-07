@@ -2,7 +2,7 @@ import Layout from "@components/common/layout.js"
 import { FiInstagram } from "react-icons/fi"
 import "@styles/pages/burnout.scss"
 
-const Burnout = () => {
+const Burnout = ({ data, location }) => {
     return (
         <Layout location={location} className="burnout-page">
             <div className="burnout-header">
