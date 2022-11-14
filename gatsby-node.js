@@ -42,13 +42,6 @@ exports.createPages = async ({ graphql, actions }) => {
                         }
                     }
                 }
-                allPrismicVideo {
-                    edges {
-                        node {
-                            uid
-                        }
-                    }
-                }
                 prismicLandingPage {
                     lang
                 }
@@ -67,7 +60,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const customPagesList = customPagesResult.data.allPrismicPage.edges
     const blogPostList = customPagesResult.data.allPrismicBlogPost.edges
-    const videoList = customPagesResult.data.allPrismicVideo.edges
     const prismicLandingPage = customPagesResult.data.prismicLandingPage
     const prismicFundedTraining = customPagesResult.data.prismicFundedTraining
     const prismicProfessionalTraining = customPagesResult.data.prismicProfessionalTraining
@@ -88,17 +80,6 @@ exports.createPages = async ({ graphql, actions }) => {
             type: "blog_post",
             path: `/resources/blogs/${edge.node.uid}`,
             component: path.resolve("src/templates/resources/blogs/blog_post.js"),
-            context: {
-                uid: `${edge.node.uid}`,
-            },
-        })
-    })
-    blogPostList.forEach((edge) => {
-        console.log(edge)
-        createPage({
-            type: "video",
-            path: `/resources/videos/${edge.node.uid}`,
-            component: path.resolve("src/templates/resources/videos/video.js"),
             context: {
                 uid: `${edge.node.uid}`,
             },
