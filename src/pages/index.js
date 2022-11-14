@@ -15,7 +15,7 @@ import LetsTalk from "@components/common/letstalk"
 import "@styles/pages/homepage.scss"
 
 const Homepage = ({ data, location }) => {
-    //console.log(data)
+    console.log(data)
     return (
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage2022.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>

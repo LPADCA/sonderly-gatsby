@@ -404,6 +404,9 @@ h2.underline {
         .submit-button {
             padding-top: 10px;
             text-align: right;
+            button {
+                cursor: pointer;
+            }
         }
         .grid-success {
             display: grid;

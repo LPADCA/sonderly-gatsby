@@ -1,0 +1,188 @@
+@import '@styles/settings.scss'; 
+
+.blogs_page {
+    padding-top: 100px;
+    &>.title {
+        font-weight: 900;
+        font-style: italic;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        text-align: center;
+    }
+    .promogrid {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) 1fr;
+        gap: 20px;
+        .slider_wrapper {
+            background-color: #35ce8d;
+            border-radius: 15px;
+            max-width: 100%;
+            padding: 15px;
+            height: 100%;
+            .card {
+                &>img {
+                    height: 250px;
+                    width: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+                h3, p {
+                    color: black;
+                }
+            }
+            .slick-slider {
+                height: 100%;
+                .slick-list {
+                    margin-bottom: 20px;
+                }
+                .slick-next {
+                    &:before {
+                        content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cpath d='M9.6,19c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l5.3-5.3L8.9,6.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l6,6 c0.4,0.4,0.4,1,0,1.4l-6,6C10.1,18.9,9.9,19,9.6,19z'/%3E%3C/svg%3E%0A");
+                    }
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    top: initial;
+                    transform: none;
+                }
+                .slick-prev {
+                    &:before {
+                        content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cpath d='M13.6,18.7l-6-6c-0.4-0.4-0.4-1,0-1.4l6-6c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4L9.7,12l5.3,5.3c0.4,0.4,0.4,1,0,1.4 c-0.2,0.2-0.4,0.3-0.7,0.3S13.8,18.9,13.6,18.7z'/%3E%3C/svg%3E");
+                    }
+                    position: absolute;
+                    right: 25px;
+                    bottom: 0;
+                    left: initial;
+                    top: initial;
+                    transform: none;
+                }
+                .slick-dots {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    text-align: left;
+                    width: calc(100% - 45px);
+                }
+                .slick-dots {
+                    li {
+                        margin: 0 3px;
+                        button:before {
+                            content: "";
+                            background: transparent;
+                            border-radius: 100px;
+                            border: 1px solid black;
+                            width: 15px;
+                            height: 15px;
+                        }
+                        &.slick-active {
+                            button:before {
+                                background: black;
+                            }
+                        }
+                    } 
+                }
+            }
+        }
+        .right {
+            background: black;
+            border-radius: 15px;
+            color: white;
+            overflow: hidden;
+            padding: 20px;
+            a {
+                color: white;
+                opacity: 0.8;
+                &:hover, &:active {
+                    opacity: 1;
+                }
+            }
+            .card-wrapper {
+                .card {
+                    display: grid;
+                    grid-template-columns: 1fr 2fr;
+                    gap: 15px;
+                    margin-top: 15px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                    img {
+                        display: block;
+                        height: 80px;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 10px;
+                    }
+                    .content {
+                        h3 {
+                            font-size: 13px;
+                            margin: 0;
+                        }
+                        p {
+                            font-size: 11px;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .regular {
+        margin-top: 50px;
+        .card-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;   
+        }
+        .card {
+            height: 100%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px #00000029;
+            padding: 15px;
+            padding-bottom: 35px;
+            position: relative;
+            img {
+                height: 100px;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+            h3 {
+                color: black;
+                font-size: 16px;
+                margin-top: 0;
+            }
+            p.datetime {
+                position: absolute;
+                left: 15px;
+                bottom: 15px;
+                margin-bottom: 0;
+                color: black;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blogs_page {
+        .promogrid {
+            grid-template-columns: minmax(0, 1fr);
+            .right {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .blogs_page {
+        .promogrid {
+            .right {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

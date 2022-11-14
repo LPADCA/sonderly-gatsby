@@ -2,17 +2,23 @@ const linkResolver = (doc) => {
     if (doc.link_type === "Web") {
         return `${doc.url}`
     }
-    // URL for a category type
+    
     if (doc.type === "homepage") {
-        //console.log("homepage resolved")
         return `/`
     }
-    // URL for a page type
+
     if (doc.type === "page") {
-        //console.log(`/blog/${doc.uid}`)
         return `/${doc.uid}`
     }
 
+    if (doc.type === "blog_post") {
+        return `/resources/blogs/${doc.uid}`
+    }
+
+    if (doc.type === "video") {
+        return `/resources/videos/${doc.uid}`
+    }
+    
     if (doc.type === "funded_training") {
         return `/services/funded-training`
     }

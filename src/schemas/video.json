@@ -1,0 +1,59 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "SEO-friendly last part of URL"
+      }
+    },
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Video Title"
+      }
+    },
+    "category" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Autism", "Mental Health" ],
+        "default_value" : "Autism",
+        "label" : "Video category"
+      }
+    },
+    "video_url" : {
+      "type" : "Embed",
+      "config" : {
+        "label" : "Video URL"
+      }
+    },
+    "datetime" : {
+      "type" : "Timestamp",
+      "config" : {
+        "label" : "DateTime"
+      }
+    }
+  },
+  "SEO" : {
+    "seo_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Title (maximum 70 characters)"
+      }
+    },
+    "seo_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Description (50–160 characters)"
+      }
+    },
+    "seo_keywords" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Keywords",
+        "placeholder" : "(list, separated with commas)"
+      }
+    }
+  }
+}

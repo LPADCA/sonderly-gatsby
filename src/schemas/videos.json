@@ -1,0 +1,56 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title"
+      }
+    },
+    "primary" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "document",
+        "customtypes" : [ "video" ],
+        "label" : "Primary Video"
+      }
+    },
+    "promoted" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "video" : {
+            "type" : "Link",
+            "config" : {
+              "select" : "document",
+              "customtypes" : [ "video" ],
+              "label" : "video"
+            }
+          }
+        },
+        "label" : "Promoted"
+      }
+    }
+  },
+  "SEO" : {
+    "seo_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Title (maximum 70 characters)"
+      }
+    },
+    "seo_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Description (50–160 characters)"
+      }
+    },
+    "seo_keywords" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Keywords",
+        "placeholder" : "(list, separated with commas)"
+      }
+    }
+  }
+}
