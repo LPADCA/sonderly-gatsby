@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import { JsonLD, organizationJsonLD } from "@components/json-ld"
 import Hero from "@components/homepage/hero"
-import Stats from "@components/homepage/stats"
+import Stats from "@components/common/stats"
 import WhatWeDo from "@components/homepage/whatwedo"
 import CoursesPreview from "@components/homepage/courses"
 import WhoWeServe from "@components/homepage/whoweserve"
@@ -21,7 +21,7 @@ const Homepage = ({ data, location }) => {
             <JsonLD>{organizationJsonLD}</JsonLD>
             <Hero slides={data.prismicHomepage2022.data.hero_slide} />
             <WhatWeDo data={data.prismicHomepage2022.data} />
-            <Stats blocks={data.prismicHomepage2022.data.stats_element} />
+            <Stats />
             <CoursesPreview data={data.prismicHomepage2022.data} />
             <WhoWeServe data={data.prismicHomepage2022.data} />
             <Testimonials data={data.prismicHomepage2022.data} />

@@ -33,6 +33,14 @@ h4,
 h5,
 h6 {
     font-family: "Nunito", "Helvetica Round", "Varela Round", Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+h1 {
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    font-weight: 900;
+    font-style: italic;
 }
 
 .newtitle {
@@ -422,6 +430,46 @@ h2.underline {
             }
             .content {
                 text-align: center;
+            }
+        }
+    }
+}
+
+
+.stats {
+    background-color: black;
+    background-size: cover;
+    .container {
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            > div {
+                text-align: center;
+            }
+            h2 {
+                color: $color9;
+                font-size: 40px;
+                font-weight: 800;
+                letter-spacing: 3px;
+                margin-top: 30px;
+                margin-bottom: 0;
+            }
+            h3 {
+                margin-top: 4px;
+                margin-bottom: 30px;
+                color: white;
+                text-transform: uppercase;
+                font-style: italic;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-edge) {
+    .stats {
+        .container {
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     }

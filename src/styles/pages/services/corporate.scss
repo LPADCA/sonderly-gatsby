@@ -1,167 +1,83 @@
 @import "@styles/settings.scss";
 
-.corporate-services-hero-wrapper {
-    background: transparent;
-}
 .corporate-services-hero {
-    width: 100%;
-    background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0% no-repeat
-        padding-box;
-    color: white;
-    padding: 100px 0;
     h1 {
-        color: white;
+        font-size: 35px;
         text-align: center;
-    }
-    p {
-        text-align: center;
-        max-width: 550px;
-        margin: 0 auto;
     }
 }
 
 .corporate-services-hero-tabs {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-    & > div {
-        background: #ffffff 0% 0% no-repeat padding-box;
-        box-shadow: 0px 3px 6px #00000029;
+    &>div {
+        background-color: #35ce8d;
         border-radius: 20px;
-        padding: 30px;
-        padding-bottom: 80px;
-        position: relative;
-
-        & > .tab-header {
-            display: flex;
-
-            align-items: center;
-            img {
-                object-fit: contain;
-                object-position: center;
-                margin-right: 20px;
-            }
+        padding: 20px;
+        .tab-header {
+            display: grid;
+            grid-template-columns: min-content auto;
+            gap: 10px;
         }
-        p {
-            margin: 3px 0;
-        }
-        a.button {
-            position: absolute;
-            bottom: 20px;
-            left: 30px;
-        }
-    }
-    margin-top: -80px;
-}
-
-@media (max-width: $mobile-edge) {
-    .corporate-services-hero-wrapper {
-        background: transparent linear-gradient(106deg, $color1 0%, $color2 31%, $color3 55%, $color4 100%) 0% 0%
-            no-repeat padding-box;
-        .corporate-services-hero {
-            background: transparent;
-        }
-        .corporate-services-hero-tabs {
-            grid-template-columns: 1fr;
-            grid-auto-rows: 1fr;
+        h3 {
+            font-size: 22px;
         }
     }
 }
 
 .trainings {
-    padding-bottom: 30px;
-
-    .course-link {
-        color: $text-color;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
+    h2 {
+        font-size: 35px;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: italic;
     }
-
-    & > ul {
-        display: grid;
-        gap: 15px;
-        grid-template-columns: repeat(3, 1fr);
-        padding-left: 0;
-        align-items: center;
-
-        li {
-            display: block;
-        }
-
-        .course-link {
-            display: block;
-            padding: 10px;
-            padding-left: 40px;
-            border-radius: 10px;
-            transition: $default-transition;
-            position: relative;
-            &:before {
-                content: "";
-                display: block;
-                width: 15px;
-                height: 15px;
-                box-shadow: 0px 3px 6px #43434355;
-                border-radius: 32px;
-                position: absolute;
-                left: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                background-color: white;
-            }
-            &:not(.active):hover {
-                background-color: $hover-green;
-                cursor: pointer;
-
-                color: white;
-
-                &:before {
-                    background-color: white;
+    .unfold-list {
+        .unfold-item {
+            border-top: 1px solid #c5c5c5;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            .unfold-button {
+                width: 100%;
+                .unfold-item-title {
+                    position: relative;
+                    width: 100%;
+                    padding-left: 25px;
+                    padding-right: 20px;
+                    text-align: left;
+                    font-size: 18px;
+                    font-weight: 600;
+                    &:before {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        content: ".";
+                        font-size: 48px;
+                        font-weight: 900;
+                        line-height: 0;
+                        transition: color 1s ease-out;
+                    }
+                    &.open:before {
+                        color: #35ce8d;
+                    }
+                    .unfold-arrow {
+                        position: absolute;
+                        right: 0;
+                        top: 6px;
+                        width: 14px;
+                        height: 14px;
+                        transform: rotate(-90deg);
+                        transition: transform 1s ease-out;
+                        &.unfold-arrow-up {
+                            transform: rotate(90deg);
+                        }
+                    }
                 }
             }
-            &.active {
-                color: $button-green;
-
-                &:before {
-                    background-color: $button-green;
-                }
-            }
+        .unfold-item-body {
+            margin-left: 28px;
         }
-    }
-    .preview {
-        display: none;
-        background-color: white;
-        box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
-        border-radius: 20px;
-        grid-template-columns: minmax(30%, 200px) auto;
-        & > .image > img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-        }
-        & > .content {
-            padding: 20px;
-        }
-        &.selected {
-            display: grid;
-        }
-    }
-}
-
-@media (max-width: $mobile-edge) {
-    .trainings {
-        & > ul {
-            grid-template-columns: 1fr;
-        }
-        .preview {
-            grid-template-columns: 1fr;
-            grid-template-rows: 350px auto;
-            & > .image > img {
-                border-bottom-left-radius: 0;
-                border-top-right-radius: 20px;
-            }
         }
     }
 }

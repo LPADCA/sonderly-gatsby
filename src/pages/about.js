@@ -1,39 +1,27 @@
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
-import { useState } from "react"
-import AnimateHeight from "react-animate-height"
-import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
-import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
-import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
+//import { useState } from "react"
+//import AnimateHeight from "react-animate-height"
 import { getImageProps } from "@utils/getImageProps"
 import { JsonLD, organizationJsonLD } from "@components/json-ld"
-
+import Stats from "@components/common/stats"
 import "@styles/pages/about.scss"
 
 const ManagementItem = ({ management_photo, management_name, management_description, photo_bg_color, button_text }) => {
-    const [isOpen, setOpen] = useState(false)
-    const onClick = () => setOpen(!isOpen)
     const heroImg = getImageProps(management_photo)
     return (
         <div className="card-container">
             <div key={management_name} className="card">
-                <div>
-                    <div className="management-photo" style={{ backgroundColor: photo_bg_color }}>
-                        <img {...heroImg} />
-                    </div>
-                    <div className="management-content">
-                        <h3>{management_name}</h3>
-                        <AnimateHeight duration={500} height={isOpen ? "auto" : 150}>
-                            <div
-                                className="management-description"
-                                dangerouslySetInnerHTML={{ __html: management_description.html }}
-                            ></div>
-                        </AnimateHeight>
-                        <button className="button" onClick={onClick}>
-                            {button_text}
-                        </button>
-                    </div>
+                <div className="management-photo" style={{ backgroundColor: photo_bg_color }}>
+                    <img {...heroImg} />
+                </div>
+                <div className="management-content">
+                    <h3>{management_name}</h3>
+                    <div
+                        className="management-description"
+                        dangerouslySetInnerHTML={{ __html: management_description.html }}
+                    ></div>
                 </div>
             </div>
         </div>
@@ -52,25 +40,22 @@ const AboutPage = ({ data, location }) => {
     return (
         <Layout location={location} className="about-page" {...Layout.pickSeoProps(data.prismicAboutPage.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
-            <BgSmall className="bg-1" />
-            <BgMedium className="bg-2" />
-            <BgSmall className="bg-3" />
-            <BgBig className="bg-4" />
-            <BgSmall className="bg-5" />
-            <section className="container two-column">
+            <div className="spacer-top" />
+            <section className="container title-grid">
                 <div>
-                    <img {...getImageProps(hero_image)} />
+                    <h1>{page_title.text}</h1>
                 </div>
                 <div className="hero-description">
-                    <h1>{page_title.text}</h1>
                     <div dangerouslySetInnerHTML={{ __html: page_description.html }}></div>
                 </div>
             </section>
+            <img className="hero-image" {...getImageProps(hero_image)} />
+            <Stats />
             <section className="container management-team">
                 <h2>{section_name}</h2>
                 <div className="management-cards">
                     {management_team.map((item) => (
-                        <ManagementItem key={item.management_name} {...item} button_text={button_text} />
+                        <ManagementItem management_photo={item.management_photo} key={item.management_name} {...item} button_text={button_text} />
                     ))}
                 </div>
             </section>

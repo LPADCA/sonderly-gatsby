@@ -3,7 +3,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 */
-require("dotenv").config()
 const linkResolver = require("./src/utils/linkResolver")
 module.exports = {
     siteMetadata: {

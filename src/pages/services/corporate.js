@@ -1,55 +1,53 @@
-import { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import CommonLink from "@components/common-link"
+import { useState, useEffect } from "react"
+import { ReactComponent as ArrowLeft } from "@assets/icons/arrow-left.svg"
+import AnimateHeight from "react-animate-height"
 
-import "@styles/pages/services/corporate.scss"
+const UnfoldItem = ({ isOpen, title, description }) => {
+    const [stateOpen, setOpen] = useState(isOpen)
 
-function makeUid(title) {
-    return title
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-zA-Z0-9-_]/g, "-")
-        .toLowerCase()
-}
+    useEffect(() => {
+        setOpen(isOpen)
+    }, [isOpen])
 
-const Switches = ({ activeSlide, trainings_list }) => {
     return (
-        <ul>
-            {trainings_list.map((item) => {
-                const hash = makeUid(item.trainings_list_title.text)
-                return (
-                    <li key={hash}>
-                        <a href={`#${hash}`} className={`course-link ${hash == activeSlide ? "active" : ""}`}>
-                            {item.trainings_list_title.text}
-                        </a>
-                    </li>
-                )
-            })}
-        </ul>
+        <div className="unfold-item">
+            <button onClick={() => setOpen(!stateOpen)} className="unfold-button">
+                <h3 className={`unfold-item-title ${stateOpen ? "open" : ""} `}>
+                    {title}
+                    <ArrowLeft className={`unfold-arrow ${stateOpen ? "unfold-arrow-down" : "unfold-arrow-up"}`} />
+                </h3>
+            </button>
+            <AnimateHeight height={stateOpen ? "auto" : 0} duration={1000}>
+                <div className="unfold-item-body" dangerouslySetInnerHTML={{ __html: description }} />
+            </AnimateHeight>
+        </div>
     )
 }
 
+const UnfoldList = ({ list }) => {
+    console.log(list)
+
+    return (
+        <div className="container unfold-list">
+            <div className="unfold-list-items">
+                {list.map((item, i) => (
+                    <UnfoldItem isOpen={false} title={item.trainings_list_title.text} description={item.tranings_list_richtext.html} />
+                ))}
+            </div>
+        </div>
+    )
+}
+
+
+import "@styles/pages/services/corporate.scss"
+
+
 const ServicesCorporate = ({ data, location }) => {
     const pageData = data.prismicServicesCorporate.data
-    const firstTraining = pageData.trainings_list[0]
-    const firstSlide = makeUid(firstTraining.trainings_list_title.text)
-    const [activeSlide, setActiveSlide] = useState(firstSlide)
-
-    useEffect(() => {
-        const hash = location.hash !== "" && location.hash.replace("#", "")
-        if (hash) onHashChange()
-
-        function onHashChange() {
-            const hash = window.location.hash !== "" && window.location.hash.replace("#", "")
-            setActiveSlide(hash ? hash : firstSlide)
-            document.getElementById("preview").scrollIntoView({ block: "center", behavior: "smooth" })
-        }
-        window.addEventListener("hashchange", onHashChange)
-
-        return () => window.removeEventListener("hashchange", onHashChange)
-    }, [])
-
+    const unfoldList = pageData.trainings_list
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
             <div className="spacer-top" />
@@ -82,7 +80,7 @@ const ServicesCorporate = ({ data, location }) => {
                                     <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }} />
                                     {box.hero_boxes_button_link && box.hero_boxes_button_link.url && (
                                         <CommonLink
-                                            className="button"
+                                            className="button black"
                                             type={box.hero_boxes_button_link.type}
                                             to={box.hero_boxes_button_link.url}
                                             target={box.hero_boxes_button_link.target}
@@ -99,31 +97,8 @@ const ServicesCorporate = ({ data, location }) => {
             </div>
             <div className="trainings container">
                 <h2 className="centered underline">{pageData.trainings_title.text}</h2>
-                <Switches activeSlide={activeSlide} trainings_list={pageData.trainings_list} />
                 <div id="preview" className="preview-wrapper">
-                    {pageData.trainings_list.map((item) => {
-                        const hash = makeUid(item.trainings_list_title.text)
-                        return (
-                            <div
-                                key={item.trainings_list_title.text}
-                                className={`preview ${hash == activeSlide ? "selected" : ""}`}
-                            >
-                                <div className="image">
-                                    <img
-                                        src={item.traninings_list_image.fixed.src}
-                                        srcSet={item.traninings_list_image.fixed.srcSet}
-                                        width="60"
-                                        height="60"
-                                        alt={item.traninings_list_image.alt}
-                                    />
-                                </div>
-                                <div className="content">
-                                    <h3>{item.trainings_list_title.text}</h3>
-                                    <div dangerouslySetInnerHTML={{ __html: item.tranings_list_richtext.html }} />
-                                </div>
-                            </div>
-                        )
-                    })}
+                    <UnfoldList list={unfoldList} />
                 </div>
             </div>
         </Layout>
