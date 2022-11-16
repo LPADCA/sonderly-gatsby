@@ -2,7 +2,6 @@ import React from "react"
 import { BiBookOpen } from "react-icons/bi"
 
 const CoursesPreview = ({ data }) => {
-    console.log(data)
     return (
         <div className="courses-preview section">
             <div className="container">

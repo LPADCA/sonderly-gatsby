@@ -105,7 +105,6 @@ class Navbar extends React.Component {
         const wrapper = el.getElementsByClassName('ul-wrapper')[0]
         const ul = wrapper.getElementsByTagName('ul')[0]
         const isOpen = el.classList.contains('open')
-        console.log(ul.getBoundingClientRect())
         if (isOpen) {
             el.classList.remove('open');
             wrapper.style.maxHeight = '0px' 

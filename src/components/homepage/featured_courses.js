@@ -13,7 +13,6 @@ const FeaturedCourses = ({ featured_title, featured_description, featured_anchor
             )}
             <div className="featured-courses">
                 {featured_courses.map((c) => {
-                    console.log("c.course_link_url", c.course_link_url)
                     const [isOpen, setOpen] = useState(c.course_link_url ? true : false)
                     const onClick = () => {
                         window.pintrk("track", "pagevisit", {

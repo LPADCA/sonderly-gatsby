@@ -75,7 +75,6 @@ exports.createPages = async ({ graphql, actions }) => {
         })
     })
     blogPostList.forEach((edge) => {
-        console.log(edge)
         createPage({
             type: "blog_post",
             path: `/resources/blogs/${edge.node.uid}`,

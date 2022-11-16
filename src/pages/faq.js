@@ -2,23 +2,11 @@ import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import FaqList from "@components/faq/faq-list"
-import { ReactComponent as BgBig } from "@assets/decorations/bg-big.svg"
 import { useState } from "react"
 import { JsonLD, faqJsonLD } from "@components/json-ld"
 
 
-import "@styles/pages/faq/index.scss"
-
-const BG_OPEN_STATE = [
-    {
-        transform: "translate(-30%, -50%)",
-    },
-    {
-        transform: "translate(30%, 50%)",
-    },
-]
-
-const getStyle = (n, isOpen) => (isOpen ? BG_OPEN_STATE[n] : undefined)
+import "@styles/pages/faq.scss"
 
 const FAQPage = ({ data, location }) => {
     const [isAllOpen, setAllOpen] = useState(false)
@@ -32,9 +20,7 @@ const FAQPage = ({ data, location }) => {
                 <div className="faq-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />
             </div>
             <section className="faq-content">
-                <BgBig className="faq-bg-decoration" style={getStyle(0, isAllOpen)} />
                 <FaqList list={faq_list} onStateChange={setAllOpen} />
-                <BgBig className="faq-bg-decoration" style={getStyle(1, isAllOpen)} />
             </section>
         </Layout>
     )

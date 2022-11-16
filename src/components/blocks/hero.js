@@ -3,7 +3,6 @@ import React from "react"
 import "@styles/blocks.scss"
 
 const Hero = ({ title, subheading }) => {
-    //console.log(slides)
     return (
         <>
             <div className="hero-default">

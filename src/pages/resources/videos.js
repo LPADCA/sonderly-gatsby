@@ -12,7 +12,6 @@ import { FaLastfmSquare, FaSmileBeam } from "react-icons/fa";
 
 class Modal extends React.Component {
     render() {
-        console.log('modal triggered', this.props.url)
         return this.props.is_visible === true ? (
             <div className="modal-wrapper">
                 <div className="fade" onClick={this.props.hide_fn}/>

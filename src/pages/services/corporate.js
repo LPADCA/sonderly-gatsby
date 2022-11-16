@@ -28,8 +28,6 @@ const UnfoldItem = ({ isOpen, title, description }) => {
 }
 
 const UnfoldList = ({ list }) => {
-    console.log(list)
-
     return (
         <div className="container unfold-list">
             <div className="unfold-list-items">

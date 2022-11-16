@@ -11,11 +11,11 @@ const FaqList = ({ list, onStateChange }) => {
     return (
         <div className="container faq-list">
             <div className="faq-list-buttons">
-                <button className="link" onClick={() => setAllOpen(false)}>
-                    Close All
-                </button>
                 <button className="link" onClick={() => setAllOpen(true)}>
                     Expand All
+                </button>
+                <button className="link" onClick={() => setAllOpen(false)}>
+                    Close All
                 </button>
             </div>
             <div className="faq-list-items">

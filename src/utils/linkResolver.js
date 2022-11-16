@@ -48,7 +48,6 @@ const linkResolver = (doc) => {
     }
 
     // Backup for all other types
-    //console.log("unknown type resolved")
     return "/"
 }
 
