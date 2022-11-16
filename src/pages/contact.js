@@ -2,9 +2,7 @@ import { useState, useRef } from "react"
 import Layout from "@components/common/layout.js"
 import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
-import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
-import { ReactComponent as BgSmall } from "../assets/decorations/bg-small.svg"
-import { getImageProps } from "@utils/getImageProps"
+//import { getImageProps } from "@utils/getImageProps"
 import { FaCheckCircle } from "react-icons/fa"
 import { useFormspark } from "@formspark/use-formspark"
 import ReCAPTCHA from "react-google-recaptcha"
@@ -15,7 +13,7 @@ const FormContent = ({
     form_email_label,
     form_message_label,
     form_name_label,
-    form_subject,
+    form_phone,
     form_submit,
     setSubmit,
     onBlur,
@@ -23,7 +21,7 @@ const FormContent = ({
 }) => {
     const [nameField, setName] = useState("")
     const [emailField, setEmail] = useState("")
-    const [subjectField, setSubject] = useState("")
+    const [phoneField, setPhone] = useState("")
     const [messageField, setMessage] = useState("")
     const [submit, submitting] = useFormspark({
         formId: process.env.GATSBY_FORM_ID,
@@ -35,8 +33,8 @@ const FormContent = ({
                 name: nameField,
                 email: emailField,
                 "_email.from": emailField,
-                "_email.subject": subjectField,
-                subject: subjectField,
+                "_email.subject": 'Form submission',
+                phone: phoneField,
                 message: messageField,
             }
             await recaptchaRef.current.executeAsync()
@@ -51,35 +49,45 @@ const FormContent = ({
         <form className="contact-form" id="contact-form" method="POST" onSubmit={onSubmit}>
             <div>
                 <label htmlFor="name">{form_name_label}</label>
-                <input
-                    id="name"
-                    name="name"
-                    value={nameField}
-                    required
-                    onChange={(e) => setName(e.target.value)}
-                    onBlur={onBlur}
-                ></input>
+                <div className="input-wrapper name">
+                    <input
+                        id="name"
+                        name="name"
+                        value={nameField}
+                        placeholder="Your name"
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                        onBlur={onBlur}
+                    ></input>
+                </div>
             </div>
             <div>
                 <label htmlFor="email">{form_email_label}</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={emailField}
-                    required
-                    onChange={(e) => setEmail(e.target.value)}
-                ></input>
+                <div className="input-wrapper email">
+                    <input
+                        id="email"
+                        name="email"
+                        placeholder="yourname@email.com"
+                        type="email"
+                        value={emailField}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                    ></input>
+                </div>
             </div>
             <div>
-                <label htmlFor="subject">{form_subject}</label>
-                <input
-                    id="subject"
-                    name="subject"
-                    required
-                    value={subjectField}
-                    onChange={(e) => setSubject(e.target.value)}
-                ></input>
+                <label htmlFor="phone">{form_phone}</label>
+                <div className="input-wrapper phone">
+                    <input
+                        id="phone"
+                        name="phone"
+                        type="phone"
+                        placeholder="+1 xxx-xxx-xxxx"
+                        required
+                        value={phoneField}
+                        onChange={(e) => setPhone(e.target.value)}
+                    ></input>
+                </div>
             </div>
             <div>
                 <label htmlFor="message">{form_message_label}</label>
@@ -92,9 +100,11 @@ const FormContent = ({
                     rows={messageField.split("\n").length}
                 ></textarea>
             </div>
-            <button className="button" type="submit" disabled={submitting}>
-                {form_submit}
-            </button>
+            <div className="submit-wrapper">
+                <button className="button black" type="submit" disabled={submitting}>
+                    {form_submit}
+                </button>
+            </div>
         </form>
     )
 }
@@ -128,62 +138,72 @@ const ContactPage = ({ data, location }) => {
         form_email_label,
         form_message_label,
         form_name_label,
-        form_subject,
+        form_phone,
         form_submit,
         success_message,
     } = data.prismicContactPage.data
 
     return (
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
-            <BgMedium className="bg-1" />
-            <BgSmall className="bg-2" />
             <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
-            <section className="container two-column">
-                <div className="hero-image">
-                    <img {...getImageProps(hero_image)} />
+            <div className="contact-hero">
+                <div className="container">
+                    <div className="image"/>
+                </div>
+            </div>
+            <section className="contact-body container">
+                <div>
+                    <h1 dangerouslySetInnerHTML={{ __html: page_title.text }} />
                 </div>
                 <div>
-                    <div className="form-card">
-                        <h1 dangerouslySetInnerHTML={{ __html: page_title.text }} />
-                        <div dangerouslySetInnerHTML={{ __html: page_description.html }} />
-                        <h2>{form_title}</h2>
-                        <div className="contact-form-container">
-                            {isSubmited ? (
-                                <FormSuccess>{success_message}</FormSuccess>
-                            ) : (
-                                <FormContent
-                                    form_email_label={form_email_label}
-                                    form_message_label={form_message_label}
-                                    form_name_label={form_name_label}
-                                    form_subject={form_subject}
-                                    form_submit={form_submit}
-                                    recaptchaRef={recaptchaRef}
-                                    setSubmit={setSubmit}
-                                />
-                            )}
+                    <address>
+                        <div className="address-block address">
+                            <span className="address-label">{address_label}</span>
+                            <p className="address-value" dangerouslySetInnerHTML={{ __html: contact_address }} />
                         </div>
-                        <h2>{address_title}</h2>
-                        <address>
-                            <div className="address-block address">
-                                <span className="address-label">{address_label}</span>
-                                <p className="address-value" dangerouslySetInnerHTML={{ __html: contact_address }} />
+                        <div className="address-block email">
+                            <span className="address-label">{email_label}</span>
+                            <p className="address-value" dangerouslySetInnerHTML={{ __html: email }} />
+                        </div>
+                        <div className="address-block phone">
+                            <span className="address-label">{phone_label}</span>
+                            <p className="address-value" dangerouslySetInnerHTML={{ __html: phone }} />
+                        </div>
+                        <div className="address-block">
+                            <span className="address-label">{other_phone_label}</span>
+                            <p
+                                className="address-value"
+                                dangerouslySetInnerHTML={{ __html: north_america_phone }}
+                            />
+                        </div>
+                    </address>
+                </div>
+            </section>
+            <section className="contact-body2">
+                <div className="container">
+                    <div className="grid">
+                        <div className="left">
+                        </div>
+                        <div className="right">
+                            <div className="form-card">
+                                <h2>{form_title}</h2>
+                                <div className="contact-form-container">
+                                    {isSubmited ? (
+                                        <FormSuccess>{success_message}</FormSuccess>
+                                    ) : (
+                                        <FormContent
+                                            form_email_label={form_email_label}
+                                            form_message_label={form_message_label}
+                                            form_name_label={form_name_label}
+                                            form_phone={form_phone}
+                                            form_submit={form_submit}
+                                            recaptchaRef={recaptchaRef}
+                                            setSubmit={setSubmit}
+                                        />
+                                    )}
+                                </div>
                             </div>
-                            <div className="address-block email">
-                                <span className="address-label">{email_label}</span>
-                                <p className="address-value" dangerouslySetInnerHTML={{ __html: email }} />
-                            </div>
-                            <div className="address-block phone">
-                                <span className="address-label">{phone_label}</span>
-                                <p className="address-value" dangerouslySetInnerHTML={{ __html: phone }} />
-                            </div>
-                            <div className="address-block">
-                                <span className="address-label">{other_phone_label}</span>
-                                <p
-                                    className="address-value"
-                                    dangerouslySetInnerHTML={{ __html: north_america_phone }}
-                                />
-                            </div>
-                        </address>
+                        </div>
                     </div>
                 </div>
             </section>

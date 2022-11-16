@@ -4,6 +4,68 @@
     padding-top: 125px;
     position: relative;
     overflow: hidden;
+    .contact-hero {
+        background-color: black;
+        height: 160px;
+        .container {
+            height: 100%;
+            padding-top: 0;
+            padding-bottom: 0;
+            .image {
+                width: 50%;
+                height: 100%;
+                background-image: url('/images/contact-img-top.jpg');
+                background-size: cover;
+            }
+        }
+    }
+    .contact-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        h1 {
+            font-size: 52px;
+            }
+        .address-block {
+            padding-top: 30px;
+            .address-label {
+                font-size: 32px;
+                text-transform: uppercase;
+                font-style: italic;
+                font-weight: 700;
+            }
+            .address-value {
+                font-size: 24px;
+                color: #757575;
+                line-height: 1;
+            }
+        }
+    }
+    .contact-body2 {
+        position: relative;
+        margin-bottom: 100px;
+        .container {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        &:before {
+            position: absolute;
+            z-index: -1;
+            content: "";
+            background-color: black;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+        }
+        .grid {
+            grid-template-columns: 1fr 1fr;
+            display: grid;
+            .left {
+                background-image: url('/images/contact-img-left.jpg');
+                background-size: cover;
+            }
+        }
+    }
 
     .grecaptcha-badge {
         z-index: 1;
@@ -18,37 +80,16 @@
         z-index: -1;
     }
 
-    .bg-1 {
-        top: -30px;
-        left: -84px;
-    }
-
-    .bg-2 {
-        top: 800px;
-        right: -50px;
-    }
-
-    .hero-image {
-        padding: 0 40px;
-        margin-bottom: 50px;
-        justify-content: flex-start;
-    }
-
     .form-card {
-        box-shadow: 0px 3px 6px #00000029;
-        border-radius: 20px;
         margin-left: 40px;
         padding: 25px 35px;
-
-        h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
         h2 {
-            font-size: 22px;
+            font-size: 33px;
             margin-top: 25px;
             margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-style: italic;
         }
 
         @media (max-width: $between-edge) {
@@ -65,15 +106,6 @@
 
         .address-block {
             margin-bottom: 8px;
-
-           &.phone {
-               float: left;
-               margin-right: 20px;
-
-                @media (max-width: $mobile-edge) {
-                    float: none;
-                }
-           }
         }
 
         .address-label {
@@ -102,18 +134,52 @@
         }
 
         input, textarea {
-            border: none;
-            border-bottom: 1px solid $border-gray;
+            border: 1px solid black;
+            border-radius: 4px;
             width: 100%;
             font-size: 15px;
             min-height: 30px;
             resize: none;
-            padding: 5px;
+            padding: 10px;
         }
-
-        .button {
-            margin-top: 30px;
-            width: 100%;
+        input {
+            padding-left: 35px;
+        }
+        .input-wrapper {
+            margin-top: 8px;
+            position: relative;
+            &:after {
+                content: "";
+                z-index: 1;
+                position: absolute;
+                left: 3px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 28px;
+                height: 28px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                opacity: 0.5;
+            }
+        }
+        .input-wrapper.name:after {
+            background-image: url('/images/icon-person.png');
+        }
+        .input-wrapper.email:after {
+            background-image: url('/images/icon-email.png');
+        }
+        .input-wrapper.phone:after {
+            background-image: url('/images/icon-phone.png');
+        }
+        textarea {
+            margin-top: 8px;
+            min-height: 120px;
+        }
+        .submit-wrapper {
+            .button {
+                margin-top: 10px;
+            }
+            text-align: right;
         }
     }
     
