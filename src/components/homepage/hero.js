@@ -1,11 +1,24 @@
 // import { Link } from "gatsby"
 // import { CgArrowRight } from "react-icons/cg"
 // import { getImageProps } from "@utils/getImageProps"
+import "video-react/styles/scss/video-react.scss"
+import React from 'react';
+import { Player } from 'video-react';
 
 const Hero = ({ slides }) => {
     return (
         <>
-            <div className="homepage-hero" style={{backgroundImage: "url("+slides[0].background.url+")"}}>
+            <div className="spacer-top" />
+            <div className="homepage-hero">
+                <div className="bg-video-wrapper">
+                    <Player
+                        playsInline
+                        muted
+                        loop
+                        autoPlay
+                        src="/videos/sbg.mp4"
+                        />
+                </div>
                 <div className="container">
                     <div dangerouslySetInnerHTML={{__html:slides[0].title.html}}/>  
                     <div dangerouslySetInnerHTML={{__html:slides[0].description.html}}/>  
