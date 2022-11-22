@@ -9,6 +9,7 @@ import { FaVideo } from "react-icons/fa"
 import Slider, { SliderTooltip } from "rc-slider"
 import "rc-slider/assets/index.css"
 import Scroll from "react-scroll"
+import Select from 'react-select'
 
 import "@styles/pages/services/courses.scss"
 
@@ -43,18 +44,25 @@ const CourseMap = ({ data, location }) => {
         info_sheet_link,
     } = pageContent
     const levels = pageContent.levels.map((l) => l.filter_level)
+
     const ages = pageContent.ages.map((l) => l.filter_age)
+    const ageOptions = pageContent.ages.map((el, i) => ({'value': i, 'label': el.filter_age}));          
+    const ageDefaultValue = {'value': 0, 'label': pageContent.ages[0].filter_age}
+    const extrasOptions = [{'value': 0, 'label': video_recordings}, {'value': 1, 'label': availiable_in_french_label}]
 
     const [state, setState] = useState({
         age: null,
         french: false,
+        video: false,
         funded: false,
         level: 0,
         filtered: 0,
+        extrasOptions: []
     })
 
     const courses = coursesList
         .filter(({ data: course }) => {
+            if (state.video && !course.with_video) return false
             if (state.french && !course.french) return false
             if (state.level > levels.indexOf(course.level)) return false
             if (
@@ -70,7 +78,18 @@ const CourseMap = ({ data, location }) => {
 
     const updateLevel = (level) => setState({ ...state, level: level - 1 })
     const updateAge = (newAge) => setState({ ...state, age: newAge })
-    const updateFrench = () => setState({ ...state, french: !state.french })
+    const updateExtras = (options) => {
+        var newOptions = {'french': false, 'video': false}
+        options.forEach((option)=> {
+            if (option.value === 1) {
+                newOptions['french'] = true
+            }
+            else if (option.value === 0) {
+                    newOptions['video'] = true
+            }
+        })
+        setState({ ...state, french: newOptions['french'], video: newOptions['video'], extrasOptions: options})
+    }
 
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageContent)}>
@@ -109,33 +128,17 @@ const CourseMap = ({ data, location }) => {
                                 {age_label} <RiInformationLine />
                                 <div className="tooltip" dangerouslySetInnerHTML={{ __html: age_tooltip.html }} />
                             </h5>
-                            {ages.map((age, index) => {
-                                return (
-                                    <p key={age}>
-                                        <input
-                                            type="radio"
-                                            id={`age-${index}`}
-                                            name="age"
-                                            checked={index === state.age}
-                                            onChange={() => updateAge(index)}
-                                        />
-                                        <label htmlFor={`age-${index}`}>{age}</label>
-                                    </p>
-                                )
-                            })}
-                            <h5 className="filter-label">{availiable_in_french_label}</h5>
-                            <p className="filter-label">
-                                <input
-                                    type="checkbox"
-                                    id="language"
-                                    name="language"
-                                    onChange={() => updateFrench()}
-                                    checked={state.french}
+                            <Select 
+                                options={ageOptions}
+                                onChange={(e) => updateAge(e.value)}
+                                defaultValue={ageDefaultValue}
                                 />
-                                <label htmlFor="language" className="capitalize">
-                                    {yes}
-                                </label>
-                            </p>
+                            <Select
+                                options={extrasOptions}
+                                isMulti
+                                onChange={updateExtras}
+                                value={state.extrasOptions}
+                                />
                             <h5 className="filter-label">{levels_label}</h5>
                             <Slider
                                 min={1}
@@ -155,22 +158,13 @@ const CourseMap = ({ data, location }) => {
                                     {info_sheet_label}
                                 </a>
                             </div>
-                            <div className="legend">
-                                {video_recordings && (
-                                    <>
-                                        <div className="icon icon1">
-                                            <FaVideo />
-                                        </div>
-                                        <div>{video_recordings}</div>
-                                    </>
-                                )}
-                                {availiable_in_french_label && (
-                                    <>
-                                        <div className="icon icon2">{other_locale_text}</div>
-                                        <div>{availiable_in_french_label}</div>
-                                    </>
-                                )}
-                            </div>
+                            <h5 className="filter-label">{levels_label}</h5>
+                            <Select
+                                options={extrasOptions}
+                                isMulti
+                                onChange={updateExtras}
+                                value={state.extrasOptions}
+                                />
                         </form>
                     </div>
                     <div className="content">

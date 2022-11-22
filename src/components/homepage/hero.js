@@ -1,23 +1,33 @@
-// import { Link } from "gatsby"
-// import { CgArrowRight } from "react-icons/cg"
-// import { getImageProps } from "@utils/getImageProps"
-import "video-react/styles/scss/video-react.scss"
-import React from 'react';
-import { Player } from 'video-react';
+import { React, useEffect, useRef} from 'react';
+import _debounce from 'lodash.debounce'
 
 const Hero = ({ slides }) => {
-    return (
+    const homepage_hero = useRef(null);
+    const bg_video_wrapper = useRef(null);
+    useEffect(() => {
+        const handleResize = _debounce(() => {
+            var w = homepage_hero.current.offsetWidth;
+            var h = homepage_hero.current.offsetHeight;
+            var ratio = w / h 
+            var nw = ratio >= 1280/720 ? w : h * 1280 / 720
+            var nh = ratio >= 1280/720 ? w * 720 / 1280 : h
+            bg_video_wrapper.current.style.width = nw + 'px'
+            bg_video_wrapper.current.style.height = nh + 'px'
+        })
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+      }, [])
+
+      return (
         <>
             <div className="spacer-top" />
-            <div className="homepage-hero">
-                <div className="bg-video-wrapper">
-                    <Player
-                        playsInline
-                        muted
-                        loop
-                        autoPlay
-                        src="/videos/sbg.mp4"
-                        />
+            <div ref={homepage_hero} className="homepage-hero">
+                <div ref={bg_video_wrapper} className="bg-video-wrapper">
+                    <video muted={true} loop autoPlay style={{ height: "100%", width: "100%", objectFit: "cover" }}>
+                        <source src='/videos/sbg.mp4' type="video/mp4" />
+                    </video>
                 </div>
                 <div className="container">
                     <div dangerouslySetInnerHTML={{__html:slides[0].title.html}}/>  
