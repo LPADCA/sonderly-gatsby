@@ -119,13 +119,13 @@ const LetsTalk = () => {
                                             onChange={(e) => setMessage(e.target.value)}
                                             rows={messageField.split("\n").length}
                                         ></textarea>
+                                        <div className="submit-button">
+                                            <button className="button black" type="submit" disabled={submitting}>
+                                                {form_submit}
+                                            </button>
+                                            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="submit-button">
-                                    <button className="button black" type="submit" disabled={submitting}>
-                                        {form_submit}
-                                    </button>
-                                    <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
                                 </div>
                             </form>
                         )}
