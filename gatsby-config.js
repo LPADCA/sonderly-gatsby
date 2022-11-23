@@ -50,7 +50,7 @@ module.exports = {
                     faq_page: require("./src/schemas/faq_page.json"),
                     funded_training: require("./src/schemas/funded_training_page.json"),
                     professional_training: require("./src/schemas/professional_training_page.json"),
-                    about_page: require("./src/schemas/about_page.json"),
+                    about_page_2022: require("./src/schemas/about_page_2022.json"),
                     landing_page: require("./src/schemas/landing_page.json"),
                     myth_landing_page: require("./src/schemas/myth_landing_page.json"),
                     404: require("./src/schemas/404.json"),

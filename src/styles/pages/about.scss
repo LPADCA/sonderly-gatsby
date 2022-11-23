@@ -1,21 +1,82 @@
 @import "../settings.scss";
 
 .about-page {
+    .withdot:after {
+        content: "."
+    }
     .spacer-top {
         height: 160px;
     }
     .title-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 20px;
         h1 {
             font-size: 52px;
             margin-top: 0;
         }
     }
     .hero-image {
+        display: block;
         width: 100%;
         height: 600px;
         object-fit: cover;
+    }
+    .story {
+        padding-top: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        h2 {
+            font-size: 52px;
+            text-transform: uppercase;
+            font-style: italic;
+            font-weight: 900;
+            margin-top: 0;
+        }
+    }
+    .vision {
+        background-image: url('/images/contact-img-top.jpg');
+        background-size: cover;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        p {
+            font-weight: 600;
+        }
+        .grid {
+            margin: 15px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+            &.auto {
+                grid-template-columns: minmax(0, max-content) auto;
+            }
+        }
+        .amp {
+            font-size: 52px;
+            text-transform: uppercase;
+            font-style: italic;
+            font-weight: 900;
+            margin-top: 0;
+        }
+        .line {
+            padding: 0 20px;
+        }
+        hr {
+            border: none;
+            height: 4px;
+            color: black;
+            background-color: black; 
+        }
+        h2 {
+            font-size: 52px;
+            text-transform: uppercase;
+            font-style: italic;
+            font-weight: 900;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     }
     .management-team {
         h2 {
@@ -63,6 +124,64 @@
                         grid-column: 2;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about-page {
+        .spacer-top {
+            height: 130px;
+        }
+        .title-grid {
+            grid-template-columns: 1fr;
+            h1 {
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+        }
+        .hero-image {
+            height: 350px;
+        }
+        .story {
+            grid-template-columns: 1fr;
+            h2 {
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+        }
+        .vision {
+            .grid:not(.auto) {
+                grid-template-columns: 1fr;
+            }
+            .grid h2, .grid .amp {
+                font-size: 24px;
+            }
+            hr {
+                height: 2px;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        .management-team {
+            padding-left: 0;
+            padding-right: 0;
+            h2 {
+                font-size: 24px;
+                padding: 0 15px;
+            }
+            .management-cards {
+                display: none;
+            }
+            .management-cards-slider {
+                overflow: hidden;
+                .card {
+                    grid-template-columns: 1fr;
+                }
+                .slick-list {margin: 0 -5px;}
+                .slick-slide>div {padding: 0 5px;}
             }
         }
     }

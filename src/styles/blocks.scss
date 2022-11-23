@@ -1,15 +1,11 @@
 @import 'settings.scss';
 
 .hero-default {
-    background: $default-gradient;
-    min-height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     h1, p {
         text-align: center;
-        color: white;
         max-width: 500px;
         margin: 0 auto;
     }

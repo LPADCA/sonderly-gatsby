@@ -65,9 +65,10 @@ const CourseMap = ({ data, location }) => {
             if (state.video && !course.with_video) return false
             if (state.french && !course.french) return false
             if (state.level > levels.indexOf(course.level)) return false
+            if (state.age != null && state.age === 0) return true
             if (
                 state.age != null &&
-                course.age.localeCompare(ages[state.age], undefined, { sensetivity: "base" }) !== 0
+                course.age.localeCompare(ages[state.age], undefined, { sensitivity: "base" }) !== 0
             ) {
                 return false
             }
@@ -75,6 +76,7 @@ const CourseMap = ({ data, location }) => {
         })
         .map((c) => c.data)
         .sort((a, b) => levels.indexOf(a.level) - levels.indexOf(b.level))
+    console.log(courses)
 
     const updateLevel = (level) => setState({ ...state, level: level - 1 })
     const updateAge = (newAge) => setState({ ...state, age: newAge })
@@ -119,64 +121,53 @@ const CourseMap = ({ data, location }) => {
 
             <div className="container">
                 <div className="courses">
-                    <div className="filters">
-                        <form>
-                            <h4>
-                                <FaFilter /> {filters_label}
-                            </h4>
-                            <h5 className="filter-label age">
-                                {age_label} <RiInformationLine />
-                                <div className="tooltip" dangerouslySetInnerHTML={{ __html: age_tooltip.html }} />
-                            </h5>
-                            <Select 
-                                options={ageOptions}
-                                onChange={(e) => updateAge(e.value)}
-                                defaultValue={ageDefaultValue}
-                                />
-                            <Select
-                                options={extrasOptions}
-                                isMulti
-                                onChange={updateExtras}
-                                value={state.extrasOptions}
-                                />
-                            <h5 className="filter-label">{levels_label}</h5>
-                            <Slider
-                                min={1}
-                                max={levels.length}
-                                className="slider"
-                                defaultValue={1}
-                                handle={handle}
-                                onChange={updateLevel}
-                            />
-                            {levels.map((level, i) => (
-                                <div key={i} className={`levels ${state.level === i ? "current" : ""}`} id={`lvl${i}`}>
-                                    {i + 1} - {level}
-                                </div>
-                            ))}
+                    <form>
+                        <div className="filters">
                             <div>
+                
+                            </div>
+                            <div>
+                                <h5 className="filter-label age">
+                                    {age_label} <RiInformationLine />
+                                    <div className="tooltip" dangerouslySetInnerHTML={{ __html: age_tooltip.html }} />
+                                </h5>
+                                <Select 
+                                    options={ageOptions}
+                                    onChange={(e) => updateAge(e.value)}
+                                    defaultValue={ageDefaultValue}
+                                    />
+                            </div>
+                            <div>
+                                <h5 className="filter-label">{levels_label}</h5>
+                                <Slider
+                                    min={1}
+                                    max={levels.length}
+                                    className="slider"
+                                    defaultValue={1}
+                                    handle={handle}
+                                    onChange={updateLevel}
+                                />
+                                {levels.map((level, i) => (
+                                    <div key={i} className={`levels ${state.level === i ? "current" : ""}`} id={`lvl${i}`}>
+                                        {i + 1} - {level}
+                                    </div>
+                                ))}
                                 <a className="info-sheet" href={info_sheet_link.url} target={info_sheet_link.target}>
                                     {info_sheet_label}
                                 </a>
                             </div>
-                            <h5 className="filter-label">{levels_label}</h5>
-                            <Select
-                                options={extrasOptions}
-                                isMulti
-                                onChange={updateExtras}
-                                value={state.extrasOptions}
-                                />
-                        </form>
-                    </div>
-                    <div className="content">
-                        <div className="image">
-                            <img
-                                src={pageContent.image.fluid.src}
-                                srcSet={pageContent.image.fluid.srcSet}
-                                width="100%"
-                                height="200"
-                                alt={pageContent.image.alt}
-                            />
+                            <div>
+                                <h5 className="filter-label">{levels_label}</h5>
+                                <Select
+                                    options={extrasOptions}
+                                    isMulti
+                                    onChange={updateExtras}
+                                    value={state.extrasOptions}
+                                    />
+                            </div>
                         </div>
+                    </form>
+                    <div className="content">
                         <div className="padded">
                             <Element name="courseblocks-anchor" />
                             {courses.length === 0 && (
@@ -186,16 +177,18 @@ const CourseMap = ({ data, location }) => {
                                 {courses.map((course, i) => {
                                     return (
                                         <a key={i} href={course.link.url} className="courseblock">
-                                            <h3>{course.course_name.text}</h3>
-                                            <div className="status">
-                                                {course.with_video && (
-                                                    <div className="icon icon1">
-                                                        <FaVideo />
+                                            <div className="cb-content">
+                                                <h3>{course.course_name.text}</h3>
+                                                <div className="status">
+                                                    {course.with_video && (
+                                                        <div className="icon icon1">
+                                                            <FaVideo />
+                                                        </div>
+                                                    )}
+                                                    {course.french && <div className="icon icon2">{other_locale_text}</div>}
+                                                    <div className="level">
+                                                        {level} {levels.indexOf(course.level) + 1}
                                                     </div>
-                                                )}
-                                                {course.french && <div className="icon icon2">{other_locale_text}</div>}
-                                                <div className="level">
-                                                    {level} {levels.indexOf(course.level) + 1}
                                                 </div>
                                             </div>
                                         </a>

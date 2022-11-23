@@ -1,0 +1,144 @@
+{
+    "Main" : {
+      "page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Page Title"
+        }
+      },
+      "page_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "label" : "Page Description"
+        }
+      },
+      "hero_image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : {
+            "width" : null,
+            "height" : null
+          },
+          "thumbnails" : [ ],
+          "label" : "Hero Image"
+        }
+      }
+    },
+    "Management " : {
+      "section_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Section Name"
+        }
+      },
+      "management_team" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "management_photo" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : {
+                  "width" : null,
+                  "height" : null
+                },
+                "thumbnails" : [ ],
+                "label" : "management_photo"
+              }
+            },
+            "management_name" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Management Team"
+              }
+            },
+            "management_description" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                "label" : "Management Description"
+              }
+            },
+            "photo_bg_color" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Photo background color",
+                "placeholder" : "css color format, e.g. #000000"
+              }
+            }
+          },
+          "label" : "Management team"
+        }
+      }
+    },
+    "Content" : {
+      "story_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Story title"
+        }
+      },
+      "story_text" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "Story Text"
+        }
+      },
+      "vision_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Vision Title"
+        }
+      },
+      "vision_text" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "Vision Text"
+        }
+      },
+      "mission_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Mission Title"
+        }
+      },
+      "mission_text" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "Mission Text"
+        }
+      }
+    },
+    "SEO" : {
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Title (maximum 70 characters)"
+        }
+      },
+      "seo_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Description (50–160 characters)"
+        }
+      },
+      "seo_keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords",
+          "placeholder" : "(list, separated with commas)"
+        }
+      }
+    }
+  }
