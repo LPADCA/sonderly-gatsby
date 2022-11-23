@@ -3,12 +3,20 @@ const linkResolver = (doc) => {
         return `${doc.url}`
     }
     
-    if (doc.type === "homepage") {
-        return `/`
+    if (doc.type === "homepage2022") {
+        return `/hp2022`
     }
 
     if (doc.type === "page") {
         return `/${doc.uid}`
+    }
+
+    if (doc.type === "blogs") {
+        return `/resources/blogs/`
+    }
+
+    if (doc.type === "videos") {
+        return `/resources/videos/`
     }
 
     if (doc.type === "blog_post") {
@@ -18,25 +26,17 @@ const linkResolver = (doc) => {
     if (doc.type === "video") {
         return `/resources/videos/${doc.uid}`
     }
-    
-    if (doc.type === "funded_training") {
-        return `/services/funded-training`
+
+    if (doc.type === "about_page_2022") {
+        return `/about`
     }
 
-    if (doc.type === "professional_training") {
-        return `/services/professional-training`
-    }
-
-    if (doc.type === "services_corporate") {
+    if (doc.type === "group_training") {
         return `/services/corporate`
     }
 
     if (doc.type === "course_map") {
         return `/services/courses`
-    }
-
-    if (doc.type === "about_page") {
-        return `/about`
     }
 
     if (doc.type === "faq_page") {
@@ -48,7 +48,7 @@ const linkResolver = (doc) => {
     }
 
     // Backup for all other types
-    return "/"
+    return "/others"
 }
 
 module.exports = linkResolver

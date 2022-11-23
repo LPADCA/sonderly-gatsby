@@ -32,7 +32,7 @@ const UnfoldList = ({ list }) => {
         <div className="container unfold-list">
             <div className="unfold-list-items">
                 {list.map((item, i) => (
-                    <UnfoldItem isOpen={false} title={item.trainings_list_title.text} description={item.tranings_list_richtext.html} />
+                    <UnfoldItem key={i} isOpen={false} title={item.trainings_list_title.text} description={item.tranings_list_richtext.html} />
                 ))}
             </div>
         </div>
@@ -44,7 +44,7 @@ import "@styles/pages/services/corporate.scss"
 
 
 const ServicesCorporate = ({ data, location }) => {
-    const pageData = data.prismicServicesCorporate.data
+    const pageData = data.prismicGroupTraining.data
     const unfoldList = pageData.trainings_list
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
@@ -67,7 +67,6 @@ const ServicesCorporate = ({ data, location }) => {
                                                 src={box.hero_boxes_icon.fixed.src}
                                                 srcSet={box.hero_boxes_icon.fixed.srcSet}
                                                 width="60"
-                                                height="60"
                                                 alt={box.hero_boxes_icon.alt}
                                             />
                                         )}
@@ -107,7 +106,7 @@ export default ServicesCorporate
 
 export const servicesCorporateQuery = graphql`
     query ServicesCorporate {
-        prismicServicesCorporate {
+        prismicGroupTraining {
             data {
                 seo_title
                 seo_keywords

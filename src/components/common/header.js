@@ -124,8 +124,8 @@ class Navbar extends React.Component {
                     {this.menu.map((item, i) => {
                         const { text, link } = item.primary
                         const { url, link_type } = link
-
                         const hasChildren = item.items[0] && item.items[0].submenu_item_text
+                        console.log(item)
                         return (
                             <li key={`l1${i}`} className={hasChildren && "hasChildren"} onClick={hasChildren && this.handleClick}>
                                 {url ? (
@@ -182,14 +182,14 @@ const Lang = ({ currentUrl }) => {
 const Header = ({ location }) => {
     const data = useStaticQuery(graphql`
         query Header {
-            prismicMenuPrimary {
+            prismicMenu {
                 data {
                     login_text
                     login_link {
                         url
                     }
                     body {
-                        ... on PrismicMenuPrimaryBodyMenuItem {
+                        ... on PrismicMenuBodyMenuItem {
                             id
                             items {
                                 submenu_item_text
@@ -219,18 +219,18 @@ const Header = ({ location }) => {
             }
         }
     `)
-    const { login_text, login_link } = data.prismicMenuPrimary.data
+    const { login_text, login_link } = data.prismicMenu.data
     return (
         <div className="header">
             <div className="header-container">
                 <div className="desktop">
                     <Logo />
-                    <Navbar currentUrl={location.pathname} menu={data.prismicMenuPrimary.data.body} />
+                    <Navbar currentUrl={location.pathname} menu={data.prismicMenu.data.body} />
                     <a href={login_link.url} className="button">
                         {login_text}
                     </a>
                     <Lang currentUrl={location.pathname} />
-                    <Hamburger menu={data.prismicMenuPrimary.data.body} />
+                    <Hamburger menu={data.prismicMenu.data.body} />
                 </div>
                 <div className="mobile"></div>
             </div>

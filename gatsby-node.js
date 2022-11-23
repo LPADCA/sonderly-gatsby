@@ -45,12 +45,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 prismicLandingPage {
                     lang
                 }
-                prismicFundedTraining {
-                    lang
-                }
-                prismicProfessionalTraining {
-                    lang
-                }
                 prismicMythLandingPage {
                     lang
                 }
@@ -61,8 +55,6 @@ exports.createPages = async ({ graphql, actions }) => {
     const customPagesList = customPagesResult.data.allPrismicPage.edges
     const blogPostList = customPagesResult.data.allPrismicBlogPost.edges
     const prismicLandingPage = customPagesResult.data.prismicLandingPage
-    const prismicFundedTraining = customPagesResult.data.prismicFundedTraining
-    const prismicProfessionalTraining = customPagesResult.data.prismicProfessionalTraining
     const prismicMythLandingPage = customPagesResult.data.prismicMythLandingPage
     customPagesList.forEach((edge) => {
         createPage({
@@ -97,20 +89,6 @@ exports.createPages = async ({ graphql, actions }) => {
             type: "page",
             path: `/aba-myths-dispelled`,
             component: path.resolve("src/templates/myth-landing-page.js"),
-        })
-    }
-    if (prismicFundedTraining) {
-        createPage({
-            type: "page",
-            path: `/services/funded-training`,
-            component: path.resolve("src/templates/services/funded-training.js"),
-        })
-    }
-    if (prismicProfessionalTraining) {
-        createPage({
-            type: "page",
-            path: `/services/professional-training`,
-            component: path.resolve("src/templates/services/professional-training.js"),
         })
     }
 }

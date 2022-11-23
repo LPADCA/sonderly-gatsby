@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick-theme.css"
 import "@styles/pages/about.scss"
 
 const settings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: false,
     speed: 500,

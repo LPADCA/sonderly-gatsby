@@ -9,7 +9,7 @@ import "@styles/footer.scss"
 const Footer = () => {
     const data = useStaticQuery(graphql`
         query FooterQuery {
-            prismicMenuPrimary {
+            prismicMenu {
                 data {
                     footer_links {
                         footer_link {
@@ -40,7 +40,7 @@ const Footer = () => {
         subscribe_description,
         subscription_button,
         copyright,
-    } = data.prismicMenuPrimary.data
+    } = data.prismicMenu.data
     const year = new Date().getFullYear()
     return (
         <div id="footer">
