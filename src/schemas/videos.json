@@ -1,55 +1,73 @@
 {
-  "Main" : {
-    "title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "Title"
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
       }
     },
-    "primary" : {
-      "type" : "Link",
-      "config" : {
-        "select" : "document",
-        "customtypes" : [ "video" ],
-        "label" : "Primary Video"
+    "featured_label": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "Featured Label"
       }
     },
-    "promoted" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "video" : {
-            "type" : "Link",
-            "config" : {
-              "select" : "document",
-              "customtypes" : [ "video" ],
-              "label" : "video"
+    "regular_label": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "Regular Label"
+      }
+    },
+    "primary": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": [
+          "video"
+        ],
+        "label": "Primary Video"
+      }
+    },
+    "promoted": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "video": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": [
+                "video"
+              ],
+              "label": "video"
             }
           }
         },
-        "label" : "Promoted"
+        "label": "Promoted"
       }
     }
   },
-  "SEO" : {
-    "seo_title" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Title (maximum 70 characters)"
+  "SEO": {
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title (maximum 70 characters)"
       }
     },
-    "seo_description" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Description (50–160 characters)"
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "Description (50–160 characters)"
       }
     },
-    "seo_keywords" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Keywords",
-        "placeholder" : "(list, separated with commas)"
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Keywords",
+        "placeholder": "(list, separated with commas)"
       }
     }
   }

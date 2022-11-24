@@ -54,7 +54,7 @@ const Testimonials = ({ data }) => {
     return (
         <div className="testimonials" style={{backgroundImage: "url('images/testimonials_bg.jpg')"}}>
             <div className="container">
-                <h2 className="newtitle inverted">{data.tmn_title.text}</h2>
+                <h2 className="inverted withdot centered">{data.tmn_title.text}</h2>
                 <TestimonialsSlider data={data} />
             </div>
         </div>

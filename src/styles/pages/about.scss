@@ -1,9 +1,6 @@
 @import "../settings.scss";
 
 .about-page {
-    .withdot:after {
-        content: "."
-    }
     .spacer-top {
         height: 160px;
     }
@@ -16,11 +13,17 @@
             margin-top: 0;
         }
     }
+    .image-insert {
+        margin-bottom: 0;
+    }
     .hero-image {
         display: block;
         width: 100%;
         height: 600px;
         object-fit: cover;
+    }
+    .stats {
+        margin-top: 0;
     }
     .story {
         padding-top: 50px;
@@ -29,9 +32,6 @@
         gap: 20px;
         h2 {
             font-size: 52px;
-            text-transform: uppercase;
-            font-style: italic;
-            font-weight: 900;
             margin-top: 0;
         }
     }
@@ -71,9 +71,6 @@
         }
         h2 {
             font-size: 52px;
-            text-transform: uppercase;
-            font-style: italic;
-            font-weight: 900;
             margin-top: 0;
             margin-bottom: 0;
         }
@@ -81,9 +78,6 @@
     .management-team {
         h2 {
             font-size: 52px;
-            text-transform: uppercase;
-            font-style: italic;
-            font-weight: 900;
             text-align: center;
         }
         .card-container {
@@ -106,7 +100,6 @@
                     h3 {
                         color: #35ce8d;
                         font-size: 24px;
-                        font-weight: 900;
                     }
                     p {
                         color: white;

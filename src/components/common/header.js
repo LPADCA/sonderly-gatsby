@@ -125,7 +125,7 @@ class Navbar extends React.Component {
                         const { text, link } = item.primary
                         const { url, link_type } = link
                         const hasChildren = item.items[0] && item.items[0].submenu_item_text
-                        console.log(item)
+                        //console.log(item)
                         return (
                             <li key={`l1${i}`} className={hasChildren && "hasChildren"} onClick={hasChildren && this.handleClick}>
                                 {url ? (

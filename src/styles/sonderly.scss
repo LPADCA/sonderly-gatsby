@@ -33,33 +33,51 @@ h4,
 h5,
 h6 {
     font-family: "Nunito", "Helvetica Round", "Varela Round", Helvetica, Arial, sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-}
-h1 {
-    text-transform: uppercase;
-    letter-spacing: -2px;
     font-weight: 900;
-    font-style: italic;
-}
-
-.newtitle {
-    width: 100%;
-    text-align: center;
     text-transform: uppercase;
     font-style: italic;
-    font-weight: 900;
-    letter-spacing: -1px;
     &.inverted {
         color: white;
     }
-    &:after {
+    &.explicit::after {
+        content: "!";
+    }
+    &.withdot::after {
         content: ".";
         color: $color6;
     }
-    &.explicit:after {
-        content: "!";
+}
+
+section {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+        &::after {
+            content: ".";
+            color: $color6;
+        }
     }
+}
+
+
+
+h1 {
+    letter-spacing: -2px;
+}
+h2 {
+    letter-spacing: -1.7px;
+}
+h3 {
+    letter-spacing: -1px;
+}
+h4 {
+    letter-spacing: -0.8px;
+}
+h5 {
+    letter-spacing: -0.7px;
+}
+h6 {
+    letter-spacing: -0.6px;
 }
 
 li {
@@ -163,20 +181,6 @@ button {
     }
 }
 
-.section {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.divider-dots {
-    display: block;
-    width: 156px;
-    height: 40px;
-    margin: 40px auto;
-    background-image: url("/images/dots.png");
-    background-size: 100% 100%;
-}
-
 h2.typical {
     margin-top: 80px;
     text-align: center;
@@ -235,23 +239,6 @@ h2.centered {
     text-align: center;
 }
 
-h1.underline,
-h2.underline {
-    &:after {
-        content: "";
-        display: block;
-        width: 50%;
-        max-width: 70px;
-        height: 4px;
-        background-color: $button-green;
-        border-radius: 10px;
-    }
-    &.centered {
-        &:after {
-            margin: 10px auto 0 auto;
-        }
-    }
-}
 
 .testimonials {
     background-size: cover;
@@ -463,17 +450,17 @@ h2.underline {
             h2 {
                 color: $color9;
                 font-size: 40px;
+                letter-spacing: 4px;
+                font-style: normal;
                 font-weight: 800;
-                letter-spacing: 3px;
-                margin-top: 30px;
-                margin-bottom: 0;
+                margin-bottom: 10px;
             }
             h3 {
                 margin-top: 4px;
                 margin-bottom: 30px;
                 color: white;
-                text-transform: uppercase;
-                font-style: italic;
+                letter-spacing: 0;
+                font-weight: 700;
             }
         }
     }

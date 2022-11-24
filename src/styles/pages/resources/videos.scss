@@ -3,13 +3,6 @@
 
 .videos_page {
     margin-top: 120px;
-    h1 {
-        font-weight: 900;
-        letter-spacing: -2px;
-        text-transform: uppercase;
-        text-align: center;
-        font-style: italic;
-    }
     .promogrid {
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -57,6 +50,9 @@
                 }
                 h2 {
                     margin: 0;
+                    text-transform: unset;
+                    font-style: normal;
+                    font-weight: 700;
                 }
             }
         }
@@ -107,9 +103,12 @@
                     }    
                     .content {
                         h3 {
-                            margin: 0;
+                            margin: 5px 0;
                             color: white;
                             font-size: 14px;
+                            font-weight: 600;
+                            text-transform: unset;
+                            font-style: normal;
                         }
                         p.datetime {
                             font-size: 14px;
@@ -167,6 +166,8 @@
                     margin: 0;
                     font-weight: 500;
                     color: black;
+                    text-transform: unset;
+                    font-style: normal;
                 }
                 p {
                     font-size: 14px;
@@ -231,6 +232,11 @@
                 }
             }    
         }
+    }
+    .category_label {
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 18px;
     }
 }
 

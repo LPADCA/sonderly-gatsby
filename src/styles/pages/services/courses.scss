@@ -5,28 +5,82 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
+        
     }
     .content {
+        margin-top: 50px;
         .courseblocks {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             .courseblock {
+                height: 100%;
                 box-shadow: 0px 3px 10px #0000000D;
                 padding: 10px;
                 border-radius: 8px;
                 color: black;
+                padding-bottom: 75px;
+                position: relative;
+                font-size: 14px;
+                .categorisation {
+                    font-size: 12px;
+                    font-weight: 600;
+                    margin: 0;
+                    opacity: 0.4;
+                }
+                .icon {
+                    color: $color6;
+                    margin: 3px;
+                }
                 &:hover, &:active {
                     background-color: $color6;
+                    .icon {
+                        color: white;
+                    }
+                    .txt {
+                        color: white;
+                    }
+                }
+                .lb1 {
+                    position: absolute;
+                    left: 10px;
+                    bottom: 7px;
+                    line-height: 1;
+                    svg {
+                        vertical-align: -5px;
+                    }
+                }
+                .lb2 {
+                    position: absolute;
+                    left: 10px;
+                    bottom: 28px;
+                    svg {
+                        vertical-align: -5px;
+                    }
+                }
+                .lb3 {
+                    position: absolute;
+                    left: 12px;
+                    bottom: 47px;
                 }
                 h3 {
                     font-size: 18px;
-                    font-weight: 400;
+                    font-weight: 500;
                     margin: 0;
+                    text-transform: unset;
+                    font-style: normal;
+                    letter-spacing: -0.5px;
                 }
-                .cb-content {
-                    padding-left: 10px;
-                    padding-right: 10px;
+                .txt {
+                    font-weight: 700;
+                    font-size: 12px;
+                    display: inline;
+                    color: black;
+                    border-radius: 100px;
+                }
+                .video {
+                    margin-left: 4px;
+                    vertical-align: -5px; 
                 }
             }
         }

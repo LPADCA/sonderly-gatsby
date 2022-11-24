@@ -10,7 +10,7 @@ const BlogPost = ({ data, location }) => {
     <Layout location={location}>
         <div className="blog_post">
             <div className="navi container">
-                <a href="/resources/blogs/">Blogs</a> &gt; Article
+                <a href="/resources/blogs/">{data.prismicBlogs.data.regular_label.text}</a> &gt; {data.prismicBlogs.data.single_article_label}
             </div>
             <div className="title container">
                 <h1>{blogPost.title.text}</h1>
@@ -66,7 +66,7 @@ export const query = graphql`
                     id
                     url
                     data {
-                        post_datetime(formatString: "DD MMMM, YYYY @ hh:mm a", locale: "en")
+                        post_datetime(formatString: "MMM DD, YYYY @ hh:mm a", locale: "en")
                         title {
                             text
                         }
@@ -75,6 +75,14 @@ export const query = graphql`
                         }
                     }
                 }
+            }
+        }
+        prismicBlogs {
+            data {
+                regular_label {
+                    text
+                }
+                single_article_label
             }
         }
     }

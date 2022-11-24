@@ -28,13 +28,13 @@
         .address-block {
             padding-top: 30px;
             .address-label {
-                font-size: 32px;
+                font-size: 26px;
                 text-transform: uppercase;
                 font-style: italic;
                 font-weight: 700;
             }
             .address-value {
-                font-size: 24px;
+                font-size: 20px;
                 color: #757575;
                 line-height: 1;
             }
@@ -88,8 +88,6 @@
             margin-top: 25px;
             margin-bottom: 20px;
             font-weight: 800;
-            text-transform: uppercase;
-            font-style: italic;
         }
 
         @media (max-width: $between-edge) {

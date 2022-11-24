@@ -7,12 +7,13 @@ const Hero = ({ title, subheading }) => {
         <>
             <div className="hero-default">
                 <div className="container">
-                    <h1>{title}</h1>
-                    <div
+                    <h1 className="withdot">{title}</h1>
+                    {subheading && <div
                         dangerouslySetInnerHTML={{
                             __html: subheading.html,
                         }}
                     />
+                    }
                 </div>
             </div>
         </>

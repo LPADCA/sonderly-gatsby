@@ -23,11 +23,15 @@
         }
         h3 {
             font-size: 22px;
+            text-transform: unset;
+            font-weight: 800;
+            font-style: normal;
         }
         p {
             color: white;
             strong {
                 color: black;
+                font-weight: 800;
             }
         }
     }
@@ -36,9 +40,6 @@
 .trainings {
     h2 {
         font-size: 35px;
-        text-transform: uppercase;
-        font-weight: 900;
-        font-style: italic;
     }
     .unfold-list {
         .unfold-item {
@@ -54,7 +55,10 @@
                     padding-right: 20px;
                     text-align: left;
                     font-size: 18px;
-                    font-weight: 600;
+                    font-weight: 400;
+                    text-transform: unset;
+                    font-style: normal;
+                    letter-spacing: 0;
                     &:before {
                         position: absolute;
                         left: 0;
@@ -84,6 +88,10 @@
             }
         .unfold-item-body {
             margin-left: 28px;
+            p {
+                margin-top: 3px;
+                margin-bottom: 0;
+            }
         }
         }
     }

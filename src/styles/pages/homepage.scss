@@ -15,11 +15,7 @@
     min-height: 400px;
     h1 {
         font-size: 110px;
-        text-transform: uppercase;
-        font-style: italic;
-        font-weight: 900;
         line-height: 1;
-        letter-spacing: -2px;
         margin-top: 200px;
         margin-bottom: 0;
         color: $title-color;
@@ -29,6 +25,10 @@
         margin-top: 10px;
         max-width: 900px;
         color: $title-color;
+        font-style: normal;
+        font-weight: 700;
+        text-transform: unset;
+        letter-spacing: 0;
     }
     .button {
         margin-bottom: 100px;
@@ -74,16 +74,7 @@
         display: grid;
         grid-template-columns: 1fr 2fr;
         h2 {
-            text-transform: uppercase;
-            font-style: italic;
-            font-weight: 900;
             font-size: 35px;
-            &::after {
-                content: ".";
-                color: $color6;
-                font-weight: 900;
-                font-size: 35px;
-            }
         }
         ul {
             list-style: none;
@@ -166,7 +157,8 @@
                 background: white;
                 border-radius: 20px;
                 padding: 20px;
-                position: relative;              
+                position: relative; 
+                height: 100%;             
                 &:before {
                     content: "";
                     display: block;
@@ -192,6 +184,9 @@
                     text-align: left;
                     h3 {
                         margin: 0;
+                        font-weight: 700;
+                        text-transform: unset;
+                        font-style: normal;
                     }
                     p {
                         margin: 5px 0;
@@ -199,8 +194,14 @@
                     >a {
                         color: black;
                         font-weight: 700;
+                        transition: color 0.5s ease-out, padding-left 0.5s ease-out;
+                        padding-left: 0;
                         &:after {
                             content: " >";
+                        }
+                        &:hover {
+                            color: $color6;
+                            padding-left: 10px;
                         }
                     }
                 }
@@ -243,6 +244,7 @@
 }
 
 .whoweserve {
+    margin-bottom: 0;
     .background {
         background-size: cover;
         .grid {
@@ -251,10 +253,8 @@
             h3 {
                 padding-left: 50px;
                 color: black;
-                text-transform: uppercase;
                 font-size: 26px;
-                font-weight: 900;
-                font-style: italic;
+
             }
         }
     }

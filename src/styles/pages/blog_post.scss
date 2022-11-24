@@ -6,6 +6,13 @@
         h1 {
             font-size: 32px;
             line-height: 1.2;
+            text-transform: unset;
+            font-weight: 700;
+            font-style: normal;
+            letter-spacing: -0.5px;
+        }
+        p.datetime {
+            font-size: 14px;
         }
         margin: 0 10%;
     }
@@ -68,16 +75,20 @@
             }
             h3 {
                 margin-top: 5px;
-                margin-bottom: 0;
-                line-height: 1.4;
+                margin-bottom: 15px;
                 color: black;
-                font-size: 16px;
+                font-size: 18px;
+                text-transform: unset;
+                font-style: normal;
+                letter-spacing: 0;
+                font-weight: 500;
+                line-height: 1.2;
             }
             p.datetime {
                 margin: 0;
                 margin-top: 5px;
                 color: black;
-                font-size: 14px;
+                font-size: 13px;
             }
         }
     }

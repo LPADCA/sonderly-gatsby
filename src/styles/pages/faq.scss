@@ -6,6 +6,9 @@ $transition-speed: 0.4s;
     margin-top: $header-height;
     padding: 50px 0;
     text-align: center;
+    section {
+        margin: 0;
+    }
  
     & > * {
         margin-left: auto;
@@ -56,7 +59,7 @@ $transition-speed: 0.4s;
         font-size: 18px;
         font-weight: 600;
         text-align: left;
-
+        font-style: normal;
         @media (max-width: $between-edge) {
             flex-direction: column;
             text-align: center;
@@ -103,6 +106,7 @@ $transition-speed: 0.4s;
 .faq-content {
     position: relative;
     overflow: hidden;
+    margin-top: 0;
 }
 
 .faq-bg-decoration {

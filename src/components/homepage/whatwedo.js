@@ -3,11 +3,11 @@ import React from "react"
 
 const WhatWeDo = ({ data }) => {
     return (
-        <div className="whatwedo section">
+        <section className="whatwedo">
             <div className="container">
                 <div className="grid">
                     <div id="wwd-left">
-                        <h2>{data.wwd_title.text}</h2>
+                        <h2 className='withdot'>{data.wwd_title.text}</h2>
                     </div>
                     <div id="wwd-right">
                         <div
@@ -44,7 +44,7 @@ const WhatWeDo = ({ data }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 export default WhatWeDo

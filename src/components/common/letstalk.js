@@ -63,8 +63,8 @@ const LetsTalk = () => {
     const form_submit = 'Submit message'
     const success_message = 'Successfully submitted'
     return (
-        <div className="letstalk section">
-            <h2 className="newtitle explicit">Let's Talk</h2>
+        <section className="letstalk">
+            <h2 className="explicit centered">Let's Talk</h2>
             <div className="container">
                 <div>
                     <div className="form-wrapper">
@@ -132,7 +132,7 @@ const LetsTalk = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 
 }

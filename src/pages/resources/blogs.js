@@ -25,7 +25,7 @@ const BlogsSlider = ({ data }) => {
                         <div className="card">
                             <img src={card.element.document.data.blog_image.url}/>
                             <h3>{card.element.document.data.title.text}</h3>
-                            <p>{card.element.document.data.post_datetime}</p>
+                            <p className="datetime">{card.element.document.data.post_datetime}</p>
                         </div>
                     </a>
                 </div>
@@ -79,9 +79,11 @@ const Blogs = ({ data, location }) => {
     const regular_items  = data.allPrismicBlogPost.edges
     return (
     <Layout location={location}>
+        <div className="spacer-top"/>
         <div className="blogs_page">
-            <h1 className="title">{data.prismicBlogs.data.page_title.text}</h1>
+            <h1 className="centered">{data.prismicBlogs.data.page_title.text}</h1>
             <div className="container">
+                <p className="category_label">{data.prismicBlogs.data.featured_label.text}</p>
                 <div className="promogrid">
                     <div className="left">
                         <div className="slider_wrapper">
@@ -92,6 +94,7 @@ const Blogs = ({ data, location }) => {
                         <Promoted data={promoted_items} />
                     </div>
                 </div>
+                <p className="category_label">{data.prismicBlogs.data.regular_label.text}</p>
                 <Regular data={regular_items}/>
             </div>
         </div>
@@ -111,7 +114,7 @@ query Blogs {
                 id
                 url
                 data {
-                    post_datetime(formatString: "DD MMMM, YYYY @ hh:mm a", locale: "en")
+                    post_datetime(formatString: "MMM DD, YYYY @ hh:mm a", locale: "en")
                     seo_description
                     seo_keywords
                     seo_title
@@ -131,6 +134,12 @@ query Blogs {
     prismicBlogs {
         data {
             page_title {
+                text
+            }
+            featured_label {
+                text
+            }
+            regular_label {
                 text
             }
             seo_description

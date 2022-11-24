@@ -35,7 +35,7 @@ const linkResolver = (doc) => {
         return `/services/corporate`
     }
 
-    if (doc.type === "course_map") {
+    if (doc.type === "course_map_2022") {
         return `/services/courses`
     }
 

@@ -153,7 +153,7 @@ const ContactPage = ({ data, location }) => {
             </div>
             <section className="contact-body container">
                 <div>
-                    <h1 dangerouslySetInnerHTML={{ __html: page_title.text }} />
+                    <h1 className="withdot" dangerouslySetInnerHTML={{ __html: page_title.text }} />
                 </div>
                 <div>
                     <address>

@@ -3,9 +3,9 @@ import { BiBookOpen } from "react-icons/bi"
 
 const CoursesPreview = ({ data }) => {
     return (
-        <div className="courses-preview section">
+        <section className="courses-preview">
+            <h2 className="centered">{data.cp_title.text}</h2>
             <div className="container">
-                <h2 className="newtitle">{data.cp_title.text}</h2>
                 <div className="cards">
                     {data.cp_card.map((card, i) => (
                         <div key={`key-${i}`} className="wrapper">
@@ -29,7 +29,7 @@ const CoursesPreview = ({ data }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 export default CoursesPreview

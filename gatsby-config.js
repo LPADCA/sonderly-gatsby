@@ -42,7 +42,7 @@ module.exports = {
                     group_training: require("./src/schemas/group_training.json"),
                     contact_page: require("./src/schemas/contact_page.json"),
                     courses: require("./src/schemas/courses.json"),
-                    course_map: require("./src/schemas/course_map.json"),
+                    course_map_2022: require("./src/schemas/course_map_2022.json"),
                     blogs: require("./src/schemas/blogs.json"),
                     blog_post: require("./src/schemas/blog_post.json"),
                     videos: require("./src/schemas/videos.json"),

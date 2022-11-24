@@ -16,8 +16,9 @@ const FAQPage = ({ data, location }) => {
         <Layout location={location} {...Layout.pickSeoProps(data.prismicFaqPage.data)}>
             <JsonLD>{faqJsonLD(faq_list)}</JsonLD>
             <div className="faq-header">
-                <h1>{title}</h1>
-                <div className="faq-header-description" dangerouslySetInnerHTML={{ __html: description.html }} />
+                <section>
+                    <h1>{title}</h1>
+                </section>
             </div>
             <section className="faq-content">
                 <FaqList list={faq_list} onStateChange={setAllOpen} />

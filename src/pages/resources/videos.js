@@ -72,6 +72,7 @@ const SelectedListShow = ({data, show_fn}) => {
 }
 
 class Regular extends React.Component {
+    label = this.props.label
     data = this.props.data
     options = this.props.categories
     defaultOption = this.options[0];
@@ -93,6 +94,7 @@ class Regular extends React.Component {
                 <div className="regular-filter">
                     <Dropdown options={this.options} onChange={(value) => this._onSelect(value)} placeholder="Category" />
                 </div>
+                <p className="category_label">{this.label}</p>
                 <SelectedListShow data = {this.state.selected_data} show_fn={this.props.show_fn}/>
             </>
         )
@@ -137,10 +139,11 @@ class Videos extends React.Component {
     render() {
         return (
         <Layout location={this.location}>
-            <div className="videos_page">
-                <h1 className="title">{this.data.prismicVideos.data.title.text}</h1>
+            <section className="videos_page">
+                <h1 className="centered">{this.data.prismicVideos.data.title.text}</h1>
                 <Modal url={this.state.modal_url} is_visible={this.state.modal_visible} is_playing={this.state.modal_playing} hide_fn={this.hide}/>
                 <div className="container">
+                    <p className="category_label">{this.data.prismicVideos.data.featured_label.text}</p>
                     <div className="promogrid">
                         <div className="left">
                             <div className="slider_wrapper">
@@ -159,9 +162,9 @@ class Videos extends React.Component {
                             <Promoted data={this.promoted_items} show_fn={this.show} />
                         </div>
                     </div>
-                    <Regular data={this.regular_items} categories={[...new Set(this.categories)]} show_fn={this.show}/>
+                    <Regular label={this.data.prismicVideos.data.regular_label.text} data={this.regular_items} categories={[...new Set(this.categories)]} show_fn={this.show}/>
                 </div>
-            </div>
+            </section>
         </Layout>
         )
     }
@@ -180,7 +183,7 @@ query Videos {
                 url
                 data {
                     category
-                    datetime(formatString: "DD MMMM, YYYY @ hh:mm a", locale: "en")
+                    datetime(formatString: "MMM DD, YYYY @ hh:mm a", locale: "en")
                     seo_description
                     seo_keywords
                     seo_title
@@ -203,7 +206,7 @@ query Videos {
                         ... on PrismicVideo {
                             id
                             data {
-                                datetime(formatString: "DD MMMM, YYYY @ hh:mm a", locale: "en")
+                                datetime(formatString: "MMM DD, YYYY @ hh:mm a", locale: "en")
                                 video_url {
                                     embed_url
                                     thumbnail_url
@@ -221,6 +224,12 @@ query Videos {
             seo_title
             title {
                 html
+                text
+            }
+            featured_label {
+                text
+            }
+            regular_label {
                 text
             }
             primary {

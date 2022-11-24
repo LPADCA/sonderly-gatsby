@@ -70,12 +70,10 @@ const AboutPage = ({ data, location }) => {
                     <div dangerouslySetInnerHTML={{ __html: page_description.html }}/>
                 </div>
             </section>
-            <section>
+            <section className="image-insert">
                 <img className="hero-image" {...getImageProps(hero_image)} />
             </section>
-            <section>
-                <Stats />
-            </section>
+            <Stats />
             <div className="story container">
                 <div>
                     <h2 className="withdot">{story_title.text}</h2>
@@ -86,7 +84,7 @@ const AboutPage = ({ data, location }) => {
                 <div className="container">
                     <div className="grid">
                         <div>
-                            <h2 className="withdot">{vision_title.text}</h2>
+                            <h2>{vision_title.text}</h2>
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: vision_text.html }}/>
                     </div>
@@ -100,14 +98,14 @@ const AboutPage = ({ data, location }) => {
                     </div>
                     <div className="grid">
                         <div>
-                            <h2 className="withdot">{mission_title.text}</h2>
+                            <h2>{mission_title.text}</h2>
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: mission_text.html }}/>
                     </div>
                 </div>
             </div>
             <section className="container management-team">
-                <h2 className="withdot">{section_name}</h2>
+                <h2>{section_name}</h2>
                 <div className="management-cards">
                     {management_team.map((item) => (
                         <ManagementItem management_photo={item.management_photo} key={item.management_name} {...item} button_text={button_text} />

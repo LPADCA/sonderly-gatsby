@@ -50,12 +50,9 @@ const ServicesCorporate = ({ data, location }) => {
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
             <div className="spacer-top" />
             <div className="corporate-services-hero-wrapper">
-                <div className="corporate-services-hero">
-                    <div className="container">
-                        <h1>{pageData.title.text}</h1>
-                        <div dangerouslySetInnerHTML={{ __html: pageData.subheading.html }} />
-                    </div>
-                </div>
+                <section className="corporate-services-hero">
+                    <h1>{pageData.title.text}</h1>
+                </section>
                 <div className="container">
                     <div className="corporate-services-hero-tabs">
                         {pageData.hero_boxes.map((box, i) => {
@@ -92,12 +89,14 @@ const ServicesCorporate = ({ data, location }) => {
                     <div dangerouslySetInnerHTML={{ __html: pageData.hero_note.html }} />
                 </div>
             </div>
-            <div className="trainings container">
-                <h2 className="centered underline">{pageData.trainings_title.text}</h2>
-                <div id="preview" className="preview-wrapper">
-                    <UnfoldList list={unfoldList} />
+            <section className="trainings">
+                <h2 className="centered">{pageData.trainings_title.text}</h2>
+                <div className="container">
+                    <div id="preview" className="preview-wrapper">
+                        <UnfoldList list={unfoldList} />
+                    </div>
                 </div>
-            </div>
+            </section>
         </Layout>
     )
 }

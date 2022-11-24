@@ -16,8 +16,7 @@ const Stats = () => {
         }
     `)
     return (
-            <div
-                className="stats" style={{backgroundImage: "url('images/counter_bg.jpg')"}}>
+            <section className="stats" style={{backgroundImage: "url('images/counter_bg.jpg')"}}>
                 <div className="container">
                     <div className="grid">
                         {data.prismicHomepage2022.data.stats_element.map((item, i) => (
@@ -36,7 +35,7 @@ const Stats = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
     )
 }
 export default Stats

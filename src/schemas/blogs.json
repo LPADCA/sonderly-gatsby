@@ -1,64 +1,89 @@
 {
-  "Main" : {
-    "page_title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "Page Title",
-        "placeholder" : "Blogs"
+  "Main": {
+    "page_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Page Title",
+        "placeholder": "Blogs"
       }
     },
-    "scroller" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "element" : {
-            "type" : "Link",
-            "config" : {
-              "select" : "document",
-              "customtypes" : [ "blog_post" ],
-              "label" : "Blog Post"
+    "featured_label": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "'Featured' Label"
+      }
+    },
+    "regular_label": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "'Regular' label"
+      }
+    },
+    "single_article_label": {
+      "type": "Text",
+      "config": {
+        "label": "Single Article label",
+        "placeholder": "How 'Article' named in current locale?"
+      }
+    },
+    "scroller": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "element": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": [
+                "blog_post"
+              ],
+              "label": "Blog Post"
             }
           }
         },
-        "label" : "List of blog posts for scroller"
+        "label": "List of blog posts for scroller"
       }
     },
-    "promoted" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "element" : {
-            "type" : "Link",
-            "config" : {
-              "select" : "document",
-              "customtypes" : [ "blog_post" ],
-              "label" : "Blog Post"
+    "promoted": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "element": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": [
+                "blog_post"
+              ],
+              "label": "Blog Post"
             }
           }
         },
-        "label" : "List of promoted blog posts"
+        "label": "List of promoted blog posts"
       }
     }
   },
-  "SEO" : {
-    "seo_title" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Title (maximum 70 characters)"
+  "SEO": {
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title (maximum 70 characters)"
       }
     },
-    "seo_description" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Description (50–160 characters)"
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "Description (50–160 characters)"
       }
     },
-    "seo_keywords" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Keywords",
-        "placeholder" : "(list, separated with commas)"
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Keywords",
+        "placeholder": "(list, separated with commas)"
       }
     }
   }
