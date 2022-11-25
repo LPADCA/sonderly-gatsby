@@ -5,7 +5,26 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
-        
+    }
+    .quick_filter {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 30px auto 0 auto;
+        input {
+            width: 100%;
+            padding: 10px 30px;
+            font-size: 20px;
+            border: none;
+            border-bottom: 1px solid $color6;
+            border-radius: 0;
+            transition: border-radius 0.5s ease-out, background-color 0.5s ease-out;
+            &:focus {
+                outline:none;
+                border-radius: 100px;
+                background-color: #eee;
+            }
+        }
     }
     .content {
         margin-top: 50px;
@@ -27,6 +46,11 @@
                     font-weight: 600;
                     margin: 0;
                     opacity: 0.4;
+
+                }
+                p {
+                    margin-top: 7px;
+                    margin-bottom: 0;
                 }
                 .icon {
                     color: $color6;
@@ -44,7 +68,7 @@
                 .lb1 {
                     position: absolute;
                     left: 10px;
-                    bottom: 7px;
+                    bottom: 10px;
                     line-height: 1;
                     svg {
                         vertical-align: -5px;
@@ -53,7 +77,7 @@
                 .lb2 {
                     position: absolute;
                     left: 10px;
-                    bottom: 28px;
+                    bottom: 31px;
                     svg {
                         vertical-align: -5px;
                     }
@@ -61,11 +85,11 @@
                 .lb3 {
                     position: absolute;
                     left: 12px;
-                    bottom: 47px;
+                    bottom: 51px;
                 }
                 h3 {
                     font-size: 18px;
-                    font-weight: 500;
+                    font-weight: 600;
                     margin: 0;
                     text-transform: unset;
                     font-style: normal;
@@ -73,15 +97,42 @@
                 }
                 .txt {
                     font-weight: 700;
-                    font-size: 12px;
+                    font-size: 13px;
                     display: inline;
-                    color: black;
+                    color: $color6;
                     border-radius: 100px;
                 }
                 .video {
                     margin-left: 4px;
                     vertical-align: -5px; 
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .courses {
+        .filters {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .content {
+            .courseblocks {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .courses {
+        .filters {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .content {
+            .courseblocks {
+                grid-template-columns: repeat(1, 1fr);
             }
         }
     }

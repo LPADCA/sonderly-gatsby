@@ -1,64 +1,118 @@
 {
-    "Main" : {
-      "course_name" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading2",
-          "label" : "Course Name"
-        }
-      },
-      "summary" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "allowTargetBlank" : true,
-          "label" : "Summary"
-        }
-      },
-      "age" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "age"
-        }
-      },
-      "french" : {
-        "type" : "Boolean",
-        "config" : {
-          "placeholder_false" : "no",
-          "placeholder_true" : "yes",
-          "default_value" : false,
-          "label" : "Available in French"
-        }
-      },
-      "with_video" : {
-        "type" : "Boolean",
-        "config" : {
-          "placeholder_false" : "no",
-          "placeholder_true" : "yes",
-          "default_value" : false,
-          "label" : "Video Available"
-        }
-      },
-      "level" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "level"
-        }
-      },
-      "link" : {
-        "type" : "Link",
-        "config" : {
-          "allowTargetBlank" : true,
-          "label" : "Link to Platform"
-        }
+  "Main": {
+    "course_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Course Name"
       }
     },
-    "SEO" : {
-      "keywords" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Keywords"
-        }
+    "summary": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Summary"
+      }
+    },
+    "category": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Autism",
+          "Mental Health",
+          "Neurodiversity"
+        ],
+        "default_value": "Autism",
+        "label": "Category"
+      }
+    },
+    "lvl": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Introductory",
+          "Intermediate",
+          "Advanced"
+        ],
+        "default_value": "Introductory",
+        "label": "Course Level"
+      }
+    },
+    "ag": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "All ages",
+          "Children",
+          "Adolescents",
+          "Adults"
+        ],
+        "default_value": "All ages",
+        "label": "Age"
+      }
+    },
+    "age": {
+      "type": "Text",
+      "config": {
+        "label": "age"
+      }
+    },
+    "french": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "no",
+        "placeholder_true": "yes",
+        "default_value": false,
+        "label": "Available in French"
+      }
+    },
+    "with_video": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "no",
+        "placeholder_true": "yes",
+        "default_value": false,
+        "label": "Video Available"
+      }
+    },
+    "level": {
+      "type": "Text",
+      "config": {
+        "label": "level"
+      }
+    },
+    "link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Link to Platform",
+        "select": null
+      }
+    },
+    "thumbnail": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 600,
+          "height": 300
+        },
+        "thumbnails": [],
+        "label": "Thumbnail"
+      }
+    },
+    "time": {
+      "type": "Text",
+      "config": {
+        "label": "Time estimate",
+        "placeholder": "(type as a text)"
+      }
+    },
+    "ceu_credits": {
+      "type": "Number",
+      "config": {
+        "label": "Number of CEU credits"
       }
     }
   }
+}

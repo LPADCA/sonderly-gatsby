@@ -1,34 +1,11 @@
-import { React, useEffect, useRef} from 'react';
-import _debounce from 'lodash.debounce'
+import AnimatedBackground from "../common/animated_background"
 
 const Hero = ({ slides }) => {
-    const homepage_hero = useRef(null);
-    const bg_video_wrapper = useRef(null);
-    useEffect(() => {
-        const handleResize = _debounce(() => {
-            var w = homepage_hero.current.offsetWidth;
-            var h = homepage_hero.current.offsetHeight;
-            var ratio = w / h 
-            var nw = ratio >= 1280/720 ? w : h * 1280 / 720
-            var nh = ratio >= 1280/720 ? w * 720 / 1280 : h
-            bg_video_wrapper.current.style.width = nw + 'px'
-            bg_video_wrapper.current.style.height = nh + 'px'
-        })
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-      }, [])
-
-      return (
+    return (
         <>
             <div className="spacer-top" />
-            <div ref={homepage_hero} className="homepage-hero">
-                <div ref={bg_video_wrapper} className="bg-video-wrapper">
-                    <video muted={true} loop autoPlay style={{ height: "100%", width: "100%", objectFit: "cover" }}>
-                        <source src='/videos/sbg.mp4' type="video/mp4" />
-                    </video>
-                </div>
+            <div className="homepage-hero">
+                <AnimatedBackground/>
                 <div className="container">
                     <div dangerouslySetInnerHTML={{__html:slides[0].title.html}}/>  
                     <div dangerouslySetInnerHTML={{__html:slides[0].description.html}}/>  
@@ -40,7 +17,6 @@ const Hero = ({ slides }) => {
                 </div>
             </div>
         </>
-
     ) 
     /*       
         <>
