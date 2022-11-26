@@ -81,7 +81,7 @@ const Blogs = ({ data, location }) => {
     <Layout location={location}>
         <div className="spacer-top"/>
         <div className="blogs_page">
-            <h1 className="centered">{data.prismicBlogs.data.page_title.text}</h1>
+            <h1 className="centered withdot">{data.prismicBlogs.data.page_title.text}</h1>
             <div className="container">
                 <p className="category_label">{data.prismicBlogs.data.featured_label.text}</p>
                 <div className="promogrid">

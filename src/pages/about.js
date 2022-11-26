@@ -9,6 +9,7 @@ import Stats from "@components/common/stats"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import AnimatedBackground from "../components/common/animated_background"
 
 import "@styles/pages/about.scss"
 
@@ -81,6 +82,7 @@ const AboutPage = ({ data, location }) => {
                 <div dangerouslySetInnerHTML={{ __html: story_text.html }}/>
             </div>
             <div className="vision">
+                <AnimatedBackground/>
                 <div className="container">
                     <div className="grid">
                         <div>

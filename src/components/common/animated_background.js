@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import { React, Component, createRef} from 'react';
-//import _debounce from 'lodash.debounce'
+import _debounce from 'lodash.debounce'
 import "@styles/animated_background.scss"
 
 
@@ -13,7 +13,7 @@ class AnimatedBackground extends Component {
         }
         this.backgroundVideoWrapper = createRef();
     }
-    handleWindowResize = this.handleWindowResize.bind(this)
+    //handleWindowResize = this.handleWindowResize.bind(this)
 
     componentDidMount() {
         const parentNode = ReactDOM.findDOMNode(this).parentNode
@@ -24,15 +24,20 @@ class AnimatedBackground extends Component {
         window.addEventListener('resize', this.handleWindowResize);
     }
 
-    handleWindowResize() {
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleWindowResize);
+    }
+
+    handleWindowResize = _debounce(() => {
         var w = this.state.parent.offsetWidth;
         var h = this.state.parent.offsetHeight;
         var ratio = w / h 
         var nw = ratio >= 1280/720 ? w : h * 1280 / 720
         var nh = ratio >= 1280/720 ? w * 720 / 1280 : h
+        //console.log(this, this.backgroundVideoWrapper)
         this.backgroundVideoWrapper.current.style.width = nw + 'px'
         this.backgroundVideoWrapper.current.style.height = nh + 'px'
-    }
+    }, 100)
 
     render() {
         if (!this.state.parent) {

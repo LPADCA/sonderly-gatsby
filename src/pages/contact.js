@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import { FaCheckCircle } from "react-icons/fa"
 import { useFormspark } from "@formspark/use-formspark"
 import ReCAPTCHA from "react-google-recaptcha"
+import AnimatedBackground from "../components/common/animated_background"
 
 import "@styles/pages/contact.scss"
 
@@ -147,9 +148,7 @@ const ContactPage = ({ data, location }) => {
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
             <div className="contact-hero">
-                <div className="container">
-                    <div className="image"/>
-                </div>
+                <AnimatedBackground/>
             </div>
             <section className="contact-body container">
                 <div>
@@ -180,10 +179,11 @@ const ContactPage = ({ data, location }) => {
                 </div>
             </section>
             <section className="contact-body2">
+                <AnimatedBackground/>
+                <div className="cover"/>
                 <div className="container">
                     <div className="grid">
-                        <div className="left">
-                        </div>
+                        <div className="left"/>
                         <div className="right">
                             <div className="form-card">
                                 <h2>{form_title}</h2>

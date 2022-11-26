@@ -3,7 +3,9 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import CommonLink from "@components/common-link"
-
+import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiYoutube } from "react-icons/fi"
+import { FaPinterestP } from "react-icons/fa"
+const year = new Date().getFullYear()
 const Logo = () => {
     return (
         <div>
@@ -32,6 +34,7 @@ class Hamburger extends React.Component {
     constructor(props) {
         super(props)
         this.menu = props.menu
+        this.copyright = props.copyright
         this.state = {
             checked: false,
         }
@@ -56,7 +59,17 @@ class Hamburger extends React.Component {
                 <span></span>
                 <span></span>
                 <span></span>
-                <div id="mobileMenu">
+                <div id="mobileMenu" className={this.state.checked ? "isopen" : ""}>
+                    <Link to="/">
+                    <img
+                        className="logo"
+                        src="/images/logo-header.png"
+                        srcSet="/images/logo-header-2x.png 2x"
+                        alt="Sonderly logo"
+                        width="198.5"
+                        height="60"
+                    />
+                </Link>
                     <ul className="l1">
                         {this.menu.map((item, i) => {
                             const link = item.primary.link
@@ -87,6 +100,47 @@ class Hamburger extends React.Component {
                             )
                         })}
                     </ul>
+                    <div className="bottom">
+                        <ul className="socials">
+                            <li>
+                                <a href="https://www.facebook.com/sonderly.io/" title="Facebook" target="_blank">
+                                    <FiFacebook />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/sonderlyio" title="Twitter" target="_blank">
+                                    <FiTwitter />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/sonderly.io/" title="Instagram" target="_blank">
+                                    <FiInstagram />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/showcase/sonderly/" title="LinkedIn" target="_blank">
+                                    <FiLinkedin />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://youtube.com/channel/UCdL4jIHNUJopMZCWQqAkX1A"
+                                    title="youtube"
+                                    target="_blank"
+                                >
+                                    <FiYoutube />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://pin.it/2hdWmNY" title="pinterest" target="_blank">
+                                    <FaPinterestP />
+                                </a>
+                            </li>
+                        </ul>
+                        <div className="copyright">
+                            &copy; {year} <div dangerouslySetInnerHTML={{ __html: this.copyright.html }} />
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -97,24 +151,24 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props)
         this.menu = props.menu
-        this.handleClick = this.handleClick.bind(this)
+        this.handleEnter = this.handleEnter.bind(this)
+        this.handleLeave = this.handleLeave.bind(this)
     }
 
-    handleClick(event) {
+    handleEnter(event) {
         const el = event.currentTarget 
         const wrapper = el.getElementsByClassName('ul-wrapper')[0]
         const ul = wrapper.getElementsByTagName('ul')[0]
-        const isOpen = el.classList.contains('open')
-        if (isOpen) {
-            el.classList.remove('open');
-            wrapper.style.maxHeight = '0px' 
-            wrapper.style.maxWidth = '0px'
-        }
-        else {
-            el.classList.add('open');
-            wrapper.style.maxHeight = ul.offsetHeight + 'px'
-            wrapper.style.maxWidth = ul.offsetWidth + 'px'
-        }
+        wrapper.style.maxHeight = ul.offsetHeight + 'px'
+        wrapper.style.maxWidth = ul.offsetWidth + 'px'
+    }
+
+    handleLeave(event) {
+        const el = event.currentTarget 
+        const wrapper = el.getElementsByClassName('ul-wrapper')[0]
+        const ul = wrapper.getElementsByTagName('ul')[0]
+        wrapper.style.maxHeight = '0px' 
+        wrapper.style.maxWidth = '0px'
     }
 
     render() {
@@ -125,9 +179,8 @@ class Navbar extends React.Component {
                         const { text, link } = item.primary
                         const { url, link_type } = link
                         const hasChildren = item.items[0] && item.items[0].submenu_item_text
-                        //console.log(item)
                         return (
-                            <li key={`l1${i}`} className={hasChildren && "hasChildren"} onClick={hasChildren && this.handleClick}>
+                            <li key={`l1${i}`} className={hasChildren && "hasChildren"} onMouseEnter={hasChildren && this.handleEnter} onMouseLeave={hasChildren && this.handleLeave}>
                                 {url ? (
                                     <CommonLink type={link_type} to={url} className="header-link l1-link">
                                         {text}
@@ -215,6 +268,9 @@ const Header = ({ location }) => {
                             }
                         }
                     }
+                    copyright {
+                        html
+                    }
                 }
             }
         }
@@ -230,7 +286,7 @@ const Header = ({ location }) => {
                         {login_text}
                     </a>
                     <Lang currentUrl={location.pathname} />
-                    <Hamburger menu={data.prismicMenu.data.body} />
+                    <Hamburger menu={data.prismicMenu.data.body} copyright={data.prismicMenu.data.copyright} />
                 </div>
                 <div className="mobile"></div>
             </div>

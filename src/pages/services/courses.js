@@ -212,7 +212,7 @@ const CourseMap = ({ data, location }) => {
                                             <div className="courseblock">
                                                 <p className="categorisation">{course.category} / {course.lvl} / {course.age}</p>
                                                 <h3>{course.course_name.text}</h3>
-                                                <p dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
+                                                <div dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
                                                 <div className="lb1">
                                                     <BsClockFill className="icon"/> {course.time}
                                                 </div>
