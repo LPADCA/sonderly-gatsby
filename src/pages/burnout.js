@@ -31,7 +31,7 @@ const Burnout = ({ data, location }) => {
                         </div>
                         <div className="content">
                             <h4>Foundations of Mental Health in the Classroom</h4>
-                            <p>This course presents the information in a way that is practical and relevant for educators who are supporting students in an educational setting. It fulfills the criteria set by the Behaviour Analysts Certification Board (BACB).</p>
+                            <p>This course presents the information in a way that is practical and relevant for educators who are supporting students in an educational setting.</p>
                             <a target="_blank" href="https://sonderly.csod.com/LMS/LoDetails/DetailsLo.aspx?loid=69a692e1-feac-4059-8781-a34599a19926#t=1">Learn more</a>
                         </div>
                     </div>
