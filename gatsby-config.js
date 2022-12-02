@@ -1,8 +1,7 @@
-/*
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-*/
 const linkResolver = require("./src/utils/linkResolver")
 module.exports = {
     siteMetadata: {
@@ -30,8 +29,8 @@ module.exports = {
         {
             resolve: `gatsby-source-prismic`,
             options: {
-                repositoryName: `sonderly`,
-                accessToken: `MC5ZQ1FqMXhJQUFDSUFSOU5C.XO-_vSpY77-977-9IWfvv70wUzHvv71AP1tbDQ3vv73vv73vv73vv71BKk4LNz9g77-9ag`,
+                repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY,
+                accessToken: process.env.PRISMIC_TOKEN,
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
                 linkResolver: () => (doc) => linkResolver(doc),
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",

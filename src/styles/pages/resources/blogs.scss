@@ -194,6 +194,11 @@
                 gap: 15px;
             }
         }
+        .regular {
+            .card-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     }
 }
 
@@ -201,6 +206,11 @@
     .blogs_page {
         .promogrid {
             .right {
+                grid-template-columns: 1fr;
+            }
+        }
+        .regular {
+            .card-wrapper {
                 grid-template-columns: 1fr;
             }
         }

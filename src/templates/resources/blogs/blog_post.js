@@ -23,17 +23,17 @@ const BlogPost = ({ data, location }) => {
             </div>
         </div>
         <div className="more_blog_posts container">
+            <div className="card-wrapper">
             {extras.map((card, i) => (
-                    <div key={`key-${i}`} className="card-wrapper">
-                        <a href={card.node.url}>
-                            <div className="card">
-                                <img src={card.node.data.blog_image.url}/>
-                                <h3>{card.node.data.title.text}</h3>
-                                <p className="datetime">{card.node.data.post_datetime}</p>
-                            </div>
-                        </a>
+                <a key={`key-${i}`} href={card.node.url}>
+                    <div className="card">
+                        <img src={card.node.data.blog_image.url}/>
+                        <h3>{card.node.data.title.text}</h3>
+                        <p className="datetime">{card.node.data.post_datetime}</p>
                     </div>
-                ))}           
+                </a>
+            ))}           
+            </div>
         </div>
     </Layout>
     )
