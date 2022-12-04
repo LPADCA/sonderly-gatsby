@@ -2,6 +2,7 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+
 const linkResolver = require("./src/utils/linkResolver")
 module.exports = {
     siteMetadata: {
@@ -27,11 +28,10 @@ module.exports = {
         },
         "gatsby-plugin-sass",
         {
-            resolve: `gatsby-source-prismic`,
+            resolve: "gatsby-source-prismic",
             options: {
-                repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY,
+                repositoryName: 'sonderly',
                 accessToken: process.env.PRISMIC_TOKEN,
-                //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
                 linkResolver: () => (doc) => linkResolver(doc),
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
                 schemas: {
@@ -50,15 +50,13 @@ module.exports = {
                     about_page_2022: require("./src/schemas/about_page_2022.json"),
                     landing_page: require("./src/schemas/landing_page.json"),
                     myth_landing_page: require("./src/schemas/myth_landing_page.json"),
-                    404: require("./src/schemas/404.json"),
-                    // Your custom types mapped to schemas
+                    404: require("./src/schemas/404.json")
                 },
                 imageImgixParams: {
                     auto: "compress,format",
                     fit: "max",
                     q: 50,
                 },
-                //page: require("./src/schemas/page.json"),
             },
         },
         {

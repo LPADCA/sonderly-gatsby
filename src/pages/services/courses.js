@@ -94,7 +94,11 @@ const CourseMap = ({ data, location }) => {
             if (state.video && !course.with_video) return false
             if (state.french && !course.french) return false
             if (ageOptions[state.age].label !== course.ag && state.age !== 0) return false
-            if (state.categories.length > 0 && !state.categories.map(({label, value}) => label).includes(course.category)) return false
+            if (state.categories.length > 0) {
+                var ex = state.categories.map((item) => item.value)
+                var cats = [course.category__autism ? 0 : null, course.category__mental_health ? 1 : null, course.category__neurodiversity ? 2 : null]
+                if (ex.some(el => cats.includes(el)) === false) return false
+            }
             if (state.levels.length > 0 && !state.levels.map(({label, value}) => label).includes(course.lvl)) return false
             if (state.text.length == 0) return true
             else if (state.text.length > 0 && course.course_name.text.toLowerCase().includes(state.text.toLowerCase())) return true
@@ -124,6 +128,16 @@ const CourseMap = ({ data, location }) => {
     }
     const updateString = (event) => {
         setState({ ...state, text: event.target.value})
+    }
+
+    const generateCategoriesOutput = (course) => {
+        var strings = []
+        if (course.category__autism) strings.push(categoryOptions[0].label)
+        if (course.category__mental_health) strings.push(categoryOptions[1].label)
+        if (course.category__neurodiversity) strings.push(categoryOptions[2].label)
+        return(
+            <>{strings.join(", ")}</>
+        )
     }
 
 
@@ -210,20 +224,24 @@ const CourseMap = ({ data, location }) => {
                                     return (
                                         <a key={i} href={course.link.url}>
                                             <div className="courseblock">
-                                                <p className="categorisation">{course.category} / {course.lvl} / {course.age}</p>
+                                                <p className="categorisation">{generateCategoriesOutput(course)} / {course.lvl} / {course.age}</p>
                                                 <h3>{course.course_name.text}</h3>
                                                 <div dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
-                                                <div className="lb1">
-                                                    <BsClockFill className="icon"/> {course.time}
-                                                </div>
-                                                <div className="lb2">
-                                                    < BsStarFill className="icon"/> {course.ceu_credits} CEU credit(s)
-                                                </div>
-                                                <div className="lb3"><div className="txt">EN</div>
-                                                    {course.french && <div className="txt">+FR</div>}
-                                                    {course.with_video && (
-                                                            <FaVideo className="icon video"/>
-                                                    )}
+                                                <div className="lower">
+                                                    <div className="lb3"><div className="txt">EN</div>
+                                                        {course.french && <div className="txt">+FR</div>}
+                                                        {course.with_video && (
+                                                                <FaVideo className="icon video"/>
+                                                        )}
+                                                    </div>
+                                                    {((course.ceu_credits !== null) && (course.ceu_credits > 0)) &&
+                                                        <div className="lb2">
+                                                            < BsStarFill className="icon"/> {course.ceu_credits} CEU credit(s)
+                                                        </div>
+                                                    }
+                                                    <div className="lb1">
+                                                        <BsClockFill className="icon"/> {course.time} 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -284,7 +302,10 @@ export const courseMapQuery = graphql`
                     lvl
                     ceu_credits
                     category
-                    time
+                    category__autism
+                    category__mental_health
+                    category__neurodiversity
+                        time
                     level
                     link {
                         link_type

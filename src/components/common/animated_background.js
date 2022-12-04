@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom'
 import { React, Component, createRef} from 'react';
 import _debounce from 'lodash.debounce'
-import "@styles/animated_background.scss"
 
 
 

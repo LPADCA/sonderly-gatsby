@@ -7,8 +7,6 @@ import { getImageProps } from "@utils/getImageProps"
 import { JsonLD, organizationJsonLD } from "@components/json-ld"
 import Stats from "@components/common/stats"
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
 import AnimatedBackground from "../components/common/animated_background"
 
 import "@styles/pages/about.scss"
