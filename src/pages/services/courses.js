@@ -56,7 +56,7 @@ const CourseMap = ({ data, location }) => {
     const courses = coursesList
         .filter(({ data: course }) => {
             if (state.french && !course.french) return false
-            if (state.level > levels.indexOf(course.level)) return false
+            //if (state.level > levels.indexOf(course.level)) return false
             if (
                 state.age != null &&
                 course.age.localeCompare(ages[state.age], undefined, { sensetivity: "base" }) !== 0
@@ -66,7 +66,7 @@ const CourseMap = ({ data, location }) => {
             return true
         })
         .map((c) => c.data)
-        .sort((a, b) => levels.indexOf(a.level) - levels.indexOf(b.level))
+        //.sort((a, b) => levels.indexOf(a.level) - levels.indexOf(b.level))
 
     const updateLevel = (level) => setState({ ...state, level: level - 1 })
     const updateAge = (newAge) => setState({ ...state, age: newAge })
