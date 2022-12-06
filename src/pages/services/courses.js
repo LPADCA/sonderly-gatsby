@@ -200,9 +200,6 @@ const CourseMap = ({ data, location }) => {
                                                     </div>
                                                 )}
                                                 {course.french && <div className="icon icon2">{other_locale_text}</div>}
-                                                <div className="level">
-                                                    {level} {levels.indexOf(course.level) + 1}
-                                                </div>
                                             </div>
                                         </a>
                                     )
@@ -219,6 +216,13 @@ const CourseMap = ({ data, location }) => {
 }
 
 export default CourseMap
+
+/*
+                                                <div className="level">
+                                                    {level} {levels.indexOf(course.level) + 1}
+                                                </div>
+*/
+
 
 export const courseMapQuery = graphql`
     query CourseMap {
