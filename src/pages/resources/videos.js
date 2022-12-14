@@ -62,7 +62,8 @@ const SelectedListShow = ({data, show_fn}) => {
                                 <div className="play_button"/>
                             </div>
                             <h3>{card.node.data.title.text}</h3>
-                            <p className="datetime">{card.node.data.datetime}</p>
+                            {//<p className="datetime">{card.node.data.datetime}</p>
+                            }
                         </div>
                     </a>
                 </div>

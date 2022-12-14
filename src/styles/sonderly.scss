@@ -38,6 +38,7 @@ h6 {
     font-weight: 900;
     text-transform: uppercase;
     font-style: italic;
+    line-height: 1.2;
     &.inverted {
         color: white;
     }
@@ -70,16 +71,16 @@ h2 {
     letter-spacing: -1.7px;
 }
 h3 {
-    letter-spacing: -1px;
-}
-h4 {
     letter-spacing: -0.8px;
 }
+h4 {
+    letter-spacing: -0.6px;
+}
 h5 {
-    letter-spacing: -0.7px;
+    letter-spacing: -0.4px;
 }
 h6 {
-    letter-spacing: -0.6px;
+    letter-spacing: -0.3px;
 }
 
 li {

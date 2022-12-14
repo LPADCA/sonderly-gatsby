@@ -140,7 +140,6 @@ const CourseMap = ({ data, location }) => {
         )
     }
 
-
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageContent)}>
             <Helmet>
@@ -225,6 +224,9 @@ const CourseMap = ({ data, location }) => {
                                         <a key={i} href={course.link.url}>
                                             <div className="courseblock">
                                                 <p className="categorisation">{generateCategoriesOutput(course)} / {course.lvl} / {course.age}</p>
+                                                {course.thumbnail && <div className="img-wrapper">
+                                                     <img src={course.thumbnail.url} width="300" alt={course.thumbnail.alt}/>
+                                                </div>}
                                                 <h3>{course.course_name.text}</h3>
                                                 <div dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
                                                 <div className="lower">
@@ -318,6 +320,10 @@ export const courseMapQuery = graphql`
                         text
                     }
                     with_video
+                    thumbnail {
+                        url(imgixParams: {sat: 0})
+                        alt
+                    }
                 }
             }
         }
