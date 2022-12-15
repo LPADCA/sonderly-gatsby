@@ -1,5 +1,5 @@
 import React from "react"
-//import { Link } from
+import { Link } from "gatsby"
 
 const WhatWeDo = ({ data }) => {
     return (
@@ -33,13 +33,13 @@ const WhatWeDo = ({ data }) => {
                         )}
                         &nbsp;&nbsp;&nbsp;
                         {data.wwd_secondary_button_text && (
-                            <a
+                            <Link
                                 className="button black inverted"
-                                href={data.wwd_secondary_button_link.url}
+                                to={data.wwd_secondary_button_link.url}
                                 target={data.wwd_secondary_button_link.target}
                             >
                                 {data.wwd_secondary_button_text}
-                            </a>
+                            </Link>
                         )}
                     </div>
                 </div>

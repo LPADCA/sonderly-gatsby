@@ -1,4 +1,6 @@
 import AnimatedBackground from "../common/animated_background"
+import CommonLink from "@components/common-link"
+import {Link} from "gatsby"
 
 const Hero = ({ slides }) => {
     return (
@@ -10,9 +12,9 @@ const Hero = ({ slides }) => {
                     <div dangerouslySetInnerHTML={{__html:slides[0].title.html}}/>  
                     <div dangerouslySetInnerHTML={{__html:slides[0].description.html}}/>  
                     <div className="button-wrapper">
-                        <a href={slides[0].link.url} target={slides[0].link.target} className="button black">
+                        <Link to={slides[0].link.url} target={slides[0].link.target} className="button black">
                             {slides[0].button_text}
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "@components/common/layout"
 import Slider from "react-slick"
 
@@ -19,13 +19,13 @@ const BlogsSlider = ({ data }) => {
         <Slider {...settings}>
             {data.map((card, i) => (
                 <div key={`key-${i}`} className="card-wrapper">
-                    <a href={card.element.document.url}>
+                    <Link to={card.element.document.url}>
                         <div className="card">
-                            <img src={card.element.document.data.blog_image.url}/>
+                            <img src={card.element.document.data.blog_image.url} alt={card.element.document.data.blog_image.alt}/>
                             <h3>{card.element.document.data.title.text}</h3>
                             <p className="datetime">{card.element.document.data.post_datetime}</p>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             ))}
         </Slider>
@@ -37,15 +37,15 @@ const Promoted = ({data}) => {
         <>
             {data.map((card, i) => (
                 <div key={`key-${i}`} className="card-wrapper">
-                    <a href={card.element.document.url}>
+                    <Link to={card.element.document.url}>
                         <div className="card">
-                            <img src={card.element.document.data.blog_image.url}/>
+                            <img src={card.element.document.data.blog_image.url} alt={card.element.document.data.blog_image.alt}/>
                             <div className="content">
                                 <h3>{card.element.document.data.title.text}</h3>
                                 <p>{card.element.document.data.post_datetime}</p>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             ))}
         </>
@@ -57,13 +57,13 @@ const Regular = ({data}) => {
         <div className="regular">
             <div className="card-wrapper">
             {data.map((card, i) => (
-                <a key={`key-${i}`} href={card.node.url}>
+                <Link key={`key-${i}`} to={card.node.url}>
                     <div className="card">
-                        <img src={card.node.data.blog_image.url}/>
+                        <img src={card.node.data.blog_image.url} alt={card.node.data.blog_image.alt}/>
                         <h3>{card.node.data.title.text}</h3>
                         <p className="datetime">{card.node.data.post_datetime}</p>
                     </div>
-                </a>
+                </Link>
             ))}
             </div>
         </div>
@@ -121,6 +121,7 @@ query Blogs {
                     }
                     blog_image {
                         url(imgixParams: {maxWidth: 1400})
+                        alt
                     }
                     content {
                         html
@@ -152,6 +153,7 @@ query Blogs {
                             data {
                                 blog_image {
                                     url(imgixParams: {width: 800})
+                                    alt
                                 }
                                 title {
                                     text
@@ -172,6 +174,7 @@ query Blogs {
                                 post_datetime(formatString: "MMM DD, YYYY @ hh:mm a", locale: "en")
                                 blog_image {
                                     url(imgixParams: {width: 300})
+                                    alt
                                 }
                                 title {
                                     text

@@ -1,7 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "@components/common/layout"
 import "@styles/pages/blog_post.scss"
+
 
 const BlogPost = ({ data, location }) => {
     const blogPost = data.prismicBlogPost.data
@@ -10,14 +11,14 @@ const BlogPost = ({ data, location }) => {
     <Layout location={location}>
         <div className="blog_post">
             <div className="navi container">
-                <a href="/resources/blogs/">{data.prismicBlogs.data.regular_label.text}</a> &gt; {data.prismicBlogs.data.single_article_label}
+                <Link to="/resources/blogs/">{data.prismicBlogs.data.regular_label.text}</Link> &gt; {data.prismicBlogs.data.single_article_label}
             </div>
             <div className="title container">
                 <h1>{blogPost.title.text}</h1>
                 <p className="datetime">{blogPost.post_datetime}</p>
             </div>
             <div className="container content_wrapper">
-                <img src={blogPost.blog_image.url}/>
+                <img src={blogPost.blog_image.url} alt={blogPost.blog_image.alt}/>
                 <div className="content" dangerouslySetInnerHTML={{
                         __html: blogPost.content.html }}/>
             </div>
@@ -25,13 +26,13 @@ const BlogPost = ({ data, location }) => {
         <div className="more_blog_posts container">
             <div className="card-wrapper">
             {extras.map((card, i) => (
-                <a key={`key-${i}`} href={card.node.url}>
+                <Link key={`key-${i}`} to={card.node.url}>
                     <div className="card">
-                        <img src={card.node.data.blog_image.url}/>
+                        <img src={card.node.data.blog_image.url} alt={card.node.data.blog_image.alt}/>
                         <h3>{card.node.data.title.text}</h3>
                         <p className="datetime">{card.node.data.post_datetime}</p>
                     </div>
-                </a>
+                </Link>
             ))}           
             </div>
         </div>
@@ -47,6 +48,7 @@ export const query = graphql`
             data {
                 blog_image {
                     url(imgixParams: {maxWidth: 1400})
+                    alt
                 }
                 content {
                     html
@@ -72,6 +74,7 @@ export const query = graphql`
                         }
                         blog_image {
                             url(imgixParams: {maxWidth: 1400})
+                            alt
                         }
                     }
                 }

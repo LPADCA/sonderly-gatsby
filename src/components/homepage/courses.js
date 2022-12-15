@@ -10,7 +10,7 @@ const CoursesPreview = ({ data }) => {
                     {data.cp_card.map((card, i) => (
                         <div key={`key-${i}`} className="wrapper">
                             <div className="card">
-                                <img src={card.cp_card_image.fixed.src} srcSet={card.cp_card_image.fixed.srcSet}/>
+                                <img src={card.cp_card_image.fixed.src} srcSet={card.cp_card_image.fixed.srcSet} alt={card.cp_card_image.fixed.alt}/>
                                 <div className="content">
                                     <h3>{card.cp_card_title.text}</h3>
                                     <div

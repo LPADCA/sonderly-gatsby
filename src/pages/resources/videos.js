@@ -32,10 +32,10 @@ const Promoted = ({data, show_fn}) => {
         <>
             {data.map((card, i) => (
                 <div key={`key-${i}`} className="card-wrapper">
-                    <a href="" onClick={(e) => show_fn(card.video.document.data.video_url.embed_url, e)}>
+                    <a href="#" onClick={(e) => show_fn(card.video.document.data.video_url.embed_url, e)}>
                         <div className="card">
                             <div className="img_wrapper">
-                                <img src={card.video.document.data.video_url.thumbnail_url} />
+                                <img src={card.video.document.data.video_url.thumbnail_url} alt="thumbnail" />
                                 <div className="play_button"/>
                             </div>
                             <div className="content">
@@ -55,10 +55,10 @@ const SelectedListShow = ({data, show_fn}) => {
         <div className="regular">
             {data.map((card, i) => (
                 <div key={`key-${i}`} className="card-wrapper">
-                    <a href="" onClick={(e) => show_fn(card.node.data.video_url.embed_url, e)}>
+                    <a href="#" onClick={(e) => show_fn(card.node.data.video_url.embed_url, e)}>
                         <div className="card">
                             <div className="img_wrapper">
-                                <img src={card.node.data.video_url.thumbnail_url}/>
+                                <img src={card.node.data.video_url.thumbnail_url} alt="thumbnail"/>
                                 <div className="play_button"/>
                             </div>
                             <h3>{card.node.data.title.text}</h3>
@@ -151,9 +151,9 @@ class Videos extends React.Component {
                                 <div className="l2">
                                     <h2>{this.primary_item.title.text}</h2>
                                 </div>
-                                <a href="" onClick={(e) => this.show(this.primary_item.video_url.embed_url, e)}>
+                                <a href="#" onClick={(e) => this.show(this.primary_item.video_url.embed_url, e)}>
                                     <div className="img_wrapper">
-                                        <img src={this.primary_item.video_url.thumbnail_url} />
+                                        <img src={this.primary_item.video_url.thumbnail_url} alt="thumbnail" />
                                         <div className="play_button"/>
                                     </div>
                                 </a>
