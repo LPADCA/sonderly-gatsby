@@ -17,7 +17,7 @@
     "category" : {
       "type" : "Select",
       "config" : {
-        "options" : [ "Autism", "Mental Health" ],
+        "options" : [ "Autism", "Mental Health", "Support" ],
         "default_value" : "Autism",
         "label" : "Video category"
       }
