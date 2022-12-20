@@ -132,7 +132,7 @@ class Videos extends React.Component {
 
     show(new_url, e) {
         this.setState({
-            url: new_url,
+            modal_url: new_url,
             modal_visible: true
         })
         e.preventDefault()
