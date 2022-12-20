@@ -23,7 +23,7 @@ const BlogsSlider = ({ data }) => {
                         <div className="card">
                             <img src={card.element.document.data.blog_image.url} alt={card.element.document.data.blog_image.alt}/>
                             <h3>{card.element.document.data.title.text}</h3>
-                            <p className="datetime">{card.element.document.data.post_datetime}</p>
+                            {/*<p className="datetime">{card.element.document.data.post_datetime}</p>*/}
                         </div>
                     </Link>
                 </div>
@@ -42,7 +42,7 @@ const Promoted = ({data}) => {
                             <img src={card.element.document.data.blog_image.url} alt={card.element.document.data.blog_image.alt}/>
                             <div className="content">
                                 <h3>{card.element.document.data.title.text}</h3>
-                                <p>{card.element.document.data.post_datetime}</p>
+                                {/*<p>{card.element.document.data.post_datetime}</p>*/}
                             </div>
                         </div>
                     </Link>
@@ -61,7 +61,7 @@ const Regular = ({data}) => {
                     <div className="card">
                         <img src={card.node.data.blog_image.url} alt={card.node.data.blog_image.alt}/>
                         <h3>{card.node.data.title.text}</h3>
-                        <p className="datetime">{card.node.data.post_datetime}</p>
+                        {/*<p className="datetime">{card.node.data.post_datetime}</p>*/}
                     </div>
                 </Link>
             ))}

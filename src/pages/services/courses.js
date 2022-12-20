@@ -238,7 +238,7 @@ const CourseMap = ({ data, location }) => {
                                                     </div>
                                                     {((course.ceu_credits !== null) && (course.ceu_credits > 0)) &&
                                                         <div className="lb2">
-                                                            < BsStarFill className="icon"/> {course.ceu_credits} CEU credit(s)
+                                                            < BsStarFill className="icon"/> {course.ceu_credits} BACB CEU credit(s)
                                                         </div>
                                                     }
                                                     <div className="lb1">
