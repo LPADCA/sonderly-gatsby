@@ -47,7 +47,7 @@ const FormContent = ({
         }
     }
     return (
-        <form className="contact-form" id="contact-form" method="POST" onSubmit={onSubmit}>
+        <form name="contact-form" className="contact-form" id="contact-form" method="POST" data-netlify="true" onSubmit={onSubmit}>
             <div>
                 <label htmlFor="name">{form_name_label}</label>
                 <div className="input-wrapper name">

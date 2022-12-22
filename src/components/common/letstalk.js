@@ -71,7 +71,7 @@ const LetsTalk = () => {
                         {isSubmited ? (
                             <FormSuccess>{success_message}</FormSuccess>
                         ) : (
-                            <form className="letstalk-form" id="letstalk-form" method="POST" onSubmit={onSubmit}>
+                            <form name="letstalk-form" className="letstalk-form" id="letstalk-form" method="POST" data-netlify="true" onSubmit={onSubmit}>
                                 <div className="grid">
                                     <div className="illustration"/>
                                     <div className="center">
