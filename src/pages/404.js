@@ -2,8 +2,6 @@ import { useEffect } from "react"
 import Layout from "@components/common/layout.js"
 import { graphql, navigate } from "gatsby"
 import { getImageProps } from "@utils/getImageProps"
-import { ReactComponent as BgMedium } from "../assets/decorations/bg-medium.svg"
-import { ReactComponent as BgBig } from "../assets/decorations/bg-big.svg"
 import "@styles/pages/404.scss"
 
 const notFound404 = ({ location, data }) => {
@@ -16,8 +14,6 @@ const notFound404 = ({ location, data }) => {
     const img = getImageProps(hero_image)
     return (
         <Layout className="not-found-page" location={location} {...Layout.pickSeoProps(data.prismic404.data)}>
-            <BgBig className="bg-1" />
-            <BgMedium className="bg-2 " />
             <div className="not-found-container">
                 <div className="hero-image">
                     4<img {...img} />4
