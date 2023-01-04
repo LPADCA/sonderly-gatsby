@@ -74,6 +74,21 @@ button {
     padding: 18px 25px;
 }
 
+.container-medium {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 18px 25px;
+}
+
+.container-small {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 18px 25px;
+}
+
+
 .button {
     display: inline-block;
     padding: 14px 56px;
@@ -104,6 +119,16 @@ button {
         border-color: $hover-green;
         background-color: $hover-green;
         color: white;
+    }
+}
+
+.button.black {
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    &:hover {
+        background-color: transparent;
+        color: black;
     }
 }
 
@@ -149,7 +174,7 @@ h2.typical {
     }
 }
 
-@media (min-width: $desktop-edge+1px) {
+@media (min-width: (($desktop-edge  +  1px))) {
     .hide-on-desktop {
         display: none !important;
     }

@@ -33,7 +33,7 @@ module.exports = {
             resolve: `gatsby-source-prismic`,
             options: {
                 repositoryName: `sonderly`,
-                accessToken: process.env.PRISMIC_TOKEN,
+                accessToken: "MC5ZN1VmWUJjQUFQbEhzNGRl.d--_ve-_ve-_vSrvv73vv70rDe-_vVsSABxx77-9cu-_ve-_vQHvv71Q77-977-977-977-977-977-9c--_ve-_ve-_vQ",
                 //linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
                 linkResolver: () => (doc) => linkResolver(doc),
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
@@ -51,6 +51,8 @@ module.exports = {
                     about_page: require("./src/schemas/about_page.json"),
                     landing_page: require("./src/schemas/landing_page.json"),
                     myth_landing_page: require("./src/schemas/myth_landing_page.json"),
+                    adhd_landing_page: require("./src/schemas/adhd_landing_page.json"),
+                    group_training: require("./src/schemas/group_training.json"),
                     404: require("./src/schemas/404.json"),
                     // Your custom types mapped to schemas
                 },

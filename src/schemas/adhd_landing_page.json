@@ -1,0 +1,84 @@
+{
+    "Main" : {
+      "block" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "header_bubble" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Header bubble Image"
+              }
+            },
+            "main_illustration" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Main illustration"
+              }
+            },
+            "text" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                "label" : "Text"
+              }
+            },
+            "button_text" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "CTA Button Text",
+                "placeholder" : "L"
+              }
+            },
+            "button_link" : {
+              "type" : "Link",
+              "config" : {
+                "allowTargetBlank" : true,
+                "label" : "CTA Button Link",
+                "select" : null
+              }
+            }
+          },
+          "label" : "Block"
+        }
+      },
+      "training_header" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Training programs header"
+        }
+      },
+      "training_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Training programs description"
+        }
+      }
+    },
+    "SEO" : {
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Title (maximum 70 characters)"
+        }
+      },
+      "seo_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Description (50–160 characters)"
+        }
+      },
+      "seo_keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords",
+          "placeholder" : "(list, separated with commas)"
+        }
+      }
+    }
+  }

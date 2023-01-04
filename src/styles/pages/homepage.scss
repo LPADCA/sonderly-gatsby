@@ -126,7 +126,7 @@
     }
 }
 
-@media (min-width: $mobile-edge+1) and (max-width: $desktop-edge) {
+@media (min-width: ($mobile-edge + 1)) and (max-width: $desktop-edge) {
     .homepage-hero {
         .illustration {
             width: 520px;
@@ -672,7 +672,7 @@
     }
 }
 
-@media (min-width: $mobile-edge+1) and (max-width: $desktop-edge) {
+@media (min-width: ($mobile-edge + 1)) and (max-width: $desktop-edge) {
     .whoweserve {
         &:after {
             height: 65%;
