@@ -44,12 +44,21 @@
     .lower-block-header {
         margin-top: 50px;
         text-align: center;
+        &>h2, &>p {
+            margin: 0;
+        }
     }
     .corporate-services-hero-tabs {
+        display: block;
         margin-top: 0;
         &>div {
+            max-width: 600px;
+            margin: 0 auto;
             background-color: #35ce8d;
             color: black;
+        }
+        h3 {
+            letter-spacing: 0px;
         }
         p {
             color: white;
@@ -57,6 +66,10 @@
                 color: black;
             }
         }
+    }
+    .cta-wrapper {
+        margin: 50px 0;
+        text-align: center;
     }
 }
 

@@ -7,6 +7,7 @@ const Adhd = ({ data, location }) => {
     const blocks   = data.prismicAdhdLandingPage.data.block
     const training = data.prismicAdhdLandingPage.data
     const pageData = data.prismicGroupTraining.data
+    const box  = pageData.hero_boxes[0]
     return (
         <Layout location={location} className="adhd-page">
             <div className='container-small'>
@@ -32,36 +33,40 @@ const Adhd = ({ data, location }) => {
                 </div>
                 <div className="container">
                     <div className="corporate-services-hero-tabs">
-                        {pageData.hero_boxes.map((box, i) => {
-                            return (
-                                <div key={i} className={`tab${i}`}>
-                                    <div className="tab-header">
-                                        {box.hero_boxes_icon.fixed && (
-                                            <img
-                                                src={box.hero_boxes_icon.fixed.src}
-                                                srcSet={box.hero_boxes_icon.fixed.srcSet}
-                                                width="60"
-                                                height="60"
-                                            />
-                                        )}
-                                        <div>
-                                            <h3>{box.hero_boxes_title.text}</h3>
-                                        </div>
-                                    </div>
-                                    <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }} />
-                                    {box.hero_boxes_button_link && box.hero_boxes_button_link.url && (
-                                        <CommonLink
-                                            className="button black"
-                                            type={box.hero_boxes_button_link.type}
-                                            to={box.hero_boxes_button_link.url}
-                                            target={box.hero_boxes_button_link.target}
-                                        >
-                                            {box.hero_boxes_button_text}
-                                        </CommonLink>
-                                    )}
+                        <div className={`tab0`}>
+                            <div className="tab-header">
+                                {box.hero_boxes_icon.fixed && (
+                                    <img
+                                        src={box.hero_boxes_icon.fixed.src}
+                                        srcSet={box.hero_boxes_icon.fixed.srcSet}
+                                        width="60"
+                                        height="60"
+                                    />
+                                )}
+                                <div>
+                                    <h3>{box.hero_boxes_title.text}</h3>
                                 </div>
-                            )
-                        })}
+                            </div>
+                            <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }} />
+                            {box.hero_boxes_button_link && box.hero_boxes_button_link.url && (
+                                <CommonLink
+                                    className="button black"
+                                    type={box.hero_boxes_button_link.type}
+                                    to={box.hero_boxes_button_link.url}
+                                    target={box.hero_boxes_button_link.target}
+                                >
+                                    {box.hero_boxes_button_text}
+                                </CommonLink>
+                            )}
+                        </div>
+                    </div>
+                    <div className='cta-wrapper'>
+                        <CommonLink
+                            className="button"
+                            to="/services/courses"
+                        >
+                            Browse our courses
+                        </CommonLink>
                     </div>
                 </div>
             </div>
