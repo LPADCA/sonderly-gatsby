@@ -47,6 +47,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 prismicMythLandingPage {
                     lang
                 }
+                prismicAdhdLandingPage {
+                    lang
+                }
             }
         `)
     )
@@ -56,6 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const prismicFundedTraining = customPagesResult.data.prismicFundedTraining
     const prismicProfessionalTraining = customPagesResult.data.prismicProfessionalTraining
     const prismicMythLandingPage = customPagesResult.data.prismicMythLandingPage
+    const prismicAdhdLandingPage = customPagesResult.data.prismicAdhdLandingPage
     customPagesList.forEach((edge) => {
         createPage({
             type: "page",
@@ -79,6 +83,13 @@ exports.createPages = async ({ graphql, actions }) => {
             type: "page",
             path: `/aba-myths-dispelled`,
             component: path.resolve("src/templates/myth-landing-page.js"),
+        })
+    }
+    if (prismicAdhdLandingPage) {
+        createPage({
+            type: "page",
+            path: `/learn-the-facts`,
+            component: path.resolve("src/templates/adhd-landing-page.js"),
         })
     }
     if (prismicFundedTraining) {
