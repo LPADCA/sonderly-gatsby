@@ -6,56 +6,78 @@ import "@styles/pages/adhd.scss"
 const Adhd = ({ data, location }) => {
     const blocks   = data.prismicAdhdLandingPage.data.block
     const training = data.prismicAdhdLandingPage.data
-    const pageData = data.prismicGroupTraining.data
-    const box  = pageData.hero_boxes[0]
     return (
         <Layout location={location} className="adhd-page">
             <div className='container-small'>
-            {blocks.map((block, i)=> (
-                <div key={i} className={`block ${i%2==1 ? 'reverse' : ''}`}>
+
+                <div className='block'>
                     <div className='bubble'>
-                        <img src={block.header_bubble.url} alt={block.header_bubble.alt}/>
+                        <img src={blocks[0].header_bubble.url} alt={blocks[0].header_bubble.alt}/>
                     </div>
                     <div className='illustration'>
-                        <img src={block.main_illustration.url} alt={block.main_illustration.alt}/>
+                        <img src={blocks[0].main_illustration.url} alt={blocks[0].main_illustration.alt}/>
                     </div>
                     <div className='text'>
-                        <div dangerouslySetInnerHTML={{__html: block.text.html}}/>
-                        <CommonLink to={block.button_link.url} className="button black">{block.button_text}</CommonLink>
+                        <div dangerouslySetInnerHTML={{__html: blocks[0].text.html}}/>
+                        <CommonLink to={blocks[0].button_link.url} className="button black">{blocks[0].button_text}</CommonLink>
                     </div>
                 </div>
-            ))}
+
+                {training.cta_url && training.cta_url.url && (
+                                <CommonLink
+                                    className="cta"
+                                    type={training.cta_url.type}
+                                    to={training.cta_url.url}
+                                    target={training.cta_url.target}
+                                >
+                                    {training.cta_text}
+                                </CommonLink>
+                            )}
+
+                <div className='block reverse'>
+                    <div className='bubble'>
+                        <img src={blocks[1].header_bubble.url} alt={blocks[1].header_bubble.alt}/>
+                    </div>
+                    <div className='illustration'>
+                        <img src={blocks[1].main_illustration.url} alt={blocks[1].main_illustration.alt}/>
+                    </div>
+                    <div className='text'>
+                        <div dangerouslySetInnerHTML={{__html: blocks[1].text.html}}/>
+                        <CommonLink to={blocks[1].button_link.url} className="button black">{blocks[1].button_text}</CommonLink>
+                    </div>
+                </div>
+
             </div>
+
             <div className='container'>
                 <div className='lower-block-header'>
-                    <h2>{training.training_header.text}</h2>
-                    <p>{training.training_description}</p>
+                    <h2>{training.title.text}</h2>
                 </div>
                 <div className="container">
                     <div className="corporate-services-hero-tabs">
                         <div className={`tab0`}>
                             <div className="tab-header">
-                                {box.hero_boxes_icon.fixed && (
+                                {training.icon.fixed && (
                                     <img
-                                        src={box.hero_boxes_icon.fixed.src}
-                                        srcSet={box.hero_boxes_icon.fixed.srcSet}
+                                        src={training.icon.fixed.src}
+                                        srcSet={training.icon.fixed.srcSet}
                                         width="60"
                                         height="60"
                                     />
                                 )}
                                 <div>
-                                    <h3>{box.hero_boxes_title.text}</h3>
+                                    <h3>{training.title2.text}</h3>
                                 </div>
                             </div>
-                            <div dangerouslySetInnerHTML={{ __html: box.hero_boxes_description.html }} />
-                            {box.hero_boxes_button_link && box.hero_boxes_button_link.url && (
+                            <div dangerouslySetInnerHTML={{ __html: training.text_inside_box.html }} />
+                            {training.signup_button_link && training.signup_button_link.url && (
                                 <CommonLink
                                     className="button black"
-                                    type={box.hero_boxes_button_link.type}
-                                    to={box.hero_boxes_button_link.url}
-                                    target={box.hero_boxes_button_link.target}
+                                    type={training.signup_button_link.type}
+                                    to={training.signup_button_link.url}
+                                    target={training.signup_button_link.target}
                                 >
-                                    {box.hero_boxes_button_text}
+                                    {training.signup_button_text}
                                 </CommonLink>
                             )}
                         </div>
@@ -100,34 +122,39 @@ export const query = graphql`
                     text
                 }
                 training_description
+                title2 {
+                    text
+                }
+                title {
+                    text
+                }
+                text_inside_box {
+                    html
+                }
+                signup_button_text
+                signup_button_link {
+                    type
+                    url
+                    target
+                }
+                icon {
+                    fixed(width: 60, height: 60) {
+                        ...GatsbyPrismicImageFixed
+                    }
+                }
+                discount_code_text {
+                    html
+                }
+                cta_text
+                cta_url {
+                    type
+                    url
+                    target
+                }
+
                 seo_title
                 seo_keywords
                 seo_description
-            }
-        }
-        prismicGroupTraining {
-            data {
-                hero_boxes {
-                    hero_boxes_button_link {
-                        url
-                        uid
-                        type
-                        target
-                        link_type
-                    }
-                    hero_boxes_button_text
-                    hero_boxes_description {
-                        html
-                    }
-                    hero_boxes_icon {
-                        fixed(width: 60, height: 60) {
-                            ...GatsbyPrismicImageFixed
-                        }
-                    }
-                    hero_boxes_title {
-                        text
-                    }
-                }
             }
         }
     }
