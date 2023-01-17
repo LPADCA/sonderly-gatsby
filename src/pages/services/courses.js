@@ -50,13 +50,14 @@ const CourseMap = ({ data, location }) => {
         level_label,
         availiable_in_french_label,
         video_recordings_label,
+        bacb_credits_label,
         not_found,
     } = pageContent
     const categoryOptions = pageContent.categories.map((el, i) => ({'value': i, 'label': el.category}));         
     const ageOptions = pageContent.ages.map((el, i) => ({'value': i, 'label': el.age}));          
     const ageDefaultValue = {'value': 0, 'label': pageContent.ages[0].age}
     const levelOptions = pageContent.levels.map((el, i) => ({'value': i, 'label': el.level}));
-    const extrasOptions = [{'value': 0, 'label': video_recordings_label}, {'value': 1, 'label': availiable_in_french_label}]
+    const extrasOptions = [{'value': 0, 'label': bacb_credits_label}, {'value': 1, 'label': availiable_in_french_label}]
     const uniStyle = {
         control: (baseStyles, state) => ({
             ...baseStyles,
@@ -85,13 +86,16 @@ const CourseMap = ({ data, location }) => {
         age: 0,
         french: false,
         video: false,
+        credits: false,
         levels: [],
         extrasOptions: []
     })
 
     const courses = coursesList
         .filter(({ data: course }) => {
-            if (state.video && !course.with_video) return false
+            //if (state.video && !course.with_video) return false
+            if (state.credits && !course.ceu_credits) return false
+            //console.log(course)
             if (state.french && !course.french) return false
             if (ageOptions[state.age].label !== course.ag && state.age !== 0) return false
             if (state.categories.length > 0) {
@@ -115,16 +119,16 @@ const CourseMap = ({ data, location }) => {
     }
     const updateAge = (newAge) => setState({ ...state, age: newAge })
     const updateExtras = (options) => {
-        var newOptions = {'french': false, 'video': false}
+        var newOptions = {'french': false, 'credits': false}
         options.forEach((option)=> {
             if (option.value === 1) {
                 newOptions['french'] = true
             }
             else if (option.value === 0) {
-                    newOptions['video'] = true
+                    newOptions['credits'] = true
             }
         })
-        setState({ ...state, french: newOptions['french'], video: newOptions['video'], extrasOptions: options})
+        setState({ ...state, french: newOptions['french'], credits: newOptions['credits'], extrasOptions: options})
     }
     const updateString = (event) => {
         setState({ ...state, text: event.target.value})
@@ -273,6 +277,7 @@ export const courseMapQuery = graphql`
                 seo_keywords
                 seo_title
                 video_recordings_label
+                bacb_credits_label
                 title {
                     text
                     html
