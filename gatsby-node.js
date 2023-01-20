@@ -23,7 +23,7 @@ const wrapper = (promise) =>
     })
 
 exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
+    const { createPage, createRedirect } = actions
 
     const customPagesResult = await wrapper(
         graphql(`
@@ -92,6 +92,13 @@ exports.createPages = async ({ graphql, actions }) => {
             component: path.resolve("src/templates/adhd-landing-page.js"),
         })
     }
+	createRedirect({
+        fromPath: `/learnthefacts`,
+        toPath: `/learn-the-facts`,
+        redirectInBrowser: true,
+        isPermanent: true,
+      });
+
     if (prismicFundedTraining) {
         createPage({
             type: "page",

@@ -23,17 +23,6 @@ const Adhd = ({ data, location }) => {
                     </div>
                 </div>
 
-                {training.cta_url && training.cta_url.url && (
-                                <CommonLink
-                                    className="cta"
-                                    type={training.cta_url.type}
-                                    to={training.cta_url.url}
-                                    target={training.cta_url.target}
-                                >
-                                    {training.cta_text}
-                                </CommonLink>
-                            )}
-
                 <div className='block reverse'>
                     <div className='bubble'>
                         <img src={blocks[1].header_bubble.url} alt={blocks[1].header_bubble.alt}/>
@@ -49,13 +38,14 @@ const Adhd = ({ data, location }) => {
 
             </div>
 
+
             <div className='container'>
                 <div className='lower-block-header'>
                     <h2>{training.title.text}</h2>
                 </div>
                 <div className="container">
                     <div className="corporate-services-hero-tabs">
-                        <div className={`tab0`}>
+                        <div className='tab0'>
                             <div className="tab-header">
                                 {training.icon.fixed && (
                                     <img
@@ -81,13 +71,31 @@ const Adhd = ({ data, location }) => {
                                 </CommonLink>
                             )}
                         </div>
+                        <div className='tab1'>
+                            <div className="tab-header">
+                                <div>
+                                    <h3>{training.discount_code_title.text}</h3>
+                                </div>
+                            </div>
+                            <div className="content" dangerouslySetInnerHTML={{ __html: training.discount_code_text.html }} />
+                            {training.cta_url && training.cta_url.url && (
+                                <CommonLink
+                                    className="button black"
+                                    type={training.cta_url.type}
+                                    to={training.cta_url.url}
+                                    target={training.cta_url.target}
+                                >
+                                    {training.cta_text}
+                                </CommonLink>
+                            )}
+                        </div>
                     </div>
                     <div className='cta-wrapper'>
                         <CommonLink
                             className="button"
                             to="/services/courses"
                         >
-                            Browse our courses
+                            Buy now and complete the training later
                         </CommonLink>
                     </div>
                 </div>
@@ -144,6 +152,9 @@ export const query = graphql`
                 }
                 discount_code_text {
                     html
+                }
+                discount_code_title {
+                    text
                 }
                 cta_text
                 cta_url {

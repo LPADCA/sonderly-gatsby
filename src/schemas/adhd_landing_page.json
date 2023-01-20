@@ -1,159 +1,168 @@
 {
-  "Main": {
-    "block": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "header_bubble": {
-            "type": "Image",
-            "config": {
-              "constraint": {},
-              "thumbnails": [],
-              "label": "Header bubble Image"
+  "Main" : {
+    "block" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "header_bubble" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ ],
+              "label" : "Header bubble Image"
             }
           },
-          "main_illustration": {
-            "type": "Image",
-            "config": {
-              "constraint": {},
-              "thumbnails": [],
-              "label": "Main illustration"
+          "main_illustration" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ ],
+              "label" : "Main illustration"
             }
           },
-          "text": {
-            "type": "StructuredText",
-            "config": {
-              "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-              "label": "Text"
+          "text" : {
+            "type" : "StructuredText",
+            "config" : {
+              "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+              "label" : "Text"
             }
           },
-          "button_text": {
-            "type": "Text",
-            "config": {
-              "label": "CTA Button Text",
-              "placeholder": "L"
+          "button_text" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "CTA Button Text",
+              "placeholder" : "L"
             }
           },
-          "button_link": {
-            "type": "Link",
-            "config": {
-              "allowTargetBlank": true,
-              "label": "CTA Button Link",
-              "select": null
+          "button_link" : {
+            "type" : "Link",
+            "config" : {
+              "allowTargetBlank" : true,
+              "label" : "CTA Button Link",
+              "select" : null
             }
           }
         },
-        "label": "Block"
+        "label" : "Block"
       }
     },
-    "training_header": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Training programs header"
+    "training_header" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Training programs header"
       }
     },
-    "training_description": {
-      "type": "Text",
-      "config": {
-        "label": "Training programs description"
+    "training_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Training programs description"
       }
     }
   },
-  "SEO": {
-    "seo_title": {
-      "type": "Text",
-      "config": {
-        "label": "Title (maximum 70 characters)"
+  "SEO" : {
+    "seo_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Title (maximum 70 characters)"
       }
     },
-    "seo_description": {
-      "type": "Text",
-      "config": {
-        "label": "Description (50–160 characters)"
+    "seo_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Description (50–160 characters)"
       }
     },
-    "seo_keywords": {
-      "type": "Text",
-      "config": {
-        "label": "Keywords",
-        "placeholder": "(list, separated with commas)"
+    "seo_keywords" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Keywords",
+        "placeholder" : "(list, separated with commas)"
       }
     }
   },
-  "Bottom box": {
-    "title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Title above box"
+  "Bottom box" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title above box"
       }
     },
-    "title2": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading2",
-        "label": "Title inside box"
+    "title2" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title inside box"
       }
     },
-    "icon": {
-      "type": "Image",
-      "config": {
-        "constraint": {},
-        "thumbnails": [],
-        "label": "Icon"
+    "icon" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Icon"
       }
     },
-    "text_inside_box": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-        "label": "Text inside box"
+    "text_inside_box" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label" : "Text inside box"
       }
     },
-    "minimum_registration_label": {
-      "type": "Text",
-      "config": {
-        "label": "Minimum registration label"
+    "minimum_registration_label" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Minimum registration label"
       }
     },
-    "minimum_registration_text": {
-      "type": "Text",
-      "config": {
-        "label": "Minimum registration text"
+    "minimum_registration_text" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Minimum registration text"
       }
     },
-    "signup_button_link": {
-      "type": "Link",
-      "config": {
-        "label": "Signup button_link"
+    "signup_button_link" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "Signup button_link",
+        "select" : null
       }
     },
-    "signup_button_text": {
-      "type": "Text",
-      "config": {
-        "label": "Signup button text"
+    "signup_button_text" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Signup button text"
       }
     }
   },
-  "Discount code box": {
-    "discount_code_text": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-        "label": "Discount code text"
+  "Discount code box" : {
+    "discount_code_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Discount code title"
       }
     },
-    "cta_url": {
-      "type": "Link",
-      "config": {
-        "label": "CTA URL"
+    "discount_code_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label" : "Discount code text"
       }
     },
-    "cta_text": {
-      "type": "Text",
-      "config": {
-        "label": "CTA text"
+    "cta_url" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "CTA URL",
+        "select" : null
+      }
+    },
+    "cta_text" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "CTA text"
       }
     }
   }
