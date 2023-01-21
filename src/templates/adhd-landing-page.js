@@ -3,22 +3,54 @@ import {graphql} from 'gatsby'
 import CommonLink from "@components/common-link"
 import Layout from "@components/common/layout.js"
 import lottie from "lottie-web";
-import animation from "../../static/animations/head.json";
+import head1 from "../../static/animations/head1.json";
+import head2 from "../../static/animations/head2.json";
+import speak1 from "../../static/animations/speak1.json";
+import speak2 from "../../static/animations/speak2.json";
 import "@styles/pages/adhd.scss"
 
 const Adhd = ({ data, location }) => {
     const blocks   = data.prismicAdhdLandingPage.data.block
     const training = data.prismicAdhdLandingPage.data
-    const animationContainer = createRef()
+    const head1Container = createRef();
+    const head2Container = createRef();
+    const speak1Container = createRef();
+    const speak2Container = createRef();
     useEffect(() => {
-        const anim = lottie.loadAnimation({
-          container: animationContainer.current,
+        const h1 = lottie.loadAnimation({
+          container: head1Container.current,
           renderer: "svg",
           loop: true,
           autoplay: true,
-          animationData: animation
+          animationData: head1
         });
-        return () => anim.destroy(); // optional clean up for unmounting
+        const h2 = lottie.loadAnimation({
+            container: head2Container.current,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            animationData: head2
+          });
+        const s1 = lottie.loadAnimation({
+            container: speak1Container.current,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            animationData: speak1
+          });
+        const s2 = lottie.loadAnimation({
+              container: speak2Container.current,
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              animationData: speak2
+            });
+          return () => {
+            h1.destroy(); // optional clean up for unmounting
+            h2.destroy(); // optional clean up for unmounting
+            s1.destroy(); // optional clean up for unmounting
+            s2.destroy(); // optional clean up for unmounting
+        }
       }, []);
 
     return (
@@ -27,10 +59,10 @@ const Adhd = ({ data, location }) => {
 
                 <div className='block block1'>
                     <div className='bubble'>
-                        <img src={blocks[0].header_bubble.url} alt={blocks[0].header_bubble.alt}/>
+                        <div ref={speak1Container}/>
                     </div>
                     <div className='illustration'>
-                        <div className='animation1' ref={animationContainer}/>
+                        <div ref={head1Container}/>
                     </div>
                     <div className='text'>
                         <div dangerouslySetInnerHTML={{__html: blocks[0].text.html}}/>
@@ -40,10 +72,10 @@ const Adhd = ({ data, location }) => {
 
                 <div className='block block2 reverse'>
                     <div className='bubble'>
-                        <img src={blocks[1].header_bubble.url} alt={blocks[1].header_bubble.alt}/>
+                        <div ref={speak2Container}/>
                     </div>
                     <div className='illustration'>
-                        <img src={blocks[1].main_illustration.url} alt={blocks[1].main_illustration.alt}/>
+                        <div ref={head2Container}/>
                     </div>
                     <div className='text'>
                         <div dangerouslySetInnerHTML={{__html: blocks[1].text.html}}/>

@@ -30,7 +30,7 @@
             }
         }
         &.reverse {
-            grid-template-columns: max-content 1fr;
+            grid-template-columns: 350px 1fr;
             grid-template-areas: 
             "head bubble"
             "head text";
@@ -111,12 +111,21 @@
 
 @media screen and (max-width: 700px) {
     .adhd-page {
+        h1 {
+            margin: 5px 0;
+            line-height: 1.2;
+        }
+        .button {
+            text-align: center;
+        }
         .block {
             grid-template-columns: 1fr 1fr;
             grid-template-areas: 
             "bubble head"
             "text text"; 
+            column-gap: 0;
             &.reverse {
+                column-gap: 0;
                 grid-template-columns: 1fr 1fr;
                 grid-template-areas: 
                 "head bubble"
