@@ -5,7 +5,7 @@
     .block {
         margin-top: 80px;
         display: grid;
-        grid-template-columns: 1fr max-content;
+        grid-template-columns: 1fr 350px;
         gap: 10px;
         grid-template-areas: 
             "bubble head"
@@ -68,6 +68,7 @@
         text-align: center;
         &>h2, &>p {
             margin: 0;
+            margin-bottom: 30px;
         }
     }
     .corporate-services-hero-tabs {
@@ -93,6 +94,7 @@
 
         h3 {
             letter-spacing: 0px;
+            margin: 10px;
         }
         p {
             color: white;
@@ -137,5 +139,13 @@
     }
     .corporate-services-hero-tabs {
         grid-template-columns: 1fr !important;
+        &>div {
+            padding-bottom: 30px;
+            a.button {
+                position: relative;
+                bottom: unset;
+                left: unset;
+            }
+        }
     }
 }

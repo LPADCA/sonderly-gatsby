@@ -1,21 +1,36 @@
+import React, { useEffect, createRef } from 'react'
 import {graphql} from 'gatsby'
 import CommonLink from "@components/common-link"
 import Layout from "@components/common/layout.js"
+import lottie from "lottie-web";
+import animation from "../../static/animations/head.json";
 import "@styles/pages/adhd.scss"
 
 const Adhd = ({ data, location }) => {
     const blocks   = data.prismicAdhdLandingPage.data.block
     const training = data.prismicAdhdLandingPage.data
+    const animationContainer = createRef()
+    useEffect(() => {
+        const anim = lottie.loadAnimation({
+          container: animationContainer.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: animation
+        });
+        return () => anim.destroy(); // optional clean up for unmounting
+      }, []);
+
     return (
         <Layout location={location} className="adhd-page">
             <div className='container-small'>
 
-                <div className='block'>
+                <div className='block block1'>
                     <div className='bubble'>
                         <img src={blocks[0].header_bubble.url} alt={blocks[0].header_bubble.alt}/>
                     </div>
                     <div className='illustration'>
-                        <img src={blocks[0].main_illustration.url} alt={blocks[0].main_illustration.alt}/>
+                        <div className='animation1' ref={animationContainer}/>
                     </div>
                     <div className='text'>
                         <div dangerouslySetInnerHTML={{__html: blocks[0].text.html}}/>
@@ -23,7 +38,7 @@ const Adhd = ({ data, location }) => {
                     </div>
                 </div>
 
-                <div className='block reverse'>
+                <div className='block block2 reverse'>
                     <div className='bubble'>
                         <img src={blocks[1].header_bubble.url} alt={blocks[1].header_bubble.alt}/>
                     </div>
@@ -43,7 +58,6 @@ const Adhd = ({ data, location }) => {
                 <div className='lower-block-header'>
                     <h2>{training.title.text}</h2>
                 </div>
-                <div className="container">
                     <div className="corporate-services-hero-tabs">
                         <div className='tab0'>
                             <div className="tab-header">
@@ -98,7 +112,6 @@ const Adhd = ({ data, location }) => {
                             Buy now and complete the training later
                         </CommonLink>
                     </div>
-                </div>
             </div>
         </Layout>
     )
@@ -170,3 +183,4 @@ export const query = graphql`
         }
     }
 `
+
