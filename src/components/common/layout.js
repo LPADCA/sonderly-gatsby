@@ -33,6 +33,7 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                 <meta httpEquiv="cache-control" content="no-cache" />
                 <meta httpEquiv="expires" content="0" />
                 <meta httpEquiv="pragma" content="no-cache" />
+                <meta name="facebook-domain-verification" content="6c6ywpjb9i6niye4mvc6viof8kyin0" />
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keywords} />
