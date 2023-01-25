@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "@components/common/layout"
 import "@styles/pages/blog_post.scss"
+import { RichText } from 'prismic-reactjs'
 
 
 const BlogPost = ({ data, location }) => {
@@ -19,8 +20,11 @@ const BlogPost = ({ data, location }) => {
             </div>
             <div className="container content_wrapper">
                 <img src={blogPost.blog_image.url} alt={blogPost.blog_image.alt}/>
-                <div className="content" dangerouslySetInnerHTML={{
-                        __html: blogPost.content.html }}/>
+                <div className="content">
+                    <RichText className="content" 
+                        render={blogPost.content.raw} 
+                        />
+                </div>
             </div>
         </div>
         <div className="more_blog_posts container">
@@ -51,7 +55,9 @@ export const query = graphql`
                     alt
                 }
                 content {
+                    raw
                     html
+                    text
                 }
                 post_datetime(formatString: "MMM DD, YYYY @ hh:mm a", locale: "en")
                 seo_description
