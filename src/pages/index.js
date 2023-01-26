@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, createRef } from 'react'
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import { JsonLD, organizationJsonLD } from "@components/json-ld"
@@ -10,10 +10,58 @@ import WhoWeServe from "@components/homepage/whoweserve"
 import Testimonials from "@components/homepage/testimonials"
 import FeaturedCourses from "@components/homepage/featured_courses"
 import WhatsNew from "@components/homepage/whatsnew"
-
+import lottie from "lottie-web";
+import head1 from "../../static/animations/head1.json";
+import head2 from "../../static/animations/head2.json";
+import speak1 from "../../static/animations/speak1.json";
+import speak2 from "../../static/animations/speak2.json";
 import "@styles/pages/homepage.scss"
 
+
 const Homepage = ({ data, location }) => {
+    const adhd_title = data.prismicHomepage.data.adhd_section_title ? data.prismicHomepage.data.adhd_section_title.text : ''
+    const adhd_blocks = data.prismicHomepage.data.adhd_course_block
+    const head1Container = createRef();
+    const head2Container = createRef();
+    const speak1Container = createRef();
+    const speak2Container = createRef();
+    useEffect(() => {
+        const h1 = lottie.loadAnimation({
+          container: head1Container.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: head1
+        });
+        const h2 = lottie.loadAnimation({
+            container: head2Container.current,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            animationData: head2
+          });
+        const s1 = lottie.loadAnimation({
+            container: speak1Container.current,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            animationData: speak1
+          });
+        const s2 = lottie.loadAnimation({
+              container: speak2Container.current,
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              animationData: speak2
+            });
+          return () => {
+            h1.destroy(); // optional clean up for unmounting
+            h2.destroy(); // optional clean up for unmounting
+            s1.destroy(); // optional clean up for unmounting
+            s2.destroy(); // optional clean up for unmounting
+        }
+      }, []);
+    console.log(adhd_title, adhd_blocks)
     return (
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
@@ -23,6 +71,34 @@ const Homepage = ({ data, location }) => {
                     sectionTitle={data.prismicHomepage.data.whats_new_section_title}
                     boxes={data.prismicHomepage.data.whats_new_box}
                 />
+            )}
+            {adhd_blocks && (
+                <div className="adhd-home-section">
+                    <h2 className="featured-title">{adhd_title}</h2>
+                    <div className="adhd-blocks">
+                        {adhd_blocks.map((item, i)=>(
+                            <div key={i} className={`item${i}`}>
+                                {i==0 && (
+                                    <>
+                                        <div className="bubble1" ref={speak1Container}/>
+                                        <div className="head1" ref={head1Container}/>
+                                    </>
+                                )}
+                                {i==1 && (
+                                    <>
+                                        <div className="bubble2" ref={speak2Container}/>
+                                        <div className="head2" ref={head2Container}/>
+                                    </>
+                                )}
+                                <h3>{item.title.text}</h3>
+                                <div dangerouslySetInnerHTML={{__html: item.content.html}}/>
+                                <div className="bottomlink">
+                                    <a href={item.button_link.url} className="button">{item.button_text}</a>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             )}
             {data.prismicHomepage.data.featured_courses.length > 0 && (
                 <FeaturedCourses {...data.prismicHomepage.data} />
@@ -181,6 +257,23 @@ export const homepageQuery = graphql`
                         type
                         target
                         link_type
+                    }
+                }
+                adhd_section_title {
+                    text
+                }
+                adhd_course_block {
+                    title {
+                        text
+                    }
+                    content {
+                        html
+                    }
+                    button_text
+                    button_link {
+                        url
+                        target
+                        type
                     }
                 }
             }
