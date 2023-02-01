@@ -43,7 +43,7 @@ const CourseBlock = ({course, options, cta}) => {
     const popup = course.content
     const link = course.link
     const [visible, setVisible] = useState(0);
-    const enabled = popup && popup.text.length > 0
+    const enabled = popup !== undefined && popup !== null && popup.text.length > 0
     const Clicker = (e) => {
         if (enabled) {  
             if(visible) {
