@@ -121,5 +121,13 @@
         "placeholder": "(list, separated with commas)"
       }
     }
+  },
+  "Course Popup": {
+    "popup_cta_text": {
+      "type": "Text",
+      "config": {
+        "label": "Popup CTA text"
+      }
+    }
   }
 }

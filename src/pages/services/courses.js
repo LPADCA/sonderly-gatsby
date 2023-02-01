@@ -6,7 +6,7 @@ import Hero from "@components/blocks/hero"
 import { BsClockFill, BsStarFill } from "react-icons/bs"
 import { FaVideo } from "react-icons/fa"
 import Select, { components } from 'react-select'
-
+import { RichText } from 'prismic-reactjs'
 import "@styles/pages/services/courses.scss"
 
 /*
@@ -38,6 +38,99 @@ const EmptyValueContainer = ({ children, ...props }) => {
     );
   };
 */
+
+const CourseBlock = ({course, options, cta}) => {
+    const popup = course.content
+    const link = course.link
+    const [visible, setVisible] = useState(0);
+    const enabled = popup && popup.text.length > 0
+    const Clicker = (e) => {
+        if (enabled) {  
+            if(visible) {
+                document.body.style.backgroundColor = "transparent"
+            }
+            else {
+                document.body.style.backgroundColor = "white"
+            }
+            setVisible(!visible)
+            e.preventDefault()
+        }
+    }
+
+    const generateCategoriesOutput = (course, options) => {
+        var strings = []
+        if (course.category__autism) strings.push(options[0].label)
+        if (course.category__mental_health) strings.push(options[1].label)
+        if (course.category__neurodiversity) strings.push(options[2].label)
+        return(
+            <>{strings.join(", ")}</>
+        )
+    }
+
+    return (
+        <div className='course'>
+            {enabled && (
+                <div className={`popup ${visible ? 'visible' : ''}`} onClick={(e)=>Clicker(e)}>
+                    <div className="insert" onClick={(e)=>e.stopPropagation()}>
+                        {course.thumbnail && <div className="img-wrapper">
+                            <img src={course.thumbnail.url} width="300" alt={course.thumbnail.alt}/>
+                        </div>}
+                        <h3>{course.course_name.text}</h3>
+                        <RichText render={popup.raw}/>
+                        <div className="bottom">
+                            <div className="lower">
+                                <div className="lb3"><div className="txt">EN</div>
+                                    {course.french && <div className="txt">+FR</div>}
+                                    {course.with_video && (
+                                            <FaVideo className="icon video"/>
+                                    )}
+                                </div>
+                                {((course.ceu_credits !== null) && (course.ceu_credits > 0)) &&
+                                    <div className="lb2">
+                                        < BsStarFill className="icon"/> {course.ceu_credits} BACB CEU credit(s)
+                                    </div>
+                                }
+                                <div className="lb1">
+                                    <BsClockFill className="icon"/> {course.time} 
+                                </div>
+                            </div>
+                            <div className="button-wrapper">
+                                <a href={link.url} className="button black">{cta}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <a href={link.url} onClick={(e)=>Clicker(e)}>
+                <div className="courseblock">
+                    <p className="categorisation">{generateCategoriesOutput(course, options)} / {course.lvl} / {course.age}</p>
+                    {course.thumbnail && <div className="img-wrapper">
+                        <img src={course.thumbnail.url} width="300" alt={course.thumbnail.alt}/>
+                    </div>}
+                    <h3>{course.course_name.text}</h3>
+                    <div dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
+                    <div className="lower">
+                        <div className="lb3"><div className="txt">EN</div>
+                            {course.french && <div className="txt">+FR</div>}
+                            {course.with_video && (
+                                    <FaVideo className="icon video"/>
+                            )}
+                        </div>
+                        {((course.ceu_credits !== null) && (course.ceu_credits > 0)) &&
+                            <div className="lb2">
+                                < BsStarFill className="icon"/> {course.ceu_credits} BACB CEU credit(s)
+                            </div>
+                        }
+                        <div className="lb1">
+                            <BsClockFill className="icon"/> {course.time} 
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    )
+}
+
 
 
 const CourseMap = ({ data, location }) => {
@@ -134,16 +227,6 @@ const CourseMap = ({ data, location }) => {
         setState({ ...state, text: event.target.value})
     }
 
-    const generateCategoriesOutput = (course) => {
-        var strings = []
-        if (course.category__autism) strings.push(categoryOptions[0].label)
-        if (course.category__mental_health) strings.push(categoryOptions[1].label)
-        if (course.category__neurodiversity) strings.push(categoryOptions[2].label)
-        return(
-            <>{strings.join(", ")}</>
-        )
-    }
-
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageContent)}>
             <Helmet>
@@ -223,36 +306,9 @@ const CourseMap = ({ data, location }) => {
                                 <div className="no-courses" dangerouslySetInnerHTML={{ __html: not_found.html }} />
                             )}
                             <div className="courseblocks">
-                                {courses.map((course, i) => {
-                                    return (
-                                        <a key={i} href={course.link.url}>
-                                            <div className="courseblock">
-                                                <p className="categorisation">{generateCategoriesOutput(course)} / {course.lvl} / {course.age}</p>
-                                                {course.thumbnail && <div className="img-wrapper">
-                                                     <img src={course.thumbnail.url} width="300" alt={course.thumbnail.alt}/>
-                                                </div>}
-                                                <h3>{course.course_name.text}</h3>
-                                                <div dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
-                                                <div className="lower">
-                                                    <div className="lb3"><div className="txt">EN</div>
-                                                        {course.french && <div className="txt">+FR</div>}
-                                                        {course.with_video && (
-                                                                <FaVideo className="icon video"/>
-                                                        )}
-                                                    </div>
-                                                    {((course.ceu_credits !== null) && (course.ceu_credits > 0)) &&
-                                                        <div className="lb2">
-                                                            < BsStarFill className="icon"/> {course.ceu_credits} BACB CEU credit(s)
-                                                        </div>
-                                                    }
-                                                    <div className="lb1">
-                                                        <BsClockFill className="icon"/> {course.time} 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    )
-                                })}
+                                {courses.map((course, i) => (
+                                    <CourseBlock key={i} course={course} options={categoryOptions} cta={pageContent.popup_cta_text}/>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -295,6 +351,7 @@ export const courseMapQuery = graphql`
                 ages {
                     age
                 }
+                popup_cta_text
             }
         }
         allPrismicCourses {
@@ -304,6 +361,11 @@ export const courseMapQuery = graphql`
                     ag
                     course_name {
                         text
+                    }
+                    content {
+                        text
+                        html
+                        raw
                     }
                     french
                     lvl
