@@ -46,6 +46,7 @@ import "@styles/pages/services/corporate.scss"
 const ServicesCorporate = ({ data, location }) => {
     const pageData = data.prismicGroupTraining.data
     const unfoldList = pageData.trainings_list
+    const isFrench = document.documentElement.lang === 'fr-ca'
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
             <div className="spacer-top" />
@@ -54,7 +55,7 @@ const ServicesCorporate = ({ data, location }) => {
                     <h1>{pageData.title.text}</h1>
                 </section>
                 <div className="container">
-                    <div className="corporate-services-hero-tabs">
+                    <div className={`corporate-services-hero-tabs ${isFrench && 'french'}`}>
                         {pageData.hero_boxes.map((box, i) => {
                             return (
                                 <div key={i} className={`tab${i}`}>
