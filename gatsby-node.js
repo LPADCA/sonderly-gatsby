@@ -48,12 +48,20 @@ exports.createPages = async ({ graphql, actions }) => {
                 prismicMythLandingPage {
                     lang
                 }
+                prismicBlogs {
+                    lang
+                }
+                prismicVideos {
+                    lang
+                }
             }
         `)
     )
 
     const customPagesList = customPagesResult.data.allPrismicPage.edges
     const blogPostList = customPagesResult.data.allPrismicBlogPost.edges
+    const prismicBlogsPage = customPagesResult.data.prismicBlogs
+    const prismicVideosPage = customPagesResult.data.prismicVideos
     const prismicLandingPage = customPagesResult.data.prismicLandingPage
     const prismicMythLandingPage = customPagesResult.data.prismicMythLandingPage
     customPagesList.forEach((edge) => {
@@ -89,6 +97,20 @@ exports.createPages = async ({ graphql, actions }) => {
             type: "page",
             path: `/aba-myths-dispelled`,
             component: path.resolve("src/templates/myth-landing-page.js"),
+        })
+    }
+    if (prismicBlogsPage) {
+        createPage({
+            type: "page",
+            path: `/resources/blogs`,
+            component: path.resolve("src/templates/resources/blogs.js"),
+        })
+    }
+    if (prismicVideosPage) {
+        createPage({
+            type: "page",
+            path: `/resources/videos`,
+            component: path.resolve("src/templates/resources/videos.js"),
         })
     }
 }
