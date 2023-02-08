@@ -7,7 +7,6 @@ import AnimateHeight from "react-animate-height"
 
 const UnfoldItem = ({ isOpen, title, description }) => {
     const [stateOpen, setOpen] = useState(isOpen)
-
     useEffect(() => {
         setOpen(isOpen)
     }, [isOpen])
@@ -46,7 +45,7 @@ import "@styles/pages/services/corporate.scss"
 const ServicesCorporate = ({ data, location }) => {
     const pageData = data.prismicGroupTraining.data
     const unfoldList = pageData.trainings_list
-    const isFrench = document.documentElement.lang === 'fr-ca'
+    const isFrench = data.prismicGroupTraining.lang === 'fr-ca'
     return (
         <Layout location={location} {...Layout.pickSeoProps(pageData)}>
             <div className="spacer-top" />
@@ -107,6 +106,7 @@ export default ServicesCorporate
 export const servicesCorporateQuery = graphql`
     query ServicesCorporate {
         prismicGroupTraining {
+            lang
             data {
                 seo_title
                 seo_keywords
