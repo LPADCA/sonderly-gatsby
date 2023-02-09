@@ -15,7 +15,6 @@ const FormContent = ({
     form_message_label,
     form_name_label,
     form_phone_label,
-    form_phone,
     form_submit,
     setSubmit,
     onBlur,
@@ -138,13 +137,13 @@ const ContactPage = ({ data, location }) => {
         phone_label,
         other_phone_label,
         form_email_label,
+        form_phone_label,
         form_message_label,
         form_name_label,
-        form_phone,
         form_submit,
         success_message,
     } = data.prismicContactPage.data
-    console.log(data.prismicContactPage.data, phone_label)
+    //console.log(data.prismicContactPage.data, form_phone_label)
     return (
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
@@ -196,7 +195,7 @@ const ContactPage = ({ data, location }) => {
                                             form_email_label={form_email_label}
                                             form_message_label={form_message_label}
                                             form_name_label={form_name_label}
-                                            form_phone={form_phone}
+                                            form_phone_label={form_phone_label}
                                             form_submit={form_submit}
                                             recaptchaRef={recaptchaRef}
                                             setSubmit={setSubmit}
@@ -245,6 +244,7 @@ export const query = graphql`
                 form_email_label
                 form_message_label
                 form_name_label
+                form_phone_label
                 form_title
                 form_submit
                 form_subject
