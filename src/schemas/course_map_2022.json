@@ -69,6 +69,12 @@
         "label": "Course Levels"
       }
     },
+    "quick_search_string": {
+      "type": "Text",
+      "config": {
+        "label": "Quick Search string"
+      }
+    },
     "other_label": {
       "type": "Text",
       "config": {

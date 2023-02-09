@@ -298,7 +298,7 @@ const CourseMap = ({ data, location }) => {
                             </div>
                         </div>
                         <div className="quick_filter">
-                            <input type="text" value={state.text} onChange={(e) => updateString(e)} placeholder="Start typing for quick search.."/>
+                            <input type="text" value={state.text} onChange={(e) => updateString(e)} placeholder={pageContent.quick_search_string}/>
                         </div>
                     </form>
                     <div className="content">
@@ -325,6 +325,7 @@ export const courseMapQuery = graphql`
     query CourseMap {
         prismicCourseMap2022 {
             data {
+                quick_search_string
                 age_label
                 availiable_in_french_label
                 category_label
