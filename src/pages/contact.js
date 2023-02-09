@@ -14,6 +14,7 @@ const FormContent = ({
     form_email_label,
     form_message_label,
     form_name_label,
+    form_phone_label,
     form_phone,
     form_submit,
     setSubmit,
@@ -77,7 +78,7 @@ const FormContent = ({
                 </div>
             </div>
             <div>
-                <label htmlFor="phone">{form_phone}</label>
+                <label htmlFor="phone">{form_phone_label}</label>
                 <div className="input-wrapper phone">
                     <input
                         id="phone"
@@ -143,7 +144,7 @@ const ContactPage = ({ data, location }) => {
         form_submit,
         success_message,
     } = data.prismicContactPage.data
-
+    console.log(data.prismicContactPage.data, phone_label)
     return (
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
             <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />

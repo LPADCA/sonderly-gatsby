@@ -1,151 +1,157 @@
 {
-    "Main": {
-      "page_title": {
-        "type": "StructuredText",
-        "config": {
-          "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-          "label": "Page title"
-        }
-      },
-      "page_description": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "label": "Page description"
-        }
-      },
-      "hero_image": {
-        "type": "Image",
-        "config": {
-          "constraint": {
-            "width": 550
-          },
-          "thumbnails": [],
-          "label": "Hero Image"
-        }
+  "Main": {
+    "page_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+        "label": "Page title"
       }
     },
-    "Contacts": {
-      "address_title": {
-        "type": "Text",
-        "config": {
-          "label": "Address title"
-        }
-      },
-      "address_label": {
-        "type": "Text",
-        "config": {
-          "label": "Contact address label"
-        }
-      },
-      "contact_address": {
-        "type": "Text",
-        "config": {
-          "label": "Contact Address",
-          "placeholder": "112 Merton Street, Toronto, Ontario, Canada M4S 2Z8"
-        }
-      },
-      "email_label": {
-        "type": "Text",
-        "config": {
-          "label": "Email Label"
-        }
-      },
-      "email": {
-        "type": "Text",
-        "config": {
-          "label": "Email",
-          "placeholder": "contactus@sonderly.io"
-        }
-      },
-      "phone_label": {
-        "type": "Text",
-        "config": {
-          "label": "Phone label"
-        }
-      },
-      "phone": {
-        "type": "Text",
-        "config": {
-          "label": "Phone",
-          "placeholder": "416-640-9459"
-        }
-      },
-      "other_phone_label": {
-        "type": "Text",
-        "config": {
-          "label": "Other Phone Label"
-        }
-      },
-      "north_america_phone": {
-        "type": "Text",
-        "config": {
-          "label": "Other Phone",
-          "placeholder": "1-888-905-0655"
-        }
-      },
-      "form_title": {
-        "type": "Text",
-        "config": {
-          "label": "Form title"
-        }
-      },
-      "form_name_label": {
-        "type": "Text",
-        "config": {
-          "label": "Form name label"
-        }
-      },
-      "form_email_label": {
-        "type": "Text",
-        "config": {
-          "label": "Form email label"
-        }
-      },
-      "form_subject": {
-        "type": "Text",
-        "config": {
-          "label": "Form Subject"
-        }
-      },
-      "form_message_label": {
-        "type": "Text",
-        "config": {
-          "label": "Form message label"
-        }
-      },
-      "form_submit": {
-        "type": "Text",
-        "config": {
-          "label": "Form Submit"
-        }
-      },
-      "success_message": {
-        "type": "Text",
-        "config": {
-          "label": "Success Message"
-        }
+    "page_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label": "Page description"
       }
     },
-    "SEO": {
-      "seo_title": {
-        "type": "Text",
-        "config": {
-          "label": "Title (maximum 70 characters)"
-        }
-      },
-      "seo_description": {
-        "type": "Text",
-        "config": {
-          "label": "Description (50–160 characters)"
-        }
-      },
-      "seo_keywords": {
-        "type": "Text",
-        "config": {
-          "label": "Keywords",
-          "placeholder": "(list, separated with commas)"
-        }
+    "hero_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 550
+        },
+        "thumbnails": [],
+        "label": "Hero Image"
+      }
+    }
+  },
+  "Contacts": {
+    "address_title": {
+      "type": "Text",
+      "config": {
+        "label": "Address title"
+      }
+    },
+    "address_label": {
+      "type": "Text",
+      "config": {
+        "label": "Contact address label"
+      }
+    },
+    "contact_address": {
+      "type": "Text",
+      "config": {
+        "label": "Contact Address",
+        "placeholder": "112 Merton Street, Toronto, Ontario, Canada M4S 2Z8"
+      }
+    },
+    "email_label": {
+      "type": "Text",
+      "config": {
+        "label": "Email Label"
+      }
+    },
+    "email": {
+      "type": "Text",
+      "config": {
+        "label": "Email",
+        "placeholder": "contactus@sonderly.io"
+      }
+    },
+    "phone_label": {
+      "type": "Text",
+      "config": {
+        "label": "Phone label"
+      }
+    },
+    "phone": {
+      "type": "Text",
+      "config": {
+        "label": "Phone",
+        "placeholder": "416-640-9459"
+      }
+    },
+    "other_phone_label": {
+      "type": "Text",
+      "config": {
+        "label": "Other Phone Label"
+      }
+    },
+    "north_america_phone": {
+      "type": "Text",
+      "config": {
+        "label": "Other Phone",
+        "placeholder": "1-888-905-0655"
+      }
+    },
+    "form_title": {
+      "type": "Text",
+      "config": {
+        "label": "Form title"
+      }
+    },
+    "form_name_label": {
+      "type": "Text",
+      "config": {
+        "label": "Form name label"
+      }
+    },
+    "form_email_label": {
+      "type": "Text",
+      "config": {
+        "label": "Form email label"
+      }
+    },
+    "form_phone_label": {
+      "type": "Text",
+      "config": {
+        "label": "Form phone label"
+      }
+    },
+    "form_subject": {
+      "type": "Text",
+      "config": {
+        "label": "Form Subject"
+      }
+    },
+    "form_message_label": {
+      "type": "Text",
+      "config": {
+        "label": "Form message label"
+      }
+    },
+    "form_submit": {
+      "type": "Text",
+      "config": {
+        "label": "Form Submit"
+      }
+    },
+    "success_message": {
+      "type": "Text",
+      "config": {
+        "label": "Success Message"
+      }
+    }
+  },
+  "SEO": {
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title (maximum 70 characters)"
+      }
+    },
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "Description (50–160 characters)"
+      }
+    },
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Keywords",
+        "placeholder": "(list, separated with commas)"
       }
     }
   }
+}
