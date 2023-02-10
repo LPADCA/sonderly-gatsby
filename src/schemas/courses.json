@@ -1,135 +1,155 @@
 {
-  "Main" : {
-    "course_name" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading2",
-        "label" : "Course Name"
+  "Main": {
+    "course_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Course Name"
       }
     },
-    "summary" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-        "allowTargetBlank" : true,
-        "label" : "Summary"
+    "summary": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Summary"
       }
     },
-    "category__autism" : {
-      "type" : "Boolean",
-      "config" : {
-        "default_value" : false,
-        "label" : "Category: Autism"
+    "category__autism": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Category: Autism"
       }
     },
-    "category__mental_health" : {
-      "type" : "Boolean",
-      "config" : {
-        "default_value" : false,
-        "label" : "Category: Mental Health"
+    "category__mental_health": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Category: Mental Health"
       }
     },
-    "category__neurodiversity" : {
-      "type" : "Boolean",
-      "config" : {
-        "default_value" : false,
-        "label" : "Category: Neurodiversity"
+    "category__neurodiversity": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Category: Neurodiversity"
       }
     },
-    "category" : {
-      "type" : "Select",
-      "config" : {
-        "options" : [ "Autism", "Mental Health", "Neurodiversity" ],
-        "default_value" : "Autism",
-        "label" : "Category"
+    "category": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Autism",
+          "Mental Health",
+          "Neurodiversity"
+        ],
+        "default_value": "Autism",
+        "label": "Category"
       }
     },
-    "lvl" : {
-      "type" : "Select",
-      "config" : {
-        "options" : [ "Introductory", "Intermediate", "Advanced" ],
-        "default_value" : "Introductory",
-        "label" : "Course Level"
+    "lvl": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Introductory",
+          "Intermediate",
+          "Advanced"
+        ],
+        "default_value": "Introductory",
+        "label": "Course Level"
       }
     },
-    "ag" : {
-      "type" : "Select",
-      "config" : {
-        "options" : [ "All ages", "Children", "Adolescents", "Adults" ],
-        "default_value" : "All ages",
-        "label" : "Age"
+    "ag": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "All ages",
+          "Children",
+          "Adolescents",
+          "Adults"
+        ],
+        "default_value": "All ages",
+        "label": "Age"
       }
     },
-    "age" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "age"
+    "age": {
+      "type": "Text",
+      "config": {
+        "label": "age"
       }
     },
-    "french" : {
-      "type" : "Boolean",
-      "config" : {
-        "placeholder_false" : "no",
-        "placeholder_true" : "yes",
-        "default_value" : false,
-        "label" : "Available in other language"
+    "french": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "no",
+        "placeholder_true": "yes",
+        "default_value": false,
+        "label": "Available in other language"
       }
     },
-    "with_video" : {
-      "type" : "Boolean",
-      "config" : {
-        "placeholder_false" : "no",
-        "placeholder_true" : "yes",
-        "default_value" : false,
-        "label" : "Video Available"
+    "with_video": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "no",
+        "placeholder_true": "yes",
+        "default_value": false,
+        "label": "Video Available"
       }
     },
-    "level" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "level"
+    "level": {
+      "type": "Text",
+      "config": {
+        "label": "level"
       }
     },
-    "link" : {
-      "type" : "Link",
-      "config" : {
-        "allowTargetBlank" : true,
-        "label" : "Link to Platform",
-        "select" : null
+    "link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Link to Platform",
+        "select": null
       }
     },
-    "thumbnail" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : {
-          "width" : 600,
-          "height" : 300
+    "thumbnail": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 600,
+          "height": 300
         },
-        "thumbnails" : [ ],
-        "label" : "Thumbnail"
+        "thumbnails": [],
+        "label": "Thumbnail"
       }
     },
-    "time" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Time estimate",
-        "placeholder" : "(type as a text)"
+    "time": {
+      "type": "Text",
+      "config": {
+        "label": "Time estimate",
+        "placeholder": "(type as a text)"
       }
     },
-    "ceu_credits" : {
-      "type" : "Number",
-      "config" : {
-        "label" : "Number of CEU credits"
+    "ceu_credits": {
+      "type": "Number",
+      "config": {
+        "label": "Number of CEU credits"
       }
     }
   },
-  "Popup" : {
-    "content" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-        "allowTargetBlank" : true,
-        "label" : "Content"
+  "Popup": {
+    "content": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Content"
+      }
+    },
+    "group_training_cta_link": {
+      "type": "Link",
+      "config": {
+        "label": "Group Training CTA link",
+        "select": null
       }
     }
   }

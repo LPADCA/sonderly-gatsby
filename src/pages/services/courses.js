@@ -39,9 +39,10 @@ const EmptyValueContainer = ({ children, ...props }) => {
   };
 */
 
-const CourseBlock = ({course, options, cta}) => {
+const CourseBlock = ({course, options, cta, group_cta}) => {
     const popup = course.content
     const link = course.link
+    const group_link = course.group_training_cta_link
     const [visible, setVisible] = useState(0);
     const enabled = popup !== null && popup.text !== null && popup.text.length > 0
     //console.log(enabled, popup, popup.text)
@@ -96,6 +97,8 @@ const CourseBlock = ({course, options, cta}) => {
                                 </div>
                             </div>
                             <div className="button-wrapper">
+                                {group_link.url && group_link.url !== '' &&
+                                    <a href={group_link.url} className="button green">{group_cta}</a>}
                                 <a href={link.url} className="button black">{cta}</a>
                             </div>
                         </div>
@@ -308,7 +311,7 @@ const CourseMap = ({ data, location }) => {
                             )}
                             <div className="courseblocks">
                                 {courses.map((course, i) => (
-                                    <CourseBlock key={i} course={course} options={categoryOptions} cta={pageContent.popup_cta_text}/>
+                                    <CourseBlock key={i} course={course} options={categoryOptions} cta={pageContent.popup_cta_text} group_cta={pageContent.group_training_cta_text}/>
                                 ))}
                             </div>
                         </div>
@@ -354,6 +357,7 @@ export const courseMapQuery = graphql`
                     age
                 }
                 popup_cta_text
+                group_training_cta_text
             }
         }
         allPrismicCourses {
@@ -392,6 +396,12 @@ export const courseMapQuery = graphql`
                     thumbnail {
                         url(imgixParams: {sat: 0})
                         alt
+                    }
+                    group_training_cta_link {
+                        link_type
+                        target
+                        type
+                        url
                     }
                 }
             }

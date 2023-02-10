@@ -145,10 +145,17 @@
                         grid-template-columns: auto max-content;
                         gap: 10px;
                         align-items: end;
+                        padding: 10px 0 0 0;
                         .lower {
                             position: relative;
                             left: initial;
                             bottom: initial;
+                        }
+                        .button-wrapper {
+                            display: flex;
+                            &>a.button {
+                                margin-left: 10px;
+                            }
                         }
                     }
                 }
@@ -216,8 +223,11 @@
                             gap: 5px;
                             align-items: center;
                             .button-wrapper {
-                                padding-top: 10px;
+                                flex-direction: column;
                                 text-align: center;
+                                &>a.button {
+                                    margin-left: 0;
+                                }
                             }
                         }
                     }

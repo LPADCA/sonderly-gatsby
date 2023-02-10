@@ -134,6 +134,12 @@
       "config": {
         "label": "Popup CTA text"
       }
+    },
+    "group_training_cta_text": {
+      "type": "Text",
+      "config": {
+        "label": "Group Training CTA text"
+      }
     }
   }
 }
