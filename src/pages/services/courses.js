@@ -39,12 +39,19 @@ const EmptyValueContainer = ({ children, ...props }) => {
   };
 */
 
-const CourseBlock = ({course, options, cta, group_cta}) => {
+const CourseBlock = ({course, options, cta, group_cta, isFrench}) => {
     const popup = course.content
     const link = course.link
     const group_link = course.group_training_cta_link
     const [visible, setVisible] = useState(0);
     const enabled = popup !== null && popup.text !== null && popup.text.length > 0
+    const langMain = isFrench ? 'FR' : 'EN' 
+    const langSecondary = isFrench ? 'EN' : 'FR' 
+    const levelsDict = {
+        "Introductory" : isFrench ? "Débutant" : "Introductory",
+        "Intermediate" : isFrench ? "Intermédiare" : "Intermediate",
+        "Advanced" : isFrench ? "Avancé" : "Advanced",
+    }
     //console.log(enabled, popup, popup.text)
     const Clicker = (e) => {
         if (enabled) {  
@@ -81,8 +88,8 @@ const CourseBlock = ({course, options, cta, group_cta}) => {
                         <RichText render={popup.raw}/>
                         <div className="bottom">
                             <div className="lower">
-                                <div className="lb3"><div className="txt">EN</div>
-                                    {course.french && <div className="txt">+FR</div>}
+                                <div className="lb3"><div className="txt">{langMain}</div>
+                                    {course.french && <div className="txt">+{langSecondary}</div>}
                                     {course.with_video && (
                                             <FaVideo className="icon video"/>
                                     )}
@@ -107,15 +114,15 @@ const CourseBlock = ({course, options, cta, group_cta}) => {
             )}
             <a href={link.url} onClick={(e)=>Clicker(e)}>
                 <div className="courseblock">
-                    <p className="categorisation">{generateCategoriesOutput(course, options)} / {course.lvl} / {course.age}</p>
+                    <p className="categorisation">{generateCategoriesOutput(course, options)} / {levelsDict[course.lvl]} / {course.age}</p>
                     {course.thumbnail && <div className="img-wrapper">
                         <img src={course.thumbnail.url} width="300" alt={course.thumbnail.alt}/>
                     </div>}
                     <h3>{course.course_name.text}</h3>
                     <div dangerouslySetInnerHTML={{ __html: course.summary.html }}/>
                     <div className="lower">
-                        <div className="lb3"><div className="txt">EN</div>
-                            {course.french && <div className="txt">+FR</div>}
+                        <div className="lb3"><div className="txt">{langMain}</div>
+                            {course.french && <div className="txt">+{langSecondary}</div>}
                             {course.with_video && (
                                     <FaVideo className="icon video"/>
                             )}
@@ -140,6 +147,7 @@ const CourseBlock = ({course, options, cta, group_cta}) => {
 const CourseMap = ({ data, location }) => {
     const coursesList = data.allPrismicCourses.nodes
     const pageContent = data.prismicCourseMap2022.data
+    const isFrench = data.prismicCourseMap2022.lang === 'fr-ca'
     const {
         category_label,
         age_label,
@@ -188,6 +196,12 @@ const CourseMap = ({ data, location }) => {
         extrasOptions: []
     })
 
+    const levelsDict = {
+        "Introductory" : isFrench ? "Débutant" : "Introductory",
+        "Intermediate" : isFrench ? "Intermédiare" : "Intermediate",
+        "Advanced" : isFrench ? "Avancé" : "Advanced",
+    }
+
     const courses = coursesList
         .filter(({ data: course }) => {
             //if (state.video && !course.with_video) return false
@@ -200,7 +214,7 @@ const CourseMap = ({ data, location }) => {
                 var cats = [course.category__autism ? 0 : null, course.category__mental_health ? 1 : null, course.category__neurodiversity ? 2 : null]
                 if (ex.some(el => cats.includes(el)) === false) return false
             }
-            if (state.levels.length > 0 && !state.levels.map(({label, value}) => label).includes(course.lvl)) return false
+            if (state.levels.length > 0 && !state.levels.map(({label, value}) => label).includes(levelsDict[course.lvl])) return false
             if (state.text.length == 0) return true
             else if (state.text.length > 0 && course.course_name.text.toLowerCase().includes(state.text.toLowerCase())) return true
             else return false
@@ -215,6 +229,7 @@ const CourseMap = ({ data, location }) => {
         setState({ ...state, levels: val})
     }
     const updateAge = (newAge) => setState({ ...state, age: newAge })
+    
     const updateExtras = (options) => {
         var newOptions = {'french': false, 'credits': false}
         options.forEach((option)=> {
@@ -311,7 +326,7 @@ const CourseMap = ({ data, location }) => {
                             )}
                             <div className="courseblocks">
                                 {courses.map((course, i) => (
-                                    <CourseBlock key={i} course={course} options={categoryOptions} cta={pageContent.popup_cta_text} group_cta={pageContent.group_training_cta_text}/>
+                                    <CourseBlock key={i} course={course} options={categoryOptions} cta={pageContent.popup_cta_text} group_cta={pageContent.group_training_cta_text} isFrench={isFrench}/>
                                 ))}
                             </div>
                         </div>
@@ -327,6 +342,7 @@ export default CourseMap
 export const courseMapQuery = graphql`
     query CourseMap {
         prismicCourseMap2022 {
+            lang
             data {
                 quick_search_string
                 age_label
