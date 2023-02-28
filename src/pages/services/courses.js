@@ -198,11 +198,10 @@ const CourseMap = ({ data, location }) => {
 
     const courses = coursesList
         .filter(({ data: course }) => {
-            console.log(course.course_name, course)
             //if (state.video && !course.with_video) return false
-            if (state.credits && !course.ceu_credits) return false
+            if (!isFrench && state.credits && !course.ceu_credits) return false
             //console.log(course)
-            if (state.french && !course.french) return false
+            if (!isFrench && state.french && !course.french) return false
             if (state.ages.length > 0) {
                 var ex = state.ages.map((item) => item.value)
                 var ages = [course.age__children ? 0 : null, course.age__adolescents ? 1 : null, course.age__adults ? 2 : null]
@@ -274,7 +273,7 @@ const CourseMap = ({ data, location }) => {
             <div className="container">
                 <div className="courses">
                     <form>
-                        <div className="filters">
+                        <div className={`filters ${isFrench && 'french'}`}>
                             <div>
                             <Select 
                                 styles={uniStyle}
@@ -303,6 +302,7 @@ const CourseMap = ({ data, location }) => {
                                     value={state.levelOptions}
                                     />
                             </div>
+                        {!isFrench && 
                             <div>
                                 <Select
                                     styles={uniStyle}
@@ -312,7 +312,7 @@ const CourseMap = ({ data, location }) => {
                                     onChange={updateExtras}
                                     value={state.extrasOptions}
                                     />
-                            </div>
+                            </div>}
                         </div>
                         <div className="quick_filter">
                             <input type="text" value={state.text} onChange={(e) => updateString(e)} placeholder={pageContent.quick_search_string}/>

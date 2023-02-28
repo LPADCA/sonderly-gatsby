@@ -5,6 +5,9 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
+        &.french {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
     .quick_filter {
         display: block;
@@ -196,7 +199,7 @@
 
 @media screen and (max-width: 768px) {
     .courses {
-        .filters {
+        .filters, .filters.french {
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
@@ -210,7 +213,7 @@
 
 @media screen and (max-width: 428px) {
     .courses {
-        .filters {
+        .filters, .filters.french {
             grid-template-columns: repeat(1, 1fr);
         }
         .content {
