@@ -9,37 +9,7 @@ import Select, { components } from 'react-select'
 import { RichText } from 'prismic-reactjs'
 import "@styles/pages/services/courses.scss"
 
-/*
-const Option = (props) => {
-    return (
-      <div>
-        <components.Option {...props}>
-          <input
-            type="checkbox"
-            checked={props.isSelected}
-            onChange={() => null}
-          />{" "}
-          <label>{props.label}</label>
-        </components.Option>
-      </div>
-    );
-  };
-const { ValueContainer, Placeholder } = components;
-const EmptyValueContainer = ({ children, ...props }) => {
-    return (
-      <ValueContainer {...props}>
-        <Placeholder {...props} isFocused={props.isFocused}>
-          {props.selectProps.placeholder}
-        </Placeholder>
-        {React.Children.map(children, child =>
-          child && child.type !== Placeholder ? child : null
-        )}
-      </ValueContainer>
-    );
-  };
-*/
-
-const CourseBlock = ({course, options, cta, group_cta, isFrench}) => {
+const CourseBlock = ({course, ageOptions, categoryOptions, levelOptions, cta, group_cta, isFrench}) => {
     const popup = course.content
     const link = course.link
     const group_link = course.group_training_cta_link
@@ -47,11 +17,6 @@ const CourseBlock = ({course, options, cta, group_cta, isFrench}) => {
     const enabled = popup !== null && popup.text !== null && popup.text.length > 0
     const langMain = isFrench ? 'FR' : 'EN' 
     const langSecondary = isFrench ? 'EN' : 'FR' 
-    const levelsDict = {
-        "Introductory" : isFrench ? "Débutant" : "Introductory",
-        "Intermediate" : isFrench ? "Intermédiare" : "Intermediate",
-        "Advanced" : isFrench ? "Avancé" : "Advanced",
-    }
     //console.log(enabled, popup, popup.text)
     const Clicker = (e) => {
         if (enabled) {  
@@ -71,6 +36,25 @@ const CourseBlock = ({course, options, cta, group_cta, isFrench}) => {
         if (course.category__autism) strings.push(options[0].label)
         if (course.category__mental_health) strings.push(options[1].label)
         if (course.category__neurodiversity) strings.push(options[2].label)
+        return(
+            <>{strings.join(", ")}</>
+        )
+    }
+    const generateAgeOutput = (course, options) => {
+        var strings = []
+        if (course.age__children) strings.push(options[0].label)
+        if (course.age__adolescents) strings.push(options[1].label)
+        if (course.age__adults) strings.push(options[2].label)
+        return(
+            <>{strings.join(", ")}</>
+        )
+    }
+
+    const generateLevelOutput = (course, options) => {
+        var strings = []
+        if (course.course_level__introductory) strings.push(options[0].label)
+        if (course.course_level__intermediate) strings.push(options[1].label)
+        if (course.course_level__advanced) strings.push(options[2].label)
         return(
             <>{strings.join(", ")}</>
         )
@@ -114,7 +98,7 @@ const CourseBlock = ({course, options, cta, group_cta, isFrench}) => {
             )}
             <a href={link.url} onClick={(e)=>Clicker(e)}>
                 <div className="courseblock">
-                    <p className="categorisation">{generateCategoriesOutput(course, options)} / {levelsDict[course.lvl]} / {course.age}</p>
+                    <p className="categorisation">{generateCategoriesOutput(course, categoryOptions)} / {generateLevelOutput(course, levelOptions)} / {generateAgeOutput(course, ageOptions)}</p>
                     {course.thumbnail && <div className="img-wrapper">
                         <img src={course.thumbnail.url} width="300" alt={course.thumbnail.alt}/>
                     </div>}
@@ -158,11 +142,27 @@ const CourseMap = ({ data, location }) => {
         bacb_credits_label,
         not_found,
     } = pageContent
-    const categoryOptions = pageContent.categories.map((el, i) => ({'value': i, 'label': el.category}));         
-    const ageOptions = pageContent.ages.map((el, i) => ({'value': i, 'label': el.age}));          
-    const ageDefaultValue = {'value': 0, 'label': pageContent.ages[0].age}
-    const levelOptions = pageContent.levels.map((el, i) => ({'value': i, 'label': el.level}));
-    const extrasOptions = [{'value': 0, 'label': bacb_credits_label}, {'value': 1, 'label': availiable_in_french_label}]
+
+    const ageOptions = [
+        {'value': 0, label: isFrench ? 'Enfants' : 'Children'},
+        {'value': 1, label: 'Adolescents'},
+        {'value': 2, label: isFrench ? 'Adultes' : 'Adults'}
+    ]
+    const categoryOptions = [
+        {'value': 0, label: isFrench ? 'Autisme' : 'Autism'},
+        {'value': 1, label: isFrench ? 'Santé mentale': 'Mental health'},
+        {'value': 2, label: isFrench ? 'Neurodiversité' : 'Neurodiversity'}
+    ]
+    const levelOptions = [
+        {'value': 0, label: isFrench ? 'Débutant' : 'Introductory'},
+        {'value': 1, label: isFrench ? 'Intermédiare': 'Intermediate'},
+        {'value': 2, label: isFrench ? 'Avancé' : 'Advanced'}
+    ]
+    const extrasOptions = [
+        {'value': 0, 'label': bacb_credits_label}, 
+        {'value': 1, 'label': availiable_in_french_label}
+    ]
+    
     const uniStyle = {
         control: (baseStyles, state) => ({
             ...baseStyles,
@@ -188,7 +188,7 @@ const CourseMap = ({ data, location }) => {
     const [state, setState] = useState({
         text: "",
         categories: [],
-        age: 0,
+        ages: [],
         french: false,
         video: false,
         credits: false,
@@ -196,39 +196,38 @@ const CourseMap = ({ data, location }) => {
         extrasOptions: []
     })
 
-    const levelsDict = {
-        "Introductory" : isFrench ? "Débutant" : "Introductory",
-        "Intermediate" : isFrench ? "Intermédiare" : "Intermediate",
-        "Advanced" : isFrench ? "Avancé" : "Advanced",
-    }
-
     const courses = coursesList
         .filter(({ data: course }) => {
+            console.log(course.course_name, course)
             //if (state.video && !course.with_video) return false
             if (state.credits && !course.ceu_credits) return false
             //console.log(course)
             if (state.french && !course.french) return false
-            if (ageOptions[state.age].label !== course.ag && state.age !== 0) return false
+            if (state.ages.length > 0) {
+                var ex = state.ages.map((item) => item.value)
+                var ages = [course.age__children ? 0 : null, course.age__adolescents ? 1 : null, course.age__adults ? 2 : null]
+                if (ex.some(el => ages.includes(el)) === false) return false
+            }
             if (state.categories.length > 0) {
                 var ex = state.categories.map((item) => item.value)
-                var cats = [course.category__autism ? 0 : null, course.category__mental_health ? 1 : null, course.category__neurodiversity ? 2 : null]
-                if (ex.some(el => cats.includes(el)) === false) return false
+                var categories = [course.category__autism ? 0 : null, course.category__mental_health ? 1 : null, course.category__neurodiversity ? 2 : null]
+                if (ex.some(el => categories.includes(el)) === false) return false
             }
-            if (state.levels.length > 0 && !state.levels.map(({label, value}) => label).includes(levelsDict[course.lvl])) return false
+            if (state.levels.length > 0) {
+                var ex = state.levels.map((item) => item.value)
+                var levels = [course.course_level__introductory ? 0 : null, course.course_level__intermediate ? 1 : null, course.course_level__advanced ? 2 : null]
+                if (ex.some(el => levels.includes(el)) === false) return false
+            }
+
             if (state.text.length == 0) return true
             else if (state.text.length > 0 && course.course_name.text.toLowerCase().includes(state.text.toLowerCase())) return true
             else return false
         })
         .map((c) => c.data)
         //.sort((a, b) => levels.indexOf(a.level) - levels.indexOf(b.level))
-
-    const updateCategory = (val) => {
-        setState({ ...state, categories: val})
-    }
-    const updateLevel = (val) => {
-        setState({ ...state, levels: val})
-    }
-    const updateAge = (newAge) => setState({ ...state, age: newAge })
+    const updateCategory = (val) => {setState({ ...state, categories: val})}
+    const updateLevel = (val) => {setState({ ...state, levels: val})}
+    const updateAge = (val) => {setState({ ...state, ages: val })}
     
     const updateExtras = (options) => {
         var newOptions = {'french': false, 'credits': false}
@@ -290,8 +289,8 @@ const CourseMap = ({ data, location }) => {
                                     styles={uniStyle}
                                     placeholder={age_label}
                                     options={ageOptions}
-                                    onChange={(e) => updateAge(e.value)}
-                                    defaultValue={ageDefaultValue}
+                                    isMulti
+                                    onChange={(e) => updateAge(e)}
                                     />
                             </div>
                             <div>
@@ -326,7 +325,7 @@ const CourseMap = ({ data, location }) => {
                             )}
                             <div className="courseblocks">
                                 {courses.map((course, i) => (
-                                    <CourseBlock key={i} course={course} options={categoryOptions} cta={pageContent.popup_cta_text} group_cta={pageContent.group_training_cta_text} isFrench={isFrench}/>
+                                    <CourseBlock key={i} course={course} ageOptions={ageOptions} categoryOptions={categoryOptions} levelOptions={levelOptions} cta={pageContent.popup_cta_text} group_cta={pageContent.group_training_cta_text} isFrench={isFrench}/>
                                 ))}
                             </div>
                         </div>
@@ -396,7 +395,13 @@ export const courseMapQuery = graphql`
                     category__autism
                     category__mental_health
                     category__neurodiversity
-                        time
+                    age__children
+                    age__adolescents
+                    age__adults
+                    course_level__introductory
+                    course_level__intermediate
+                    course_level__advanced
+                    time
                     level
                     link {
                         link_type
