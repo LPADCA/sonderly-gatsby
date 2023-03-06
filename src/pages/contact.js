@@ -38,7 +38,7 @@ const FormContent = ({
                 phone: phoneField,
                 message: messageField,
             }
-            await recaptchaRef.current.executeAsync()
+            //await recaptchaRef.current.executeAsync()
             await submit(obj)
             setSubmit(true)
         } catch (err) {
