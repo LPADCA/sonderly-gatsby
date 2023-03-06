@@ -1,5 +1,6 @@
 /services           /services/corporate/
-/course-map         /services/courses
+/course-map         /services/catalogue
+/services/courses   /services/catalogue
 /funded-training    /
 /services/funded-training   /
 /services/professional-training   /

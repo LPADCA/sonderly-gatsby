@@ -36,7 +36,7 @@ const linkResolver = (doc) => {
     }
 
     if (doc.type === "course_map_2022") {
-        return `/services/courses`
+        return `/services/catalogue`
     }
 
     if (doc.type === "faq_page") {
