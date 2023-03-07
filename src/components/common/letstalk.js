@@ -57,7 +57,7 @@ const LetsTalk = () => {
                 message: messageField,
             }
             //await recaptchaRef.current.executeAsync()
-            //await submit(obj)
+            await submit(obj)
             setSubmit(true)
         } catch (err) {
             alert(err)
