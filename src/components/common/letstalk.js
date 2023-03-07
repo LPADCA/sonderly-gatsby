@@ -43,7 +43,7 @@ const LetsTalk = () => {
         )
     }
     const [submit, submitting] = useFormspark({
-        formId: process.env.GATSBY_FORM_ID,
+        formId: process.env.GATSBY_LETSTALK_FORM_ID,
     })
     const onSubmit = async (e) => {
         e.preventDefault()
