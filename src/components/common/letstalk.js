@@ -126,7 +126,7 @@ const LetsTalk = () => {
                                             <button className="button black" type="submit" disabled={submitting}>
                                                 {data.submit}
                                             </button>
-                                            {/*<ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />*/}
+                                            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
                                         </div>
                                     </div>
                                 </div>

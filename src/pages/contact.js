@@ -146,7 +146,7 @@ const ContactPage = ({ data, location }) => {
     //console.log(data.prismicContactPage.data, form_phone_label)
     return (
         <Layout location={location} className="contact-page" {...Layout.pickSeoProps(data.prismicContactPage.data)}>
-            {/*<ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />*/}
+            <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
             <div className="contact-hero">
                 <AnimatedBackground/>
             </div>
