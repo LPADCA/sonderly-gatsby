@@ -47,6 +47,7 @@
     "react-select": "^5.6.1",
     "react-slick": "^0.28.0",
     "react-visibility-sensor": "^5.1.1",
+    "reactjs-popup": "^2.0.5",
     "sass": "^1.32.7",
     "slick-carousel": "^1.8.1"
   },

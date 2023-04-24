@@ -1,0 +1,41 @@
+.popup-content {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    background-color: #20a77a;
+    border: 0;
+    padding: 30px;
+    text-align: center;
+    h3 {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 26px;
+        color: white;
+    }
+    p {
+        margin-top: 3px;
+        margin-bottom: 0;
+        a {
+            color: white;
+            &:active, &:focus {
+                outline: none;
+            }
+        }
+    }
+    .close {
+        color: lightgray;
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1;
+        position: absolute;
+        right: -8px;
+        top: -8px;
+        background-color: black;
+        border-radius: 100px;
+        padding: 0 6px;
+        cursor: pointer;
+        &:hover, &:active {
+            color: white;
+        }
+    }
+}

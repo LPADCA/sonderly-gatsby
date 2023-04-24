@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { graphql } from "gatsby"
 import Layout from "@components/common/layout.js"
 import { JsonLD, organizationJsonLD } from "@components/json-ld"
@@ -11,11 +11,27 @@ import Testimonials from "@components/homepage/testimonials"
 //import FeaturedCourses from "@components/homepage/featured_courses"
 //import WhatsNew from "@components/homepage/whatsnew"
 import LetsTalk from "@components/common/letstalk"
-
+import Popup from 'reactjs-popup';
+import { RichText } from 'prismic-reactjs'
+import 'reactjs-popup/dist/index.css';
 import "@styles/pages/homepage.scss"
+import "@styles/popup.scss"
 
 const Homepage = ({ data, location }) => {
-    return (
+    const [popupOpen, setOpen] = useState(false);
+    const openModal = () => {console.log(popupOpen);setOpen(true)};
+    const closeModal = () => {console.log(popupOpen);setOpen(false)};
+    const isFrench = data.prismicHomepage2022.lang === 'fr-ca'
+    useEffect(()=>{
+        console.log(isFrench)
+        setTimeout(()=>{
+          if (!window.sessionStorage.getItem("popup01")) {
+              window.sessionStorage.setItem("popup01", true);
+              setOpen(true)
+            }
+        }, 4000)
+      }, [])
+        return (
         <Layout location={location} {...Layout.pickSeoProps(data.prismicHomepage2022.data)}>
             <JsonLD>{organizationJsonLD}</JsonLD>
             <Hero slides={data.prismicHomepage2022.data.hero_slide} />
@@ -24,7 +40,15 @@ const Homepage = ({ data, location }) => {
             <CoursesPreview data={data.prismicHomepage2022.data} />
             <WhoWeServe data={data.prismicHomepage2022.data} />
             <Testimonials data={data.prismicHomepage2022.data} />
-            <LetsTalk data={data.prismicHomepage2022.data} />            
+            <LetsTalk data={data.prismicHomepage2022.data} />
+            <a onClick={openModal}>open</a>
+            {isFrench && <Popup open={popupOpen} position="center center" onClose={closeModal} modal>
+                <a className="close" onClick={closeModal}>
+                    &times;
+                </a>
+                <h3>{data.prismicHomepage2022.data.popup_title.text}</h3>
+                <RichText render={data.prismicHomepage2022.data.popup_content.raw}/>
+            </Popup>}    
         </Layout>
     )
 }
@@ -49,6 +73,7 @@ export default Homepage
 export const homepageQuery = graphql`
     query Homepage {
         prismicHomepage2022 {
+            lang
             data {
                 seo_title
                 seo_keywords
@@ -151,6 +176,12 @@ export const homepageQuery = graphql`
                     tmn_card_text {
                         html
                     }
+                }
+                popup_title {
+                    text
+                }
+                popup_content {
+                    raw
                 }
             }
         }
