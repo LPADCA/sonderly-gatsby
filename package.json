@@ -15,6 +15,7 @@
   "dependencies": {
     "@formspark/use-formspark": "^0.1.27",
     "@svgr/webpack": "^5.5.0",
+    "@uiw/react-collapse": "^4.21.28",
     "gatsby": "^3.1.1",
     "gatsby-plugin-facebook-pixel": "^1.0.5",
     "gatsby-plugin-google-tagmanager": "^3.5.0",
@@ -34,7 +35,6 @@
     "rc-slider": "^9.7.1",
     "react": "^17.0.1",
     "react-animate-height": "^2.0.23",
-    "react-collapsed": "^3.3.0",
     "react-countup": "^6.3.2",
     "react-dom": "^17.0.1",
     "react-dropdown": "^1.11.0",

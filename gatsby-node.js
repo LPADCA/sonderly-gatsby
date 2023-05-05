@@ -45,6 +45,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 prismicLandingPage {
                     lang
                 }
+                prismicLandingCards {
+                    lang
+                }
                 prismicMythLandingPage {
                     lang
                 }
@@ -66,6 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const prismicBlogsPage = customPagesResult.data.prismicBlogs
     const prismicVideosPage = customPagesResult.data.prismicVideos
     const prismicLandingPage = customPagesResult.data.prismicLandingPage
+    const prismicLandingCards = customPagesResult.data.prismicLandingCards
     const prismicMythLandingPage = customPagesResult.data.prismicMythLandingPage
     const prismicAdhdLandingPage = customPagesResult.data.prismicAdhdLandingPage
     customPagesList.forEach((edge) => {
@@ -94,6 +98,13 @@ exports.createPages = async ({ graphql, actions }) => {
             type: "page",
             path: `/get-certification`,
             component: path.resolve("src/templates/landing-page.js"),
+        })
+    }
+    if (prismicLandingCards) {
+        createPage({
+            type: "page",
+            path: `/us-sale`,
+            component: path.resolve("src/templates/landing-cards.js"),
         })
     }
     if (prismicMythLandingPage) {

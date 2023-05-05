@@ -49,6 +49,7 @@ module.exports = {
                     faq_page: require("./src/schemas/faq_page.json"),
                     about_page_2022: require("./src/schemas/about_page_2022.json"),
                     landing_page: require("./src/schemas/landing_page.json"),
+                    landing_cards: require("./src/schemas/landing_cards.json"),
                     myth_landing_page: require("./src/schemas/myth_landing_page.json"),
                     adhd_landing_page: require("./src/schemas/adhd_landing_page.json"),
                     404: require("./src/schemas/404.json")

@@ -19,11 +19,11 @@ import "@styles/popup.scss"
 
 const Homepage = ({ data, location }) => {
     const [popupOpen, setOpen] = useState(false);
-    const openModal = () => {console.log(popupOpen);setOpen(true)};
-    const closeModal = () => {console.log(popupOpen);setOpen(false)};
+    const openModal = () => {setOpen(true)};
+    const closeModal = () => {setOpen(false)};
     const isFrench = data.prismicHomepage2022.lang === 'fr-ca'
     useEffect(()=>{
-        console.log(isFrench)
+        //console.log(isFrench)
         setTimeout(()=>{
           if (!window.sessionStorage.getItem("popup01")) {
               window.sessionStorage.setItem("popup01", true);

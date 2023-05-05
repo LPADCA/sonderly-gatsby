@@ -1,0 +1,179 @@
+{
+    "Main" : {
+      "card" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "image" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Image"
+              }
+            },
+            "title" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "heading2",
+                "label" : "Title"
+              }
+            },
+            "level" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Level"
+              }
+            },
+            "length" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Length"
+              }
+            },
+            "recommended" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Recommended"
+              }
+            },
+            "certificate" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Certificate"
+              }
+            },
+            "format" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Format"
+              }
+            },
+            "prep" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Prep"
+              }
+            },
+            "type" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Type"
+              }
+            },
+            "price" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Price"
+              }
+            },
+            "read_more_button_text" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Read more button text"
+              }
+            },
+            "read_more_button_link" : {
+              "type" : "Link",
+              "config" : {
+                "label" : "Read more button link",
+                "select" : null
+              }
+            },
+            "buy_button_text" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Buy button text"
+              }
+            },
+            "buy_button_link" : {
+              "type" : "Link",
+              "config" : {
+                "label" : "Buy button link",
+                "select" : null
+              }
+            },
+            "description" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                "label" : "Description"
+              }
+            }
+          },
+          "label" : "Card"
+        }
+      }
+    },
+    "SEO" : {
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Title (maximum 70 characters)"
+        }
+      },
+      "seo_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Description (50–160 characters)"
+        }
+      },
+      "seo_keywords" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Keywords",
+          "placeholder" : "(list, separated with commas)"
+        }
+      }
+    },
+    "Card labels" : {
+      "labels_level" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Level"
+        }
+      },
+      "labels_length" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Length"
+        }
+      },
+      "labels_recommended" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Recommended"
+        }
+      },
+      "labels_certificate" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Certificate"
+        }
+      },
+      "labels_format" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Format"
+        }
+      },
+      "labels_prep" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Prep"
+        }
+      },
+      "labels_type" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Type"
+        }
+      },
+      "labels_price" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Price"
+        }
+      }
+    }
+  }
