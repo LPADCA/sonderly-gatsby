@@ -2,9 +2,10 @@
 
 .landing-cards {
     margin-top: 70px;
+    margin-bottom: 50px;
     .card {
         margin-top: 50px;
-        padding: 20px;
+        padding: 25px;
         background-color: #33c785;
         border-radius: 5px;
         box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
@@ -32,23 +33,29 @@
                     }
                 }
                 .buttons {
+                    margin-top: 20px;
+                    margin-left: -25px;
                     a {
                         display: inline-block;
-                        margin-left: 6px;
-                        padding: 10px 14px !important;
+                        padding: 13px 25px !important;
+                        margin-left: 20px;
                         margin-bottom: 0;
                     }
-                    .price {
-                        transform: translateX(-20px);
+                    .price-wrapper {
                         display: inline-block;
-                        font-size: 19px;
-                        background-color: white;
-                        border-top-right-radius: 50px;
-                        border-bottom-right-radius: 50px;
-                        padding: 10px 15px;
-                        .label {
-                            font-weight: 800;
+                        .price {
+                            font-size: 19px;
+                            background-color: white;
+                            border-top-right-radius: 50px;
+                            border-bottom-right-radius: 50px;
+                            padding: 13px 25px;
+                            .label {
+                                font-weight: 800;
+                            }
                         }
+                    }
+                    .buttons-wrapper {
+                        display: inline-block;
                     }
                 }
             }
@@ -80,7 +87,6 @@
             }
         }
         .w-collapse {
-            margin-top: 20px;
             background: transparent;
             border: none;
             border-radius: 5px;
@@ -88,28 +94,33 @@
             line-height: 1.2;
             font-weight: 500;
             .w-collapse-item {
-                transition: 0.5s background-color ease-out;
+                border-radius: 5px !important;
+                margin-top: 0;
+                transition: 0.3s all ease-out;
                 &.w-collapse-active {
+                    margin-top: 20px;
                     background-color: white;
                 }
-            }
-            .w-collapse-panel:before {
-                display: none;
-            }
-            .w-collapse-header {
-                display: none;
-                border: none;
+                .w-collapse-panel {
+                    padding: 0px 15px;
+                    &:before {
+                        display: none;
+                    }
+                }
+                .w-collapse-header {
+                    display: none;
+                    border: none;
+                }
             }
         }
     }
 }
 
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 880px) {
     .landing-cards {
         margin-top: 70px;
         .card {
             margin-top: 50px;
-            padding: 20px;
             background-color: #33c785;
             border-radius: 5px;
             box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
@@ -132,15 +143,30 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
     .landing-cards {
         .buttons {
-            a {
-               margin-top: 15px; 
-            }
-            .price {
+            .price-wrapper {
                 display: block !important;
+                .price {
+                    display: inline-block;
+                    margin-top: 15px;
+                }
+            }
+            .buttons-wrapper {
+                display: block !important;
+                margin-left: 25px;
                 margin-top: 15px;
+                text-align: center;
+                a {
+                    margin-left: 0 !important;
+                    &:first-child {
+                        margin-right: 2px !important;
+                    }
+                    &:last-child {
+                        margin-left: 2px !important;
+                    }
+                }
             }
         }
     }

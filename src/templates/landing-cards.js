@@ -21,59 +21,69 @@ import "@styles/pages/landing-cards.scss"
 </div>
 */
 
-
-
-const LandingCards = ({ data, location }) => {
+const LandingCard = ({ card, data }) => {
     const [open, setOpen] = useState('');
     const handleToggle = (e) => {
         e.stopPropagation();
         if (open === '0') {setOpen('')} else {setOpen('0')};
       };
-    
+      return (
+        <div className='card'>
+        <div className='top'>
+            <div className='content'>
+                <h2>{card.title.text}</h2>
+                <p><span className='label'>{data.labels_level}</span> {card.level}</p>
+                <p><span className='label'>{data.labels_length}</span> {card.length}</p>
+                <p><span className='label'>{data.labels_recommended}</span> {card.recommended}</p>
+                <p><span className='label'>{data.labels_certificate}</span> {card.certificate}</p>
+                <p><span className='label'>{data.labels_format}</span> {card.format}</p>
+                <p><span className='label'>{data.labels_prep}</span> {card.prep}</p>
+                <p><span className='label'>{data.labels_type}</span> {card.type}</p>
+                <div className='buttons'>
+                    <div className="price-wrapper">
+                        <div className="price">
+                            <span className='label'>{data.labels_price} </span>{card.price}
+                        </div>
+                    </div>
+                    <div className="buttons-wrapper">
+                        <a className="button black" onClick={(e) => handleToggle(e)}>
+                            {card.read_more_button_text}
+                        </a>
+                        {card.buy_button_link && card.buy_button_link.url && (
+                            <CommonLink
+                                className="button black"
+                                type={card.buy_button_link.type}
+                                to={card.buy_button_link.url}
+                                target={card.buy_button_link.target}
+                            >
+                                {card.buy_button_text}
+                            </CommonLink>
+                        )}
+                    </div>
+                </div>
+            </div>
+            <div className='image'>
+                <img src={card.image.url} width="300" alt={card.image.alt}/>
+            </div>
+        </div>
+        <Collapse activeKey={open}>
+            <Collapse.Panel>
+                <RichText render={card.description.raw}/>
+            </Collapse.Panel>
+        </Collapse>
+    </div> 
+      )
+    }
+
+
+
+const LandingCards = ({ data, location }) => {
     const cards = data.prismicLandingCards.data.card
-    const dta = data.prismicLandingCards.data
     return (
         <Layout location={location} className="landing-cards">
-            <div className="container-small">
+            <div className="container-medium">
                 {cards.map((card, i) => (
-                    <div key={i} className='card'>
-                        <div className='top'>
-                            <div className='content'>
-                                <h2>{card.title.text}</h2>
-                                <p><span className='label'>{dta.labels_level}</span> {card.level}</p>
-                                <p><span className='label'>{dta.labels_length}</span> {card.length}</p>
-                                <p><span className='label'>{dta.labels_recommended}</span> {card.recommended}</p>
-                                <p><span className='label'>{dta.labels_certificate}</span> {card.certificate}</p>
-                                <p><span className='label'>{dta.labels_format}</span> {card.format}</p>
-                                <p><span className='label'>{dta.labels_prep}</span> {card.prep}</p>
-                                <p><span className='label'>{dta.labels_type}</span> {card.type}</p>
-                                <div className='buttons'>
-                                    <div className="price"><span className='label'>{dta.labels_price} </span>{card.price}</div>
-                                    <a className="button black" onClick={(e) => handleToggle(e)}>
-                                        {card.read_more_button_text}
-                                    </a>
-                                    {card.buy_button_link && card.buy_button_link.url && (
-                                        <CommonLink
-                                            className="button black"
-                                            type={card.buy_button_link.type}
-                                            to={card.buy_button_link.url}
-                                            target={card.buy_button_link.target}
-                                        >
-                                            {card.buy_button_text}
-                                        </CommonLink>
-                                    )}
-                                </div>
-                            </div>
-                            <div className='image'>
-                                <img src={card.image.url} width="300" alt={card.image.alt}/>
-                            </div>
-                        </div>
-                        <Collapse activeKey={open}>
-                            <Collapse.Panel>
-                                <RichText render={card.description.raw}/>
-                            </Collapse.Panel>
-                        </Collapse>
-                    </div> 
+                    <LandingCard card = {card} data = {data.prismicLandingCards.data}/>
                 ))}
             </div>
         </Layout>
