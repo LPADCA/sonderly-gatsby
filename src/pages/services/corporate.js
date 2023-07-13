@@ -31,7 +31,7 @@ const UnfoldList = ({ list }) => {
         <div className="container unfold-list">
             <div className="unfold-list-items">
                 {list.map((item, i) => (
-                    <UnfoldItem key={i} isOpen={false} title={item.trainings_list_title.text} description={item.tranings_list_richtext.html} />
+                    <UnfoldItem key={i} isOpen={true} title={item.trainings_list_title.text} description={item.tranings_list_richtext.html} />
                 ))}
             </div>
         </div>
