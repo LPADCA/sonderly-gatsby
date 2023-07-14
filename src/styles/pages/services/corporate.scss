@@ -37,7 +37,19 @@
             strong {
                 color: black;
                 font-weight: 800;
-            }
+            } 
+        }
+        div {
+            a {
+                color: black;
+                font-weight: 900;
+                text-decoration: underline;
+                transition: color 0.3s ease-out;
+                cursor: pointer;
+                &:hover, &:active {
+                    color: white;
+                }
+            }   
         }
     }
 }
