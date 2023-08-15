@@ -25,8 +25,8 @@ const Homepage = ({ data, location }) => {
     useEffect(()=>{
         //console.log(isFrench)
         setTimeout(()=>{
-          if (!window.sessionStorage.getItem("popup01")) {
-              window.sessionStorage.setItem("popup01", true);
+          if (!window.sessionStorage.getItem("popup02")) {
+              window.sessionStorage.setItem("popup02", true);
               setOpen(true)
             }
         }, 4000)
@@ -42,13 +42,13 @@ const Homepage = ({ data, location }) => {
             <Testimonials data={data.prismicHomepage2022.data} />
             <LetsTalk data={data.prismicHomepage2022.data} />
             <a onClick={openModal}>open</a>
-            {isFrench && <Popup open={popupOpen} position="center center" onClose={closeModal} modal>
+            <Popup open={popupOpen} position="center center" onClose={closeModal} modal>
                 <a className="close" onClick={closeModal}>
                     &times;
                 </a>
                 <h3>{data.prismicHomepage2022.data.popup_title.text}</h3>
                 <RichText render={data.prismicHomepage2022.data.popup_content.raw}/>
-            </Popup>}    
+            </Popup>
         </Layout>
     )
 }
