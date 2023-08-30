@@ -25,7 +25,7 @@ const Homepage = ({ data, location }) => {
     useEffect(()=>{
         //console.log(isFrench)
         setTimeout(()=>{
-          if (!window.sessionStorage.getItem("popup02")) {
+          if (!window.sessionStorage.getItem("popup02") && data.prismicHomepage2022.data.popup_title.text) {
               window.sessionStorage.setItem("popup02", true);
               setOpen(true)
             }
